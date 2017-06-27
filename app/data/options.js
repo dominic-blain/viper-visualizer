@@ -80,3 +80,5 @@ var OPTIONS = [
 		"value": 40
 	}
 ];
+
+export default OPTIONS;

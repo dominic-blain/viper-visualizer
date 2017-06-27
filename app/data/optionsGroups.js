@@ -8,3 +8,5 @@ var OPTIONS_GROUPS = [
 		"label": "Spacings"
 	}
 ];
+
+export default OPTIONS_GROUPS;

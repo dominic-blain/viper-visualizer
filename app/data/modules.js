@@ -1,4 +1,4 @@
-var MODULES = [
+let MODULES = [
 	{
 		"content": [
 			{
@@ -207,3 +207,5 @@ var MODULES = [
 		]
 	}
 ];
+
+export default MODULES;

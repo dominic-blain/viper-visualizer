@@ -1,3 +1,6 @@
+import React from 'react';
+// import ToolbarGroup from 'ToolbarGroup';
+
 class Toolbar extends React.Component {
 	constructor(props) {
 		super(props);
@@ -28,3 +31,4 @@ class Toolbar extends React.Component {
 		);
 	}
 }
+export default Toolbar;

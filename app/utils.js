@@ -1,4 +1,4 @@
-function getValueFrom(optionName, optionList) {
+export function getValueFrom(optionName, optionList) {
 	var value;
 
 	optionList.forEach(function(option) {
@@ -9,7 +9,7 @@ function getValueFrom(optionName, optionList) {
 	return value;
 }
 
-function setValueFrom(optionName, newValue, optionList) {
+export function setValueFrom(optionName, newValue, optionList) {
 	optionList.forEach(function(option) {
 		if (option.name == optionName) {
 			option.value = newValue;
@@ -18,7 +18,7 @@ function setValueFrom(optionName, newValue, optionList) {
 	return optionList;
 }
 
-function getOptionsBy(groupName, optionList) {
+export function getOptionsBy(groupName, optionList) {
 	var options = [];
 
 	optionList.forEach(function(option) {

@@ -20,3 +20,4 @@ class ToolbarOption extends React.Component {
 		);
 	}
 }
+export default ToolbarOption;
