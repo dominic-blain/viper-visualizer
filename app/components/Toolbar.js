@@ -9,14 +9,14 @@ class Toolbar extends React.Component {
 		const optionList = this.props.options;
 		var groups = [];
 
-		this.props.optionsGroups.forEach(function(group) {
+		this.props.optionsGroups.forEach(function(group, index) {
 			var groupOptions = getOptionsBy(group.name, optionList);
 			if (groupOptions.length >= 1) {
 				groups.push(
 					<ToolbarGroup
+						key={index}
 						label={group.label}
 						options={groupOptions}
-						onInputChange={onInputChange}
 					/>
 				);
 			}

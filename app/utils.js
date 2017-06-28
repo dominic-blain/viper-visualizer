@@ -1,3 +1,5 @@
+import update from 'immutability-helper';
+
 export function getValueFrom(optionName, optionList) {
 	var value;
 
@@ -9,13 +11,15 @@ export function getValueFrom(optionName, optionList) {
 	return value;
 }
 
-export function setValueFrom(optionName, newValue, optionList) {
-	optionList.forEach(function(option) {
+export function setValueFrom(optionName, newValue, optionList, state) {
+	var changedIndex;
+	optionList.forEach(function(option, index) {
 		if (option.name == optionName) {
-			option.value = newValue;
+			console.log(index);
+			changedIndex = index;
 		}
 	});
-	return optionList;
+	return update(state, {options: {[changedIndex]: {value: {$set: newValue}}}});
 }
 
 export function getOptionsBy(groupName, optionList) {

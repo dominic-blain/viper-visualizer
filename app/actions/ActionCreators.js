@@ -1,10 +1,11 @@
 import { UPDATE_OPTION } from '../constants';
 
 const ActionCreators = {
-	updateOption(value) {
+	updateOption(value, optionName) {
 		return {
 			type: UPDATE_OPTION,
-			value: value
+			value: value,
+			optionName: optionName
 		}
 	}
 };
