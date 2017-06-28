@@ -4,6 +4,7 @@ import {Provider, connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import ActionCreators from './actions/ActionCreators';
 import store from './store/store.js';
+import styles from './styles/main.less';
 // Components
 // import Toolbar from './components/Toolbar';
 import ModuleContainer from './components/ModuleContainer';

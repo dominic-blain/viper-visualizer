@@ -23,6 +23,10 @@
     "webpack-dev-server": "^1.10.1"
   },
   "devDependencies": {
-    "redux-devtools": "^3.4.0"
+    "css-loader": "^0.28.4",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "redux-devtools": "^3.4.0",
+    "style-loader": "^0.18.2"
   }
 }

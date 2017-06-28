@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Content from '../components/Content';
+import Content from './Content';
 
 
 class ModuleContainer extends React.Component {

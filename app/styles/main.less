@@ -1,0 +1,122 @@
+body {
+	background-color: whitesmoke;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+aside {
+	position: fixed;
+	overflow-y: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	margin: 20px;
+	padding: 20px 30px;
+	width: 300px;
+	background-color: #f4faff;
+	color: rgb(86, 86, 90);
+
+	section {
+		margin: 0 auto;
+		padding: 12px 0;
+		box-sizing: border-box;
+		transition: all 300ms ease-out;
+	}
+}
+
+article {
+	padding-top: 20vh;
+	min-height: 100vh;
+	background-color: white;
+	margin: 0 auto;
+
+	* {
+		transition: all 300ms ease-out;
+	}
+
+	// Modules
+	section {
+		margin: 0 auto;
+		box-sizing: border-box;
+	}
+	.module-title {
+		h1 {
+			text-align: center;
+			font-size: 64px;
+			line-height: 1.1em;
+			font-weight: bold;
+		}
+	}
+	.module-intro {
+		p {
+			font-weight: bold;
+			font-size: 22px;
+			line-height: 1.4em;
+			text-align: center;
+		}
+	}
+	.module-text {
+		font-size: 19px;
+		line-height: 1.4em;
+	}
+	.module-image-2-col{
+		.grid {
+			display: flex;
+			flex-flow: row wrap;
+
+			> * {
+				box-sizing: border-box;
+				width: 50%;
+			}
+		}
+	}
+	.module-quote {
+		text-align: center;
+		blockquote {
+			font-size: 38px;
+			line-height: 1.125em;
+			font-weight: bold;
+		}
+		.author {
+			display: inline-flex;
+			align-items: center;
+			margin: 0 auto;
+			text-align: right;
+			.name {
+				display: inline-block;
+				span {
+					font-weight: bold;
+				}
+			}
+			img {
+				width: 30px;
+				height: 30px;
+				border-radius: 100%;
+				display: inline-block;
+				padding: 10px;
+			}
+		}
+	}
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+
+label {
+	display: block;
+	text-transform: uppercase;
+	font-size: 9px;
+	letter-spacing: 1px;
+	margin: 16px 0;
+	color: #4882ff;
+	position: relative;
+
+	input[type="range"], select, option {
+		display: block;
+		width: 100%;
+		margin-top: 4px;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+}

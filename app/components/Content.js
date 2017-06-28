@@ -27,7 +27,7 @@ class Content extends React.Component {
 						element={child.element}
 						options={options}
 						properties={child.properties}
-						contjsent={child.content}
+						content={child.content}
 						attr={child.attr}
 					/>
 				);
