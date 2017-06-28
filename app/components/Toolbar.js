@@ -1,30 +1,47 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getOptionsBy} from '../utils';
-import ToolbarGroup from './ToolbarGroup';
+import ToolbarTabButton from './ToolbarNavButton';
+import ToolbarTabContent from './ToolbarNavContent';
 
 class Toolbar extends React.Component {
 	render() {
-		const onInputChange = this.props.onInputChange;
-		const optionList = this.props.options;
-		var groups = [];
+		var tabButtons = [];
+		var tabContents = [];
 
-		this.props.optionsGroups.forEach(function(group, index) {
-			var groupOptions = getOptionsBy(group.name, optionList);
-			if (groupOptions.length >= 1) {
+		// For each tabs
+		this.props.optionTabs.map((tab, index) => ({
+			// Filter tab groups
+			var groups = [];
+			tab.option_groups.map(group => ({
 				groups.push(
-					<ToolbarGroup
-						key={index}
-						label={group.label}
-						options={groupOptions}
-					/>
+					this.props.optionGroups[group];
 				);
-			}
-		});
+			}));
+			// Add button
+			tabButtons.push(
+				<ToolbarTabButton
+					key="index"
+					data="tab"
+				/>
+			);
+			// Add contents
+			tabContents.push(
+				<ToolbarTabContent
+					key="index"
+					data="tab"
+					groups={groups};
+				/>
+			);
+		}));
 
 		return (
 			<aside>
-				{groups}
+				<nav>
+					{tabButtons}
+				</nav>
+				<main>
+					{tabContents}
+				</main>
 			</aside>
 		);
 	}
@@ -32,8 +49,8 @@ class Toolbar extends React.Component {
 
 const mapStateToProps = (state) => (
 {
-	options: state.options,
-	optionsGroups: state.optionsGroups
+	optionTabs: state.optionTabs,
+	optionGroups: state.optionGroups
 });
 
 export default connect(mapStateToProps, null)(Toolbar);

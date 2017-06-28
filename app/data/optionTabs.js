@@ -1,12 +1,14 @@
-var OPTION_TABS = {
-	"typography": {
+var OPTION_TABS = [
+	{
+		"name": "typography",
 		"label": "Typography",
 		"option_groups": [
 			"fonts",
 			"font-sizes"
 		]
 	},
-	"dimensions": {
+	{
+		"name": "dimensions",
 		"label": "Dimensions",
 		"option_groups": [
 			"widths",
@@ -14,7 +16,8 @@ var OPTION_TABS = {
 			"margins"
 		]
 	},
-	"colors": {
+	{
+		"name": "colors",
 		"label": "Colors",
 		"option_groups": [
 			"color-globals"

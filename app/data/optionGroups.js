@@ -1,5 +1,5 @@
 var OPTION_GROUPS = {
-	"Widths": {
+	"widths": {
 		"label": "Widths",
 		"options": [
 			"width-site",

@@ -1,8 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider, connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import ActionCreators from './actions/ActionCreators';
 import store from './store/store.js';
 import styles from './styles/main.less';
 // Components
@@ -19,29 +16,10 @@ class App extends React.Component {
 		);
 	}
 }
-App.propTypes = {
-	options: PropTypes.arrayOf(PropTypes.object).isRequired,
-	optionsGroups: PropTypes.arrayOf(PropTypes.object),
-	modules: PropTypes.arrayOf(PropTypes.object).isRequired
-};
-
-const mapStateToProps = (state) => (
-{
-	options: state.options,
-	optionsGroups: state.optionsGroups,
-	modules: state.modules
-});
-
-const mapDispatchToProps = (dispatch) => (
-{
-	updateOption: (value) => dispatch(ActionCreators.updateOption(value))
-});
-
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
 ReactDOM.render(
   <Provider store={store}>
-	  <AppContainer />
+	  <App />
   </Provider>,
   document.getElementById('root')
 );
