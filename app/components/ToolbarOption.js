@@ -1,12 +1,14 @@
-class ToolbarOption extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleInputChange = this.handleInputChange.bind(this);
-	}
+import React from 'react';
 
-	handleInputChange(e) {
-		this.props.onInputChange(e.target.value, this.props.optionName);
-	}
+class ToolbarOption extends React.Component {
+	// constructor(props) {
+	// 	super(props);
+	// 	this.handleInputChange = this.handleInputChange.bind(this);
+	// }
+
+	// handleInputChange(e) {
+	// 	this.props.onInputChange(e.target.value, this.props.optionName);
+	// }
 
 	render() {
 		return (

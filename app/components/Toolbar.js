@@ -1,11 +1,9 @@
 import React from 'react';
-// import ToolbarGroup from 'ToolbarGroup';
+import {connect} from 'react-redux';
+import {getOptionsBy} from '../utils';
+import ToolbarGroup from './ToolbarGroup';
 
 class Toolbar extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const onInputChange = this.props.onInputChange;
 		const optionList = this.props.options;
@@ -31,4 +29,11 @@ class Toolbar extends React.Component {
 		);
 	}
 }
-export default Toolbar;
+
+const mapStateToProps = (state) => (
+{
+	options: state.options,
+	optionsGroups: state.optionsGroups
+});
+
+export default connect(mapStateToProps, null)(Toolbar);
