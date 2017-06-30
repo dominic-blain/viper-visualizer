@@ -8,7 +8,6 @@ class ModuleContainer extends React.Component {
 		var modules = [];
 		var options = this.props.options;
 		this.props.modules.forEach(function(module, index) {
-			console.log(module);
 			modules.push(
 				<Content
 					key={index}

@@ -15,7 +15,6 @@ export function setValueFrom(optionName, newValue, optionList, state) {
 	var changedIndex;
 	optionList.forEach(function(option, index) {
 		if (option.name == optionName) {
-			console.log(index);
 			changedIndex = index;
 		}
 	});

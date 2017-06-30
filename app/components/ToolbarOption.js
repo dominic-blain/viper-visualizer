@@ -14,7 +14,7 @@ class ToolbarOption extends React.Component {
 
 	render() {
 		return (
-			<label>
+			<label data-key={this.props.key} >
 				{this.props.label}
 				<div>
 				</div>

@@ -15,15 +15,15 @@ class Toolbar extends React.Component {
 			// Filter tab groups and options
 			var groupsComponents = [];
 			var optionsComponents = [];
-			tab.option_groups.map((groupName, index) => {
+			tab.option_groups.map(groupName => {
 				var groupObject = this.props.optionGroups[groupName];
 
-				groupObject.options.map((optionName, index) => {
+				groupObject.options.map(optionName => {
 					var optionObject = this.props.options[optionName];
 					// Generate options component list
 					optionsComponents.push(
 						<ToolbarOption
-							key={index}
+							key={optionName}
 							data={optionObject}
 						/>
 					);
@@ -32,7 +32,7 @@ class Toolbar extends React.Component {
 				// Generate tab groups component list
 				groupsComponents.push(
 					<ToolbarGroup
-						key={index}
+						key={groupName}
 						label={groupObject.label}
 						options={optionsComponents}
 					/>

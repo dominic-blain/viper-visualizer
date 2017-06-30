@@ -20,7 +20,6 @@ class Content extends React.Component {
 
 		if(Array.isArray(this.props.content)){
 			this.props.content.forEach(function(child, index) {
-				console.log(child);
 				children.push(
 					<Content
 						key = {index}
