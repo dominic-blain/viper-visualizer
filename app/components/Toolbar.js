@@ -1,46 +1,70 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import ToolbarTabButton from './ToolbarNavButton';
-import ToolbarTabContent from './ToolbarNavContent';
+import ToolbarTabButton from './ToolbarTabButton';
+import ToolbarTabContent from './ToolbarTabContent';
+import ToolbarGroup from './ToolbarGroup';
+import ToolbarOption from './ToolbarOption';
 
 class Toolbar extends React.Component {
 	render() {
-		var tabButtons = [];
-		var tabContents = [];
+		var tabButtonsComponents = [];
+		var tabContentsComponents = [];
 
 		// For each tabs
-		this.props.optionTabs.map((tab, index) => ({
-			// Filter tab groups
-			var groups = [];
-			tab.option_groups.map(group => ({
-				groups.push(
-					this.props.optionGroups[group];
+		this.props.optionTabs.map((tab, index) => {
+			// Filter tab groups and options
+			var groupsComponents = [];
+			var optionsComponents = [];
+			tab.option_groups.map((groupName, index) => {
+				var groupObject = this.props.optionGroups[groupName];
+
+				groupObject.options.map((optionName, index) => {
+					var optionObject = this.props.options[optionName];
+					// Generate options component list
+					optionsComponents.push(
+						<ToolbarOption
+							key={index}
+							data={optionObject}
+						/>
+					);
+				});
+
+				// Generate tab groups component list
+				groupsComponents.push(
+					<ToolbarGroup
+						key={index}
+						label={groupObject.label}
+						options={optionsComponents}
+					/>
 				);
-			}));
-			// Add button
-			tabButtons.push(
+
+			});
+			// Generate tab buttons component list
+			tabButtonsComponents.push(
 				<ToolbarTabButton
-					key="index"
-					data="tab"
+					key={index}
+					name={tab.name}
+					label={tab.label}
 				/>
 			);
-			// Add contents
-			tabContents.push(
+
+			// Generate tab contents component list
+			tabContentsComponents.push(
 				<ToolbarTabContent
-					key="index"
-					data="tab"
-					groups={groups};
+					key={index}
+					name={tab.name}
+					groups={groupsComponents}
 				/>
 			);
-		}));
+		});
 
 		return (
 			<aside>
 				<nav>
-					{tabButtons}
+					{tabButtonsComponents}
 				</nav>
 				<main>
-					{tabContents}
+					{tabContentsComponents}
 				</main>
 			</aside>
 		);
@@ -50,7 +74,8 @@ class Toolbar extends React.Component {
 const mapStateToProps = (state) => (
 {
 	optionTabs: state.optionTabs,
-	optionGroups: state.optionGroups
+	optionGroups: state.optionGroups,
+	options: state.options
 });
 
 export default connect(mapStateToProps, null)(Toolbar);

@@ -23,6 +23,6 @@ var OPTION_TABS = [
 			"color-globals"
 		]
 	}
-};
+];
 
 export default OPTION_TABS;

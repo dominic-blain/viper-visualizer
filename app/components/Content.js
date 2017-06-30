@@ -11,7 +11,7 @@ class Content extends React.Component {
 
 		if (this.props.properties) {
 			this.props.properties.forEach(function(property) {
-				var value = getValueFrom(property.syncWith, options);
+				var value = options[property.syncWith];
 				var modifier = property.modifier || 1;
 				style[property.name] = value * modifier + "px";
 			});
