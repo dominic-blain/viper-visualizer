@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import ActionCreators from '../actions/ActionCreators';
 import ToolbarTabButton from './ToolbarTabButton';
 import ToolbarTabContent from './ToolbarTabContent';
 import ToolbarGroup from './ToolbarGroup';
@@ -14,9 +15,9 @@ class Toolbar extends React.Component {
 		this.props.optionTabs.map((tab, index) => {
 			// Filter tab groups and options
 			var groupsComponents = [];
-			var optionsComponents = [];
 			tab.option_groups.map(groupName => {
 				var groupObject = this.props.optionGroups[groupName];
+				var optionsComponents = [];
 
 				groupObject.options.map(optionName => {
 					var optionObject = this.props.options[optionName];
@@ -25,6 +26,8 @@ class Toolbar extends React.Component {
 						<ToolbarOption
 							key={optionName}
 							data={optionObject}
+							name={optionName}
+							onOptionChange={this.props.onOptionChange}
 						/>
 					);
 				});
@@ -71,6 +74,11 @@ class Toolbar extends React.Component {
 	}
 }
 
+const mapDispatchToProps = (dispatch) => (
+{
+	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName))
+});
+
 const mapStateToProps = (state) => (
 {
 	optionTabs: state.optionTabs,
@@ -78,4 +86,4 @@ const mapStateToProps = (state) => (
 	options: state.options
 });
 
-export default connect(mapStateToProps, null)(Toolbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

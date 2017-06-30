@@ -3,7 +3,7 @@ import OPTION_GROUPS from '../data/optionGroups';
 import OPTIONS from '../data/options';
 import MODULES from '../data/modules';
 import { UPDATE_OPTION } from '../constants';
-import {setValueFrom} from '../utils';
+import update from 'immutability-helper';
 
 const initialState = {
 	optionTabs: OPTION_TABS,
@@ -15,7 +15,7 @@ const initialState = {
 const reducer = (state=initialState, action) => {
 	switch (action.type) {
 		case UPDATE_OPTION:
-			return setValueFrom(action.optionName, action.value, state.options, state);
+			return update(state, {options: {[action.optionName]: {value: {$set: action.value}}}});;
 		default:
 			return state;
 	}

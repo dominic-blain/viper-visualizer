@@ -1,39 +1,30 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import ActionCreators from '../actions/ActionCreators';
+import ToolbarInputRange from './ToolbarInputRange';
 
 class ToolbarOption extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleOptionChange = this.handleOptionChange.bind(this);
-	}
-
-	handleOptionChange(event) {
-		this.props.onOptionChange(event.target.value, this.props.optionName);
-	}
-
 	render() {
+		var input;
+		switch(this.props.data.type) {
+			case "range":
+			input = (
+				<ToolbarInputRange
+					name={this.props.name}
+					range={this.props.data.range}
+					value={this.props.data.value}
+					onOptionChange={this.props.onOptionChange}
+				/>
+			);
+		}
+
 		return (
-			<label data-key={this.props.key} >
+			<label>
 				{this.props.label}
 				<div>
+					{input}
 				</div>
 			</label>
 		);
-		// return (
-		// 	<label>
-		// 		{this.props.label}
-		// 		<div>
-		// 			<input type="range" min={this.props.range.min} max={this.props.range.max} value={this.props.value} onChange={this.handleOptionChange} />
-		// 			<input type="number" min={this.props.range.min} max={this.props.range.max} value={this.props.value} onChange={this.handleOptionChange} />
-		// 		</div>
-		// 	</label>
-		// );
 	}
 };
 
-const mapDispacthToProps = (dispatch) => ({
-	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName))
-});
-
-export default connect(null, mapDispacthToProps)(ToolbarOption);
+export default ToolbarOption;

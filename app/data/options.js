@@ -59,6 +59,16 @@ const OPTIONS = {
 			"max": 500
 		}
 	},
+	"margin-small": {
+		"label": "Small",
+		"type": "range",
+		"value": 40,
+		"unit": "px",
+		"range": {
+			"min": 0,
+			"max": 500
+		}
+	},
 	"font-size-title": {
 		"label": "Title",
 		"type": "range",
@@ -115,8 +125,8 @@ const OPTIONS = {
 		"value": "Helvetica",
 		"items": []
 	},
-	"font-main": {
-		"label": "Main",
+	"font-alt": {
+		"label": "Alt",
 		"type": "font",
 		"value": "Helvetica",
 		"items": []
