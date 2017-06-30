@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Content from './Content';
 
 
-class ModuleContainer extends React.Component {
+class Article extends React.Component {
 	render() {
 		var modules = [];
 		var options = this.props.options;
@@ -27,9 +27,11 @@ class ModuleContainer extends React.Component {
 		);
 	}
 };
+
 const mapStateToProps = (state) => (
 {
 	modules: state.modules,
 	options: state.options
 });
-export default connect(mapStateToProps, null)(ModuleContainer);
+
+export default connect(mapStateToProps, null)(Article);

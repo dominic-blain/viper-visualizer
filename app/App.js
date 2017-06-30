@@ -5,14 +5,14 @@ import store from './store/store.js';
 import styles from './styles/main.less';
 // Components
 import Toolbar from './components/Toolbar';
-import ModuleContainer from './components/ModuleContainer';
+import Article from './components/Article';
 
 class App extends React.Component {
 	render() {
 		return (
 			<div>
 				<Toolbar />
-				<ModuleContainer />
+				<Article />
 			</div>
 		);
 	}
