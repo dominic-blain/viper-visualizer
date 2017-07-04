@@ -7,6 +7,12 @@ let MODULES = [
 					{
 						"content": "Shift Click: l'extension Chrome qui a changé notre vie"
 					}
+				],
+				"properties": [
+					{
+						"name": "fontSize",
+						"syncWith": "font-size-title"
+					}
 				]
 			}
 		],
@@ -28,7 +34,13 @@ let MODULES = [
 		"content": [
 			{
 				"element": "p",
-				"content": "On perd du temps. À chaque jour. À chaque heure. Voici l'extension chrome qui nous évite de se tapper Google Dev Tools à chaque maudite fois que l'image n'est pas accessible au clique-droit."
+				"content": "On perd du temps. À chaque jour. À chaque heure. Voici l'extension chrome qui nous évite de se tapper Google Dev Tools à chaque maudite fois que l'image n'est pas accessible au clique-droit.",
+				"properties": [
+					{
+						"name": "fontSize",
+						"syncWith": "font-size-important"
+					}
+				]
 			}
 		],
 		"attr": {
@@ -80,13 +92,31 @@ let MODULES = [
 		"content": [
 			{
 				"element": "h2",
-				"content": "On s'entend, ici on ne parle pas de problèmes de vie ou de mort"
+				"content": "On s'entend, ici on ne parle pas de problèmes de vie ou de mort",
+				"properties": [
+					{
+						"name": "fontSize",
+						"syncWith": "font-size-intertitle"
+					}
+				]
 			}, {
 				"element": "p",
-				"content": "On parle d'une succession de petits irritants pas complètement handicapants, mais assuérment emmerdants. C'était un peu comme marche avec un caillou dans les bottonis, ça marche pareil, mais ça pourrait définitivement aller plus vite."
+				"content": "On parle d'une succession de petits irritants pas complètement handicapants, mais assuérment emmerdants. C'était un peu comme marche avec un caillou dans les bottonis, ça marche pareil, mais ça pourrait définitivement aller plus vite.",
+				"properties": [
+					{
+						"name": "fontSize",
+						"syncWith": "font-size-body"
+					}
+				]
 			}, {
 				"element": "p",
-				"content": "C'est en discutant que nous avons compris que l'ensemble des membres de notre équipe partageait les mêmes opinions sur l'extraction et le partage d'images. Nous nous sommes alors cencentrés sur la recherche active de l'outil parfait : une solution simple, sans interface, qui permettrait d'extraire et de partager une image de façon rapide et efficace"
+				"content": "C'est en discutant que nous avons compris que l'ensemble des membres de notre équipe partageait les mêmes opinions sur l'extraction et le partage d'images. Nous nous sommes alors cencentrés sur la recherche active de l'outil parfait : une solution simple, sans interface, qui permettrait d'extraire et de partager une image de façon rapide et efficace",
+				"properties": [
+					{
+						"name": "fontSize",
+						"syncWith": "font-size-body"
+					}
+				]
 			}
 		],
 		"attr": {
