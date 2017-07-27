@@ -1,4 +1,9 @@
 import update from 'immutability-helper';
+import Axios from 'axios';
+
+// ------------------
+// DEPRECATED
+// ------------------
 
 export function getValueFrom(optionName, optionList) {
 	var value;

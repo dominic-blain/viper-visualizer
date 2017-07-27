@@ -122,14 +122,12 @@ const OPTIONS = {
 	"font-main": {
 		"label": "Main",
 		"type": "font",
-		"value": "Helvetica",
-		"items": []
+		"value": "Helvetica"
 	},
 	"font-alt": {
 		"label": "Alt",
 		"type": "font",
-		"value": "Helvetica",
-		"items": []
+		"value": "Helvetica"
 	},
 	"color-primary": {
 		"label": "Primary",

@@ -28,6 +28,7 @@ class Toolbar extends React.Component {
 							data={optionObject}
 							name={optionName}
 							onOptionChange={this.props.onOptionChange}
+							onFontListChange={this.props.onFontListChange}
 						/>
 					);
 				});
@@ -74,13 +75,12 @@ class Toolbar extends React.Component {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => (
-{
-	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName))
+const mapDispatchToProps = (dispatch) => ({
+	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName)),
+	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName))
 });
 
-const mapStateToProps = (state) => (
-{
+const mapStateToProps = (state) => ({
 	optionTabs: state.optionTabs,
 	optionGroups: state.optionGroups,
 	options: state.options
