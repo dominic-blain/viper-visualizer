@@ -26,9 +26,9 @@ class Toolbar extends React.Component {
 						<ToolbarOption
 							key={optionName}
 							data={optionObject}
+							fontList={this.props.fonts}
 							name={optionName}
 							onOptionChange={this.props.onOptionChange}
-							onFontListChange={this.props.onFontListChange}
 						/>
 					);
 				});
@@ -83,7 +83,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
 	optionTabs: state.optionTabs,
 	optionGroups: state.optionGroups,
-	options: state.options
+	options: state.options,
+	fonts: state.fonts
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

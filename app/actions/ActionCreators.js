@@ -11,7 +11,7 @@ const ActionCreators = {
 	updateFontList(fonts) {
 		return {
 			type: type.UPDATE_FONT_LIST,
-			items: fonts
+			fonts: fonts
 		}
 	},
 	getFontList() {

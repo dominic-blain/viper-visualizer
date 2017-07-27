@@ -1,5 +1,18 @@
 import update from 'immutability-helper';
-import Axios from 'axios';
+
+export function loadGoogleFont(id) {
+	if (!document.getElementById('#font-'+ id)) {
+		var head = document.getElementsByTagName('head')[0];
+		var link = document.createElement('link');
+		link.id = 'font' + id;
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = 'https://fonts.googleapis.com/css?family=' + id;
+		link.media = 'all';
+		head.appendChild(link);
+	}
+	return;
+}
 
 // ------------------
 // DEPRECATED

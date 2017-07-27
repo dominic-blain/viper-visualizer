@@ -11,10 +11,24 @@ class ToolbarInputFont extends React.Component {
 	}
 
 	render() {
+		var items = [];
+		this.props.fontList.map(font => {
+			items.push(
+				<option value={font.value} key={font.name}>
+					{font.name}
+				</option>
+			);
+		})
 		return (
-			<div>
-
-			</div>
+			<label>
+				{this.props.label}
+				<div>
+					<select name="{this.props.name}" defaultValue="default" onChange={this.handleOptionChange}>
+						<option value="default"> Choose Google font</option>
+						{items}
+					</select>
+				</div>
+			</label>
 		);
 	}
 }

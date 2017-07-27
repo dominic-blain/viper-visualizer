@@ -10,6 +10,7 @@ class ToolbarOption extends React.Component {
 				input = (
 					<ToolbarInputRange
 						name={this.props.name}
+						label={this.props.data.label}
 						range={this.props.data.range}
 						value={this.props.data.value}
 						onOptionChange={this.props.onOptionChange}
@@ -20,8 +21,9 @@ class ToolbarOption extends React.Component {
 				input = (
 					<ToolbarInputFont
 						name={this.props.name}
+						label={this.props.data.label}
 						value={this.props.data.value}
-						items={this.props.data}
+						fontList={this.props.fontList}
 						onOptionChange={this.props.onOptionChange}
 					/>
 				);
