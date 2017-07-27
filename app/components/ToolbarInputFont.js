@@ -1,4 +1,5 @@
 import React from 'react';
+import { loadGoogleFont } from '../utils';
 
 class ToolbarInputFont extends React.Component {
 	constructor(props) {
@@ -7,7 +8,10 @@ class ToolbarInputFont extends React.Component {
 	}
 
 	handleOptionChange(event) {
-		this.props.onOptionChange(event.target.value, this.props.name);
+		if (event.target.dataset.method == 'google-font') {
+			loadGoogleFont(this.props.name, event.target.value);
+			this.props.onOptionChange(event.target.value, this.props.name);
+		}
 	}
 
 	render() {
@@ -20,15 +24,21 @@ class ToolbarInputFont extends React.Component {
 			);
 		})
 		return (
-			<label>
-				{this.props.label}
+			<div>
+				<label>
+					{this.props.label}
+					<div>
+						<select name={this.props.name} data-method="google-font" defaultValue="default" onChange={this.handleOptionChange}>
+							<option value="default"> Choose Google font</option>
+							{items}
+						</select>
+					</div>
+				</label>
+				<div> or </div>
 				<div>
-					<select name="{this.props.name}" defaultValue="default" onChange={this.handleOptionChange}>
-						<option value="default"> Choose Google font</option>
-						{items}
-					</select>
+					<input type="file" data-method="upload" />
 				</div>
-			</label>
+			</div>
 		);
 	}
 }

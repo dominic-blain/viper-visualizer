@@ -14,9 +14,13 @@ class Content extends React.Component {
 		// Set inline styling
 		if (properties.length) {
 			properties.map(property => {
+				var unit = property.unit || '';
 				var value = options[property.syncWith].value;
 				var modifier = property.modifier || 1;
-				style[property.name] = value * modifier + "px";
+				if (typeof value === "number") {
+					value *= modifier;
+				}
+				style[property.name] = value + unit;
 			});
 			attr.style = style;
 		}

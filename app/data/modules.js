@@ -11,7 +11,12 @@ let MODULES = [
 				"properties": [
 					{
 						"name": "fontSize",
-						"syncWith": "font-size-title"
+						"syncWith": "font-size-title",
+						"unit": "px"
+					},
+					{
+						"name": "fontFamily",
+						"syncWith": "font-main"
 					}
 				]
 			}
@@ -22,11 +27,13 @@ let MODULES = [
 		"properties": [
 			{
 				"name": "maxWidth",
-				"syncWith": "width-site"
+				"syncWith": "width-site",
+				"unit": "px"
 			},
 			{
 				"name": "marginBottom",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			}
 		]
 	},
@@ -38,7 +45,12 @@ let MODULES = [
 				"properties": [
 					{
 						"name": "fontSize",
-						"syncWith": "font-size-important"
+						"syncWith": "font-size-important",
+						"unit": "px"
+					},
+					{
+						"name": "fontFamily",
+						"syncWith": "font-alt"
 					}
 				]
 			}
@@ -49,15 +61,18 @@ let MODULES = [
 		"properties": [
 			{
 				"name": "maxWidth",
-				"syncWith": "width-body"
+				"syncWith": "width-body",
+				"unit": "px"
 			},
 			{
 				"name": "marginBottom",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			},
 			{
 				"name": "marginTop",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			}
 		]
 	},
@@ -76,15 +91,18 @@ let MODULES = [
 		"properties": [
 			{
 				"name": "maxWidth",
-				"syncWith": "width-body"
+				"syncWith": "width-body",
+				"unit": "px"
 			},
 			{
 				"name": "marginBottom",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			},
 			{
 				"name": "marginTop",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			}
 		]
 	},
@@ -96,7 +114,12 @@ let MODULES = [
 				"properties": [
 					{
 						"name": "fontSize",
-						"syncWith": "font-size-intertitle"
+						"syncWith": "font-size-intertitle",
+						"unit": "px"
+					},
+					{
+						"name": "fontFamily",
+						"syncWith": "font-main"
 					}
 				]
 			}, {
@@ -105,7 +128,12 @@ let MODULES = [
 				"properties": [
 					{
 						"name": "fontSize",
-						"syncWith": "font-size-body"
+						"syncWith": "font-size-body",
+						"unit": "px"
+					},
+					{
+						"name": "fontFamily",
+						"syncWith": "font-alt"
 					}
 				]
 			}, {
@@ -114,7 +142,12 @@ let MODULES = [
 				"properties": [
 					{
 						"name": "fontSize",
-						"syncWith": "font-size-body"
+						"syncWith": "font-size-body",
+						"unit": "px"
+					},
+					{
+						"name": "fontFamily",
+						"syncWith": "font-alt"
 					}
 				]
 			}
@@ -125,15 +158,18 @@ let MODULES = [
 		"properties": [
 			{
 				"name": "maxWidth",
-				"syncWith": "width-body"
+				"syncWith": "width-body",
+				"unit": "px"
 			},
 			{
 				"name": "marginBottom",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			},
 			{
 				"name": "marginTop",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			}
 		]
 	},
@@ -156,10 +192,12 @@ let MODULES = [
 							{
 								"name": "paddingLeft",
 								"syncWith": "gutter-normal",
+								"unit": "px"
 							},
 							{
 								"name": "paddingTop",
 								"syncWith": "gutter-normal",
+								"unit": "px"
 							}
 						]
 					},
@@ -177,10 +215,12 @@ let MODULES = [
 							{
 								"name": "paddingLeft",
 								"syncWith": "gutter-normal",
+								"unit": "px"
 							},
 							{
 								"name": "paddingTop",
 								"syncWith": "gutter-normal",
+								"unit": "px"
 							}
 						]
 					}
@@ -192,11 +232,13 @@ let MODULES = [
 					{
 						"name": "marginLeft",
 						"syncWith": "gutter-normal",
+						"unit": "px",
 						"modifier": "-1"
 					},
 					{
 						"name": "marginTop",
 						"syncWith": "gutter-normal",
+						"unit": "px",
 						"modifier": "-1"
 					}
 				]
@@ -208,15 +250,18 @@ let MODULES = [
 		"properties": [
 			{
 				"name": "maxWidth",
-				"syncWith": "width-oversize"
+				"syncWith": "width-oversize",
+				"unit": "px"
 			},
 			{
 				"name": "marginBottom",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			},
 			{
 				"name": "marginTop",
-				"syncWith": "margin-normal"
+				"syncWith": "margin-normal",
+				"unit": "px"
 			}
 		]
 	}

@@ -127,7 +127,7 @@ const OPTIONS = {
 	"font-alt": {
 		"label": "Alt",
 		"type": "font",
-		"value": "Helvetica"
+		"value": "Times New Roman"
 	},
 	"color-primary": {
 		"label": "Primary",
