@@ -8,9 +8,30 @@ class ToolbarInputFont extends React.Component {
 	}
 
 	handleOptionChange(event) {
+		var _this = this;
 		if (event.target.dataset.method == 'google-font') {
 			loadGoogleFont(this.props.name, event.target.value);
 			this.props.onOptionChange(event.target.value, this.props.name);
+		}
+		else if (event.target.dataset.method == 'upload') {
+			var files = event.target.files;
+			if	(files.length) {
+			var fontname = files[0].name;
+
+			var reader = new FileReader();
+			reader.onload = function (event) {
+				var name = fontname.split('.')[0];
+				var extension = fontname.split('.')[1];
+				var head = document.getElementsByTagName('head')[0];
+				var style = document.createElement('style');
+				style.type = "text/css";
+				style.id = "local-font";
+				style.textContent = "@font-face { font-family: \""+ name +"\"; src: url('"+event.target.result+"'); }";
+				head.appendChild(style);
+				_this.props.onOptionChange(name, _this.props.name);
+			}
+			reader.readAsDataURL(files[0]);
+		}
 		}
 	}
 
@@ -36,7 +57,7 @@ class ToolbarInputFont extends React.Component {
 				</label>
 				<div> or </div>
 				<div>
-					<input type="file" data-method="upload" />
+					<input type="file" data-method="upload" onChange={this.handleOptionChange} />
 				</div>
 			</div>
 		);
