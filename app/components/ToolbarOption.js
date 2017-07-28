@@ -13,6 +13,7 @@ class ToolbarOption extends React.Component {
 						label={this.props.data.label}
 						range={this.props.data.range}
 						value={this.props.data.value}
+						unit={this.props.data.unit}
 						onOptionChange={this.props.onOptionChange}
 					/>
 				);
