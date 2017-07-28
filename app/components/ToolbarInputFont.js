@@ -47,7 +47,9 @@ class ToolbarInputFont extends React.Component {
 		return (
 			<div>
 				<label>
-					{this.props.label}
+					<div className="toolbar-option-label">
+						{this.props.label}
+					</div>
 					<div>
 						<select name={this.props.name} data-method="google-font" defaultValue="default" onChange={this.handleOptionChange}>
 							<option value="default"> Choose Google font</option>

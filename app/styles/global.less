@@ -1,6 +1,7 @@
 // Reset
 body {
 	margin: 0;
+	-webkit-font-smoothing: antialiased;
 }
 
 button {
@@ -20,6 +21,7 @@ button {
 	width: 400px;
 
 	.toolbar-ctn {
+		color: @black;
 		background-color: white;
 		border: 1px solid @border;
 		border-radius: 5px;
@@ -117,10 +119,18 @@ button {
 		}
 	}
 
-	section {
-		margin: 0 auto;
-		padding: 12px 0;
-		box-sizing: border-box;
-		transition: all 300ms ease-out;
+	.toolbar-group {
+		padding: 24px 30px 30px;
+		border-bottom: 1px solid @border;
+
+		.toolbar-group-title {
+			.font--title;
+			margin: 0;
+			margin-bottom: 18px;
+		}
+		.toolbar-option-label {
+			.font--intertitle;
+			margin-bottom: 4px;
+		}
 	}
 }
