@@ -1,0 +1,52 @@
+// FONTS FUNCTION
+// ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
+#font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
+	font-family: @font-family;
+	src: url('/fonts/@{font-filename}.eot');
+	src: local('?'),
+		url('/fonts/@{font-filename}.woff') format('woff'),
+		url('/fonts/@{font-filename}.ttf') format('truetype'),
+		url('/fonts/@{font-filename}.svg#@{font-family}') format('svg');
+	font-weight: @font-weight;
+	font-style: @font-style;
+}
+
+// Vars
+body { #font-face('Wigrum', 'wigrum-light', 300); }
+
+@line-height-tightest: 1.1em;
+
+@font-taller: 21px;
+@font-tall: 16px;
+@font-current: 14px;
+@font-short: 9px;
+
+// Recipes
+.font--title {
+	font-family: Wigrum;
+	font-size: @font-taller;
+	line-height: @line-height-tightest;
+	font-weight: 300;
+}
+
+.font--button {
+	font-family: Wigrum;
+	font-size: @font-tall;
+	line-height: @line-height-tightest;
+	font-weight: 300;
+}
+
+.font--text {
+	font-family: Wigrum;
+	font-size: @font-current;
+	line-height: @line-height-tightest;
+	font-weight: 300;
+}
+
+.font-interitle {
+	font-family: Wigrum;
+	font-size: @font-short;
+	line-height: @line-height-tightest;
+	font-weight: 300;
+	text-transform: uppercase;
+}

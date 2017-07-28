@@ -15,6 +15,8 @@ class Toolbar extends React.Component {
 		this.props.optionTabs.map((tab, index) => {
 			// Filter tab groups and options
 			var groupsComponents = [];
+			var tabActiveClass = (index == 0) ? 'is-active':'';
+
 			tab.option_groups.map(groupName => {
 				var groupObject = this.props.optionGroups[groupName];
 				var optionsComponents = [];
@@ -49,6 +51,7 @@ class Toolbar extends React.Component {
 					key={index}
 					name={tab.name}
 					label={tab.label}
+					activeClass={tabActiveClass}
 				/>
 			);
 
@@ -58,18 +61,25 @@ class Toolbar extends React.Component {
 					key={index}
 					name={tab.name}
 					groups={groupsComponents}
+					activeClass={tabActiveClass}
 				/>
 			);
 		});
 
 		return (
-			<aside>
-				<nav>
-					{tabButtonsComponents}
-				</nav>
-				<main>
-					{tabContentsComponents}
-				</main>
+			<aside className="toolbar-zone">
+				<div className="toolbar-ctn">
+					<nav className="toolbar-tabs">
+						<div className="toolbar-scroll">
+							<div className="toolbar-tabs-wrapper">
+								{tabButtonsComponents}
+							</div>
+						</div>
+					</nav>
+					<main className="toolbar-content">
+						{tabContentsComponents}
+					</main>
+				</div>
 			</aside>
 		);
 	}

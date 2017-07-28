@@ -2,8 +2,9 @@ import React from 'react';
 
 class ToolbarTabContent extends React.Component {
 	render() {
+		var compClass = this.props.activeClass + ' toolbar-tab-content';
 		return(
-			<div data-name={this.props.name}>
+			<div className={compClass} data-name={this.props.name}>
 				{this.props.groups}
 			</div>
 		);
