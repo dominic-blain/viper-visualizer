@@ -4,9 +4,30 @@
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 400px;
+	width: 80px;
+	transition: width 400ms ease-out 300ms;
+
+	&:before {
+		content:'';
+		position: absolute;
+		top:0;bottom:0;left:0;right:0;
+		border-right: 1px solid @border;
+		transition: border-color 200ms ease-out 300ms;
+	}
+	&:after {
+		content: 'DISPLAY TOOLBAR';
+		.font--text;
+		white-space: nowrap;
+		color: @accent;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%) rotate(-90deg);
+		transition: opacity 200ms ease-out 400ms;
+	}
 
 	.toolbar-ctn {
+		z-index: 1;
 		color: @black;
 		background-color: white;
 		border: 1px solid @border;
@@ -21,6 +42,29 @@
 		margin: 40px;
 		display: flex;
 		flex-direction: column;
+
+		transform: translateX(-100px);
+		opacity: 0;
+		transition: 200ms ease-out 300ms;
+		transition-property: transform, opacity;
+	}
+
+	&:hover {
+		width: 400px;
+		transition-delay: 0ms;
+		.toolbar-ctn {
+			transform: translateX(0);
+			opacity: 1;
+			transition-delay: 0ms;
+		}
+		&:before {
+			border-color: transparent;
+			transition-delay: 0ms;
+		}
+		&:after {
+			opacity: 0;
+			transition-delay: 0ms;
+		}
 	}
 
 	.toolbar-tabs {
@@ -128,7 +172,7 @@
 		height: 14px;
 		border-radius: 100%;
 		background-color: @background;
-		cursor: pointer;
+		cursor: -webkit-grab;
 		margin-top: -7px;
 		transition: background-color 75ms ease-out;
 	}
@@ -139,6 +183,7 @@
 		height: 2px;
 		background-color: @accent;
 		flex-grow: 1;
+		cursor: -webkit-grab;
 	}
 
 	.toolbar-input-range {
@@ -185,7 +230,7 @@
 			border: 1px solid @border;
 			background-color: @background;
 			text-align: right;
-			width: 64px;
+			width: 76px;
 			padding: 8px 0px 4px 0px;
 			margin-left: 6px;
 			border-radius: 6px;

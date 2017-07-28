@@ -24,7 +24,7 @@ class ToolbarInputRange extends React.Component {
 					{this.props.label}
 				</div>
 				<div className="toolbar-input-range-wrapper">
-					<input type="range" min={this.props.range.min} max={this.props.range.max} value={this.props.value} onChange={this.handleOptionChange} />
+					<input type="range" min={this.props.range.min} max={this.props.range.max} value={this.props.value} onChange={this.handleOptionChange} tabIndex="-1" />
 					<input type="number" min={this.props.range.min} max={this.props.range.max} value={this.props.value} onChange={this.handleOptionChange} />
 						{unit}
 				</div>
