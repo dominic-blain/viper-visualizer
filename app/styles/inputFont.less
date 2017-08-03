@@ -43,6 +43,9 @@
 				font-weight: 500;
 				transition-duration: 50ms;
 			}
+			&:after {
+				content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:75%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 6"><path fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7 1.5l-3 3-3-3"/></svg>');
+			}
 		}
 	}
 
@@ -111,6 +114,11 @@
 			background-color: @accent;
 			color: white;
 			transition-duration: 50ms;
+
+			&:after {
+				content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:150%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 12"><path fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M1 7l3-3 3 3M1 1h6M4 4v7"/></svg>');
+			}
+
 			.input-font-file-button {
 				display: none;
 			}
@@ -118,6 +126,7 @@
 				font-size: @font-current;
 				font-style: normal;
 				font-weight: 500;
+				text-transform: capitalize;
 			}
 		}
 	}
