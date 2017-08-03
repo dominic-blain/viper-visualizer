@@ -1,7 +1,7 @@
 .toolbar-input-font {
 	margin-bottom: 26px;
 	.toolbar-option-label {
-		margin-bottom: 3px;
+		margin-bottom: 4px;
 	}
 	// Select (Google fonts)
 	.toolbar-option-select-ctn {
@@ -16,6 +16,9 @@
 			background-color: @background;
 			border: 1px solid @border;
 			border-radius: 4px;
+			cursor: pointer;
+			transition: 200ms ease-out;
+			transition-property: border-color, background-color, color, font-weight;
 		}
 		&:after {
 			content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:75%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 6"><path fill="none" stroke="@{grey-light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7 1.5l-3 3-3-3"/></svg>');
@@ -24,8 +27,25 @@
 			top:50%; right:10px;
 			transform: translateY(-50%);
 		}
+		// ~> HOVER
+		&:hover {
+			select {
+				border-color: @accent;
+				transition-duration: 50ms;
+			}
+		}
+		// ~> ACTIVE
+		&.is-active {
+			select {
+				border-color: @accent;
+				background-color: @accent;
+				color: white;
+				font-weight: 500;
+				transition-duration: 50ms;
+			}
+		}
 	}
-	
+
 	.separator {
 		.font--intertitle;
 		color: @grey;
@@ -42,6 +62,7 @@
 		border: 1px dashed @grey;
 		border-radius: 4px;
 		position: relative;
+		cursor: pointer;
 
 		.input-font-file-button {
 			.font--intertitle;
@@ -50,11 +71,12 @@
 			color: white;
 			border-radius: 4px;
 			padding: 5px 8px 4px 8px;
-			margin: 0 8px;
+			margin-left: 8px;
 		}
 		.input-font-file-filename {
 			.font--text-small;
 			font-style: italic;
+			margin-left: 8px;
 		}
 		&:after {
 			content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:150%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 12"><path fill="none" stroke="@{grey-light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M1 7l3-3 3 3M1 1h6M4 4v7"/></svg>');
@@ -71,6 +93,32 @@
 			overflow: hidden;
 			position: absolute;
 			z-index: -1;
+		}
+
+		transition: 200ms ease-out;
+		transition-property: border-color;
+
+		// ~> HOVER
+		&:hover {
+			border-style: solid;
+			border-color: @accent;
+			transition-duration: 50ms;
+		}
+		// ~> ACTIVE
+		&.is-active {
+			border-style: solid;
+			border-color: @accent;
+			background-color: @accent;
+			color: white;
+			transition-duration: 50ms;
+			.input-font-file-button {
+				display: none;
+			}
+			.input-font-file-filename {
+				font-size: @font-current;
+				font-style: normal;
+				font-weight: 500;
+			}
 		}
 	}
 	
