@@ -1,0 +1,32 @@
+.toolbar-input-font {
+	.toolbar-option-label {
+		margin-bottom: 3px;
+	}
+	.input-font-select-ctn {
+		position: relative;
+		&:after {
+			content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:100%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 6"><path fill="none" stroke="@{grey-light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7 1.5l-3 3-3-3"/></svg>');
+			width: 8px;
+			position: absolute;
+			top:50%; right:10px;
+			transform: translateY(-50%);
+		}
+	}
+	.input-font-select {
+		.font--text;
+		width: 100%;
+		position: relative;
+		height: 30px;
+		padding: 0 10px;
+		color: @accent;
+		background-color: @background;
+		border: 1px solid @border;
+		border-radius: 4px;
+	}
+	.separator {
+		.font--intertitle;
+		color: @grey;
+		margin: 8px 0;
+		text-align: center;
+	}
+}
