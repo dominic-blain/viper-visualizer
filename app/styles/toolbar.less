@@ -139,13 +139,15 @@
 			position: absolute;
 			top:0;left:0;right:0;bottom:0;
 			overflow:auto;
+			// ~> HIDDEN
 			visibility: hidden;
 			opacity: 0;
-			transition: visibility 750ms, opacity 750ms ease-out;
+			transition: visibility 0ms 100ms, opacity 100ms ease-out;
+			// ~> VISIBLE
 			&.is-active {
 				opacity: 1;
 				visibility: visible;
-				transition: visibility 0ms, opacity 200ms ease-out;
+				transition: visibility 0ms, opacity 100ms ease-out;
 			}
 		}
 	}

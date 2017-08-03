@@ -6,6 +6,7 @@ import * as type from '../constants';
 import update from 'immutability-helper';
 
 const initialState = {
+	activeTab: OPTION_TABS[0].name,
 	optionTabs: OPTION_TABS,
 	optionGroups: OPTION_GROUPS,
 	options: OPTIONS,
@@ -21,6 +22,8 @@ const reducer = (state=initialState, action) => {
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
 			break;
+		case type.UPDATE_TABS:
+			return update(state, {activeTab: {$set:action.tabName}});
 		default:
 			return state;
 			break;

@@ -18,6 +18,12 @@ const ActionCreators = {
 		return {
 			type: type.GET_FONT_LIST
 		}
+	},
+	updateTabs(tabName) {
+		return {
+			type: type.UPDATE_TABS,
+			tabName: tabName
+		}
 	}
 };
 

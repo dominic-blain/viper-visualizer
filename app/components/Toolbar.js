@@ -15,7 +15,7 @@ class Toolbar extends React.Component {
 		this.props.optionTabs.map((tab, index) => {
 			// Filter tab groups and options
 			var groupsComponents = [];
-			var tabActiveClass = (index == 0) ? 'is-active':'';
+			var tabActiveClass = (tab.name == this.props.activeTab) ? 'is-active':'';
 
 			tab.option_groups.map(groupName => {
 				var groupObject = this.props.optionGroups[groupName];
@@ -52,6 +52,7 @@ class Toolbar extends React.Component {
 					name={tab.name}
 					label={tab.label}
 					activeClass={tabActiveClass}
+					onClick={this.props.onTabButtonClick}
 				/>
 			);
 
@@ -87,10 +88,12 @@ class Toolbar extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName)),
-	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName))
+	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
+	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName))
 });
 
 const mapStateToProps = (state) => ({
+	activeTab: state.activeTab,
 	optionTabs: state.optionTabs,
 	optionGroups: state.optionGroups,
 	options: state.options,
