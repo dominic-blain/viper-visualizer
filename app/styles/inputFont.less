@@ -1,32 +1,77 @@
 .toolbar-input-font {
+	margin-bottom: 26px;
 	.toolbar-option-label {
 		margin-bottom: 3px;
 	}
-	.input-font-select-ctn {
+	// Select (Google fonts)
+	.toolbar-option-select-ctn {
 		position: relative;
+		select {
+			.font--text;
+			width: 100%;
+			position: relative;
+			height: 30px;
+			padding: 0 10px;
+			color: @accent;
+			background-color: @background;
+			border: 1px solid @border;
+			border-radius: 4px;
+		}
 		&:after {
-			content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:100%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 6"><path fill="none" stroke="@{grey-light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7 1.5l-3 3-3-3"/></svg>');
+			content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:75%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 6"><path fill="none" stroke="@{grey-light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7 1.5l-3 3-3-3"/></svg>');
 			width: 8px;
 			position: absolute;
 			top:50%; right:10px;
 			transform: translateY(-50%);
 		}
 	}
-	.input-font-select {
-		.font--text;
-		width: 100%;
-		position: relative;
-		height: 30px;
-		padding: 0 10px;
-		color: @accent;
-		background-color: @background;
-		border: 1px solid @border;
-		border-radius: 4px;
-	}
+	
 	.separator {
 		.font--intertitle;
 		color: @grey;
-		margin: 8px 0;
+		margin: 6px 0;
 		text-align: center;
 	}
+
+	// Upload (Local fonts)
+	.input-font-file-ctn {
+		width: 100%;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		border: 1px dashed @grey;
+		border-radius: 4px;
+		position: relative;
+
+		.input-font-file-button {
+			.font--intertitle;
+			display: inline-block;
+			background-color: @accent;
+			color: white;
+			border-radius: 4px;
+			padding: 5px 8px 4px 8px;
+			margin: 0 8px;
+		}
+		.input-font-file-filename {
+			.font--text-small;
+			font-style: italic;
+		}
+		&:after {
+			content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:150%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 12"><path fill="none" stroke="@{grey-light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M1 7l3-3 3 3M1 1h6M4 4v7"/></svg>');
+			width: 8px;
+			height: 12px;
+			position: absolute;
+			top:50%; right:10px;
+			transform: translateY(-50%);
+		}
+		input[type=file] {
+			width: 0.1px;
+			height: 0.1px;
+			opacity: 0;
+			overflow: hidden;
+			position: absolute;
+			z-index: -1;
+		}
+	}
+	
 }

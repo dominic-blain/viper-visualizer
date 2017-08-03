@@ -50,17 +50,23 @@ class ToolbarInputFont extends React.Component {
 					<div className="toolbar-option-label">
 						{this.props.label}
 					</div>
-					<div className="input-font-select-ctn">
-						<select className="input-font-select" name={this.props.name} data-method="google-font" defaultValue="default" onChange={this.handleOptionChange}>
+					<div className="toolbar-option-select-ctn">
+						<select name={this.props.name} data-method="google-font" defaultValue="default" onChange={this.handleOptionChange}>
 							<option value="default"> Choose Google font</option>
 							{items}
 						</select>
 					</div>
 				</label>
 				<div className="separator"> or </div>
-				<div>
+				<label className="input-font-file-ctn">
+					<span className="input-font-file-button">
+						upload font (zip)
+					</span>
+					<span className="input-font-file-filename">
+						No file chosen
+					</span>
 					<input type="file" data-method="upload" onChange={this.handleOptionChange} />
-				</div>
+				</label>
 			</div>
 		);
 	}

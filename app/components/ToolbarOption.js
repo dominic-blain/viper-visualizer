@@ -32,12 +32,12 @@ class ToolbarOption extends React.Component {
 		}
 
 		return (
-			<label>
+			<div>
 				{this.props.label}
 				<div>
 					{input}
 				</div>
-			</label>
+			</div>
 		);
 	}
 };
