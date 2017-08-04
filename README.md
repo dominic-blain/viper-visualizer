@@ -8,7 +8,7 @@ Tool to allow visualisation of a layout based on a set of options.
 
 ### 0.3
 - [ ] Add color input component
-- [ ] Add all basic modules to article and correspongin CSS
+- [ ] Add all basic modules to article and corresponding CSS
 
 ### 0.4
 - [ ] Add save feature to toolbar settings
@@ -26,5 +26,5 @@ Tool to allow visualisation of a layout based on a set of options.
 ## Configuration
 create a `config.js` file inside the app folder with the following content:
 ```
-export const GOOGLEFONTS_API_KEY = '<your-google-fonts-api-ley>';
+export const GOOGLEFONTS_API_KEY = '<your-google-fonts-api-key>';
 ```
