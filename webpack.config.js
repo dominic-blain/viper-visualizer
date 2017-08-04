@@ -1,14 +1,15 @@
 var Webpack = require('webpack');
 var path = require('path');
 var nodeModulesPath = path.resolve(__dirname, 'node_modules');
-var buildPath = path.resolve(__dirname, 'public', 'dist');
+var buildPath = path.resolve(__dirname, 'public', 'build');
 var mainPath = path.resolve(__dirname, 'app', 'App.js');
+const CleanWebPackPlugin = require('clean-webpack-plugin');
 
 var config = {
 
   // Makes sure errors in console map to the correct file
   // and line number
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   entry: [
 
     // For hot style updates
@@ -50,6 +51,10 @@ var config = {
     {
       test: /\.less$/,
       loader: 'style!css!less'
+    },
+    {
+      test: /\.(woff|woff2|eot|ttf|otf)$/,
+      use: ['file-loader']
     }
 
     ]
@@ -57,7 +62,15 @@ var config = {
 
   // We have to manually add the Hot Replacement plugin when running
   // from Node
-  plugins: [new Webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new Webpack.HotModuleReplacementPlugin(),
+    new Webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new CleanWebPackPlugin([buildPath])
+  ]
 };
 
 module.exports = config;

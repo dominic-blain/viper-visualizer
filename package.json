@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "build": "webpack --progress -p"
   },
   "author": "",
   "license": "MIT",
@@ -24,6 +25,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
