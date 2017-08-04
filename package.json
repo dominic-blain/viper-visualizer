@@ -1,6 +1,6 @@
 {
   "name": "viper-visualizer",
-  "version": "0.1.0",
+  "version": "0.2.0-alpha",
   "main": "index.js",
   "scripts": {
     "start": "node server",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
+    "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "redux-devtools": "^3.4.0",

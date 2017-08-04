@@ -38,25 +38,28 @@ var config = {
 
     loaders: [
 
-    // I highly recommend using the babel-loader as it gives you
-    // ES6/7 syntax and JSX transpiling out of the box
-    {
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      exclude: [nodeModulesPath]
-    },
+      // I highly recommend using the babel-loader as it gives you
+      // ES6/7 syntax and JSX transpiling out of the box
+      {
+        test: /\.js$/,
+        loaders: ['react-hot', 'babel'],
+        exclude: [nodeModulesPath]
+      },
 
-    // Let us also add the style-loader and css-loader, which you can
-    // expand with less-loader etc.
-    {
-      test: /\.less$/,
-      loader: 'style!css!less'
-    },
-    {
-      test: /\.(woff|woff2|eot|ttf|otf)$/,
-      use: ['file-loader']
-    }
-
+      // Let us also add the style-loader and css-loader, which you can
+      // expand with less-loader etc.
+      {
+        test: /\.less$/,
+        loader: 'style!css!less'
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ['file-loader']
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
     ]
   },
 

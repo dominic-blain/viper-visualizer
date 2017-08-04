@@ -43,3 +43,20 @@ input[type=range]::-ms-track {
 	border-color: transparent;
 	color: transparent;
 }
+
+// version number
+.app-version {
+	position: fixed;
+	bottom:0; right:0;
+	margin: 30px;
+	.font--text;
+	a {
+		text-decoration: none;
+		color: @grey;
+		transition: color 200ms ease-out;
+		&:hover {
+			color: @accent;
+			transition-duration: 50ms;
+		}
+	}
+}
