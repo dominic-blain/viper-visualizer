@@ -4,6 +4,7 @@ var nodeModulesPath = path.resolve(__dirname, 'node_modules');
 var buildPath = path.resolve(__dirname, 'public', 'build');
 var mainPath = path.resolve(__dirname, 'app', 'App.js');
 const CleanWebPackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
 
@@ -28,7 +29,7 @@ var config = {
     // as that points to where the files will eventually be bundled
     // in production
     path: buildPath,
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
 
     // Everything related to Webpack should go through a build path,
     // localhost:3000/build. That makes proxying easier to handle
@@ -72,7 +73,12 @@ var config = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new CleanWebPackPlugin([buildPath])
+    new CleanWebPackPlugin([buildPath]),
+    new HtmlWebpackPlugin({
+      template: 'app/index.html',
+      filename: '../index.html',
+      title: 'Viper Visualizer',
+    })
   ]
 };
 
