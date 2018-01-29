@@ -29,7 +29,6 @@ var config = {
     // as that points to where the files will eventually be bundled
     // in production
     path: buildPath,
-    filename: 'bundle.[hash].js',
 
     // Everything related to Webpack should go through a build path,
     // localhost:3000/build. That makes proxying easier to handle

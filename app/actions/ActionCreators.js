@@ -1,4 +1,5 @@
 import * as type from '../constants';
+import database from '../database';
 
 const ActionCreators = {
 	updateOption(value, optionName) {
@@ -23,6 +24,21 @@ const ActionCreators = {
 		return {
 			type: type.UPDATE_TABS,
 			tabName: tabName
+		}
+	},
+	saveOptions(options) {
+		return dispatch => {
+			const projectsRef = database.ref('/projects');
+			projectsRef.push({options})
+			.then(() => {
+				// handle success
+				return {
+					type: type.SAVE_OPTIONS
+				};
+			})
+			.catch(() => {
+				// handle error
+			});
 		}
 	}
 };

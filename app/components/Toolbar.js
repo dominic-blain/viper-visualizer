@@ -5,6 +5,7 @@ import ToolbarTabButton from './ToolbarTabButton';
 import ToolbarTabContent from './ToolbarTabContent';
 import ToolbarGroup from './ToolbarGroup';
 import ToolbarOption from './ToolbarOption';
+import ButtonSave from './ButtonSave';
 
 class Toolbar extends React.Component {
 	render() {
@@ -80,6 +81,9 @@ class Toolbar extends React.Component {
 					<main className="toolbar-content">
 						{tabContentsComponents}
 					</main>
+					<footer className="toolbar-buttons">
+						<ButtonSave />
+					</footer>
 				</div>
 			</aside>
 		);
@@ -89,7 +93,8 @@ class Toolbar extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName)),
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
-	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName))
+	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName)),
+	onButtonSaveClick: () => dispatch(ActionCreators.saveOptions(this.props.options))
 });
 
 const mapStateToProps = (state) => ({
