@@ -82,7 +82,7 @@ class Toolbar extends React.Component {
 						{tabContentsComponents}
 					</main>
 					<footer className="toolbar-buttons">
-						<ButtonSave />
+						<ButtonSave onClick={this.props.onButtonSaveClick} />
 					</footer>
 				</div>
 			</aside>
@@ -94,7 +94,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName)),
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
 	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName)),
-	onButtonSaveClick: () => dispatch(ActionCreators.saveOptions(this.props.options))
+	onButtonSaveClick: () => dispatch(ActionCreators.saveOptions())
 });
 
 const mapStateToProps = (state) => ({

@@ -26,15 +26,14 @@ const ActionCreators = {
 			tabName: tabName
 		}
 	},
-	saveOptions(options) {
-		return dispatch => {
+	saveOptions() {
+		return (dispatch, getState) => {
+			var currentState = getState();
 			const projectsRef = database.ref('/projects');
-			projectsRef.push({options})
+
+			projectsRef.push(currentState.options)
 			.then(() => {
 				// handle success
-				return {
-					type: type.SAVE_OPTIONS
-				};
 			})
 			.catch(() => {
 				// handle error

@@ -7,13 +7,13 @@ class ButtonSave extends React.Component {
 	}
 
 	handleClick(event) {
-		this.props.handleClick();
+		this.props.onClick();
 	}
 
 	render() {
 
 		return (
-			<button class="button button-save">
+			<button className="button button-save test" onClick={this.handleClick} >
 				Save project
 			</button>
 		);
