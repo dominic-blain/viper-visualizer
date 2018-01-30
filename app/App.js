@@ -12,6 +12,7 @@ import Article from './components/Article';
 class App extends React.Component {
 	componentWillMount() {
 		store.dispatch(ActionCreators.getFontList());
+		store.dispatch(ActionCreators.loadProject());
 	}
 
 	render() {

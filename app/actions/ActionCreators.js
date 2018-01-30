@@ -1,6 +1,6 @@
 import * as type from '../constants';
 import database from '../database';
-import URLSearchParams from 'url-search-params';
+import { getParam, setParam } from '../utils';
 
 const ActionCreators = {
 	updateOption(value, optionName) {
@@ -8,6 +8,12 @@ const ActionCreators = {
 			type: type.UPDATE_OPTION,
 			value: value,
 			optionName: optionName
+		}
+	},
+	setOptions(value) {
+		return {
+			type: type.SET_OPTIONS,
+			options: value,
 		}
 	},
 	updateFontList(fonts) {
@@ -27,19 +33,30 @@ const ActionCreators = {
 			tabName: tabName
 		}
 	},
+	loadProject() {
+		return dispatch => {
+			const projectID = getParam('project');
+			database.ref('/projects/' + projectID).once('value', data => {
+				const value = data.val();
+				if (value) {
+					console.log(value);
+					dispatch(ActionCreators.setOptions(value));
+				}
+			});
+		}
+	},
 	saveOptions() {
 		return (dispatch, getState) => {
 			const currentState = getState();
 			const projectsRef = database.ref('/projects');
-			const queryString = new URLSearchParams(document.location.search);
-			const projectID = queryString.get('project') || null;
+			const projectID = getParam('project');
 
 			dispatch(ActionCreators.saveOptionsStart());
 
 			database.ref('/projects/' + projectID).once('value', data => {
-				const key = data.val();
+				const value = data.val();
 
-				if (key) {
+				if (value) {
 					projectsRef.child(projectID).set(currentState.options, error => {
 						if (error) {
 							dispatch(ActionCreators.saveOptionsError());
@@ -56,7 +73,9 @@ const ActionCreators = {
 						}
 						else {
 							const newProjectID = newProjectRef.key;
-							queryString.set('project', newProjectRef.key);
+							// queryString.set('project', newProjectRef.key);
+							const queryString = setParam('project', newProjectRef.key);
+							console.log(queryString);
 							window.history.replaceState({}, '', location.pathname + '?' + queryString);
 							dispatch(ActionCreators.saveOptionsSuccess(newProjectID));
 						}

@@ -27,6 +27,9 @@ const reducer = (state=initialState, action) => {
 		case type.UPDATE_OPTION:
 			return update(state, {options: {[action.optionName]: {value: {$set: action.value}}}});
 			break;
+		case type.SET_OPTIONS:
+			return update(state, {options: {$set: action.options}});
+			break;
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
 			break;
