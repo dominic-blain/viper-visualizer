@@ -11,7 +11,15 @@ const initialState = {
 	optionGroups: OPTION_GROUPS,
 	options: OPTIONS,
 	modules: MODULES,
-	fonts: []
+	fonts: [],
+	project: {
+		id: null,
+		name: null,
+		status: "new",
+	},
+	ui: {
+		buttonSaveState: null
+	}
 };
 
 const reducer = (state=initialState, action) => {
@@ -24,6 +32,24 @@ const reducer = (state=initialState, action) => {
 			break;
 		case type.UPDATE_TABS:
 			return update(state, {activeTab: {$set:action.tabName}});
+			break;
+		case type.SAVE_OPTIONS:
+			return state;
+			break;
+		case type.SAVE_OPTIONS_START:
+			return update(state, {ui: {buttonSaveState: {$set:action.buttonSaveState}}});
+			break;
+		case type.SAVE_OPTIONS_SUCCESS:
+			return update(state, {
+				project: { $merge:action.project },
+				ui: {
+					buttonSaveState: { $set:action.buttonSaveState }
+				}
+			});
+			break;
+		case type.SAVE_OPTIONS_ERROR:
+			return update(state, {ui: {buttonSaveState: {$set:action.buttonSaveState}}});
+			break;
 		default:
 			return state;
 			break;
