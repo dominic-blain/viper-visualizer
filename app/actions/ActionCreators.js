@@ -1,6 +1,9 @@
 import * as type from '../constants';
 import database from '../database';
 import { getParam, setParam } from '../utils';
+import { GOOGLEFONTS_API_KEY } from '../config';
+import Axios from 'axios';
+
 
 const ActionCreators = {
 	updateOption(value, optionName) {
@@ -23,8 +26,24 @@ const ActionCreators = {
 		}
 	},
 	getFontList() {
-		return {
-			type: type.GET_FONT_LIST
+		return dispatch => {
+			var fonts = [];
+			const endpoint = 'https://www.googleapis.com/webfonts/v1/webfonts?key=';
+			const url = endpoint + GOOGLEFONTS_API_KEY;
+
+			var apiRequest = Axios.get(url)
+			.then(response => {
+				response.data.items.map(item => {
+					fonts.push({
+						'name': item.family,
+						'value': item.family
+					});
+				});
+				dispatch(ActionCreators.updateFontList(fonts));
+			})
+			.catch(error => {
+				// TODO Handle error
+			});
 		}
 	},
 	updateTabs(tabName) {

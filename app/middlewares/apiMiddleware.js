@@ -1,8 +1,7 @@
 import ActionCreators from '../actions/ActionCreators';
 import store from '../store/store.js';
 import * as type from '../constants';
-import { GOOGLEFONTS_API_KEY } from '../config';
-import Axios from 'axios';
+
 
 const apiMiddleware = store => next => action => {
 	next(action);
