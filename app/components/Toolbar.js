@@ -82,7 +82,10 @@ class Toolbar extends React.Component {
 						{tabContentsComponents}
 					</main>
 					<footer className="toolbar-buttons">
-						<ButtonSave onClick={this.props.onButtonSaveClick} />
+						<ButtonSave
+							saveState={this.props.buttonSaveState}
+							onClick={this.props.onButtonSaveClick} 
+						/>
 					</footer>
 				</div>
 			</aside>
@@ -102,7 +105,8 @@ const mapStateToProps = (state) => ({
 	optionTabs: state.optionTabs,
 	optionGroups: state.optionGroups,
 	options: state.options,
-	fonts: state.fonts
+	fonts: state.fonts,
+	buttonSaveState: state.ui.buttonSaveState
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

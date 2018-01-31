@@ -179,6 +179,33 @@
 			width: 100%;
 			background-color: @accent;
 			color: white;
+			position: relative;
+			cursor: pointer;
+			transition: background-color 200ms @ease-out;
+
+			&:hover {
+				background-color: @accent-darker;
+			}
+
+			.message {
+				opacity: 0;
+				visibility: hidden;
+				position: absolute;
+				top:0; bottom:0; left:0; right:0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				span {
+					position: relative;
+				}
+				&:before {
+					content:'';
+					position: absolute;
+					top:0; bottom:0; left:0; right:0;
+				}
+			}
+			.message-success:before { background-color: @success; }
+			.message-error:before { background-color: @error; }
 		}
 	}
 }

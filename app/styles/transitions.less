@@ -1,0 +1,41 @@
+@ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+.button-save {
+	// ~> SUCCESS
+	&.success {
+		.message-success {
+			animation: 
+				fadeIn 100ms @ease-out 1 forwards,
+				fadeOut 800ms 1400ms 1 forwards;
+
+			&:before {
+				animation: buttonMessageBgIn 100ms @ease-out 1 forwards; 
+			}
+		}
+	}
+	// ~> ERROR
+	&.error {
+		.message-error {
+			animation: 
+				fadeIn 100ms @ease-out 1 forwards,
+				fadeOut 800ms 1400ms 1 forwards;
+
+			&:before {
+				animation: buttonMessageBgIn 100ms @ease-out 1 forwards; 
+			}
+		}
+	}
+}
+
+@keyframes fadeIn {
+	from { opacity:0; visibility:visible; }
+	to { opacity:1; visibility:visible; }
+};
+@keyframes fadeOut {
+	from { opacity:1; visibility:visible; }
+	to { opacity:0; visibility:hidden; animation-timing-function: @ease-out, step-end;}
+};
+@keyframes buttonMessageBgIn {
+	from { transform:scale(0); border-radius:100%; }
+	to { transform:scale(1); border-radius:0; }
+};

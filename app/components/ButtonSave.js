@@ -11,10 +11,12 @@ class ButtonSave extends React.Component {
 	}
 
 	render() {
-
+		var compClass = 'button button-save ' + this.props.saveState;
 		return (
-			<button className="button button-save test" onClick={this.handleClick} >
-				Save project
+			<button className={compClass} onClick={this.handleClick}>
+				<div>Save project</div>
+				<div className="message message-error"><span>An error occured</span></div>
+				<div className="message message-success"><span>Saved!</span></div>
 			</button>
 		);
 	}

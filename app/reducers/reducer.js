@@ -13,12 +13,12 @@ const initialState = {
 	modules: MODULES,
 	fonts: [],
 	project: {
-		id: null,
-		name: null,
+		id: '',
+		name: '',
 		status: "new",
 	},
 	ui: {
-		buttonSaveState: null
+		buttonSaveState: ''
 	}
 };
 
