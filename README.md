@@ -7,7 +7,7 @@ Tool to allow visualisation of a layout based on a set of options.
 - [x] Integrate solution for google font and local font upload
 
 ### 0.3
-- [ ] Add save feature to toolbar settings
+- [X] Add save feature to toolbar settings
 - [x] Create production build process
 
 ### 0.4
@@ -22,13 +22,3 @@ Tool to allow visualisation of a layout based on a set of options.
 - [ ] Fine-tune before launch
 
 ### Launch
-
-## Want to run it locally?
-1. Clone repository `git clone https://github.com/dominic-blain/viper-visualizer.git`
-2. Create a `config.js` file inside the app folder with the following content:
-```
-export const GOOGLEFONTS_API_KEY = '<your-google-fonts-api-key>';
-```
-3. Run `npm i` to install dependencies
-4. To start local server, run `npm start` and visit `localhost:3001`
-
