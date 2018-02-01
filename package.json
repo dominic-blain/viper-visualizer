@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "build": "webpack --config webpack.prod.js --progress -p"
+    "build": "webpack --config webpack.prod.js --progress -p",
+    "deploy": "firebase deploy"
   },
   "author": "",
   "license": "MIT",
