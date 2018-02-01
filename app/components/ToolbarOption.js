@@ -25,6 +25,9 @@ class ToolbarOption extends React.Component {
 						label={this.props.data.label}
 						value={this.props.data.value}
 						fontList={this.props.fontList}
+						googleFontText={this.props.data.googleFontText}
+						uploadText={this.props.data.uploadText}
+						source={this.props.data.source}
 						onOptionChange={this.props.onFontOptionChange}
 					/>
 				);
