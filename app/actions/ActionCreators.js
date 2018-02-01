@@ -1,6 +1,6 @@
 import * as type from '../constants';
 import database from '../database';
-import { getParam, setParam } from '../utils';
+import * as util from '../utils';
 import { GOOGLEFONTS_API_KEY } from '../config';
 import Axios from 'axios';
 
@@ -9,14 +9,21 @@ const ActionCreators = {
 	updateOption(value, optionName) {
 		return {
 			type: type.UPDATE_OPTION,
-			value: value,
-			optionName: optionName
+			optionName: optionName,
+			option: value,
+		}
+	},
+	updateFontOption(font, optionName, file) {
+		return dispatch => {
+			console.log(font);
+			dispatch(ActionCreators.loadFont(font, optionName, file));
+			dispatch(ActionCreators.updateOption(font, optionName));
 		}
 	},
 	setOptions(value) {
 		return {
 			type: type.SET_OPTIONS,
-			options: value,
+			options: value
 		}
 	},
 	updateFontList(fonts) {
@@ -52,23 +59,45 @@ const ActionCreators = {
 			tabName: tabName
 		}
 	},
+	loadFont(font, optionName, file) {
+		return () => {
+			switch(font.source) {
+				case 'google-font':
+					util.loadGoogleFont(optionName, font);
+					break;
+				case 'upload':
+					util.loadFileFont(file, font);
+					break;
+			}
+		}
+	},
 	loadProject() {
 		return dispatch => {
-			const projectID = getParam('project');
+			const projectID = util.getParam('project');
 			database.ref('/projects/' + projectID).once('value', data => {
 				const value = data.val();
 				if (value) {
-					console.log(value);
-					dispatch(ActionCreators.setOptions(value));
+					dispatch(ActionCreators.setProject(value));
 				}
 			});
+		}
+	},
+	setProject(value) {
+		return dispatch => {
+			var optionKeys = Object.keys(value);
+			optionKeys.forEach(key => {
+				if (value[key].type == 'font') {
+					dispatch(ActionCreators.loadFont(value[key], key, null));
+				}
+			});
+			dispatch(ActionCreators.setOptions(value));
 		}
 	},
 	saveOptions() {
 		return (dispatch, getState) => {
 			const currentState = getState();
 			const projectsRef = database.ref('/projects');
-			const projectID = getParam('project');
+			const projectID = util.getParam('project');
 
 			dispatch(ActionCreators.saveOptionsStart());
 
@@ -92,9 +121,7 @@ const ActionCreators = {
 						}
 						else {
 							const newProjectID = newProjectRef.key;
-							// queryString.set('project', newProjectRef.key);
-							const queryString = setParam('project', newProjectRef.key);
-							console.log(queryString);
+							const queryString = util.setParam('project', newProjectRef.key);
 							window.history.replaceState({}, '', location.pathname + '?' + queryString);
 							dispatch(ActionCreators.saveOptionsSuccess(newProjectID));
 						}

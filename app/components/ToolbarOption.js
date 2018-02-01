@@ -25,7 +25,7 @@ class ToolbarOption extends React.Component {
 						label={this.props.data.label}
 						value={this.props.data.value}
 						fontList={this.props.fontList}
-						onOptionChange={this.props.onOptionChange}
+						onOptionChange={this.props.onFontOptionChange}
 					/>
 				);
 				break;

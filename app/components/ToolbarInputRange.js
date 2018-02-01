@@ -7,7 +7,10 @@ class ToolbarInputRange extends React.Component {
 	}
 
 	handleOptionChange(event) {
-		this.props.onOptionChange(event.target.value, this.props.name);
+		var option = {
+			value: event.target.value
+		};
+		this.props.onOptionChange(option, this.props.name);
 	}
 
 	render() {

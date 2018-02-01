@@ -32,6 +32,7 @@ class Toolbar extends React.Component {
 							fontList={this.props.fonts}
 							name={optionName}
 							onOptionChange={this.props.onOptionChange}
+							onFontOptionChange={this.props.onFontOptionChange}
 						/>
 					);
 				});
@@ -95,6 +96,7 @@ class Toolbar extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName)),
+	onFontOptionChange: (font, optionName, file) => dispatch(ActionCreators.updateFontOption(font, optionName, file)),
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
 	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName)),
 	onButtonSaveClick: () => dispatch(ActionCreators.saveOptions())
