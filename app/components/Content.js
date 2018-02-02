@@ -16,7 +16,8 @@ class Content extends React.Component {
 			properties.map(property => {
 				var unit = property.unit || '';
 				var value = options[property.syncWith].value;
-				var modifier = property.modifier || 1;
+				var modifier = property.modifier == null ? 1 : property.modifier;
+
 				if (typeof value === "number") {
 					value *= modifier;
 				}

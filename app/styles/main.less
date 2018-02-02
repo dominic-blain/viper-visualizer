@@ -1,8 +1,9 @@
-@import "colors.less";
-@import "fonts.less";
-@import "transitions.less";
-@import "global.less";
-@import "toolbar.less";
+@import "colors";
+@import "fonts";
+@import "transitions";
+@import "global";
+@import "toolbar";
+@import "modules/main";
 
 article {
 	padding-top: 20vh;
@@ -20,14 +21,6 @@ article {
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
-	.module-title {
-		h1 {
-			text-align: center;
-			font-size: 64px;
-			line-height: 1.1em;
-			font-weight: bold;
-		}
-	}
 	.module-intro {
 		p {
 			font-weight: bold;
@@ -37,8 +30,13 @@ article {
 		}
 	}
 	.module-text {
-		font-size: 19px;
-		line-height: 1.4em;
+		h2 {
+			line-height: 1.2em;
+		}
+		p {
+			font-size: 19px;
+			line-height: 1.4em;
+		}
 	}
 	.module-image-2-col{
 		.grid {
