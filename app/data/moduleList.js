@@ -11,6 +11,7 @@ const MODULE_LIST = [
 			"space-before": "normal",
 			"space-after": "normal",
 			"alignment": "center",
+			"title-style": "normal",
 			"text-style": "normal",
 			"text-alignment": "left"
 		}

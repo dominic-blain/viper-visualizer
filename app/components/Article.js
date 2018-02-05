@@ -7,7 +7,6 @@ class Article extends React.Component {
 	render() {
 		const modules = this.props.modules;
 		const moduleList = this.props.moduleList;
-		const moduleOptions = this.props.moduleOptions;
 		const moduleTypes = {
 			ModuleText: ModuleText
 		}
@@ -39,7 +38,6 @@ const mapStateToProps = (state) => (
 {
 	modules: state.modules,
 	moduleList: state.moduleList,
-	moduleOptions: state.moduleOptions,
 	options: state.options
 });
 

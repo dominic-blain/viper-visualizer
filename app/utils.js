@@ -44,3 +44,14 @@ export function setParam(paramName, paramValue) {
 	queryString.set(paramName, paramValue);
 	return queryString;
 }
+
+export function computeModuleClass(moduleName, moduleOptions, options) {
+	var optionClass = '';
+	var computedModuleClass = 'module ' + moduleName;
+
+	moduleOptions.map(optionName => {
+		optionClass += ' option--'+ optionName +'-' + options[optionName];
+	});
+
+	return (computedModuleClass + optionClass);
+}

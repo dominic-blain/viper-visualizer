@@ -22,6 +22,7 @@ const MODULES = {
 			"space-before",
 			"space-after",
 			"alignment",
+			"title-style",
 			"text-style",
 			"text-alignment"
 		]

@@ -1,26 +1,11 @@
 var OPTION_TABS = [
 	{
-		"name": "typography",
-		"label": "Typography",
-		"option_groups": [
-			"fonts",
-			"font-sizes"
-		]
-	},
-	{
-		"name": "dimensions",
-		"label": "Dimensions",
+		"name": "variables",
+		"label": "Variables",
 		"option_groups": [
 			"widths",
 			"gutters",
-			"margins"
-		]
-	},
-	{
-		"name": "colors",
-		"label": "Colors",
-		"option_groups": [
-			"color-globals"
+			"vertical-spacings"
 		]
 	}
 ];
