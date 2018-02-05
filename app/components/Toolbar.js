@@ -5,16 +5,18 @@ import ToolbarTabButton from './ToolbarTabButton';
 import ToolbarTabContent from './ToolbarTabContent';
 import ToolbarGroup from './ToolbarGroup';
 import ToolbarOption from './ToolbarOption';
+import ToolbarModule from './ToolbarModule';
 import ButtonSave from './ButtonSave';
 
 class Toolbar extends React.Component {
 	render() {
-		var tabButtonsComponents = [];
-		var tabContentsComponents = [];
+		var tabActiveClass = {
+			variables: this.props.activeTab == "variables" ? 'is-active' : '',
+			modules: this.props.activeTab == "modules" ? 'is-active' : ''
+		};
 
 		// TAB: Variables
 		const optionGroups = this.props.optionGroups;
-		const tabVariablesActiveClass = (this.props.activeTab == "variables") ? 'is-active':'';
 		var groupsComponents = [];
 
 		// For each group...
@@ -45,6 +47,43 @@ class Toolbar extends React.Component {
 			);
 		});
 
+		// TAB: Modules list
+		const modules = this.props.modules;
+		const moduleList = this.props.moduleList;
+		const moduleOptions = this.props.moduleOptions;
+		var moduleListComponents = [];
+
+		// For each module...
+		moduleList.map((module, index) => {
+			var optionsComponents = [];
+
+			// For each options...
+			modules[module.type].options.map((optionName, index) => {
+				const optionObject = moduleOptions[optionName];
+				const optionValue = module.options[optionName];
+				// Add this option to options components list
+				optionsComponents.push(
+					<ToolbarOption
+						key={optionName}
+						data={optionObject}
+						fontList={this.props.fonts}
+						name={optionName}
+						onOptionChange={this.props.onOptionChange}
+						onFontOptionChange={this.props.onFontOptionChange}
+					/>
+				);
+			});
+
+			// Add this module to modules components list
+			moduleListComponents.push(
+				<ToolbarModule
+					key={index}
+					title={module.name}>
+					{optionsComponents}
+				</ToolbarModule>
+			);
+		});
+
 		return (
 			<aside className="toolbar-zone">
 				<div className="toolbar-ctn">
@@ -54,7 +93,13 @@ class Toolbar extends React.Component {
 								<ToolbarTabButton
 									name="variables"
 									label="Variables"
-									activeClass={tabVariablesActiveClass}
+									activeClass={tabActiveClass.variables}
+									onClick={this.props.onTabButtonClick}
+								/>
+								<ToolbarTabButton
+									name="modules"
+									label="Modules"
+									activeClass={tabActiveClass.modules}
 									onClick={this.props.onTabButtonClick}
 								/>
 							</div>
@@ -63,9 +108,14 @@ class Toolbar extends React.Component {
 					<main className="toolbar-content">
 						<ToolbarTabContent
 							name="variables"
-							groups={groupsComponents}
-							activeClass={tabVariablesActiveClass}
-						/>
+							activeClass={tabActiveClass.variables}>
+							{groupsComponents}
+						</ToolbarTabContent>
+						<ToolbarTabContent
+							name="variables"
+							activeClass={tabActiveClass.modules}>
+							{moduleListComponents}
+						</ToolbarTabContent>
 					</main>
 					<footer className="toolbar-buttons">
 						<ButtonSave
@@ -92,6 +142,9 @@ const mapStateToProps = (state) => ({
 	optionTabs: state.optionTabs,
 	optionGroups: state.optionGroups,
 	options: state.options,
+	modules: state.modules,
+	moduleOptions: state.moduleOptions,
+	moduleList: state.moduleList,
 	fonts: state.fonts,
 	buttonSaveState: state.ui.buttonSaveState
 });

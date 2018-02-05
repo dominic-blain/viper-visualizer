@@ -5,7 +5,7 @@ class ToolbarTabContent extends React.Component {
 		var compClass = this.props.activeClass + ' toolbar-tab-content';
 		return(
 			<div className={compClass} data-name={this.props.name}>
-				{this.props.groups}
+				{this.props.children}
 			</div>
 		);
 	}

@@ -17,19 +17,19 @@ class Article extends React.Component {
 
 		// For each module...
 		moduleList.map(module => {
-			const ModuleComponent = moduleTypes[module.name];
+			const ModuleComponent = moduleTypes[module.type];
 
 			// Add corresponding component to list
 			renderModules.push(
 				<ModuleComponent
 					content={module.content}
 					options={module.options}
-					module={modules[module.name]}
+					module={modules[module.type]}
 				/>
 			);
 		});
 
-		// Create CSS variables
+		// Create CSS variables object
 		var optionKeys = Object.keys(options);
 		optionKeys.map(key => {
 			var variableName = '--' + key;
