@@ -1,5 +1,5 @@
-var OPTION_GROUPS = {
-	"widths": {
+var OPTION_GROUPS = [
+	{
 		"label": "Widths",
 		"options": [
 			"width-fullscreen",
@@ -11,7 +11,7 @@ var OPTION_GROUPS = {
 			"width-extra-narrow"
 		]
 	},
-	"gutters": {
+	{
 		"label": "Gutters",
 		"options": [
 			"gutter-big",
@@ -19,7 +19,7 @@ var OPTION_GROUPS = {
 			"gutter-small"
 		]
 	},
-	"vertical-spacings": {
+	{
 		"label": "Vertical spacing",
 		"options": [
 			"vertical-spacing-big",
@@ -27,6 +27,7 @@ var OPTION_GROUPS = {
 			"vertical-spacing-small"
 		]
 	}
+];
 	// ,
 	// "fonts": {
 	// 	"label": "Fonts",
@@ -51,6 +52,6 @@ var OPTION_GROUPS = {
 	// 		"color-primary"
 	// 	]
 	// }
-};
+// };
 
 export default OPTION_GROUPS;

@@ -12,59 +12,35 @@ class Toolbar extends React.Component {
 		var tabButtonsComponents = [];
 		var tabContentsComponents = [];
 
-		// For each tabs
-		this.props.optionTabs.map((tab, index) => {
-			// Filter tab groups and options
-			var groupsComponents = [];
-			var tabActiveClass = (tab.name == this.props.activeTab) ? 'is-active':'';
+		// TAB: Variables
+		const optionGroups = this.props.optionGroups;
+		const tabVariablesActiveClass = (this.props.activeTab == "variables") ? 'is-active':'';
+		var groupsComponents = [];
 
-			tab.option_groups.map(groupName => {
-				var groupObject = this.props.optionGroups[groupName];
-				var optionsComponents = [];
+		// For each group...
+		optionGroups.map((group, index) => {
+			var optionsComponents = [];
 
-				groupObject.options.map(optionName => {
-					var optionObject = this.props.options[optionName];
-					// Generate options component list
-					optionsComponents.push(
-						<ToolbarOption
-							key={optionName}
-							data={optionObject}
-							fontList={this.props.fonts}
-							name={optionName}
-							onOptionChange={this.props.onOptionChange}
-							onFontOptionChange={this.props.onFontOptionChange}
-						/>
-					);
-				});
-
-				// Generate tab groups component list
-				groupsComponents.push(
-					<ToolbarGroup
-						key={groupName}
-						label={groupObject.label}
-						options={optionsComponents}
+			// Generate options component list
+			group.options.map(optionName => {
+				const optionObject = this.props.options[optionName];
+				optionsComponents.push(
+					<ToolbarOption
+						key={optionName}
+						data={optionObject}
+						fontList={this.props.fonts}
+						name={optionName}
+						onOptionChange={this.props.onOptionChange}
+						onFontOptionChange={this.props.onFontOptionChange}
 					/>
 				);
-
 			});
-			// Generate tab buttons component list
-			tabButtonsComponents.push(
-				<ToolbarTabButton
+			// Add this group to groups component list
+			groupsComponents.push(
+				<ToolbarGroup
 					key={index}
-					name={tab.name}
-					label={tab.label}
-					activeClass={tabActiveClass}
-					onClick={this.props.onTabButtonClick}
-				/>
-			);
-
-			// Generate tab contents component list
-			tabContentsComponents.push(
-				<ToolbarTabContent
-					key={index}
-					name={tab.name}
-					groups={groupsComponents}
-					activeClass={tabActiveClass}
+					label={group.label}
+					options={optionsComponents}
 				/>
 			);
 		});
@@ -75,12 +51,21 @@ class Toolbar extends React.Component {
 					<nav className="toolbar-tabs">
 						<div className="toolbar-scroll">
 							<div className="toolbar-tabs-wrapper">
-								{tabButtonsComponents}
+								<ToolbarTabButton
+									name="variables"
+									label="Variables"
+									activeClass={tabVariablesActiveClass}
+									onClick={this.props.onTabButtonClick}
+								/>
 							</div>
 						</div>
 					</nav>
 					<main className="toolbar-content">
-						{tabContentsComponents}
+						<ToolbarTabContent
+							name="variables"
+							groups={groupsComponents}
+							activeClass={tabVariablesActiveClass}
+						/>
 					</main>
 					<footer className="toolbar-buttons">
 						<ButtonSave
