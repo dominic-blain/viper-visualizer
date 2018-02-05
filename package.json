@@ -19,6 +19,7 @@
     "immutability-helper": "^2.2.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "react-custom-properties": "^1.2.0",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^1.2.9",
     "react-redux": "^5.0.5",

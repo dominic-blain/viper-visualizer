@@ -15,7 +15,6 @@ const ActionCreators = {
 	},
 	updateFontOption(font, optionName, file) {
 		return dispatch => {
-			console.log(font);
 			dispatch(ActionCreators.loadFont(font, optionName, file));
 			dispatch(ActionCreators.updateOption(font, optionName));
 		}
