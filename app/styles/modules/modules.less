@@ -1,0 +1,36 @@
+@import "module-text";
+
+.module {
+	// OPTION: Width
+	&.option--width-fullscreen { .recipe--width-fullscreen; }
+	&.option--width-site { .recipe--width-site; }
+	&.option--width-extra-big,
+	&.option--width-big,
+	&.option--width-normal,
+	&.option--width-small,
+	&.option--width-extra-small {
+		// Used to align module inside
+		.recipe--width-site; 
+	}
+	&.option--width-extra-big > * { .recipe--width-extra-big; }
+	&.option--width-big > * { .recipe--width-big; }
+	&.option--width-normal > * { .recipe--width-normal; }
+	&.option--width-small > * { .recipe--width-small; }
+	&.option--width-extra-small > * { .recipe--width-extra-small; }
+	// OPTION: Security padding
+	&.option--security-padding-big { .recipe--security-padding-big; }
+	&.option--security-padding-normal { .recipe--security-padding-normal; }
+	&.option--security-padding-small { .recipe--security-padding-small; }
+	// OPTION: Space before
+	&.option--space-before-big { .recipe--margin-before-big; }
+	&.option--space-before-normal { .recipe--margin-before-normal; }
+	&.option--space-before-small { .recipe--margin-before-small; }
+	// OPTION: Space after
+	&.option--space-after-big { .recipe--margin-after-big; }
+	&.option--space-after-normal { .recipe--margin-after-normal; }
+	&.option--space-after-small { .recipe--margin-after-small; }
+	// OPTION: Alignment
+	&.option--alignment-left > * { .recipe--alignment-left; }
+	&.option--alignment-center > * { .recipe--alignment-center; }
+	&.option--alignment-right > * { .recipe--alignment-right; }
+}

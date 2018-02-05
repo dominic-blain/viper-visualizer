@@ -1,28 +1,35 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Content from './Content';
+import ModuleText from './ModuleText';
 
 
 class Article extends React.Component {
 	render() {
-		var modules = [];
-		var options = this.props.options;
-		this.props.modules.forEach(function(module, index) {
-			modules.push(
-				<Content
-					key={index}
-					element="section"
-					options={options}
-					properties={module.properties}
+		const modules = this.props.modules;
+		const moduleList = this.props.moduleList;
+		const moduleOptions = this.props.moduleOptions;
+		const moduleTypes = {
+			ModuleText: ModuleText
+		}
+		var renderModules = [];
+
+		moduleList.map(module => {
+			const ModuleComponent = moduleTypes[module.name];
+
+			renderModules.push(
+				<ModuleComponent
 					content={module.content}
-					attr={module.attr}
+					options={module.options}
+					module={modules[module.name]}
 				/>
 			);
 		});
 
+
+
 		return (
 			<article>
-				{modules}
+				{renderModules}
 			</article>
 		);
 	}
@@ -31,6 +38,8 @@ class Article extends React.Component {
 const mapStateToProps = (state) => (
 {
 	modules: state.modules,
+	moduleList: state.moduleList,
+	moduleOptions: state.moduleOptions,
 	options: state.options
 });
 

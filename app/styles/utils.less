@@ -1,0 +1,14 @@
+@screen-ip:   320px;
+@screen-ph:   480px;
+@screen-xs:   600px;
+@screen-sm:   900px;
+@screen-md:  1200px;
+@screen-lg:  1440px;
+@screen-xl:  1600px;
+@screen-hd:  1920px;
+@screen-2k:  2048px;
+@screen-4k:  3840px;
+
+#mq-min-width (@width, @rules) {
+	@media screen and (min-width: @width) {@rules();}
+}

@@ -2,6 +2,8 @@ import OPTION_TABS from '../data/optionTabs';
 import OPTION_GROUPS from '../data/optionGroups';
 import OPTIONS from '../data/options';
 import MODULES from '../data/modules';
+import MODULE_LIST from '../data/moduleList';
+import MODULE_OPTIONS from '../data/moduleOptions';
 import * as type from '../constants';
 import update from 'immutability-helper';
 
@@ -11,6 +13,8 @@ const initialState = {
 	optionGroups: OPTION_GROUPS,
 	options: OPTIONS,
 	modules: MODULES,
+	moduleList: MODULE_LIST,
+	moduleOptions: MODULE_OPTIONS,
 	fonts: [],
 	project: {
 		id: '',

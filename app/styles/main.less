@@ -1,11 +1,54 @@
+@import "utils";
 @import "colors";
 @import "fonts";
 @import "transitions";
+@import "recipes/recipes";
+@import "modules/modules";
 @import "global";
 @import "toolbar";
-@import "modules/main";
+
 
 article {
+	--width-fullscreen: 1920px;
+	--width-site: 1400px;
+	--width-extra-wide: 1200px;
+	--width-wide: 900px;
+	--width-current: 600px;
+	--width-narrow: 400px;
+	--width-extra-narrow: 300px;
+
+	--gutter-big: 80px;
+	--gutter-normal: 50px;
+	--gutter-small: 20px;
+
+	--vertical-spacing-big: 100px;
+	--vertical-spacing-normal: 60px;
+	--vertical-spacing-small: 100px;
+
+	--font-size-title-extra-big: 60px;
+	--font-size-title-big: 48px;
+	--font-size-title-normal: 36px;
+	--font-size-title-small: 24px;
+	--font-size-title-extra-small: 16px;
+	--font-size-text-big: 24px;
+	--font-size-text-normal: 18px;
+	--font-size-text-small: 14px;
+	--font-size-label-big: 16px;
+	--font-size-label-normal: 14px;
+	--font-size-label-small: 12px;
+
+	--font-family-title-extra-big: Georgia;
+	--font-family-title-big: Georgia;
+	--font-family-title-normal: Georgia;
+	--font-family-title-small: Georgia;
+	--font-family-title-extra-small: Georgia;
+	--font-family-text-big: Helvetica, Arial;
+	--font-family-text-normal: Helvetica, Arial;
+	--font-family-text-small: Helvetica, Arial;
+	--font-family-label-big: Helvetica, Arial;
+	--font-family-label-normal: Helvetica, Arial;
+	--font-family-label-small: Helvetica, Arial;
+
 	padding-top: 20vh;
 	min-height: 100vh;
 	background-color: white;
@@ -15,70 +58,4 @@ article {
 	* {
 		transition: all 300ms ease-out;
 	}
-
-	// Modules
-	section {
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-	.module-intro {
-		p {
-			font-weight: bold;
-			font-size: 22px;
-			line-height: 1.4em;
-			text-align: center;
-		}
-	}
-	.module-text {
-		h2 {
-			line-height: 1.2em;
-		}
-		p {
-			font-size: 19px;
-			line-height: 1.4em;
-		}
-	}
-	.module-image-2-col{
-		.grid {
-			display: flex;
-			flex-flow: row wrap;
-
-			> * {
-				box-sizing: border-box;
-				width: 50%;
-			}
-		}
-	}
-	.module-quote {
-		text-align: center;
-		blockquote {
-			font-size: 38px;
-			line-height: 1.125em;
-			font-weight: bold;
-		}
-		.author {
-			display: inline-flex;
-			align-items: center;
-			margin: 0 auto;
-			text-align: right;
-			.name {
-				display: inline-block;
-				span {
-					font-weight: bold;
-				}
-			}
-			img {
-				width: 30px;
-				height: 30px;
-				border-radius: 100%;
-				display: inline-block;
-				padding: 10px;
-			}
-		}
-	}
-}
-
-img {
-	display: block;
-	width: 100%;
 }
