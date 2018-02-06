@@ -1,0 +1,52 @@
+.toolbar-input-dropdown {
+	margin-bottom: 26px;
+	.toolbar-option-label {
+		margin-bottom: 4px;
+	}
+	// Select (Google fonts)
+	.toolbar-option-select-ctn {
+		margin-bottom: 20px;
+		position: relative;
+		select {
+			.font--text;
+			width: 100%;
+			position: relative;
+			height: 30px;
+			padding: 0 10px;
+			color: @accent;
+			background-color: @background;
+			border: 1px solid @border;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: 200ms ease-out;
+			transition-property: border-color, background-color, color, font-weight;
+		}
+		&:after {
+			content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:75%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 6"><path fill="none" stroke="@{grey-light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7 1.5l-3 3-3-3"/></svg>');
+			width: 8px;
+			position: absolute;
+			top:50%; right:10px;
+			transform: translateY(-50%);
+		}
+		// ~> HOVER
+		&:hover {
+			select {
+				border-color: @accent;
+				transition-duration: 50ms;
+			}
+		}
+		// ~> ACTIVE
+		&.is-active {
+			select {
+				border-color: @accent;
+				background-color: @accent;
+				color: white;
+				font-weight: 500;
+				transition-duration: 50ms;
+			}
+			&:after {
+				content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:75%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 6"><path fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7 1.5l-3 3-3-3"/></svg>');
+			}
+		}
+	}
+}

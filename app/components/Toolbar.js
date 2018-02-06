@@ -54,7 +54,8 @@ class Toolbar extends React.Component {
 		var moduleListComponents = [];
 
 		// For each module...
-		moduleList.map((module, index) => {
+		for (var moduleId in moduleList) {
+			const module = moduleList[moduleId];
 			var optionsComponents = [];
 
 			// For each options...
@@ -66,10 +67,10 @@ class Toolbar extends React.Component {
 					<ToolbarOption
 						key={optionName}
 						data={optionObject}
-						fontList={this.props.fonts}
+						value={module.options[optionName]}
 						name={optionName}
-						onOptionChange={this.props.onOptionChange}
-						onFontOptionChange={this.props.onFontOptionChange}
+						moduleId={moduleId}
+						onOptionChange={this.props.onModuleOptionChange}
 					/>
 				);
 			});
@@ -77,12 +78,12 @@ class Toolbar extends React.Component {
 			// Add this module to modules components list
 			moduleListComponents.push(
 				<ToolbarModule
-					key={index}
-					title={module.name}>
+					key={moduleId}
+					title={module.title}>
 					{optionsComponents}
 				</ToolbarModule>
 			);
-		});
+		};
 
 		return (
 			<aside className="toolbar-zone">
@@ -112,7 +113,7 @@ class Toolbar extends React.Component {
 							{groupsComponents}
 						</ToolbarTabContent>
 						<ToolbarTabContent
-							name="variables"
+							name="modules"
 							activeClass={tabActiveClass.modules}>
 							{moduleListComponents}
 						</ToolbarTabContent>
@@ -133,6 +134,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName)),
 	onFontOptionChange: (font, optionName, file) => dispatch(ActionCreators.updateFontOption(font, optionName, file)),
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
+	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
 	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName)),
 	onButtonSaveClick: () => dispatch(ActionCreators.saveOptions())
 });

@@ -1,5 +1,6 @@
 @import "inputRange.less";
 @import "inputFont.less";
+@import "inputDropdown.less";
 
 // Toolbar
 .toolbar-zone {
@@ -130,12 +131,14 @@
 		}
 	}
 
-	.toolbar-group {
+	.toolbar-group,
+	.toolbar-module {
 		padding: 24px 30px 6px 30px;
 		border-bottom: 1px solid @border;
 		background-color: white;
 
-		.toolbar-group-title {
+		.toolbar-group-title,
+		.toolbar-module-title {
 			.font--title;
 			margin: 0;
 			margin-bottom: 18px;

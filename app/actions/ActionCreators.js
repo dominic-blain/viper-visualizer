@@ -19,6 +19,14 @@ const ActionCreators = {
 			dispatch(ActionCreators.updateOption(font, optionName));
 		}
 	},
+	updateModuleOption(value, optionName, moduleId) {
+		return {
+			type: type.UPDATE_MODULE_OPTION,
+			optionName: optionName,
+			optionValue: value,
+			moduleId: moduleId
+		}
+	},
 	setOptions(value) {
 		return {
 			type: type.SET_OPTIONS,

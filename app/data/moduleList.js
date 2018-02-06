@@ -1,7 +1,8 @@
-const MODULE_LIST = [
-	{
+const MODULE_LIST = {
+	"ModuleText-1": {
+		"id": "ModuleText-1",
 		"type": "ModuleText",
-		"name": "Text",
+		"title": "Text",
 		"content": {
 			title: "Enter title here",
 			text: "Enter text here"
@@ -17,9 +18,10 @@ const MODULE_LIST = [
 			"text-alignment": "left"
 		}
 	},
-	{
+	"ModuleText-2": {
+		"id": "ModuleText-1",
 		"type": "ModuleText",
-		"name": "Text 2",
+		"title": "Text 2",
 		"content": {
 			title: "Enter title here",
 			text: "Enter text here"
@@ -35,6 +37,6 @@ const MODULE_LIST = [
 			"text-alignment": "left"
 		}
 	}
-];
+};
 
 export default MODULE_LIST;

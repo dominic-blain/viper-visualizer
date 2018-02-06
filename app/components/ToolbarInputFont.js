@@ -55,7 +55,7 @@ class ToolbarInputFont extends React.Component {
 					{font.name}
 				</option>
 			);
-		})
+		});
 
 		var source = this.props.source;
 		var googleFontActiveClass = (source == 'google-font') ? 'is-active':'';

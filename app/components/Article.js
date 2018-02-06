@@ -16,7 +16,8 @@ class Article extends React.Component {
 		var CSSVariables = {};
 
 		// For each module...
-		moduleList.map(module => {
+		for (var moduleId in moduleList) {
+			const module = moduleList[moduleId];
 			const ModuleComponent = moduleTypes[module.type];
 
 			// Add corresponding component to list
@@ -27,7 +28,7 @@ class Article extends React.Component {
 					module={modules[module.type]}
 				/>
 			);
-		});
+		};
 
 		// Create CSS variables object
 		var optionKeys = Object.keys(options);

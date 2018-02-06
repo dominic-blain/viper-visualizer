@@ -1,6 +1,7 @@
 import React from 'react';
 import ToolbarInputRange from './ToolbarInputRange';
 import ToolbarInputFont from './ToolbarInputFont';
+import ToolbarInputDropdown from './ToolbarInputDropdown';
 
 class ToolbarOption extends React.Component {
 	render() {
@@ -14,6 +15,18 @@ class ToolbarOption extends React.Component {
 						range={this.props.data.range}
 						value={this.props.data.value}
 						unit={this.props.data.unit}
+						onOptionChange={this.props.onOptionChange}
+					/>
+				);
+				break;
+			case "dropdown":
+				input = (
+					<ToolbarInputDropdown
+						name={this.props.name}
+						label={this.props.data.label}
+						options={this.props.data.options}
+						value={this.props.value}
+						moduleId={this.props.moduleId}
 						onOptionChange={this.props.onOptionChange}
 					/>
 				);

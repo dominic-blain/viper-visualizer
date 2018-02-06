@@ -31,6 +31,17 @@ const reducer = (state=initialState, action) => {
 		case type.UPDATE_OPTION:
 			return update(state, {options: {[action.optionName]: {$merge: action.option}}});
 			break;
+		case type.UPDATE_MODULE_OPTION:
+			return update(state, {moduleList: 
+				{[action.moduleId]:
+					{options: 
+						{[action.optionName]:
+							{$set: action.optionValue}
+						}
+					}
+				}
+			});
+			break;
 		case type.SET_OPTIONS:
 			return update(state, {options: {$set: action.options}});
 			break;
