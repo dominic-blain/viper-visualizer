@@ -136,7 +136,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
 	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
 	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName)),
-	onButtonSaveClick: () => dispatch(ActionCreators.saveOptions())
+	onButtonSaveClick: () => dispatch(ActionCreators.saveProject())
 });
 
 const mapStateToProps = (state) => ({

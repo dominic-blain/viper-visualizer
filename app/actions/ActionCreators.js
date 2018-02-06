@@ -33,6 +33,12 @@ const ActionCreators = {
 			options: value
 		}
 	},
+	setModuleList(value) {
+		return {
+			type: type.SET_MODULE_LIST,
+			moduleList: value
+		}
+	},
 	updateFontList(fonts) {
 		return {
 			type: type.UPDATE_FONT_LIST,
@@ -91,46 +97,54 @@ const ActionCreators = {
 	},
 	setProject(value) {
 		return dispatch => {
-			var optionKeys = Object.keys(value);
-			optionKeys.forEach(key => {
-				if (value[key].type == 'font') {
+			const options = value.options;
+			const moduleList = value.moduleList;
+
+			for (var optionKey in options) {
+				const option = options[optionKey];
+				if (option.type == 'font') {
 					dispatch(ActionCreators.loadFont(value[key], key, null));
 				}
-			});
-			dispatch(ActionCreators.setOptions(value));
+			}
+			dispatch(ActionCreators.setOptions(options));
+			dispatch(ActionCreators.setModuleList(moduleList));
 		}
 	},
-	saveOptions() {
+	saveProject() {
 		return (dispatch, getState) => {
 			const currentState = getState();
 			const projectsRef = database.ref('/projects');
 			const projectID = util.getParam('project');
+			const projectState = {
+				options: currentState.options,
+				moduleList: currentState.moduleList
+			}
 
-			dispatch(ActionCreators.saveOptionsStart());
+			dispatch(ActionCreators.saveProjectStart());
 
 			database.ref('/projects/' + projectID).once('value', data => {
 				const value = data.val();
 
 				if (value) {
-					projectsRef.child(projectID).set(currentState.options, error => {
+					projectsRef.child(projectID).set(projectState, error => {
 						if (error) {
-							dispatch(ActionCreators.saveOptionsError());
+							dispatch(ActionCreators.saveProjectError());
 						}
 						else {
-							dispatch(ActionCreators.saveOptionsSuccess());
+							dispatch(ActionCreators.saveProjectSuccess());
 						}
 					});
 				}
 				else {
-					const newProjectRef = projectsRef.push(currentState.options, error => {
+					const newProjectRef = projectsRef.push(projectState, error => {
 						if (error) {
-							dispatch(ActionCreators.saveOptionsError());
+							dispatch(ActionCreators.saveProjectError());
 						}
 						else {
 							const newProjectID = newProjectRef.key;
 							const queryString = util.setParam('project', newProjectRef.key);
 							window.history.replaceState({}, '', location.pathname + '?' + queryString);
-							dispatch(ActionCreators.saveOptionsSuccess(newProjectID));
+							dispatch(ActionCreators.saveProjectSuccess(newProjectID));
 						}
 					});
 					
@@ -138,19 +152,19 @@ const ActionCreators = {
 			});
 		}
 	},
-	saveOptionsStart() {
+	saveProjectStart() {
 		return {
 			type: type.SAVE_OPTIONS_START,
 			buttonSaveState: 'start'
 		}
 	},
-	saveOptionsError() {
+	saveProjectError() {
 		return {
 			type: type.SAVE_OPTIONS_ERROR,
 			buttonSaveState: 'error'
 		}
 	},
-	saveOptionsSuccess(id) {
+	saveProjectSuccess(id) {
 		return {
 			type: type.SAVE_OPTIONS_SUCCESS,
 			buttonSaveState: 'success',
