@@ -4,6 +4,7 @@ import OPTIONS from '../data/options';
 import MODULES from '../data/modules';
 import MODULE_LIST from '../data/moduleList';
 import MODULE_OPTIONS from '../data/moduleOptions';
+import TYPOGRAPHY from '../data/typography';
 import * as type from '../constants';
 import update from 'immutability-helper';
 
@@ -15,6 +16,7 @@ const initialState = {
 	modules: MODULES,
 	moduleList: MODULE_LIST,
 	moduleOptions: MODULE_OPTIONS,
+	typography: TYPOGRAPHY,
 	fonts: [],
 	project: {
 		id: '',

@@ -12,11 +12,13 @@ class Toolbar extends React.Component {
 	render() {
 		var tabActiveClass = {
 			variables: this.props.activeTab == "variables" ? 'is-active' : '',
+			typography: this.props.activeTab == "typography" ? 'is-active' : '',
 			modules: this.props.activeTab == "modules" ? 'is-active' : ''
 		};
 
 		// TAB: Variables
 		const optionGroups = this.props.optionGroups;
+		const options = this.props.options;
 		var groupsComponents = [];
 
 		// For each group...
@@ -25,7 +27,7 @@ class Toolbar extends React.Component {
 
 			// Generate options component list
 			group.options.map(optionName => {
-				const optionObject = this.props.options[optionName];
+				const optionObject = options[optionName];
 				optionsComponents.push(
 					<ToolbarOption
 						key={optionName}
@@ -42,6 +44,49 @@ class Toolbar extends React.Component {
 				<ToolbarGroup
 					key={index}
 					label={group.label}
+					options={optionsComponents}
+				/>
+			);
+		});
+
+		// TAB: Text recipes
+		const typography = this.props.typography;
+		var recipesComponents = [];
+
+		// For each recipe...
+		typography.map(recipe => {
+			const optionFontFamily = options[recipe.font];
+			const optionFontSize = options[recipe.size];
+			var optionsComponents = [];
+
+			// Add font family option
+			optionsComponents.push(
+				<ToolbarOption
+					key={recipe.font}
+					data={optionFontFamily}
+					fontList={this.props.fonts}
+					name={recipe.font}
+					onOptionChange={this.props.onOptionChange}
+					onFontOptionChange={this.props.onFontOptionChange}
+				/>
+			);
+			// Add font size option
+			optionsComponents.push(
+				<ToolbarOption
+					key={recipe.size}
+					data={optionFontSize}
+					fontList={this.props.fonts}
+					name={recipe.size}
+					onOptionChange={this.props.onOptionChange}
+					onFontOptionChange={this.props.onFontOptionChange}
+				/>
+			);
+
+			// Add this recipe to recipes list
+			recipesComponents.push(
+				<ToolbarGroup
+					key={recipe.name}
+					label={recipe.label}
 					options={optionsComponents}
 				/>
 			);
@@ -117,6 +162,12 @@ class Toolbar extends React.Component {
 									onClick={this.props.onTabButtonClick}
 								/>
 								<ToolbarTabButton
+									name="typography"
+									label="Typography"
+									activeClass={tabActiveClass.typography}
+									onClick={this.props.onTabButtonClick}
+								/>
+								<ToolbarTabButton
 									name="modules"
 									label="Modules"
 									activeClass={tabActiveClass.modules}
@@ -130,6 +181,11 @@ class Toolbar extends React.Component {
 							name="variables"
 							activeClass={tabActiveClass.variables}>
 							{groupsComponents}
+						</ToolbarTabContent>
+						<ToolbarTabContent
+							name="typography"
+							activeClass={tabActiveClass.typography}>
+							{recipesComponents}
 						</ToolbarTabContent>
 						<ToolbarTabContent
 							name="modules"
@@ -167,6 +223,7 @@ const mapStateToProps = (state) => ({
 	modules: state.modules,
 	moduleOptions: state.moduleOptions,
 	moduleList: state.moduleList,
+	typography: state.typography,
 	fonts: state.fonts,
 	buttonSaveState: state.ui.buttonSaveState
 });

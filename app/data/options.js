@@ -1,6 +1,6 @@
 const OPTIONS = {
 	"width-fullscreen": {
-		"label": "Site",
+		"label": "Fullscreen",
 		"type": "range",
 		"value": 1920,
 		"unit": "px",
@@ -128,74 +128,172 @@ const OPTIONS = {
 			"min": 0,
 			"max": 500
 		}
+	},
+	"font-size-title-extra-big": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-title-big": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-title-normal": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-title-small": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-title-extra-small": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-text-big": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-text-normal": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-text-small": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-label-big": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-label-normal": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-size-label-small": {
+		"label": "Size",
+		"type": "range",
+		"value": 42,
+		"unit": "px",
+		"range": {
+			"min": 5,
+			"max": 200
+		}
+	},
+	"font-family-title-extra-big": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-title-big": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-title-normal": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-title-small": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-title-extra-small": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-text-big": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-text-normal": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-text-small": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-label-big": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-label-normal": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
+	},
+	"font-family-label-small": {
+		"label": "Font",
+		"type": "font",
+		"value": "Georgia"
 	}
 };
-	// ,
-	// "font-size-title": {
-	// 	"label": "Title",
-	// 	"type": "range",
-	// 	"value": 42,
-	// 	"unit": "px",
-	// 	"range": {
-	// 		"min": 5,
-	// 		"max": 200
-	// 	}
-	// },
-	// "font-size-intertitle": {
-	// 	"label": "Intertitle",
-	// 	"type": "range",
-	// 	"value": 26,
-	// 	"unit": "px",
-	// 	"range": {
-	// 		"min": 5,
-	// 		"max": 200
-	// 	}
-	// },
-	// "font-size-important": {
-	// 	"label": "Important",
-	// 	"type": "range",
-	// 	"value": 21,
-	// 	"unit": "px",
-	// 	"range": {
-	// 		"min": 5,
-	// 		"max": 200
-	// 	}
-	// },
-	// "font-size-body": {
-	// 	"label": "Body",
-	// 	"type": "range",
-	// 	"value": 16,
-	// 	"unit": "px",
-	// 	"range": {
-	// 		"min": 5,
-	// 		"max": 200
-	// 	}
-	// },
-	// "font-size-small": {
-	// 	"label": "Small",
-	// 	"type": "range",
-	// 	"value": 10,
-	// 	"unit": "px",
-	// 	"range": {
-	// 		"min": 5,
-	// 		"max": 200
-	// 	}
-	// },
-	// "font-main": {
-	// 	"label": "Main",
-	// 	"type": "font",
-	// 	"value": "Helvetica"
-	// },
-	// "font-alt": {
-	// 	"label": "Alt",
-	// 	"type": "font",
-	// 	"value": "Times New Roman"
-	// },
-	// "color-primary": {
-	// 	"label": "Primary",
-	// 	"type": "color",
-	// 	"value": "#000"
-	// }
-// };
 
 export default OPTIONS;
