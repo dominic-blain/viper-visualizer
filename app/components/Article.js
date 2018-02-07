@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CustomProperties from 'react-custom-properties';
 import ModuleText from './ModuleText';
+import ModuleImage from './ModuleImage';
 
 
 class Article extends React.Component {
@@ -10,7 +11,8 @@ class Article extends React.Component {
 		const modules = this.props.modules;
 		const moduleList = this.props.moduleList;
 		const moduleTypes = {
-			ModuleText: ModuleText
+			ModuleText: ModuleText,
+			ModuleImage: ModuleImage
 		}
 		var renderModules = [];
 		var CSSVariables = {};

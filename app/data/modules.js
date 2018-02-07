@@ -3,8 +3,7 @@ const MODULES = {
 		"content": {
 			text: {
 				"label": "Text",
-				"type": "textarea",
-				"value": "Enter text here"
+				"type": "textarea"
 			}
 		},
 		"options": [
@@ -13,9 +12,27 @@ const MODULES = {
 			"space-before",
 			"space-after",
 			"alignment",
-			"title-style",
 			"text-style",
 			"text-alignment"
+		]
+	},
+	"ModuleImage": {
+		"content": {
+			image: {
+				"label": "Image",
+				"type": "upload"
+			},
+			caption: {
+				"label": "Caption",
+				"type": "line",
+			}
+		},
+		"options": [
+			"width",
+			"security-padding",
+			"space-before",
+			"space-after",
+			"alignment"
 		]
 	}
 };
