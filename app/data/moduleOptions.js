@@ -106,7 +106,7 @@ const MODULE_OPTIONS = {
 		]
 	},
 	"title-style": {
-		"label": "Text style",
+		"label": "Title style",
 		"type": "dropdown",
 		"options": [
 			{ 
