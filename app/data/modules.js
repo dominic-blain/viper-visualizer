@@ -1,11 +1,6 @@
 const MODULES = {
 	"ModuleText": {
 		"content": {
-			title: {
-				"label": "Title",
-				"type": "line",
-				"value": "Enter title here"
-			},
 			text: {
 				"label": "Text",
 				"type": "textarea",

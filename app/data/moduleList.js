@@ -4,7 +4,6 @@ const MODULE_LIST = {
 		"type": "ModuleText",
 		"title": "Text",
 		"content": {
-			title: "Enter title here",
 			text: "Enter text here"
 		},
 		"options": {
@@ -23,7 +22,6 @@ const MODULE_LIST = {
 		"type": "ModuleText",
 		"title": "Text 2",
 		"content": {
-			title: "Enter title here",
 			text: "Enter text here"
 		},
 		"options": {
