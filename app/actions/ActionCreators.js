@@ -111,7 +111,7 @@ const ActionCreators = {
 			for (var optionKey in options) {
 				const option = options[optionKey];
 				if (option.type == 'font') {
-					dispatch(ActionCreators.loadFont(value[key], key, null));
+					dispatch(ActionCreators.loadFont(options[optionKey], optionKey, null));
 				}
 			}
 			dispatch(ActionCreators.setOptions(options));
