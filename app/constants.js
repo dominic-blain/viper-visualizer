@@ -1,5 +1,6 @@
 export const UPDATE_OPTION = 'update option';
 export const UPDATE_MODULE_OPTION = 'update module option';
+export const UPDATE_MODULE_CONTENT = 'update module content';
 export const SET_OPTIONS = 'set options';
 export const SET_MODULE_LIST = 'set module list';
 export const UPDATE_FONT_LIST = 'update font list';

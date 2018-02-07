@@ -57,9 +57,10 @@ class Toolbar extends React.Component {
 		for (var moduleId in moduleList) {
 			const module = moduleList[moduleId];
 			var optionsComponents = [];
+			var contentComponents = [];
 
 			// For each options...
-			modules[module.type].options.map((optionName, index) => {
+			modules[module.type].options.map(optionName => {
 				const optionObject = moduleOptions[optionName];
 				const optionValue = module.options[optionName];
 				// Add this option to options components list
@@ -67,19 +68,37 @@ class Toolbar extends React.Component {
 					<ToolbarOption
 						key={optionName}
 						data={optionObject}
-						value={module.options[optionName]}
+						value={optionValue}
 						name={optionName}
 						moduleId={moduleId}
 						onOptionChange={this.props.onModuleOptionChange}
 					/>
 				);
 			});
+			// For each content...
+			const moduleContent = modules[module.type].content;
+			for (var contentName in moduleContent) {
+				const contentObject = moduleContent[contentName];
+				const contentValue = module.content[contentName];
+				// Add this content to content components list
+				contentComponents.push(
+					<ToolbarOption
+						key={contentName}
+						data={contentObject}
+						value={contentValue}
+						name={contentName}
+						moduleId={moduleId}
+						onOptionChange={this.props.onModuleContentChange}
+					/>
+				);
+			};
 
 			// Add this module to modules components list
 			moduleListComponents.push(
 				<ToolbarModule
 					key={moduleId}
 					title={module.title}>
+					{contentComponents}
 					{optionsComponents}
 				</ToolbarModule>
 			);
@@ -135,6 +154,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onFontOptionChange: (font, optionName, file) => dispatch(ActionCreators.updateFontOption(font, optionName, file)),
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
 	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
+	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
 	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName)),
 	onButtonSaveClick: () => dispatch(ActionCreators.saveProject())
 });

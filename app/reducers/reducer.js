@@ -42,6 +42,17 @@ const reducer = (state=initialState, action) => {
 				}
 			});
 			break;
+		case type.UPDATE_MODULE_CONTENT:
+			return update(state, {moduleList: 
+				{[action.moduleId]:
+					{content: 
+						{[action.contentName]:
+							{$set: action.contentValue}
+						}
+					}
+				}
+			});
+			break;
 		case type.SET_OPTIONS:
 			return update(state, {options: {$set: action.options}});
 			break;

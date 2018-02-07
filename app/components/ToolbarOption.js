@@ -2,6 +2,7 @@ import React from 'react';
 import ToolbarInputRange from './ToolbarInputRange';
 import ToolbarInputFont from './ToolbarInputFont';
 import ToolbarInputDropdown from './ToolbarInputDropdown';
+import ToolbarInputLine from './ToolbarInputLine';
 
 class ToolbarOption extends React.Component {
 	render() {
@@ -25,6 +26,17 @@ class ToolbarOption extends React.Component {
 						name={this.props.name}
 						label={this.props.data.label}
 						options={this.props.data.options}
+						value={this.props.value}
+						moduleId={this.props.moduleId}
+						onOptionChange={this.props.onOptionChange}
+					/>
+				);
+				break;
+			case "line":
+				input = (
+					<ToolbarInputLine
+						name={this.props.name}
+						label={this.props.data.label}
 						value={this.props.value}
 						moduleId={this.props.moduleId}
 						onOptionChange={this.props.onOptionChange}

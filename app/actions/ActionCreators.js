@@ -27,6 +27,14 @@ const ActionCreators = {
 			moduleId: moduleId
 		}
 	},
+	updateModuleContent(value, contentName, moduleId) {
+		return {
+			type: type.UPDATE_MODULE_CONTENT,
+			contentName: contentName,
+			contentValue: value,
+			moduleId: moduleId
+		}
+	},
 	setOptions(value) {
 		return {
 			type: type.SET_OPTIONS,

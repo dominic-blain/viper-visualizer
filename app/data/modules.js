@@ -1,21 +1,17 @@
 const MODULES = {
 	"ModuleText": {
-		"content": [
-			{
-				title: {
-					"label": "Title",
-					"type": "line",
-					"value": "Enter title here"
-				}
+		"content": {
+			title: {
+				"label": "Title",
+				"type": "line",
+				"value": "Enter title here"
 			},
-			{
-				text: {
-					"label": "Text",
-					"type": "markdown",
-					"value": "Enter text here"
-				}
+			text: {
+				"label": "Text",
+				"type": "markdown",
+				"value": "Enter text here"
 			}
-		],
+		},
 		"options": [
 			"width",
 			"security-padding",
