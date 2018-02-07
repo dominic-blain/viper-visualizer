@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { computeModuleClass } from '../utils';
 
 class ModuleText extends React.Component {
@@ -12,7 +13,9 @@ class ModuleText extends React.Component {
 			<section className={computedModuleClass}>
 				<div>
 					<h2>{this.props.content.title}</h2>
-					<p>{this.props.content.text}</p>
+					<p>
+						<ReactMarkdown source={this.props.content.text} />
+					</p>
 				</div>
 			</section>
 		);
