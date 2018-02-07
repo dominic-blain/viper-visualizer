@@ -31,10 +31,11 @@ class Article extends React.Component {
 		};
 
 		// Create CSS variables object
-		var optionKeys = Object.keys(options);
+		const optionKeys = Object.keys(options);
 		optionKeys.map(key => {
-			var variableName = '--' + key;
-			var variableValue = options[key].value + options[key].unit;
+			const variableName = '--' + key;
+			const variableUnit = options[key].unit || '';
+			const variableValue = options[key].value + variableUnit;
 			CSSVariables[variableName] = variableValue;
 		});
 

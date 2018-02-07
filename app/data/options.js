@@ -132,7 +132,7 @@ const OPTIONS = {
 	"font-size-title-extra-big": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 60,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -142,7 +142,7 @@ const OPTIONS = {
 	"font-size-title-big": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 48,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -152,7 +152,7 @@ const OPTIONS = {
 	"font-size-title-normal": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 36,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -162,7 +162,7 @@ const OPTIONS = {
 	"font-size-title-small": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 24,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -172,7 +172,7 @@ const OPTIONS = {
 	"font-size-title-extra-small": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 16,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -182,7 +182,7 @@ const OPTIONS = {
 	"font-size-text-big": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 24,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -192,7 +192,7 @@ const OPTIONS = {
 	"font-size-text-normal": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 18,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -202,7 +202,7 @@ const OPTIONS = {
 	"font-size-text-small": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 14,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -212,7 +212,7 @@ const OPTIONS = {
 	"font-size-label-big": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 16,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -222,7 +222,7 @@ const OPTIONS = {
 	"font-size-label-normal": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 14,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -232,7 +232,7 @@ const OPTIONS = {
 	"font-size-label-small": {
 		"label": "Size",
 		"type": "range",
-		"value": 42,
+		"value": 12,
 		"unit": "px",
 		"range": {
 			"min": 5,
@@ -267,32 +267,32 @@ const OPTIONS = {
 	"font-family-text-big": {
 		"label": "Font",
 		"type": "font",
-		"value": "Georgia"
+		"value": "Helvetica, Arial"
 	},
 	"font-family-text-normal": {
 		"label": "Font",
 		"type": "font",
-		"value": "Georgia"
+		"value": "Helvetica, Arial"
 	},
 	"font-family-text-small": {
 		"label": "Font",
 		"type": "font",
-		"value": "Georgia"
+		"value": "Helvetica, Arial"
 	},
 	"font-family-label-big": {
 		"label": "Font",
 		"type": "font",
-		"value": "Georgia"
+		"value": "Helvetica, Arial"
 	},
 	"font-family-label-normal": {
 		"label": "Font",
 		"type": "font",
-		"value": "Georgia"
+		"value": "Helvetica, Arial"
 	},
 	"font-family-label-small": {
 		"label": "Font",
 		"type": "font",
-		"value": "Georgia"
+		"value": "Helvetica, Arial"
 	}
 };
 

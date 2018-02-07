@@ -1,9 +1,23 @@
-.module-title {
-	
-	h1 {
-		text-align: center;
-		font-size: 64px;
-		line-height: 1.1em;
-		font-weight: bold;
+.module-text {
+	&.option--text-style-big {
+		* { .recipe--font-text-big; }
+		h1,h2 { .recipe--font-title-extra-big; }
+		h3 { .recipe--font-title-big; }
+		h4 { .recipe--font-title-normal; }
+		h5 { .recipe--font-title-small; }
+		h6 { .recipe--font-title-extra-small; }
+	}
+	&.option--text-style-normal {
+		* { .recipe--font-text-normal; }
+		h1,h2 { .recipe--font-title-big; }
+		h3 { .recipe--font-title-normal; }
+		h4 { .recipe--font-title-small; }
+		h5,h6 { .recipe--font-title-extra-small; }
+	}
+	&.option--text-style-small {
+		* { .recipe--font-text-small; }
+		h1,h2 { .recipe--font-title-normal; }
+		h3 { .recipe--font-title-small; }
+		h4,h5,h6 { .recipe--font-title-extra-small; }
 	}
 }
