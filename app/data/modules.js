@@ -8,7 +8,7 @@ const MODULES = {
 			},
 			text: {
 				"label": "Text",
-				"type": "markdown",
+				"type": "textarea",
 				"value": "Enter text here"
 			}
 		},

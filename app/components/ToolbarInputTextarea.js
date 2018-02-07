@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ToolbarInputLine extends React.Component {
+class ToolbarInputTextarea extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleOptionChange = this.handleOptionChange.bind(this);
@@ -12,16 +12,18 @@ class ToolbarInputLine extends React.Component {
 
 	render() {
 		return (
-			<label className="toolbar-input-line">
+			<label className="toolbar-input-textarea">
 				<div className="toolbar-option-label">
 					{this.props.label}
 				</div>
-				<div className="toolbar-input-line-wrapper">
-					<input type="text" value={this.props.value} onChange={this.handleOptionChange} />
+				<div className="toolbar-input-textarea-wrapper">
+					<textarea type="text" value={this.props.value} onChange={this.handleOptionChange}>
+						{this.props.value}
+					</textarea>
 				</div>
 			</label>
 		);
 	}
 }
 
-export default ToolbarInputLine;
+export default ToolbarInputTextarea;

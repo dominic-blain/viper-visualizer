@@ -1,0 +1,45 @@
+.toolbar-input-textarea {
+	.toolbar-option-label {
+		margin-bottom: 4px;
+	}
+	.toolbar-input-textarea-wrapper {
+		margin-bottom: 20px;
+		position: relative;
+		textarea {
+			.font--text;
+			width: 100%;
+			position: relative;
+			height: 120px;
+			padding: 8px 10px;
+			box-sizing: border-box;
+			color: @accent;
+			background-color: @background;
+			border: 1px solid @border;
+			border-radius: 4px;
+			transition: 200ms ease-out;
+			transition-property: border-color, background-color, color, font-weight;
+			max-width: 100%;
+			// ~> FOCUS 
+			&:focus {
+				outline: none;
+			}
+		}
+		// ~> HOVER
+		&:hover {
+			textarea {
+				border-color: @accent;
+				transition-duration: 50ms;
+			}
+		}
+		// ~> ACTIVE
+		&.is-active {
+			textarea {
+				border-color: @accent;
+				background-color: @accent;
+				color: white;
+				font-weight: 500;
+				transition-duration: 50ms;
+			}
+		}
+	}
+}
