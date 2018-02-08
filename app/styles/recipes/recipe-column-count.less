@@ -1,0 +1,62 @@
+.recipe--column-count-2 {
+	.grid-item {
+		width: 100%;
+		#mq-min-width(@screen-xs, {
+			width: 50%;
+		});
+	}
+}
+
+.recipe--column-count-3 {
+	.grid-item {
+		width: 100%;
+		#mq-min-width(@screen-xs, {
+			width: 50%;
+		});
+		#mq-min-width(@screen-sm, {
+			width: 100% / 3;
+		});
+	}
+}
+
+.recipe--column-count-4 {
+	.grid-item {
+		width: 100%;
+		#mq-min-width(@screen-xs, {
+			width: 50%;
+		});
+		#mq-min-width(@screen-sm, {
+			width: 25%;
+		});
+	}
+}
+
+.recipe--column-count-5 {
+	.grid-item {
+		width: 100%;
+		#mq-min-width(@screen-xs, {
+			width: 50%;
+		});
+		#mq-min-width(@screen-sm, {
+			width: 100% / 3;
+		});
+		#mq-min-width(@screen-md, {
+			width: 20%;
+		});
+	}
+}
+
+.recipe--column-count-6 {
+	.grid-item {
+		width: 100%;
+		#mq-min-width(@screen-xs, {
+			width: 50%;
+		});
+		#mq-min-width(@screen-sm, {
+			width: 100% / 3;
+		});
+		#mq-min-width(@screen-md, {
+			width: 100% / 6;
+		});
+	}
+}

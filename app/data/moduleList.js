@@ -108,16 +108,24 @@ const MODULE_LIST = {
 	"ModuleGrid-1": {
 		"id": "ModuleGrid-1",
 		"order": 7,
-		"type": "ModuleImage",
-		"title": "Big Image",
+		"type": "ModuleGrid",
+		"title": "Image Grid",
 		"content": {
 			items: {
-				image: {
-					image: "https://shft.cl/img/7/78.media.tumblr.com-1815592298702267.jpg",
-					caption: "This picture comes from jlnjlvt.tumblr.com"
+				"Image-1": {
+					id: "Image-1",
+					type: "Image",
+					content: {
+						image: "https://shft.cl/img/7/78.media.tumblr.com-1815592298702267.jpg",
+						caption: "This picture comes from jlnjlvt.tumblr.com"
+					}
 				},
-				image: { 
-					image: "https://shft.cl/img/7/78.media.tumblr.com-1815779630829131.png"
+				"image-2": { 
+					"id": "Image-2",
+					type: "Image",
+					content: {
+						image: "https://shft.cl/img/7/78.media.tumblr.com-1815779630829131.png"
+					}
 				}
 			}
 		},

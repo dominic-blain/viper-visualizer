@@ -11,7 +11,7 @@ class ModuleText extends React.Component {
 
 		return (
 			<section className={computedModuleClass}>
-				<ReactMarkdown className="markdown" source={this.props.content.text} />
+				<ReactMarkdown className="markdown" source={content.text} />
 			</section>
 		);
 	}
