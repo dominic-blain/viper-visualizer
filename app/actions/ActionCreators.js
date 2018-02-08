@@ -95,18 +95,30 @@ const ActionCreators = {
 	loadProject() {
 		return dispatch => {
 			const projectID = util.getParam('project');
-			database.ref('/projects/' + projectID).once('value', data => {
+			const projectOptionsRef = database.ref('/projects/' + projectID + '/options/');
+			const projectModuleListRef = database.ref('/projects/' + projectID + '/moduleList/');
+			var options = null;
+			var moduleList = null;
+
+			projectOptionsRef.once('value', data => {
 				const value = data.val();
 				if (value) {
-					dispatch(ActionCreators.setProject(value));
+					options = value;
 				}
 			});
+			projectModuleListRef.orderByChild('order').once('value', data => {
+				const value = data.val();
+				if (value) {
+					moduleList = value;
+				}
+			});
+			if (options || moduleList) {
+				dispatch(ActionCreators.setProject(options, moduleList));
+			}
 		}
 	},
-	setProject(value) {
+	setProject(options, moduleList) {
 		return dispatch => {
-			const options = value.options;
-			const moduleList = value.moduleList;
 
 			for (var optionKey in options) {
 				const option = options[optionKey];

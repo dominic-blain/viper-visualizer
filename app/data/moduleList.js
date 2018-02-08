@@ -1,6 +1,7 @@
 const MODULE_LIST = {
 	"ModuleText-1": {
 		"id": "ModuleText-1",
+		"order": 1,
 		"type": "ModuleText",
 		"title": "Title",
 		"content": {
@@ -18,6 +19,7 @@ const MODULE_LIST = {
 	},
 	"ModuleText-2": {
 		"id": "ModuleText-2",
+		"order": 2,
 		"type": "ModuleText",
 		"title": "Introduction",
 		"content": {
@@ -35,6 +37,7 @@ const MODULE_LIST = {
 	},
 	"ModuleImage-1": {
 		"id": "ModuleImage-1",
+		"order": 3,
 		"type": "ModuleImage",
 		"title": "Image",
 		"content": {
@@ -51,6 +54,7 @@ const MODULE_LIST = {
 	},
 	"ModuleText-3": {
 		"id": "ModuleText-3",
+		"order": 4,
 		"type": "ModuleText",
 		"title": "Text centered",
 		"content": {
@@ -68,6 +72,7 @@ const MODULE_LIST = {
 	},
 	"ModuleImage-2": {
 		"id": "ModuleImage-2",
+		"order": 5,
 		"type": "ModuleImage",
 		"title": "Image 2",
 		"content": {
@@ -84,6 +89,7 @@ const MODULE_LIST = {
 	},
 	"ModuleText-4": {
 		"id": "ModuleText-4",
+		"order": 6,
 		"type": "ModuleText",
 		"title": "Text left",
 		"content": {
@@ -101,6 +107,7 @@ const MODULE_LIST = {
 	},
 	"ModuleImage-3": {
 		"id": "ModuleImage-3",
+		"order": 7,
 		"type": "ModuleImage",
 		"title": "Big Image",
 		"content": {
@@ -117,6 +124,7 @@ const MODULE_LIST = {
 	},
 	"ModuleText-5": {
 		"id": "ModuleText-5",
+		"order": 8,
 		"type": "ModuleText",
 		"title": "List",
 		"content": {
