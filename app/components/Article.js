@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CustomProperties from 'react-custom-properties';
+import Guides from './Guides';
 import ModuleText from './ModuleText';
 import ModuleImage from './ModuleImage';
 import ModuleGrid from './ModuleGrid';
@@ -9,6 +10,7 @@ import ModuleGrid from './ModuleGrid';
 class Article extends React.Component {
 	render() {
 		const options = this.props.options;
+		const optionGroups = this.props.optionGroups;
 		const modules = this.props.modules;
 		const moduleList = this.props.moduleList;
 		const moduleTypes = {
@@ -46,6 +48,7 @@ class Article extends React.Component {
 		return (
 			<CustomProperties properties={CSSVariables}>
 				<article id="page">
+					<Guides options={options} optionGroups={optionGroups} />
 					{renderModules}
 				</article>
 			</CustomProperties>
@@ -57,7 +60,8 @@ const mapStateToProps = (state) => (
 {
 	modules: state.modules,
 	moduleList: state.moduleList,
-	options: state.options
+	options: state.options,
+	optionGroups: state.optionGroups
 });
 
 export default connect(mapStateToProps, null)(Article);

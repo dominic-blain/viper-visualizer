@@ -1,0 +1,185 @@
+#guides {
+	pointer-events: none;
+	position: fixed;
+	top:0; left: 320px; bottom:0; right:0;
+
+	.guides-width {
+		height: 100%;
+		box-sizing: border-box;
+		.recipe--security-padding-big;
+		.recipe--padding-before-big;
+		.recipe--padding-after-big;
+		
+		.guides-ctn {
+			position: relative;
+			height: 100%;
+		}
+
+		.guide {
+			height: 100%;
+			position: absolute;
+			top:0; left:0; right:0;
+			margin: 0 auto;
+			background-color: rgba(0,0,255,0.1);
+			// border-right: 1px solid blue;
+			// border-left: 1px solid blue;
+
+			label {
+				display: none;
+				.font--intertitle;
+				position: absolute;
+				top:0; right:0;
+				padding: 3px 5px;
+				z-index: 1;
+				background-color: blue;
+				color: white;
+			}
+
+			&.width-fullscreen { display: none; }
+			&.width-site { .recipe--width-site; }
+			&.width-extra-wide { .recipe--width-extra-big; }
+			&.width-wide { .recipe--width-big; }
+			&.width-current { .recipe--width-normal; }
+			&.width-narrow { .recipe--width-small; }
+			&.width-extra-narrow { .recipe--width-extra-small; }
+		}
+	}
+
+	.guides-gutter {
+		position: absolute;
+		top:0; bottom:0; left:0; right:0;
+		box-sizing: border-box;
+		.recipe--security-padding-big;
+		.recipe--padding-before-big;
+		.recipe--padding-after-big;
+
+		.guides-ctn {
+			position: relative;
+			height: 100%;
+		}
+
+		.guide {
+			position: absolute;
+			top:0; bottom:0; left:0; right:0;
+
+			.gutter { 
+				background-color: rgba(0,128,0,0.1);
+			}
+
+			.gutter-left {
+				position: absolute;
+				right: 100%; top:0; bottom:0;
+			}
+			.gutter-right {
+				position: absolute;
+				left: 100%; top:0; bottom:0;
+			}
+
+			&.gutter-big {
+				.gutter-left,
+				.gutter-right { 
+					width: calc(~'var(--gutter-big) * 0.6');
+					#mq-min-width(@screen-xs, {
+						width: calc(~'var(--gutter-big) * 0.8');
+					});
+					#mq-min-width(@screen-md, {
+						width: var(--gutter-big);
+					});
+				}
+			}
+			&.gutter-normal {
+				.gutter-left,
+				.gutter-right { 
+					width: calc(~'var(--gutter-normal) * 0.6');
+					#mq-min-width(@screen-xs, {
+						width: calc(~'var(--gutter-normal) * 0.8');
+					});
+					#mq-min-width(@screen-md, {
+						width: var(--gutter-normal);
+					});
+				}
+			}
+			&.gutter-small {
+				.gutter-left,
+				.gutter-right { 
+					width: calc(~'var(--gutter-small) * 0.6');
+					#mq-min-width(@screen-xs, {
+						width: calc(~'var(--gutter-small) * 0.8');
+					});
+					#mq-min-width(@screen-md, {
+						width: var(--gutter-small);
+					});
+				}
+			}
+		}
+	}
+	.guides-vertical-spacing {
+		position: absolute;
+		top:0; bottom:0; left:0; right:0;
+		box-sizing: border-box;
+		.recipe--padding-before-big;
+		.recipe--padding-after-big;
+
+		.guides-ctn {
+			position: relative;
+			height: 100%;
+		}
+
+		.guide {
+			position: absolute;
+			top:0; bottom:0; left:0; right:0;
+
+			.vertical-spacing { 
+				border: 1px rgba(255,190,0,0.8); 
+				border-top-style: solid;
+				border-bottom-style: solid;
+			}
+
+			.vertical-spacing-top {
+				position: absolute;
+				bottom: 100%; left:0; right:0;
+			}
+			.vertical-spacing-bottom {
+				position: absolute;
+				top: 100%; left:0; right:0;
+			}
+
+			&.vertical-spacing-big {
+				.vertical-spacing-top,
+				.vertical-spacing-bottom { 
+					height: calc(~'var(--vertical-spacing-big) * 0.6');
+					#mq-min-width(@screen-xs, {
+						height: calc(~'var(--vertical-spacing-big) * 0.8');
+					});
+					#mq-min-width(@screen-md, {
+						height: var(--vertical-spacing-big);
+					});
+				}
+			}
+			&.vertical-spacing-normal {
+				.vertical-spacing-top,
+				.vertical-spacing-bottom { 
+					height: calc(~'var(--vertical-spacing-normal) * 0.6');
+					#mq-min-width(@screen-xs, {
+						height: calc(~'var(--vertical-spacing-normal) * 0.8');
+					});
+					#mq-min-width(@screen-md, {
+						height: var(--vertical-spacing-normal);
+					});
+				}
+			}
+			&.vertical-spacing-small {
+				.vertical-spacing-top,
+				.vertical-spacing-bottom { 
+					height: calc(~'var(--vertical-spacing-small) * 0.6');
+					#mq-min-width(@screen-xs, {
+						height: calc(~'var(--vertical-spacing-small) * 0.8');
+					});
+					#mq-min-width(@screen-md, {
+						height: var(--vertical-spacing-small);
+					});
+				}
+			}
+		}
+	}
+}
