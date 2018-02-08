@@ -105,9 +105,36 @@ const MODULE_LIST = {
 			"text-alignment": "left"
 		}
 	},
+	"ModuleGrid-1": {
+		"id": "ModuleGrid-1",
+		"order": 7,
+		"type": "ModuleImage",
+		"title": "Big Image",
+		"content": {
+			items: {
+				image: {
+					image: "https://shft.cl/img/7/78.media.tumblr.com-1815592298702267.jpg",
+					caption: "This picture comes from jlnjlvt.tumblr.com"
+				},
+				image: { 
+					image: "https://shft.cl/img/7/78.media.tumblr.com-1815779630829131.png"
+				}
+			}
+		},
+		"options": {
+			"width": "extra-big",
+			"security-padding": "normal",
+			"space-before": "small",
+			"space-after": "normal",
+			"alignment": "center",
+			"column-count": "2",
+			"vertical-gutter": "normal",
+			"horizontal-gutter": "normal"
+		}
+	},
 	"ModuleImage-3": {
 		"id": "ModuleImage-3",
-		"order": 7,
+		"order": 8,
 		"type": "ModuleImage",
 		"title": "Big Image",
 		"content": {
@@ -124,7 +151,7 @@ const MODULE_LIST = {
 	},
 	"ModuleText-5": {
 		"id": "ModuleText-5",
-		"order": 8,
+		"order": 9,
 		"type": "ModuleText",
 		"title": "List",
 		"content": {

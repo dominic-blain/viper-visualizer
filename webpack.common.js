@@ -53,7 +53,7 @@ var config = {
         loader: 'style!css!less'
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2)$/,
         use: ['file-loader']
       },
       {

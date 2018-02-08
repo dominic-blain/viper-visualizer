@@ -34,6 +34,29 @@ const MODULES = {
 			"space-after",
 			"alignment"
 		]
+	},
+	"ModuleGrid": {
+		"content": {
+			items: {
+				"label": "Items",
+				"type": {
+					list: [
+						"image",
+						"text"
+					]
+				}
+			}
+		},
+		"options": [
+			"width",
+			"security-padding",
+			"space-before",
+			"space-after",
+			"alignment",
+			"column-count",
+			"vertical-gutter",
+			"horizontal-gutter"
+		]
 	}
 };
 
