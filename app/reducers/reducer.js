@@ -24,7 +24,8 @@ const initialState = {
 		status: "new",
 	},
 	ui: {
-		buttonSaveState: ''
+		buttonSaveState: '',
+		showGuides: true
 	}
 };
 
@@ -83,6 +84,9 @@ const reducer = (state=initialState, action) => {
 			break;
 		case type.SAVE_OPTIONS_ERROR:
 			return update(state, {ui: {buttonSaveState: {$set:action.buttonSaveState}}});
+			break;
+		case type.TOGGLE_GUIDES:
+			return update(state, {ui: {showGuides: {$apply: x => {return !x;}}}});
 			break;
 		default:
 			return state;

@@ -1,4 +1,15 @@
 #guides {
+	// ~> HIDDEN
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 300ms ease-out, visibility 0ms 300ms;
+
+	// ~> VISIBLE
+	&.is-visible {
+		opacity: 1;
+		visibility: visible;
+		transition-delay: 0ms;
+	}
 	pointer-events: none;
 	position: fixed;
 	top:0; left: 320px; bottom:0; right:0;

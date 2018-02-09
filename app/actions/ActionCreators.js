@@ -193,6 +193,11 @@ const ActionCreators = {
 				id: id
 			}
 		}
+	},
+	toggleGuides(userAction) {
+		return {
+			type: type.TOGGLE_GUIDES
+		}
 	}
 };
 

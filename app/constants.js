@@ -9,3 +9,4 @@ export const UPDATE_TABS = 'update tabs';
 export const SAVE_OPTIONS_START = 'save options start';
 export const SAVE_OPTIONS_SUCCESS = 'save options success';
 export const SAVE_OPTIONS_ERROR = 'save options error';
+export const TOGGLE_GUIDES = 'toggle guides';

@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import ActionCreators from '../actions/ActionCreators';
 import CustomProperties from 'react-custom-properties';
 import Guides from './Guides';
+import GuidesSwitch from './GuidesSwitch';
 import ModuleText from './ModuleText';
 import ModuleImage from './ModuleImage';
 import ModuleGrid from './ModuleGrid';
@@ -9,6 +11,7 @@ import ModuleGrid from './ModuleGrid';
 
 class Article extends React.Component {
 	render() {
+		const showGuides = this.props.showGuides;
 		const options = this.props.options;
 		const optionGroups = this.props.optionGroups;
 		const modules = this.props.modules;
@@ -48,7 +51,8 @@ class Article extends React.Component {
 		return (
 			<CustomProperties properties={CSSVariables}>
 				<article id="page">
-					<Guides options={options} optionGroups={optionGroups} />
+					<GuidesSwitch showGuides={showGuides} onClick={this.props.onShowGuidesClick} />
+					<Guides options={options} optionGroups={optionGroups} showGuides={showGuides} />
 					{renderModules}
 				</article>
 			</CustomProperties>
@@ -56,12 +60,16 @@ class Article extends React.Component {
 	}
 };
 
-const mapStateToProps = (state) => (
-{
+const mapDispatchToProps = (dispatch) => ({
+	onShowGuidesClick: userAction => dispatch(ActionCreators.toggleGuides(userAction))
+});
+
+const mapStateToProps = (state) => ({
 	modules: state.modules,
 	moduleList: state.moduleList,
 	options: state.options,
-	optionGroups: state.optionGroups
+	optionGroups: state.optionGroups,
+	showGuides: state.ui.showGuides
 });
 
-export default connect(mapStateToProps, null)(Article);
+export default connect(mapStateToProps, mapDispatchToProps)(Article);
