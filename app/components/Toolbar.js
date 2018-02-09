@@ -212,7 +212,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
 	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
 	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
-	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName)),
+	onTabButtonClick: (tabName) => dispatch(ActionCreators.changeTabs(tabName)),
 	onButtonSaveClick: () => dispatch(ActionCreators.saveProject())
 });
 

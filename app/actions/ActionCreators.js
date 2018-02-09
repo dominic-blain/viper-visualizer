@@ -74,9 +74,22 @@ const ActionCreators = {
 			});
 		}
 	},
-	updateTabs(tabName) {
+	changeTabs(tabName, guidesSetByUser) {
+		return (dispatch, getState) => {
+			const currentState = getState();
+			const guidesSetByUser = currentState.ui.guidesSetByUser;
+
+			if (!guidesSetByUser) {
+				if (tabName == 'variables' || tabName == 'modules') {
+					dispatch(ActionCreators.toggleGuides(false));
+				}
+			}
+			dispatch(ActionCreators.setActiveTab(tabName));
+		}
+	},
+	setActiveTab(tabName) {
 		return {
-			type: type.UPDATE_TABS,
+			type: type.SET_ACTIVE_TAB,
 			tabName: tabName
 		}
 	},
@@ -196,7 +209,8 @@ const ActionCreators = {
 	},
 	toggleGuides(userAction) {
 		return {
-			type: type.TOGGLE_GUIDES
+			type: type.TOGGLE_GUIDES,
+			userAction: userAction
 		}
 	}
 };

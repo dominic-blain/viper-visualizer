@@ -25,7 +25,8 @@ const initialState = {
 	},
 	ui: {
 		buttonSaveState: '',
-		showGuides: true
+		showGuides: true,
+		guidesSetByUser: false
 	}
 };
 
@@ -65,7 +66,7 @@ const reducer = (state=initialState, action) => {
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
 			break;
-		case type.UPDATE_TABS:
+		case type.SET_ACTIVE_TAB:
 			return update(state, {activeTab: {$set:action.tabName}});
 			break;
 		case type.SAVE_OPTIONS:
@@ -86,7 +87,12 @@ const reducer = (state=initialState, action) => {
 			return update(state, {ui: {buttonSaveState: {$set:action.buttonSaveState}}});
 			break;
 		case type.TOGGLE_GUIDES:
-			return update(state, {ui: {showGuides: {$apply: x => {return !x;}}}});
+			return update(state, {
+				ui: {
+					showGuides: {$apply: x => {return !x;} },
+					guidesSetByUser: {$set: action.userAction}
+				}
+			});
 			break;
 		default:
 			return state;
