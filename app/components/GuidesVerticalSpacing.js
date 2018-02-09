@@ -5,8 +5,8 @@ class GuidesVerticalSpacing extends React.Component {
 		const options = this.props.options;
 		var guides = [];
 
-		options.map(optionName => {
-			var computedClass = 'guide '+ optionName;
+		options.map((optionName, index) => {
+			const computedClass = 'guide '+ optionName;
 			guides.push(
 				<div className={computedClass}>
 					<div className="vertical-spacing vertical-spacing-top" />

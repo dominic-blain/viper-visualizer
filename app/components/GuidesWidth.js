@@ -7,10 +7,11 @@ class GuidesWidth extends React.Component {
 
 		options.map((optionName, index) => {
 			const computedClass = 'guide '+ optionName;
-			const computedStyle = {top: (index -1) * 18+'px'};
+			const computedStyle = { transitionDelay: (index -1) * 45+'ms' };
+			const computedLabelStyle = { top: (index -1) * 18+'px' };
 			guides.push(
-				<div className={computedClass}>
-					<label style={computedStyle}>{optionName}</label>
+				<div className={computedClass} style={computedStyle}>
+					<label style={computedLabelStyle}>{optionName}</label>
 				</div>
 			);
 		});

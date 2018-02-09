@@ -1,15 +1,4 @@
 #guides {
-	// ~> HIDDEN
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 300ms ease-out, visibility 0ms 300ms;
-
-	// ~> VISIBLE
-	&.is-visible {
-		opacity: 1;
-		visibility: visible;
-		transition-delay: 0ms;
-	}
 	pointer-events: none;
 	position: fixed;
 	top:0; left: 320px; bottom:0; right:0;
@@ -34,7 +23,6 @@
 			background-color: rgba(0,0,255,0.1);
 
 			label {
-				display: none;
 				.font--intertitle;
 				position: absolute;
 				top:0; right:0;
@@ -188,6 +176,39 @@
 						height: var(--vertical-spacing-small);
 					});
 				}
+			}
+		}
+	}
+
+	// ~> HIDDEN
+	&:not(.is-visible) {
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 300ms ease-out, visibility 0ms 300ms;
+
+		.guide {
+			opacity: 0;
+			transition-duration: 0ms;
+			transition-delay: 0ms!important;
+			transition: opacity 200ms ease-out;
+
+			.vertical-spacing {
+				height:0!important;
+			}
+		}
+	}
+
+	// ~> VISIBLE
+	&.is-visible {
+		opacity: 1;
+		visibility: visible;
+		transition-delay: 0ms;
+
+		.guide {
+			opacity: 1;
+			.vertical-spacing {
+				transition: 200ms ease-out;
+				transition-property: opacity, height;
 			}
 		}
 	}
