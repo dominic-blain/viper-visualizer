@@ -85,13 +85,15 @@ const ActionCreators = {
 		return (dispatch, getState) => {
 			const currentState = getState();
 			const guidesSetByUser = currentState.ui.guidesSetByUser;
-
-			if (!guidesSetByUser) {
-				if (tabName == 'variables' || tabName == 'modules') {
-					dispatch(ActionCreators.toggleGuides(false));
+			const currentTab = currentState.activeTab;
+			if (currentTab != tabName) {
+				if (!guidesSetByUser) {
+					if (tabName == 'variables' || tabName == 'modules') {
+						dispatch(ActionCreators.toggleGuides(false));
+					}
 				}
+				dispatch(ActionCreators.setActiveTab(tabName));
 			}
-			dispatch(ActionCreators.setActiveTab(tabName));
 		}
 	},
 	setActiveTab(tabName) {
