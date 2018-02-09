@@ -41,6 +41,13 @@ const ActionCreators = {
 			options: value
 		}
 	},
+	setHotkey(shortcutName, hot) {
+		return {
+			type: type.SET_HOTKEY,
+			shortcutName: shortcutName,
+			hot: hot,
+		}
+	},
 	setModuleList(value) {
 		return {
 			type: type.SET_MODULE_LIST,

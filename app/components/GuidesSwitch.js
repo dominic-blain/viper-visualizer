@@ -11,8 +11,13 @@ class GuidesSwitch extends React.Component {
 	}
 
 	render() {
+		// Basic state of the switch
 		const showGuides = this.props.showGuides;
-		var stateClass = (showGuides) ? 'is-on': 'is-off';
+		// Keyboard shortcut
+		const toggleGuides = this.props.shortcuts.toggleGuides;
+		// Actual display or not based on previous states
+		const displayGuides = (toggleGuides.hot) ? (!showGuides) : showGuides; 
+		var stateClass = (displayGuides) ? 'is-on' : 'is-off';
 
 		return (
 			<div id="guidesSwitch" className={stateClass} onClick={this.props.onClick}>

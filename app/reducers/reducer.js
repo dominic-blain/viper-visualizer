@@ -27,6 +27,14 @@ const initialState = {
 		buttonSaveState: '',
 		showGuides: true,
 		guidesSetByUser: false
+	},
+	shortcuts: {
+		toggleGuides: {
+			name: "toggleGuides",
+			label: "Toggle Guides",
+			keyValue: 'h',
+			hot: false
+		}
 	}
 };
 
@@ -93,6 +101,9 @@ const reducer = (state=initialState, action) => {
 					guidesSetByUser: {$set: action.userAction}
 				}
 			});
+			break;
+		case type.SET_HOTKEY:
+			return update(state, {shortcuts: {[action.shortcutName]: {hot: {$set: action.hot}}}});
 			break;
 		default:
 			return state;

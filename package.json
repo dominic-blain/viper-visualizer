@@ -17,6 +17,7 @@
     "firebase": "^4.9.0",
     "http-proxy": "^1.11.1",
     "immutability-helper": "^2.2.2",
+    "mousetrap": "^1.6.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-custom-properties": "^1.2.0",

@@ -12,6 +12,7 @@ import ModuleGrid from './ModuleGrid';
 class Article extends React.Component {
 	render() {
 		const showGuides = this.props.showGuides;
+		const shortcuts = this.props.shortcuts;
 		const options = this.props.options;
 		const optionGroups = this.props.optionGroups;
 		const modules = this.props.modules;
@@ -51,8 +52,8 @@ class Article extends React.Component {
 		return (
 			<CustomProperties properties={CSSVariables}>
 				<article id="page">
-					<GuidesSwitch showGuides={showGuides} onClick={this.props.onShowGuidesClick} />
-					<Guides options={options} optionGroups={optionGroups} showGuides={showGuides} />
+					<GuidesSwitch showGuides={showGuides} shortcuts={shortcuts} onClick={this.props.onShowGuidesClick} />
+					<Guides options={options} optionGroups={optionGroups} shortcuts={shortcuts} showGuides={showGuides} />
 					{renderModules}
 				</article>
 			</CustomProperties>
@@ -69,7 +70,8 @@ const mapStateToProps = (state) => ({
 	moduleList: state.moduleList,
 	options: state.options,
 	optionGroups: state.optionGroups,
-	showGuides: state.ui.showGuides
+	showGuides: state.ui.showGuides,
+	shortcuts: state.shortcuts
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

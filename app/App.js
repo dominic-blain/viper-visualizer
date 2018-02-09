@@ -8,6 +8,7 @@ import {version} from '../package.json';
 // Components
 import Toolbar from './components/Toolbar';
 import Article from './components/Article';
+import KeyHandler from './components/KeyHandler';
 
 class App extends React.Component {
 	componentWillMount() {
@@ -20,6 +21,7 @@ class App extends React.Component {
 			<div>
 				<Toolbar />
 				<Article />
+				<KeyHandler />
 				<div className="app-version">
 					<a target="_blank" href="https://github.com/dominic-blain/viper-visualizer">
 						{'v' + version}
