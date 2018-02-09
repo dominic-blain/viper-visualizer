@@ -47,9 +47,9 @@ class Toolbar extends React.Component {
 			groupsComponents.push(
 				<ToolbarGroup
 					key={groupName}
-					label={group.label}
-					options={optionsComponents}
-				/>
+					label={group.label}>
+					{optionsComponents}
+				</ToolbarGroup>
 			);
 		}
 
@@ -90,9 +90,9 @@ class Toolbar extends React.Component {
 			recipesComponents.push(
 				<ToolbarGroup
 					key={recipe.name}
-					label={recipe.label}
-					options={optionsComponents}
-				/>
+					label={recipe.label}>
+					{optionsComponents}
+				</ToolbarGroup>
 			);
 		});
 
@@ -151,8 +151,14 @@ class Toolbar extends React.Component {
 					key={moduleId}
 					title={module.title}
 					activeClass={tabItemActiveClass}>
-					{contentComponents}
-					{optionsComponents}
+					<ToolbarGroup
+						label="Content">
+						{contentComponents}
+					</ToolbarGroup>
+					<ToolbarGroup
+						label="Options">
+						{optionsComponents}
+					</ToolbarGroup>
 				</ToolbarModule>
 			);
 

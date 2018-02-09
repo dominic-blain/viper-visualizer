@@ -8,7 +8,7 @@ class ToolbarGroup extends React.Component {
 				<h2 className="toolbar-group-title">
 					{this.props.label}
 				</h2>
-				{this.props.options}
+				{this.props.children}
 			</section>
 		);
 	}

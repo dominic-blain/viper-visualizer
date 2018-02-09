@@ -9,9 +9,7 @@ class ToolbarModule extends React.Component {
 				<h2 className="toolbar-module-title">
 					{this.props.title}
 				</h2>
-				<div className="options-ctn">
-					{this.props.children}
-				</div>
+				{this.props.children}
 			</section>
 		);
 	}
