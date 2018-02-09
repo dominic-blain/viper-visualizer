@@ -1,0 +1,61 @@
+@toggleWidth: 28px;
+
+#guidesSwitch {
+	position: fixed;
+	z-index: 10;
+	top:14px; right: 14px;
+	width: @toggleWidth * 2; 
+	height: @toggleWidth;
+	border-radius: @toggleWidth;
+	background-color: @border;
+	border: 1px solid @border;
+	cursor: pointer;
+	transition: background-color 120ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+	label {
+		.font--intertitle;
+		display: block;
+		text-align: center;
+		margin-top: 6px;
+	}
+
+	.toggle {
+		width: @toggleWidth; height: @toggleWidth;
+		box-sizing: border-box;
+		border-radius: 100%;
+		background-color: white;
+		border: 2px solid @border;
+		position: relative;
+		transition: 120ms cubic-bezier(0.165, 0.84, 0.44, 1);
+		transition-property: border-color, transform;
+		&:after {
+			content:'';
+			position: absolute;
+			top:0; bottom:0; left:0; right:0;
+			border-radius: 100%;
+			transition: box-shadow 120ms cubic-bezier(0.165, 0.84, 0.44, 1);
+		}
+	}
+
+	// ~> IS ON
+	&.is-on {
+		background-color: @accent;
+		.toggle {
+			border-color: @accent;
+			&:after {
+				box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.3);
+			}
+			
+		}
+	}
+	// ~> IS OFF
+	&.is-off {
+		background-color: @border;
+		.toggle {
+			transform: translateX(100%);
+			&:after {
+				box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.2);
+			}
+		}
+	}
+}

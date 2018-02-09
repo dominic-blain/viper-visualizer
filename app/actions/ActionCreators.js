@@ -41,6 +41,13 @@ const ActionCreators = {
 			options: value
 		}
 	},
+	setHotkey(shortcutName, hot) {
+		return {
+			type: type.SET_HOTKEY,
+			shortcutName: shortcutName,
+			hot: hot,
+		}
+	},
 	setModuleList(value) {
 		return {
 			type: type.SET_MODULE_LIST,
@@ -74,9 +81,24 @@ const ActionCreators = {
 			});
 		}
 	},
-	updateTabs(tabName) {
+	changeTabs(tabName, guidesSetByUser) {
+		return (dispatch, getState) => {
+			const currentState = getState();
+			const guidesSetByUser = currentState.ui.guidesSetByUser;
+			const currentTab = currentState.activeTab;
+			if (currentTab != tabName) {
+				if (!guidesSetByUser) {
+					if (tabName == 'variables' || tabName == 'modules') {
+						dispatch(ActionCreators.toggleGuides(false));
+					}
+				}
+				dispatch(ActionCreators.setActiveTab(tabName));
+			}
+		}
+	},
+	setActiveTab(tabName) {
 		return {
-			type: type.UPDATE_TABS,
+			type: type.SET_ACTIVE_TAB,
 			tabName: tabName
 		}
 	},
@@ -95,18 +117,30 @@ const ActionCreators = {
 	loadProject() {
 		return dispatch => {
 			const projectID = util.getParam('project');
-			database.ref('/projects/' + projectID).once('value', data => {
+			const projectOptionsRef = database.ref('/projects/' + projectID + '/options/');
+			const projectModuleListRef = database.ref('/projects/' + projectID + '/moduleList/');
+			var options = null;
+			var moduleList = null;
+
+			projectOptionsRef.once('value', data => {
 				const value = data.val();
 				if (value) {
-					dispatch(ActionCreators.setProject(value));
+					options = value;
 				}
 			});
+			projectModuleListRef.orderByChild('order').once('value', data => {
+				const value = data.val();
+				if (value) {
+					moduleList = value;
+				}
+			});
+			if (options || moduleList) {
+				dispatch(ActionCreators.setProject(options, moduleList));
+			}
 		}
 	},
-	setProject(value) {
+	setProject(options, moduleList) {
 		return dispatch => {
-			const options = value.options;
-			const moduleList = value.moduleList;
 
 			for (var optionKey in options) {
 				const option = options[optionKey];
@@ -180,6 +214,12 @@ const ActionCreators = {
 				status: 'saved',
 				id: id
 			}
+		}
+	},
+	toggleGuides(userAction) {
+		return {
+			type: type.TOGGLE_GUIDES,
+			userAction: userAction
 		}
 	}
 };

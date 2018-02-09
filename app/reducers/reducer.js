@@ -24,7 +24,17 @@ const initialState = {
 		status: "new",
 	},
 	ui: {
-		buttonSaveState: ''
+		buttonSaveState: '',
+		showGuides: true,
+		guidesSetByUser: false
+	},
+	shortcuts: {
+		toggleGuides: {
+			name: "toggleGuides",
+			label: "Toggle Guides",
+			keyValue: 'h',
+			hot: false
+		}
 	}
 };
 
@@ -64,7 +74,7 @@ const reducer = (state=initialState, action) => {
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
 			break;
-		case type.UPDATE_TABS:
+		case type.SET_ACTIVE_TAB:
 			return update(state, {activeTab: {$set:action.tabName}});
 			break;
 		case type.SAVE_OPTIONS:
@@ -83,6 +93,17 @@ const reducer = (state=initialState, action) => {
 			break;
 		case type.SAVE_OPTIONS_ERROR:
 			return update(state, {ui: {buttonSaveState: {$set:action.buttonSaveState}}});
+			break;
+		case type.TOGGLE_GUIDES:
+			return update(state, {
+				ui: {
+					showGuides: {$apply: x => {return !x;} },
+					guidesSetByUser: {$set: action.userAction}
+				}
+			});
+			break;
+		case type.SET_HOTKEY:
+			return update(state, {shortcuts: {[action.shortcutName]: {hot: {$set: action.hot}}}});
 			break;
 		default:
 			return state;

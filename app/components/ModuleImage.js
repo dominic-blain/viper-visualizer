@@ -12,9 +12,9 @@ class ModuleImage extends React.Component {
 		return (
 			<section className={computedModuleClass}>
 				<figure>
-					<img src={this.props.content.image} />
+					<img src={content.image} />
 					<figcaption>
-						{this.props.content.caption}
+						{content.caption}
 					</figcaption>
 				</figure>
 			</section>

@@ -1,5 +1,5 @@
-var OPTION_GROUPS = [
-	{
+var OPTION_GROUPS = {
+	"widths": {
 		"label": "Widths",
 		"options": [
 			"width-fullscreen",
@@ -11,7 +11,7 @@ var OPTION_GROUPS = [
 			"width-extra-narrow"
 		]
 	},
-	{
+	"gutters": {
 		"label": "Gutters",
 		"options": [
 			"gutter-big",
@@ -19,7 +19,7 @@ var OPTION_GROUPS = [
 			"gutter-small"
 		]
 	},
-	{
+	"verticalSpacings": {
 		"label": "Vertical spacing",
 		"options": [
 			"vertical-spacing-big",
@@ -27,7 +27,7 @@ var OPTION_GROUPS = [
 			"vertical-spacing-small"
 		]
 	}
-];
+};
 	// ,
 	// "fonts": {
 	// 	"label": "Fonts",

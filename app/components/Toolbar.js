@@ -22,7 +22,8 @@ class Toolbar extends React.Component {
 		var groupsComponents = [];
 
 		// For each group...
-		optionGroups.map((group, index) => {
+		for (var groupName in optionGroups) {
+			const group = optionGroups[groupName];
 			var optionsComponents = [];
 
 			// Generate options component list
@@ -42,12 +43,12 @@ class Toolbar extends React.Component {
 			// Add this group to groups component list
 			groupsComponents.push(
 				<ToolbarGroup
-					key={index}
+					key={groupName}
 					label={group.label}
 					options={optionsComponents}
 				/>
 			);
-		});
+		}
 
 		// TAB: Text recipes
 		const typography = this.props.typography;
@@ -211,7 +212,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
 	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
 	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
-	onTabButtonClick: (tabName) => dispatch(ActionCreators.updateTabs(tabName)),
+	onTabButtonClick: (tabName) => dispatch(ActionCreators.changeTabs(tabName)),
 	onButtonSaveClick: () => dispatch(ActionCreators.saveProject())
 });
 
