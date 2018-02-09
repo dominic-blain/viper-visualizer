@@ -10,6 +10,7 @@ import update from 'immutability-helper';
 
 const initialState = {
 	activeTab: OPTION_TABS[0].name,
+	activeTabItem: '',
 	optionTabs: OPTION_TABS,
 	optionGroups: OPTION_GROUPS,
 	options: OPTIONS,
@@ -76,6 +77,9 @@ const reducer = (state=initialState, action) => {
 			break;
 		case type.SET_ACTIVE_TAB:
 			return update(state, {activeTab: {$set:action.tabName}});
+			break;
+		case type.SET_ACTIVE_TAB_ITEM:
+			return update(state, {activeTabItem: {$set:action.itemName}});
 			break;
 		case type.SAVE_OPTIONS:
 			return state;

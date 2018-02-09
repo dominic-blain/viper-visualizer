@@ -81,7 +81,7 @@ const ActionCreators = {
 			});
 		}
 	},
-	changeTabs(tabName, guidesSetByUser) {
+	changeTab(tabName) {
 		return (dispatch, getState) => {
 			const currentState = getState();
 			const guidesSetByUser = currentState.ui.guidesSetByUser;
@@ -94,12 +94,25 @@ const ActionCreators = {
 				}
 				dispatch(ActionCreators.setActiveTab(tabName));
 			}
+			dispatch(ActionCreators.setActiveTabItem(''));
 		}
 	},
 	setActiveTab(tabName) {
 		return {
 			type: type.SET_ACTIVE_TAB,
 			tabName: tabName
+		}
+	},
+	changeTabItem(itemName) {
+		return (dispatch, getState) => {
+			// Scroll to anchor?
+			dispatch(ActionCreators.setActiveTabItem(itemName));
+		}
+	},
+	setActiveTabItem(itemName) {
+		return {
+			type: type.SET_ACTIVE_TAB_ITEM,
+			itemName: itemName
 		}
 	},
 	loadFont(font, optionName, file) {

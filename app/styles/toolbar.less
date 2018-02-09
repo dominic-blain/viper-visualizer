@@ -133,6 +133,47 @@
 		}
 	}
 
+	.toolbar-tab-list {
+		min-height: 100%;
+		.buttons-ctn {
+			button {
+				.font--title;
+				color: @black;
+				background-color: white;
+				display: block;
+				width: 100%;
+				text-align: left;
+				padding: 20px 30px;
+				border-bottom: 1px solid @border;
+				cursor: pointer;
+			}
+		}
+		.items-ctn {
+			min-height: 100%;
+			position: absolute;
+			top:0; left:0; right:0;
+			z-index: 1;
+			transform: translateX(100%);
+
+			.toolbar-module {
+				min-height: 100%;
+				background-color: white;
+				position: absolute;
+				top:0; left:0; right:0;
+				visibility: hidden;
+				opacity: 0;
+				transition: transform 90ms ease-out, opacity 90ms ease-out, visibility 0ms 90ms;
+
+				&.is-active {
+					opacity: 1;
+					visibility: visible;
+					transform: translateX(-100%);
+					transition-delay: 0ms;
+				}
+			}
+		}
+	}
+
 	.toolbar-group,
 	.toolbar-module {
 		padding: 24px 30px 6px 30px;
@@ -147,6 +188,25 @@
 		}
 		.toolbar-option-label {
 			.font--intertitle;
+		}
+	}
+
+	.toolbar-module {
+		padding: 0;
+		.toolbar-module-title {
+			.font--title-big;
+			margin-bottom: 0;
+			color: @accent;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 30px;
+			min-height: 60px;
+			text-align: center;
+			background-color: @background;
+		}
+		.options-ctn {
+			padding: 24px 30px 6px 30px;
 		}
 	}
 

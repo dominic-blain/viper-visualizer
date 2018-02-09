@@ -6,6 +6,7 @@ export const SET_MODULE_LIST = 'set module list';
 export const UPDATE_FONT_LIST = 'update font list';
 export const GET_FONT_LIST = 'get font list';
 export const SET_ACTIVE_TAB = 'set active tab';
+export const SET_ACTIVE_TAB_ITEM = 'set active tab item';
 export const SAVE_OPTIONS_START = 'save options start';
 export const SAVE_OPTIONS_SUCCESS = 'save options success';
 export const SAVE_OPTIONS_ERROR = 'save options error';

@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import ActionCreators from '../actions/ActionCreators';
 import ToolbarTabButton from './ToolbarTabButton';
 import ToolbarTabContent from './ToolbarTabContent';
+import ToolbarTabList from './ToolbarTabList';
+import ToolbarListButton from './ToolbarListButton';
 import ToolbarGroup from './ToolbarGroup';
 import ToolbarOption from './ToolbarOption';
 import ToolbarModule from './ToolbarModule';
@@ -10,11 +12,12 @@ import ButtonSave from './ButtonSave';
 
 class Toolbar extends React.Component {
 	render() {
-		var tabActiveClass = {
+		const tabActiveClass = {
 			variables: this.props.activeTab == "variables" ? 'is-active' : '',
 			typography: this.props.activeTab == "typography" ? 'is-active' : '',
 			modules: this.props.activeTab == "modules" ? 'is-active' : ''
 		};
+		const activeTabItem = this.props.activeTabItem;
 
 		// TAB: Variables
 		const optionGroups = this.props.optionGroups;
@@ -97,7 +100,8 @@ class Toolbar extends React.Component {
 		const modules = this.props.modules;
 		const moduleList = this.props.moduleList;
 		const moduleOptions = this.props.moduleOptions;
-		var moduleListComponents = [];
+		var moduleListButtonsComponents = [];
+		var moduleListItemsComponents = [];
 
 		// For each module...
 		for (var moduleId in moduleList) {
@@ -139,14 +143,26 @@ class Toolbar extends React.Component {
 				);
 			};
 
-			// Add this module to modules components list
-			moduleListComponents.push(
+			var tabItemActiveClass = (activeTabItem == moduleId) ? 'is-active' : '';
+
+			// Add this module to modules items components list
+			moduleListItemsComponents.push(
 				<ToolbarModule
 					key={moduleId}
-					title={module.title}>
+					title={module.title}
+					activeClass={tabItemActiveClass}>
 					{contentComponents}
 					{optionsComponents}
 				</ToolbarModule>
+			);
+
+			moduleListButtonsComponents.push(
+				<ToolbarListButton
+					key={moduleId}
+					id={moduleId}
+					title={module.title}
+					onClick={this.props.onTabListButtonClick}>
+				</ToolbarListButton>
 			);
 		};
 
@@ -191,7 +207,9 @@ class Toolbar extends React.Component {
 						<ToolbarTabContent
 							name="modules"
 							activeClass={tabActiveClass.modules}>
-							{moduleListComponents}
+							<ToolbarTabList items={moduleListItemsComponents}>
+								{moduleListButtonsComponents}
+							</ToolbarTabList>
 						</ToolbarTabContent>
 					</main>
 					<footer className="toolbar-buttons">
@@ -212,12 +230,14 @@ const mapDispatchToProps = (dispatch) => ({
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
 	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
 	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
-	onTabButtonClick: (tabName) => dispatch(ActionCreators.changeTabs(tabName)),
+	onTabButtonClick: (tabName) => dispatch(ActionCreators.changeTab(tabName)),
+	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName)),
 	onButtonSaveClick: () => dispatch(ActionCreators.saveProject())
 });
 
 const mapStateToProps = (state) => ({
 	activeTab: state.activeTab,
+	activeTabItem: state.activeTabItem,
 	optionTabs: state.optionTabs,
 	optionGroups: state.optionGroups,
 	options: state.options,
