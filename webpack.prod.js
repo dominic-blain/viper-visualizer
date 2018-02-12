@@ -14,7 +14,4 @@ module.exports = Merge(common, {
 			}
 		}),
 	]
-	// output: {
-	// 	filename: 'bundle.[hash].js',
-	// }
 });

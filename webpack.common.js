@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = {
 
 	entry: {
+		reactHot: 'react-hot-loader/patch',
 		app: mainPath
 	},
 	plugins: [
