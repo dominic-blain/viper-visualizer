@@ -2,15 +2,14 @@ var Webpack = require('webpack');
 var path = require('path');
 var nodeModulesPath = path.resolve(__dirname, 'node_modules');
 var buildPath = path.resolve(__dirname, 'dist');
-var mainPath = path.resolve(__dirname, 'src', 'App.js');
+var mainPath = path.resolve(__dirname, 'src', 'index.js');
 const CleanWebPackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
 
 	entry: {
-		reactHot: 'react-hot-loader/patch',
-		app: mainPath
+		app: ['react-hot-loader/patch', mainPath]
 	},
 	plugins: [
 		// Clears the build folder (dist) before each build
@@ -26,7 +25,8 @@ var config = {
 	],
 	output: {
 		filename: '[name].bundle.[hash].js',
-		path: buildPath
+		path: buildPath,
+		publicPath: '/'
 	},
 	module: {
 		rules: [

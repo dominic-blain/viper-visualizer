@@ -4,7 +4,7 @@ var path = require('path');
 var buildPath = path.resolve(__dirname, 'dist');
 
 module.exports = Merge(common, {
-	devtool: 'inline-source-map',
+	devtool: 'eval',
 	devServer: {
 		contentBase: buildPath,
 		hot: true
