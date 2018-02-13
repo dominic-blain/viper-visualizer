@@ -1,15 +1,15 @@
 // FONTS FUNCTION
 // ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
-// #font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
-// 	font-family: @font-family;
-// 	src: local('?'),
-// 		url("/fonts/@{font-filename}.woff") format('woff');
-// 	font-weight: @font-weight;
-// 	font-style: @font-style;
-// }
+#font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
+	font-family: @font-family;
+	src: local('?'),
+		url("../fonts/@{font-filename}.woff") format('woff');
+	font-weight: @font-weight;
+	font-style: @font-style;
+}
 
 // Vars
-// body { #font-face('Wigrum', 'wigrum-light', 300); }
+body { #font-face('Wigrum', 'wigrum-light', 300); }
 
 @line-height-tightest: 1.1em;
 
@@ -21,48 +21,48 @@
 
 // Recipes
 .font--title-big {
-	// font-family: Wigrum;
-	font-family: Helvetica, Arial;
+	font-family: Wigrum;
+	// font-family: Helvetica, Arial;
 	font-size: @font-tallest;
 	line-height: @line-height-tightest;
 	font-weight: 300;
 }
 
 .font--title {
-	// font-family: Wigrum;
-	font-family: Helvetica, Arial;
+	font-family: Wigrum;
+	// font-family: Helvetica, Arial;
 	font-size: @font-taller;
 	line-height: @line-height-tightest;
 	font-weight: 300;
 }
 
 .font--button {
-	// font-family: Wigrum;
-	font-family: Helvetica, Arial;
+	font-family: Wigrum;
+	// font-family: Helvetica, Arial;
 	font-size: @font-tall;
 	line-height: @line-height-tightest;
 	font-weight: 300;
 }
 
 .font--text {
-	// font-family: Wigrum;
-	font-family: Helvetica, Arial;
+	font-family: Wigrum;
+	// font-family: Helvetica, Arial;
 	font-size: @font-current;
 	line-height: @line-height-tightest;
 	font-weight: 300;
 }
 
 .font--text-small {
-	// font-family: Wigrum;
-	font-family: Helvetica, Arial;
+	font-family: Wigrum;
+	// font-family: Helvetica, Arial;
 	font-size: @font-short;
 	line-height: @line-height-tightest;
 	font-weight: 300;
 }
 
 .font--intertitle {
-	// font-family: Wigrum;
-	font-family: Helvetica, Arial;
+	font-family: Wigrum;
+	// font-family: Helvetica, Arial;
 	font-size: @font-short;
 	line-height: @line-height-tightest;
 	font-weight: 300;
