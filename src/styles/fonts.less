@@ -2,14 +2,13 @@
 // ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
 #font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
 	font-family: @font-family;
-	src: local('?'),
-		url("../fonts/@{font-filename}.woff") format('woff');
+	src: url("../fonts/@{font-filename}.woff") format('woff');
 	font-weight: @font-weight;
 	font-style: @font-style;
 }
 
 // Vars
-body { #font-face('Wigrum', 'wigrum-light', 300); }
+@font-face { #font-face('Wigrum', 'wigrum-light', 300); }
 
 @line-height-tightest: 1.1em;
 
