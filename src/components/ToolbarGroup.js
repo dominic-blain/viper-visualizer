@@ -1,5 +1,4 @@
 import React from 'react';
-import ToolbarOption from './ToolbarOption';
 
 class ToolbarGroup extends React.Component {
 	render() {

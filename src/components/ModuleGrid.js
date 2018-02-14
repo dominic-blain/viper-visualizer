@@ -1,25 +1,25 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { computeModuleClass } from '../utils';
-import Image from './image';
+import ItemMarkdown from './ItemMarkdown';
+import ItemText from './ItemText';
+import ItemImage from './ItemImage';
 
 class ModuleGrid extends React.Component {
 	render() {
 		const module = this.props.module;
 		const options = this.props.options;
-		const content = this.props.content;
-		const items = content.items;
+		const items = this.props.items;
 		const itemTypes = {
-			Text:Text,
-			Image: Image
+			ItemMarkdown:ItemMarkdown,
+			ItemText:ItemText,
+			ItemImage:ItemImage,
 		}
 		var renderItems = [];
 
-		// For each items..
-		for (var itemId in items) {
-			const item = items[itemId];
+		// For each items...
+		items.map(item => {
 			const ItemComponent = itemTypes[item.type];
-
 			// Add corresponding component to list
 			renderItems.push(
 				<div className="grid-item">
@@ -28,7 +28,7 @@ class ModuleGrid extends React.Component {
 					/>
 				</div>
 			);
-		}
+		});
 
 		var computedModuleClass = computeModuleClass('module-grid', module.options, options);
 

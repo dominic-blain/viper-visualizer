@@ -4,8 +4,9 @@ import ToolbarInputFont from './ToolbarInputFont';
 import ToolbarInputDropdown from './ToolbarInputDropdown';
 import ToolbarInputLine from './ToolbarInputLine';
 import ToolbarInputTextarea from './ToolbarInputTextarea';
+import ToolbarInputList from './ToolbarInputList';
 
-class ToolbarOption extends React.Component {
+class ToolbarInput extends React.Component {
 	render() {
 		var input;
 		switch(this.props.data.type) {
@@ -49,12 +50,22 @@ class ToolbarOption extends React.Component {
 					<ToolbarInputTextarea
 						name={this.props.name}
 						label={this.props.data.label}
-						value={this.props.value}
+						list={this.props.data.list}
 						moduleId={this.props.moduleId}
 						onOptionChange={this.props.onOptionChange}
 					/>
 				);
 				break;
+			case "list":
+				input = (
+					<ToolbarInputList
+						name={this.props.name}
+						label={this.props.data.label}
+						items={this.props.data.list}
+						moduleId={this.props.moduleId}
+						onOptionChange={this.props.onOptionChange}
+					/>
+				);
 			case "font":
 				input = (
 					<ToolbarInputFont
@@ -82,4 +93,4 @@ class ToolbarOption extends React.Component {
 	}
 };
 
-export default ToolbarOption;
+export default ToolbarInput;

@@ -6,8 +6,9 @@ import ToolbarTabContent from './ToolbarTabContent';
 import ToolbarTabList from './ToolbarTabList';
 import ToolbarListButton from './ToolbarListButton';
 import ToolbarGroup from './ToolbarGroup';
-import ToolbarOption from './ToolbarOption';
+import ToolbarInput from './ToolbarInput';
 import ToolbarModule from './ToolbarModule';
+import TabModules from './TabModules';
 import ButtonSave from './ButtonSave';
 
 class Toolbar extends React.Component {
@@ -16,6 +17,11 @@ class Toolbar extends React.Component {
 			variables: this.props.activeTab == "variables" ? 'is-active' : '',
 			typography: this.props.activeTab == "typography" ? 'is-active' : '',
 			modules: this.props.activeTab == "modules" ? 'is-active' : ''
+		};
+		const activeTab = {
+			variables: this.props.activeTab == "variables",
+			typography: this.props.activeTab == "typography",
+			modules: this.props.activeTab == "modules"
 		};
 		const activeTabItem = this.props.activeTabItem;
 
@@ -33,7 +39,7 @@ class Toolbar extends React.Component {
 			group.options.map(optionName => {
 				const optionObject = options[optionName];
 				optionsComponents.push(
-					<ToolbarOption
+					<ToolbarInput
 						key={optionName}
 						data={optionObject}
 						fontList={this.props.fonts}
@@ -65,7 +71,7 @@ class Toolbar extends React.Component {
 
 			// Add font family option
 			optionsComponents.push(
-				<ToolbarOption
+				<ToolbarInput
 					key={recipe.font}
 					data={optionFontFamily}
 					fontList={this.props.fonts}
@@ -76,7 +82,7 @@ class Toolbar extends React.Component {
 			);
 			// Add font size option
 			optionsComponents.push(
-				<ToolbarOption
+				<ToolbarInput
 					key={recipe.size}
 					data={optionFontSize}
 					fontList={this.props.fonts}
@@ -95,82 +101,6 @@ class Toolbar extends React.Component {
 				</ToolbarGroup>
 			);
 		});
-
-		// TAB: Modules list
-		const modules = this.props.modules;
-		const moduleList = this.props.moduleList;
-		const moduleOptions = this.props.moduleOptions;
-		var moduleListButtonsComponents = [];
-		var moduleListItemsComponents = [];
-
-		// For each module...
-		for (var moduleId in moduleList) {
-			const module = moduleList[moduleId];
-			var optionsComponents = [];
-			var contentComponents = [];
-
-			// For each options...
-			modules[module.type].options.map(optionName => {
-				const optionObject = moduleOptions[optionName];
-				const optionValue = module.options[optionName];
-				// Add this option to options components list
-				optionsComponents.push(
-					<ToolbarOption
-						key={optionName}
-						data={optionObject}
-						value={optionValue}
-						name={optionName}
-						moduleId={moduleId}
-						onOptionChange={this.props.onModuleOptionChange}
-					/>
-				);
-			});
-			// For each content...
-			const moduleContent = modules[module.type].content;
-			for (var contentName in moduleContent) {
-				const contentObject = moduleContent[contentName];
-				const contentValue = module.content[contentName];
-				// Add this content to content components list
-				contentComponents.push(
-					<ToolbarOption
-						key={contentName}
-						data={contentObject}
-						value={contentValue}
-						name={contentName}
-						moduleId={moduleId}
-						onOptionChange={this.props.onModuleContentChange}
-					/>
-				);
-			};
-
-			var tabItemActiveClass = (activeTabItem == moduleId) ? 'is-active' : '';
-
-			// Add this module to modules items components list
-			moduleListItemsComponents.push(
-				<ToolbarModule
-					key={moduleId}
-					title={module.title}
-					activeClass={tabItemActiveClass}>
-					<ToolbarGroup
-						label="Content">
-						{contentComponents}
-					</ToolbarGroup>
-					<ToolbarGroup
-						label="Options">
-						{optionsComponents}
-					</ToolbarGroup>
-				</ToolbarModule>
-			);
-
-			moduleListButtonsComponents.push(
-				<ToolbarListButton
-					key={moduleId}
-					id={moduleId}
-					title={module.title}
-					onClick={this.props.onTabListButtonClick}>
-				</ToolbarListButton>
-			);
-		};
 
 		return (
 			<aside className="toolbar-zone">
@@ -210,13 +140,7 @@ class Toolbar extends React.Component {
 							activeClass={tabActiveClass.typography}>
 							{recipesComponents}
 						</ToolbarTabContent>
-						<ToolbarTabContent
-							name="modules"
-							activeClass={tabActiveClass.modules}>
-							<ToolbarTabList items={moduleListItemsComponents}>
-								{moduleListButtonsComponents}
-							</ToolbarTabList>
-						</ToolbarTabContent>
+						<TabModules isActive={activeTab.modules}/>
 					</main>
 					<footer className="toolbar-buttons">
 						<ButtonSave

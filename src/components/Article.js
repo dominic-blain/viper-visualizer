@@ -4,7 +4,7 @@ import ActionCreators from '../actions/ActionCreators';
 import CustomProperties from 'react-custom-properties';
 import Guides from './Guides';
 import GuidesSwitch from './GuidesSwitch';
-import ModuleText from './ModuleText';
+import ModuleMarkdown from './ModuleMarkdown';
 import ModuleImage from './ModuleImage';
 import ModuleGrid from './ModuleGrid';
 
@@ -18,10 +18,12 @@ class Article extends React.Component {
 		const modules = this.props.modules;
 		const moduleList = this.props.moduleList;
 		const moduleTypes = {
-			ModuleText: ModuleText,
+			ModuleMarkdown: ModuleMarkdown,
 			ModuleImage: ModuleImage,
 			ModuleGrid: ModuleGrid
 		}
+		const items = this.props.items;
+		const itemList = this.props.itemList;
 		var renderModules = [];
 		var CSSVariables = {};
 
@@ -29,11 +31,17 @@ class Article extends React.Component {
 		for (var moduleId in moduleList) {
 			const module = moduleList[moduleId];
 			const ModuleComponent = moduleTypes[module.type];
+			const items = [];
+
+			module.items.map(itemId => {
+				const item = itemList[itemId];
+				items.push(item);
+			});
 
 			// Add corresponding component to list
 			renderModules.push(
 				<ModuleComponent
-					content={module.content}
+					items={items}
 					options={module.options}
 					module={modules[module.type]}
 				/>
@@ -68,6 +76,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
 	modules: state.modules,
 	moduleList: state.moduleList,
+	items: state.items,
+	itemList: state.itemList,
 	options: state.options,
 	optionGroups: state.optionGroups,
 	showGuides: state.ui.showGuides,

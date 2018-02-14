@@ -193,6 +193,16 @@ const MODULE_OPTIONS = {
 			}
 		]
 	},
+	"column-span": {
+		"label": "Column span",
+		"type": "range",
+		"value": 1,
+		"unit": "col",
+		"range": {
+			"min": 1,
+			"max": 6
+		}
+	},
 	"vertical-gutter": {
 		"label": "Vertical Gutter",
 		"type": "dropdown",
