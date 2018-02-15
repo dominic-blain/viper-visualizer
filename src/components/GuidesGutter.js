@@ -2,11 +2,11 @@ import React from 'react';
 
 class GuidesGutter extends React.Component {
 	render() {
-		const options = this.props.options;
+		const tokens = this.props.tokens;
 		var guides = [];
 
-		options.map(optionName => {
-			var computedClass = 'guide '+ optionName;
+		tokens.map(tokenName => {
+			var computedClass = 'guide '+ tokenName;
 			guides.push(
 				<div className={computedClass}>
 					<div className="gutter gutter-left" />

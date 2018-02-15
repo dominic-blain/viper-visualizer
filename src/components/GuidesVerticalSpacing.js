@@ -2,11 +2,11 @@ import React from 'react';
 
 class GuidesVerticalSpacing extends React.Component {
 	render() {
-		const options = this.props.options;
+		const tokens = this.props.tokens;
 		var guides = [];
 
-		options.map((optionName, index) => {
-			const computedClass = 'guide '+ optionName;
+		tokens.map((tokenName, index) => {
+			const computedClass = 'guide '+ tokenName;
 			guides.push(
 				<div className={computedClass}>
 					<div className="vertical-spacing vertical-spacing-top" />

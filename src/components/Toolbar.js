@@ -13,94 +13,89 @@ import ButtonSave from './ButtonSave';
 
 class Toolbar extends React.Component {
 	render() {
-		const tabActiveClass = {
-			variables: this.props.activeTab == "variables" ? 'is-active' : '',
-			typography: this.props.activeTab == "typography" ? 'is-active' : '',
-			modules: this.props.activeTab == "modules" ? 'is-active' : ''
-		};
 		const activeTab = {
-			variables: this.props.activeTab == "variables",
+			tokens: this.props.activeTab == "tokens",
 			typography: this.props.activeTab == "typography",
 			modules: this.props.activeTab == "modules"
 		};
 		const activeTabItem = this.props.activeTabItem;
 
 		// TAB: Variables
-		const optionGroups = this.props.optionGroups;
-		const options = this.props.options;
-		var groupsComponents = [];
+		// const optionGroups = this.props.optionGroups;
+		// const options = this.props.options;
+		// var groupsComponents = [];
 
-		// For each group...
-		for (var groupName in optionGroups) {
-			const group = optionGroups[groupName];
-			var optionsComponents = [];
+		// // For each group...
+		// for (var groupName in optionGroups) {
+		// 	const group = optionGroups[groupName];
+		// 	var optionsComponents = [];
 
-			// Generate options component list
-			group.options.map(optionName => {
-				const optionObject = options[optionName];
-				optionsComponents.push(
-					<ToolbarInput
-						key={optionName}
-						data={optionObject}
-						fontList={this.props.fonts}
-						name={optionName}
-						onOptionChange={this.props.onOptionChange}
-						onFontOptionChange={this.props.onFontOptionChange}
-					/>
-				);
-			});
-			// Add this group to groups component list
-			groupsComponents.push(
-				<ToolbarGroup
-					key={groupName}
-					label={group.label}>
-					{optionsComponents}
-				</ToolbarGroup>
-			);
-		}
+		// 	// Generate options component list
+		// 	group.options.map(optionName => {
+		// 		const optionObject = options[optionName];
+		// 		optionsComponents.push(
+		// 			<ToolbarInput
+		// 				key={optionName}
+		// 				data={optionObject}
+		// 				fontList={this.props.fonts}
+		// 				name={optionName}
+		// 				onOptionChange={this.props.onOptionChange}
+		// 				onFontOptionChange={this.props.onFontOptionChange}
+		// 			/>
+		// 		);
+		// 	});
+		// 	// Add this group to groups component list
+		// 	groupsComponents.push(
+		// 		<ToolbarGroup
+		// 			key={groupName}
+		// 			label={group.label}>
+		// 			{optionsComponents}
+		// 		</ToolbarGroup>
+		// 	);
+		// }
 
 		// TAB: Text recipes
-		const typography = this.props.typography;
-		var recipesComponents = [];
+		// const typography = this.props.typography;
+		// var recipesComponents = [];
 
-		// For each recipe...
-		typography.map(recipe => {
-			const optionFontFamily = options[recipe.font];
-			const optionFontSize = options[recipe.size];
-			var optionsComponents = [];
+		// // For each recipe...
+		// typography.map(recipe => {
+		// 	const optionFontFamily = options[recipe.font];
+		// 	const optionFontSize = options[recipe.size];
+		// 	var optionsComponents = [];
 
-			// Add font family option
-			optionsComponents.push(
-				<ToolbarInput
-					key={recipe.font}
-					data={optionFontFamily}
-					fontList={this.props.fonts}
-					name={recipe.font}
-					onOptionChange={this.props.onOptionChange}
-					onFontOptionChange={this.props.onFontOptionChange}
-				/>
-			);
-			// Add font size option
-			optionsComponents.push(
-				<ToolbarInput
-					key={recipe.size}
-					data={optionFontSize}
-					fontList={this.props.fonts}
-					name={recipe.size}
-					onOptionChange={this.props.onOptionChange}
-					onFontOptionChange={this.props.onFontOptionChange}
-				/>
-			);
+		// 	// Add font family option
+		// 	optionsComponents.push(
+		// 		<ToolbarInput
+		// 			key={recipe.font}
+		// 			data={optionFontFamily}
+		// 			fontList={this.props.fonts}
+		// 			name={recipe.font}
+		// 			onOptionChange={this.props.onOptionChange}
+		// 			onFontOptionChange={this.props.onFontOptionChange}
+		// 		/>
+		// 	);
+		// 	// Add font size option
+		// 	optionsComponents.push(
+		// 		<ToolbarInput
+		// 			key={recipe.size}
+		// 			data={optionFontSize}
+		// 			fontList={this.props.fonts}
+		// 			name={recipe.size}
+		// 			onOptionChange={this.props.onOptionChange}
+		// 			onFontOptionChange={this.props.onFontOptionChange}
+		// 		/>
+		// 	);
 
-			// Add this recipe to recipes list
-			recipesComponents.push(
-				<ToolbarGroup
-					key={recipe.name}
-					label={recipe.label}>
-					{optionsComponents}
-				</ToolbarGroup>
-			);
-		});
+		// 	// Add this recipe to recipes list
+		// 	recipesComponents.push(
+		// 		<ToolbarGroup
+		// 			key={recipe.name}
+		// 			label={recipe.label}>
+		// 			{optionsComponents}
+		// 		</ToolbarGroup>
+		// 	);
+		// });
 
 		return (
 			<aside className="toolbar-zone">
@@ -108,29 +103,29 @@ class Toolbar extends React.Component {
 					<nav className="toolbar-tabs">
 						<div className="toolbar-scroll">
 							<div className="toolbar-tabs-wrapper">
-								<ToolbarTabButton
+								{/*<ToolbarTabButton
 									name="variables"
 									label="Variables"
 									activeClass={tabActiveClass.variables}
 									onClick={this.props.onTabButtonClick}
-								/>
-								<ToolbarTabButton
+								/>*/}
+								{/*<ToolbarTabButton
 									name="typography"
 									label="Typography"
 									activeClass={tabActiveClass.typography}
 									onClick={this.props.onTabButtonClick}
-								/>
+								/>*/}
 								<ToolbarTabButton
 									name="modules"
 									label="Modules"
-									activeClass={tabActiveClass.modules}
+									isActive={activeTab.modules}
 									onClick={this.props.onTabButtonClick}
 								/>
 							</div>
 						</div>
 					</nav>
 					<main className="toolbar-content">
-						<ToolbarTabContent
+						{/*<ToolbarTabContent
 							name="variables"
 							activeClass={tabActiveClass.variables}>
 							{groupsComponents}
@@ -139,7 +134,7 @@ class Toolbar extends React.Component {
 							name="typography"
 							activeClass={tabActiveClass.typography}>
 							{recipesComponents}
-						</ToolbarTabContent>
+						</ToolbarTabContent>*/}
 						<TabModules isActive={activeTab.modules}/>
 					</main>
 					<footer className="toolbar-buttons">
@@ -161,20 +156,18 @@ const mapDispatchToProps = (dispatch) => ({
 	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
 	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
 	onTabButtonClick: (tabName) => dispatch(ActionCreators.changeTab(tabName)),
-	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName)),
 	onButtonSaveClick: () => dispatch(ActionCreators.saveProject())
 });
 
 const mapStateToProps = (state) => ({
 	activeTab: state.activeTab,
 	activeTabItem: state.activeTabItem,
-	optionTabs: state.optionTabs,
-	optionGroups: state.optionGroups,
-	options: state.options,
+	tokensGroups: state.tokensGroups,
+	tokens: state.tokens,
+	modulesSchema: state.modulesSchema,
 	modules: state.modules,
-	moduleOptions: state.moduleOptions,
-	moduleList: state.moduleList,
-	typography: state.typography,
+	options: state.options,
+	fontRecipes: state.fontRecipes,
 	fonts: state.fonts,
 	buttonSaveState: state.ui.buttonSaveState
 });

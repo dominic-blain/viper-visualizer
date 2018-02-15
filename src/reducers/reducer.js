@@ -1,28 +1,26 @@
-import OPTION_TABS from '../data/optionTabs';
-import OPTION_GROUPS from '../data/optionGroups';
-import OPTIONS from '../data/options';
+import TOKENS_GROUPS from '../data/tokensGroups';
+import TOKENS from '../data/tokens';
+import FONTS_RECIPES from '../data/fontsRecipes';
+import MODULES_SCHEMA from '../data/modulesSchema';
 import MODULES from '../data/modules';
-import MODULE_LIST from '../data/moduleList';
-import MODULE_OPTIONS from '../data/moduleOptions';
+import ITEMS_SCHEMA from '../data/itemsSchema';
 import ITEMS from '../data/items';
-import ITEM_LIST from '../data/itemList';
-import TYPOGRAPHY from '../data/typography';
+import OPTIONS from '../data/options';
 import * as type from '../constants';
 import update from 'immutability-helper';
 
 const initialState = {
-	activeTab: OPTION_TABS[0].name,
+	activeTab: 'tokens',
 	activeTabItem: '',
-	optionTabs: OPTION_TABS,
-	optionGroups: OPTION_GROUPS,
-	options: OPTIONS,
-	modules: MODULES,
-	moduleList: MODULE_LIST,
-	moduleOptions: MODULE_OPTIONS,
-	items: ITEMS,
-	itemList: ITEM_LIST,
-	typography: TYPOGRAPHY,
+	tokensGroups: TOKENS_GROUPS,
+	tokens: TOKENS,
+	fontsRecipes: FONTS_RECIPES,
 	fonts: [],
+	modulesSchema: MODULES_SCHEMA,
+	modules: MODULES,
+	itemsSchema: ITEMS_SCHEMA,
+	items: ITEMS,
+	options: OPTIONS,
 	project: {
 		id: '',
 		name: '',

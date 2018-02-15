@@ -1,130 +1,107 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import ToolbarTabContent from './ToolbarTabContent';
 import ToolbarTabList from './ToolbarTabList';
+import ToolbarListButton from './ToolbarListButton';
 import ToolbarModule from './ToolbarModule';
-import ToolbarInput from './ToolbarInput';
+import ToolbarGroup from './ToolbarGroup';
+import ToolbarOption from './ToolbarOption';
+import ToolbarItem from './ToolbarItem';
+import ToolbarContent from './ToolbarContent';
+import { renderOptionsFrom } from '../utils.js';
 
 
 class TabModules extends React.Component {
 	render() {
 		const tabActiveClass = this.props.isActive ? 'is-active' : '';
+		const modulesSchema = this.props.modulesSchema;
 		const modules = this.props.modules;
-		const moduleList = this.props.moduleList;
-		const moduleOptions = this.props.moduleOptions;
+		const itemsSchema = this.props.itemsSchema;
 		const items = this.props.items;
-		const itemList = this.props.itemList;
+		const options = this.props.options;
+		const activeTabItem = this.props.activeTabItem;
 
-		var moduleListButtonsComponents = [];
-		var moduleListItemsComponents = [];
+		const onOptionChange = this.props.onOptionChange;
+		const onContentChange = this.props.onContentChange;
+
+		var modulesComponents = [];
+		var modulesButtonsComponents = [];
 
 		// For each module...
-		for (var moduleId in moduleList) {
-			const module = moduleList[moduleId];
-			var optionsComponents = [];
+		for (var moduleId in modules) {
+			const module = modules[moduleId];
+			const schema = modulesSchema[module.type];
 			var itemsComponents = [];
 
-			// For each options...
-			modules[module.type].options.map(optionName => {
-				const optionObject = moduleOptions[optionName];
-				const optionValue = module.options[optionName];
-				// Add this option to options components list
-				optionsComponents.push(
-					<ToolbarInput
-						key={optionName}
-						data={optionObject}
-						value={optionValue}
-						name={optionName}
-						moduleId={moduleId}
-						onOptionChange={this.props.onModuleOptionChange}
-					/>
+			// Get options to render
+			var optionsComponents = renderOptionsFrom(
+				schema,
+				module, 
+				options,
+				onOptionChange
+			);
+
+			// For each item...
+			module.items.map(itemId => {
+				const item = items[itemId];
+				const itemSchema = itemsSchema[item.type];
+				var contentsComponents = [];
+
+				// Get item options to render
+				var itemOptionsComponents = renderOptionsFrom(
+					schema.items, 
+					item, 
+					options,
+					onOptionChange
 				);
-			});
-			
-			// For each items...
-			const moduleItems = modules[module.type].items;
-			for (var itemId in moduleItems) {
-				const item = itemList[itemId];
-				const itemObject = item[itemId];
-				var itemOptionsComponents = [];
-				var itemContentsComponents = [];
 
 				// For each content in item
-				for (var itemContentName in itemObject.content ) {
-					const itemContent = item.content[itemContentName];
-					const itemContentObject = itemObject.content[itemContentName];
-					const itemContentValue = itemContent.value;
-					var contentOptionsComponents = [];
+				for (var contentName in item.content ) {
+					const content = item.content[contentName];
+					const contentSchema = itemSchema.content[contentName];
 
-					// For each option in content...
-					itemContent.options.map(contentOptionName => {
-						const contentOptionObject = moduleOptions[optionName];
-						const contentOptionValue = item.options[optionName];
-						// Add this option to options components list
-						optionsComponents.push(
-							<ToolbarInput
-								key={itemContentName}
-								data={itemContentObject}
-								value={itemContentValue}
-								name={itemContentName}
-								moduleId={moduleId}
-								onOptionChange={this.props.onModuleOptionChange}
-							/>
-						);
-					});
-					// Add this content to content components list 
-					itemContentsComponents.push(
-						<ToolbarInput
-							key={itemContentName}
-							data={itemContentObject}
-							value={itemContentValue}
-							name={itemContentName}
-							moduleId={moduleId}
-							onOptionChange={this.props.onModuleOptionChange}
+					// Get content options to render
+					var contentOptionsComponents = renderOptionsFrom(
+						contentSchema, 
+						content, 
+						options,
+						onContentChange
+					);
+
+					// Add this content to components list
+					contentsComponents.push(
+						<ToolbarContent
+							key={contentName}
+							data={contentSchema}
+							value={content.value}
+							belongsTo={itemId}
+							options={contentOptionsComponents}
+							onContentChange={onContentChange}
 						/>
 					);
 				}
 
-				// For each item options in module...
-				modules[module.type].itemOptions.map(itemOptionName => {
-					const itemOptionObject = moduleOptions[itemOptionName];
-					const itemOptionValue = module.itemOptions[itemOptionName];
-					// Add this item option to item options components list
-					itemOptionsComponents.push(
-						<ToolbarInput
-							key={itemOptionName}
-							data={itemOptionObject}
-							value={itemOptionValue}
-							name={itemOptionName}
-							moduleId={moduleId}
-							onOptionChange={this.props.onModuleOptionChange}
-						/>
-					);
-				});
-
-				// Add this content to content components list
+				// Add this item to components list
 				itemsComponents.push(
-					<ToolbarInput
+					<ToolbarItem
 						key={itemId}
-						data={itemObject}
-						value={itemValue}
-						name={itemName}
-						moduleId={moduleId}
-						onOptionChange={this.props.onModuleContentChange}
-					/>
+						data={item}>
+						{contentsComponents}
+					</ToolbarItem>
 				);
-			};
+			});
 
 			var tabItemActiveClass = (activeTabItem == moduleId) ? 'is-active' : '';
 
-			// Add this module to modules items components list
-			moduleListItemsComponents.push(
+			// Add this module to components list
+			modulesComponents.push(
 				<ToolbarModule
 					key={moduleId}
 					title={module.title}
 					activeClass={tabItemActiveClass}>
 					<ToolbarGroup
 						label="Content">
-						{contentComponents}
+						{itemsComponents}
 					</ToolbarGroup>
 					<ToolbarGroup
 						label="Options">
@@ -133,7 +110,8 @@ class TabModules extends React.Component {
 				</ToolbarModule>
 			);
 
-			moduleListButtonsComponents.push(
+			// Add a button corresponding to this module in components list
+			modulesButtonsComponents.push(
 				<ToolbarListButton
 					key={moduleId}
 					id={moduleId}
@@ -147,12 +125,29 @@ class TabModules extends React.Component {
 			<ToolbarTabContent
 				name="modules"
 				activeClass={tabActiveClass.modules}>
-				<ToolbarTabList items={moduleListItemsComponents}>
-					{moduleListButtonsComponents}
+				<ToolbarTabList items={modulesComponents}>
+					{modulesButtonsComponents}
 				</ToolbarTabList>
 			</ToolbarTabContent>
 		);
 	}
 }
 
-export default TabModules;
+const mapDispatchToProps = (dispatch) => ({
+	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
+	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
+	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
+});
+
+const mapStateToProps = (state) => ({
+	activeTabItem: state.activeTabItem,
+	tokensGroups: state.tokensGroups,
+	tokens: state.tokens,
+	modulesSchema: state.modulesSchema,
+	modules: state.modules,
+	itemsSchema: state.itemsSchema,
+	items: state.items,
+	options: state.options
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TabModules);

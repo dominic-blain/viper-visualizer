@@ -11,7 +11,8 @@ class ToolbarTabButton extends React.Component {
 	}
 
 	render() {
-		var compClass = this.props.activeClass + ' toolbar-tab-button';
+		const tabActiveClass = this.props.isActive ? 'is-active' : '';
+		const compClass = this.props.activeClass + ' toolbar-tab-button';
 		return (
 			<button className={compClass} data-name={this.props.name} onClick={this.handleClick}>
 				{this.props.label}

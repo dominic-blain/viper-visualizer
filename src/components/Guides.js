@@ -5,11 +5,11 @@ import GuidesVerticalSpacing from './GuidesVerticalSpacing';
 
 class Guides extends React.Component {
 	render() {
-		const options = this.props.options;
-		const optionGroups = this.props.optionGroups;
-		var widthOptions = optionGroups.widths.options;
-		var gutterOptions = optionGroups.gutters.options;
-		var verticalSpacingOptions = optionGroups.verticalSpacings.options;
+		const tokens = this.props.tokens;
+		const tokensGroups = this.props.tokensGroups;
+		var widthTokens = tokensGroups.widths.tokens;
+		var gutterTokens = tokensGroups.gutters.tokens;
+		var verticalSpacingTokens = tokensGroups.verticalSpacings.tokens;
 		// Basic state of the switch
 		const showGuides = this.props.showGuides;
 		// Keyboard shortcut
@@ -21,9 +21,9 @@ class Guides extends React.Component {
 		
 		return (
 			<div id="guides" className={visibleClass}>
-				<GuidesWidth options={widthOptions} />
-				<GuidesGutter options={gutterOptions} />
-				<GuidesVerticalSpacing options={verticalSpacingOptions} />
+				<GuidesWidth tokens={widthTokens} />
+				<GuidesGutter tokens={gutterTokens} />
+				<GuidesVerticalSpacing tokens={verticalSpacingTokens} />
 			</div>
 		);
 	}

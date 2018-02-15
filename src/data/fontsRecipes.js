@@ -1,4 +1,4 @@
-const TYPOGRAPHY = [
+const FONTS_RECIPES = [
 	{
 		"name": "title-extra-big",
 		"label": "Title Extra Big",
@@ -67,4 +67,4 @@ const TYPOGRAPHY = [
 	}
 ];
 
-export default TYPOGRAPHY;
+export default FONTS_RECIPES;

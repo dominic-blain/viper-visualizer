@@ -1,298 +1,243 @@
 const OPTIONS = {
-	"width-fullscreen": {
-		"label": "Fullscreen",
+	"width": {
+		"label": "Width",
+		"type": "dropdown",
+		"options": [
+			{
+				"value": "fullscreen",
+				"label": "Fullscreen"
+			},
+			{
+				"value": "site",
+				"label": "Site"
+			},
+			{
+				"value": "extra-big",
+				"label": "Extra Big"
+			},
+			{
+				"value": "big",
+				"label": "Big"
+			},
+			{
+				"value": "normal",
+				"label": "Normal"
+			},
+			{
+				"value": "small",
+				"label": "Small"
+			},
+			{
+				"value": "extra-small",
+				"label": "Extra Small"
+			}
+		]
+	},
+	"security-padding": {
+		"label": "Security padding",
+		"type": "dropdown",
+		"options": [
+			{ 
+				"value": "big",
+				"label": "Big"
+			},
+			{
+				"value": "normal",
+				"label": "Normal"
+			},
+			{
+				"value": "small",
+				"label": "Small"
+			}
+		]
+	},
+	"space-before": {
+		"label": "Space before",
+		"type": "dropdown",
+		"options": [
+			{ 
+				"value": "big",
+				"label": "Big"
+			},
+			{
+				"value": "normal",
+				"label": "Normal"
+			},
+			{
+				"value": "small",
+				"label": "Small"
+			}
+		]
+	},
+	"space-after": {
+		"label": "Space after",
+		"type": "dropdown",
+		"options": [
+			{ 
+				"value": "big",
+				"label": "Big"
+			},
+			{
+				"value": "normal",
+				"label": "Normal"
+			},
+			{
+				"value": "small",
+				"label": "Small"
+			}
+		]
+	},
+	"alignment": {
+		"label": "Alignment",
+		"type": "dropdown",
+		"options": [
+			{
+				"value": "left",
+				"label": "Left"
+			},
+			{
+				"value": "center",
+				"label": "Center"
+			},
+			{
+				"value": "right",
+				"label": "Right"
+			}
+		]
+	},
+	"title-style": {
+		"label": "Title style",
+		"type": "dropdown",
+		"options": [
+			{ 
+				"value": "extra-big",
+				"label": "Extra Big"
+			},
+			{ 
+				"value": "big",
+				"label": "Big"
+			},
+			{
+				"value": "normal",
+				"label": "Normal"
+			},
+			{
+				"value": "small",
+				"label": "Small"
+			},
+			{
+				"value": "extra-small",
+				"label": "Extra Small"
+			}
+		]
+	},
+	"text-style": {
+		"label": "Text style",
+		"type": "dropdown",
+		"options": [
+			{ 
+				"value": "big",
+				"label": "Big"
+			},
+			{
+				"value": "normal",
+				"label": "Normal"
+			},
+			{
+				"value": "small",
+				"label": "Small"
+			}
+		]
+	},
+	"text-alignment": {
+		"label": "Text alignment",
+		"type": "dropdown",
+		"options": [
+			{
+				"value": "left",
+				"label": "Left"
+			},
+			{
+				"value": "center",
+				"label": "Center"
+			},
+			{
+				"value": "right",
+				"label": "Right"
+			}
+		]
+	},
+	"column-count": {
+		"label": "Column count",
+		"type": "dropdown",
+		"options": [
+			{ 
+				"value": "2",
+				"label": "2"
+			},
+			{
+				"value": "3",
+				"label": "3"
+			},
+			{
+				"value": "4",
+				"label": "4"
+			},
+			{
+				"value": "5",
+				"label": "5"
+			},
+			{
+				"value": "6",
+				"label": "6"
+			}
+		]
+	},
+	"column-span": {
+		"label": "Column span",
 		"type": "range",
-		"value": 1920,
-		"unit": "px",
+		"value": 1,
+		"unit": "col",
 		"range": {
-			"min": 100,
-			"max": 2100
+			"min": 1,
+			"max": 6
 		}
 	},
-	"width-site": {
-		"label": "Site",
-		"type": "range",
-		"value": 1440,
-		"unit": "px",
-		"range": {
-			"min": 100,
-			"max": 2100
-		}
+	"vertical-gutter": {
+		"label": "Vertical Gutter",
+		"type": "dropdown",
+		"options": [
+			{ 
+				"value": "big",
+				"label": "Big"
+			},
+			{
+				"value": "normal",
+				"label": "Normal"
+			},
+			{
+				"value": "small",
+				"label": "Small"
+			}
+		]
 	},
-	"width-extra-wide": {
-		"label": "Extra wide",
-		"type": "range",
-		"value": 1200,
-		"unit": "px",
-		"range": {
-			"min": 100,
-			"max": 2100
-		}
-	},
-	"width-wide": {
-		"label": "Wide",
-		"type": "range",
-		"value": 900,
-		"unit": "px",
-		"range": {
-			"min": 100,
-			"max": 2100
-		}
-	},
-	"width-current": {
-		"label": "Current",
-		"type": "range",
-		"value": 600,
-		"unit": "px",
-		"range": {
-			"min": 100,
-			"max": 2100
-		}
-	},
-	"width-narrow": {
-		"label": "Narrow",
-		"type": "range",
-		"value": 400,
-		"unit": "px",
-		"range": {
-			"min": 100,
-			"max": 2100
-		}
-	},
-	"width-extra-narrow": {
-		"label": "Extra Narrow",
-		"type": "range",
-		"value": 200,
-		"unit": "px",
-		"range": {
-			"min": 100,
-			"max": 2100
-		}
-	},
-	"gutter-big": {
-		"label": "Big",
-		"type": "range",
-		"value": 80,
-		"unit": "px",
-		"range": {
-			"min": 0,
-			"max": 200
-		}
-	},
-	"gutter-normal": {
-		"label": "Normal",
-		"type": "range",
-		"value": 50,
-		"unit": "px",
-		"range": {
-			"min": 0,
-			"max": 200
-		}
-	},
-	"gutter-small": {
-		"label": "Small",
-		"type": "range",
-		"value": 20,
-		"unit": "px",
-		"range": {
-			"min": 0,
-			"max": 200
-		}
-	},
-	"vertical-spacing-big": {
-		"label": "Big",
-		"type": "range",
-		"value": 100,
-		"unit": "px",
-		"range": {
-			"min": 0,
-			"max": 500
-		}
-	},
-	"vertical-spacing-normal": {
-		"label": "Normal",
-		"type": "range",
-		"value": 60,
-		"unit": "px",
-		"range": {
-			"min": 0,
-			"max": 500
-		}
-	},
-	"vertical-spacing-small": {
-		"label": "Small",
-		"type": "range",
-		"value": 20,
-		"unit": "px",
-		"range": {
-			"min": 0,
-			"max": 500
-		}
-	},
-	"font-size-title-extra-big": {
-		"label": "Size",
-		"type": "range",
-		"value": 60,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-title-big": {
-		"label": "Size",
-		"type": "range",
-		"value": 48,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-title-normal": {
-		"label": "Size",
-		"type": "range",
-		"value": 36,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-title-small": {
-		"label": "Size",
-		"type": "range",
-		"value": 24,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-title-extra-small": {
-		"label": "Size",
-		"type": "range",
-		"value": 16,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-text-big": {
-		"label": "Size",
-		"type": "range",
-		"value": 24,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-text-normal": {
-		"label": "Size",
-		"type": "range",
-		"value": 18,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-text-small": {
-		"label": "Size",
-		"type": "range",
-		"value": 14,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-label-big": {
-		"label": "Size",
-		"type": "range",
-		"value": 16,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-label-normal": {
-		"label": "Size",
-		"type": "range",
-		"value": 14,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-size-label-small": {
-		"label": "Size",
-		"type": "range",
-		"value": 12,
-		"unit": "px",
-		"range": {
-			"min": 5,
-			"max": 200
-		}
-	},
-	"font-family-title-extra-big": {
-		"label": "Font",
-		"type": "font",
-		"value": "Georgia"
-	},
-	"font-family-title-big": {
-		"label": "Font",
-		"type": "font",
-		"value": "Georgia"
-	},
-	"font-family-title-normal": {
-		"label": "Font",
-		"type": "font",
-		"value": "Georgia"
-	},
-	"font-family-title-small": {
-		"label": "Font",
-		"type": "font",
-		"value": "Georgia"
-	},
-	"font-family-title-extra-small": {
-		"label": "Font",
-		"type": "font",
-		"value": "Georgia"
-	},
-	"font-family-text-big": {
-		"label": "Font",
-		"type": "font",
-		"value": "Helvetica, Arial"
-	},
-	"font-family-text-normal": {
-		"label": "Font",
-		"type": "font",
-		"value": "Helvetica, Arial"
-	},
-	"font-family-text-small": {
-		"label": "Font",
-		"type": "font",
-		"value": "Helvetica, Arial"
-	},
-	"font-family-label-big": {
-		"label": "Font",
-		"type": "font",
-		"value": "Helvetica, Arial"
-	},
-	"font-family-label-normal": {
-		"label": "Font",
-		"type": "font",
-		"value": "Helvetica, Arial"
-	},
-	"font-family-label-small": {
-		"label": "Font",
-		"type": "font",
-		"value": "Helvetica, Arial"
+	"horizontal-gutter": {
+		"label": "Horizontal Gutter",
+		"type": "dropdown",
+		"options": [
+			{ 
+				"value": "big",
+				"label": "Big"
+			},
+			{
+				"value": "normal",
+				"label": "Normal"
+			},
+			{
+				"value": "small",
+				"label": "Small"
+			}
+		]
 	}
 };
 

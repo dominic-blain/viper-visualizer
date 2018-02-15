@@ -1,3 +1,5 @@
+import React from 'react';
+import ToolbarOption from './components/ToolbarOption';
 import update from 'immutability-helper';
 import URLSearchParams from 'url-search-params';
 
@@ -45,13 +47,36 @@ export function setParam(paramName, paramValue) {
 	return queryString;
 }
 
-export function computeModuleClass(moduleName, moduleOptions, options) {
+export function computeOptionsClass(elementClass, schema, object) {
 	var optionClass = '';
-	var computedModuleClass = 'module ' + moduleName;
+	if (!!schema.options) {
+		// For each options..
+		schema.options.map(optionName => {
+			// Add option class
+			optionClass += ' option--'+ optionName +'-' + object.options[optionName];
+		});
+	}
+	return (elementClass + optionClass);
+}
 
-	moduleOptions.map(optionName => {
-		optionClass += ' option--'+ optionName +'-' + options[optionName];
-	});
-
-	return (computedModuleClass + optionClass);
+export function renderOptionsFrom(schema, object, options, onOptionChange) {
+	var render = [];
+	if (!!schema.options) {
+		// For each options...
+		schema.options.map(optionName => {
+			const option = options[optionName];
+			const optionValue = object.options[optionName];
+			// Add option component to render list;
+			render.push(
+				<ToolbarOption
+					key={optionName}
+					data={option}
+					value={optionValue}
+					belongsTo={object.id}
+					onOptionChange={onOptionChange}
+				/>
+			);
+		});
+	}
+	return render;
 }

@@ -7,61 +7,81 @@ import GuidesSwitch from './GuidesSwitch';
 import ModuleMarkdown from './ModuleMarkdown';
 import ModuleImage from './ModuleImage';
 import ModuleGrid from './ModuleGrid';
+import ItemMarkdown from './ItemMarkdown';
+import ItemText from './ItemText';
+import ItemImage from './ItemImage';
 
 
 class Article extends React.Component {
 	render() {
 		const showGuides = this.props.showGuides;
 		const shortcuts = this.props.shortcuts;
-		const options = this.props.options;
-		const optionGroups = this.props.optionGroups;
+		const tokens = this.props.tokens;
+		const tokensGroups = this.props.tokensGroups;
+		const modulesSchema = this.props.modulesSchema;
 		const modules = this.props.modules;
-		const moduleList = this.props.moduleList;
-		const moduleTypes = {
+		const modulesTypes = {
 			ModuleMarkdown: ModuleMarkdown,
 			ModuleImage: ModuleImage,
 			ModuleGrid: ModuleGrid
-		}
+		};
+		const itemsSchema = this.props.itemsSchema;
 		const items = this.props.items;
-		const itemList = this.props.itemList;
+		const itemsTypes = {
+			ItemMarkdown: ItemMarkdown,
+			ItemText: ItemText,
+			ItemImage: ItemImage,
+		};
 		var renderModules = [];
 		var CSSVariables = {};
 
 		// For each module...
-		for (var moduleId in moduleList) {
-			const module = moduleList[moduleId];
-			const ModuleComponent = moduleTypes[module.type];
-			const items = [];
+		for (var moduleId in modules) {
+			const module = modules[moduleId];
+			const schema = modulesSchema[module.type];
+			const ModuleComponent = modulesTypes[module.type];
+			const itemsComponents = [];
 
 			module.items.map(itemId => {
-				const item = itemList[itemId];
-				items.push(item);
+				const item = items[itemId];
+				const itemSchema = itemsSchema[item.type];
+				const ItemComponent = itemsTypes[item.type];
+
+				// Add this item to components list
+				itemsComponents.push(
+					<ItemComponent
+						key={itemId}
+						schema={itemSchema}
+						item={item}
+					/>
+				);
 			});
 
 			// Add corresponding component to list
 			renderModules.push(
 				<ModuleComponent
-					items={items}
-					options={module.options}
-					module={modules[module.type]}
+					schema={schema}
+					module={module}
+					items={itemsComponents}
 				/>
 			);
 		};
 
-		// Create CSS variables object
-		const optionKeys = Object.keys(options);
-		optionKeys.map(key => {
-			const variableName = '--' + key;
-			const variableUnit = options[key].unit || '';
-			const variableValue = options[key].value + variableUnit;
+		// For each tokens...
+		for (var tokenName in tokens) {
+			const token = tokens[tokenName];
+			const variableName = '--' + tokenName;
+			const variableUnit = token.unit || '';
+			const variableValue = token.value + variableUnit;
+			// Assign corresponding CSS variables
 			CSSVariables[variableName] = variableValue;
-		});
+		}
 
 		return (
 			<CustomProperties properties={CSSVariables}>
 				<article id="page">
 					<GuidesSwitch showGuides={showGuides} shortcuts={shortcuts} onClick={this.props.onShowGuidesClick} />
-					<Guides options={options} optionGroups={optionGroups} shortcuts={shortcuts} showGuides={showGuides} />
+					<Guides tokens={tokens} tokensGroups={tokensGroups} shortcuts={shortcuts} showGuides={showGuides} />
 					{renderModules}
 				</article>
 			</CustomProperties>
@@ -74,12 +94,13 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
+	tokensGroups: state.tokensGroups,
+	tokens: state.tokens,
+	modulesSchema: state.modulesSchema,
 	modules: state.modules,
-	moduleList: state.moduleList,
+	itemsSchema: state.itemsSchema,
 	items: state.items,
-	itemList: state.itemList,
 	options: state.options,
-	optionGroups: state.optionGroups,
 	showGuides: state.ui.showGuides,
 	shortcuts: state.shortcuts
 });
