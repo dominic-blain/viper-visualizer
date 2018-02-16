@@ -25,6 +25,8 @@ class ToolbarToken extends React.Component {
 			range: data.range || '',
 			unit: data.unit || '',
 			choices: data.choices || '',
+			uploadText: data.uploadText || '',
+			googleFontText: data.googleFontText || '',
 			source: data.source || '',
 			fonts: fonts,
 			value: value

@@ -4,13 +4,14 @@ import update from 'immutability-helper';
 import URLSearchParams from 'url-search-params';
 
 export function loadGoogleFont(name, token) {
-	var link = document.getElementById(token.value) || document.createElement('link');
-	var head = document.getElementsByTagName('head')[0];
-	// Reset link if it exists
-	if (head.contains(link)) {
-		head.removeChild(link);
-	}
-	link.id = token.value;
+	// Get head element
+	const head = document.querySelector('head');
+	// Make sure there is no upload font for the same token
+	const style = document.querySelector('style#'+token.name);
+	if (style) { style.remove(); }
+	// Get or Create element for this token
+	const link = document.querySelector('linl#'+token.name) || document.createElement('link');
+	link.id = token.name;
 	link.rel = 'stylesheet';
 	link.type = 'text/css';
 	link.href = 'https://fonts.googleapis.com/css?family=' + token.value.replace(/ /g, '+');
@@ -19,21 +20,30 @@ export function loadGoogleFont(name, token) {
 }
 
 export function loadFileFont(file, token) {
+	// Get head element
+	const head = document.querySelector('head');
+	// Make sure there is no google font for the same token
+	const link = document.querySelector('link#'+token.name);
+	if (link) { link.remove(); }
+	// Get or Create element for this token
+	const style = document.querySelector('style#'+token.name) || document.createElement('style');
+	style.type = "text/css";
+	style.id = token.name;
+
+	// Get file data
+	var dataURL = '';
 	if (file != null) {
 		var reader = new FileReader();
+		// When file is read
 		reader.onload = event => {
-			var extension = file.name.split('.')[1];
+			// Set dataURL and apply changes to DOM
+			dataURL = reader.result;
+			style.textContent = "@font-face { font-family: \""+ token.value +"\"; src: url('"+dataURL+"'); }";
+			head.appendChild(style);
 		}
+		// Start reading file
 		reader.readAsDataURL(file);
 	}
-	var head = document.getElementsByTagName('head')[0];
-	var style = document.createElement('style');
-	var style = document.getElementById(token.value) || document.createElement('link')
-
-	style.type = "text/css";
-	style.id = "local-font";
-	style.textContent = "@font-face { font-family: \""+ token.value +"\"; src: url('"+token.data+"'); }";
-	head.appendChild(style);
 }
 
 export function getParam(paramName) {

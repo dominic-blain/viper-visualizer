@@ -37,13 +37,13 @@ class ToolbarInputFont extends React.Component {
 		}
 
 		const font = {
+			name: this.props.data.name,
 			value: nextFontName,
 			source: nextSource,
 			uploadText: nextUploadText,
 			googleFontText: nextGoogleFontText,
 			data: nextData
 		}
-		console.log(event.target);
 		this.props.onChange(event.target.name, font, file);
 	}
 
@@ -82,7 +82,7 @@ class ToolbarInputFont extends React.Component {
 					<span className="input-font-file-filename">
 						{data.uploadText}
 					</span>
-					<input name={data.name} type="file" data-source="upload" onChange={this.handleChange} />
+					<input name={data.name} type="file" accept=".woff,.woff2,.otf,.ttf" data-source="upload" onChange={this.handleChange} />
 				</label>
 			</div>
 		);
