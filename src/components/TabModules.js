@@ -80,9 +80,8 @@ class TabModules extends React.Component {
 					contentsComponents.push(
 						<ToolbarContent
 							key={contentId}
-							id={contentId}
-							data={contentSchema}
-							value={content.value}
+							schema={contentSchema}
+							content={content}
 							onContentChange={onContentChange}>
 							{contentOptionsComponents}
 						</ToolbarContent>
@@ -143,7 +142,7 @@ class TabModules extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (name, value, data) => dispatch(ActionCreators.updateOption(name, value, data)),
-	onContentChange: (id, value) => dispatch(ActionCreators.updateContent(id, value)),
+	onContentChange: (id, value, data) => dispatch(ActionCreators.updateContent(id, value, data)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });
 

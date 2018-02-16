@@ -14,11 +14,12 @@ const ActionCreators = {
 			data: data
 		}
 	},
-	updateContent(id, value) {
+	updateContent(id, value, data) {
 		return {
 			type: type.UPDATE_CONTENT,
 			id: id,
-			value: value
+			value: value,
+			data: data
 		}
 	},
 	updateToken(name, value, data) {

@@ -28,7 +28,6 @@ class ToolbarInputFont extends React.Component {
 				file = event.target.files[0];
 				nextUploadText = file.name.replace('-', ' ');
 				nextFontName = file.name.split('.')[0];
-				nextData = event.target.result;
 				break;
 			default:
 				nextUploadText = defaultUploadText;
@@ -41,8 +40,7 @@ class ToolbarInputFont extends React.Component {
 			value: nextFontName,
 			source: nextSource,
 			uploadText: nextUploadText,
-			googleFontText: nextGoogleFontText,
-			data: nextData
+			googleFontText: nextGoogleFontText
 		}
 		this.props.onChange(event.target.name, font, file);
 	}

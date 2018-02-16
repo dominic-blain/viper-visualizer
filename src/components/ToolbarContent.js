@@ -4,17 +4,19 @@ import ToolbarInput from './ToolbarInput';
 class ToolbarContent extends React.Component {
 	render() {
 		const onContentChange = this.props.onContentChange;
-		const value = this.props.value;
-		const id = this.props.id;
-		const data = this.props.data;
+		const content = this.props.content;
+		const schema = this.props.schema;
 		const inputData = {
-			name: id,
-			type: data.type,
-			label: data.label,
-			range: data.range || '',
-			unit: data.unit || '',
-			choices: data.choices || '',
-			value: value
+			name: content.id,
+			type: schema.type,
+			label: schema.label,
+			range: schema.range || '',
+			unit: schema.unit || '',
+			choices: schema.choices || '',
+			source: content.source || '',
+			uploadText: content.uploadText || '',
+			urlText: content.urlText || '',
+			value: content.value
 		}
 
 		return (

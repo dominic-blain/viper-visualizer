@@ -11,8 +11,8 @@ import * as type from '../constants';
 import update from 'immutability-helper';
 
 const initialState = {
-	activeTab: 'tokens',
-	activeTabItem: '',
+	activeTab: 'modules',
+	activeTabItem: 'ModuleImage-1',
 	tokensGroups: TOKENS_GROUPS,
 	tokens: TOKENS,
 	fontsRecipes: FONTS_RECIPES,
@@ -59,13 +59,24 @@ const reducer = (state=initialState, action) => {
 			});
 			break;
 		case type.UPDATE_CONTENT:
-			return update(state, {contents: 
-				{[action.id]:
-					{value: 
-						{$set: action.value}
+			var newState = '';
+			if (action.data) {
+				newState = update(state, {contents:
+					{[action.id]:
+						{$merge: action.data}
 					}
-				}
-			});
+				});
+			}
+			else {
+				newState = update(state, {contents: 
+					{[action.id]:
+						{value: 
+							{$set: action.value}
+						}
+					}
+				});
+			}
+			return newState;
 			break;
 		case type.UPDATE_TOKEN:
 			var newState = '';
@@ -86,13 +97,6 @@ const reducer = (state=initialState, action) => {
 				});
 			}
 			return newState;
-			// return update(state, {tokens: 
-			// 	{[action.name]:
-			// 		{value: 
-			// 			{$set: action.value}
-			// 		}
-			// 	}
-			// });
 			break;
 		case type.SET_OPTIONS:
 			return update(state, {options: {$set: action.options}});

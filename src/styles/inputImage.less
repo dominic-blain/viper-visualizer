@@ -1,0 +1,150 @@
+.toolbar-input-image {
+	margin-bottom: 26px;
+	.toolbar-option-label {
+		margin-bottom: 4px;
+	}
+	// Input (URL)
+	.toolbar-option-url-ctn {
+		position: relative;
+		input {
+			.font--text;
+			width: 100%;
+			position: relative;
+			height: 30px;
+			padding: 0 10px;
+			box-sizing: border-box;
+			color: @accent;
+			background-color: @background;
+			border: 1px solid @border;
+			border-radius: 4px;
+			transition: 200ms ease-out;
+			transition-property: border-color, background-color, color, font-weight;
+			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+			  color: @border;
+			}
+			&::-moz-placeholder { /* Firefox 19+ */
+			  color: @border;
+			}
+			&:-ms-input-placeholder { /* IE 10+ */
+			  color: @border;
+			}
+			&:-moz-placeholder { /* Firefox 18- */
+			  color: @border;
+			}
+		}
+		
+		
+		// ~> HOVER
+		&:hover {
+			input {
+				border-color: @accent;
+				transition-duration: 50ms;
+			}
+		}
+		// ~> ACTIVE
+		&.is-active {
+			input {
+				border-color: @accent;
+				background-color: @accent;
+				color: white;
+				font-weight: 500;
+				transition-duration: 50ms;
+				&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+				  color: white;
+				}
+				&::-moz-placeholder { /* Firefox 19+ */
+				  color: white;
+				}
+				&:-ms-input-placeholder { /* IE 10+ */
+				  color: white;
+				}
+				&:-moz-placeholder { /* Firefox 18- */
+				  color: white;
+				}
+			}
+		}
+	}
+
+	.separator {
+		.font--intertitle;
+		color: @grey;
+		margin: 6px 0;
+		text-align: center;
+	}
+
+	// Upload (Local image)
+	.input-file-ctn {
+		width: 100%;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		border: 1px dashed @grey;
+		border-radius: 4px;
+		position: relative;
+		cursor: pointer;
+
+		.input-file-button {
+			.font--intertitle;
+			display: inline-block;
+			background-color: @accent;
+			color: white;
+			border-radius: 4px;
+			padding: 5px 8px 4px 8px;
+			margin-left: 8px;
+		}
+		.input-file-filename {
+			.font--text-small;
+			font-style: italic;
+			margin-left: 8px;
+		}
+		&:after {
+			content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:150%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 12"><path fill="none" stroke="@{grey-light}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M1 7l3-3 3 3M1 1h6M4 4v7"/></svg>');
+			width: 8px;
+			height: 12px;
+			position: absolute;
+			top:50%; right:10px;
+			transform: translateY(-50%);
+		}
+		input[type=file] {
+			width: 0.1px;
+			height: 0.1px;
+			opacity: 0;
+			overflow: hidden;
+			position: absolute;
+			z-index: -1;
+		}
+
+		transition: 200ms ease-out;
+		transition-property: border-color;
+
+		// ~> HOVER
+		&:hover {
+			border-style: solid;
+			border-color: @accent;
+			transition-duration: 50ms;
+		}
+		// ~> ACTIVE
+		&.is-active {
+			border-style: solid;
+			border-color: @accent;
+			background-color: @accent;
+			color: white;
+			transition-duration: 50ms;
+
+			&:after {
+				content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom:150%; height:1px; width:100%; overflow:visible; display:block;" viewBox="0 0 8 12"><path fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M1 7l3-3 3 3M1 1h6M4 4v7"/></svg>');
+			}
+
+			.input-file-button {
+				display: none;
+			}
+			.input-file-filename {
+				font-size: @font-current;
+				font-style: normal;
+				font-weight: 500;
+				text-transform: capitalize;
+			}
+		}
+	}
+	
+}

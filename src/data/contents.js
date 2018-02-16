@@ -53,7 +53,9 @@ const CONTENTS = {
 		"id": "Image-1",
 		"name": "image",
 		"type": "image",
+		"source": "url",
 		"value": "https://shft.cl/img/7/78.media.tumblr.com-1749688267595427.jpg",
+		"urlText": "https://shft.cl/img/7/78.media.tumblr.com-1749688267595427.jpg"
 	},
 	"Caption-1": {
 		"id": "Caption-1",
@@ -68,7 +70,9 @@ const CONTENTS = {
 		"id": "Image-2",
 		"name": "image",
 		"type": "image",
+		"source": "url",
 		"value": "https://shft.cl/img/7/78.media.tumblr.com-1751655919547964.jpg",
+		"urlText": "https://shft.cl/img/7/78.media.tumblr.com-1751655919547964.jpg"
 	},
 	"Caption-2": {
 		"id": "Caption-2",
@@ -83,7 +87,9 @@ const CONTENTS = {
 		"id": "Image-3",
 		"name": "image",
 		"type": "image",
+		"source": "url",
 		"value": "https://shft.cl/img/7/78.media.tumblr.com-1815592298702267.jpg",
+		"urlText": "https://shft.cl/img/7/78.media.tumblr.com-1815592298702267.jpg"
 	},
 	"Caption-3": {
 		"id": "Caption-3",
@@ -98,7 +104,9 @@ const CONTENTS = {
 		"id": "Image-4",
 		"name": "image",
 		"type": "image",
+		"source": "url",
 		"value": "https://shft.cl/img/7/78.media.tumblr.com-1815779630829131.png",
+		"urlText": "https://shft.cl/img/7/78.media.tumblr.com-1815779630829131.png"
 	},
 	"Caption-4": {
 		"id": "Caption-4",
@@ -113,7 +121,9 @@ const CONTENTS = {
 		"id": "Image-5",
 		"name": "image",
 		"type": "image",
+		"source": "url",
 		"value": "https://shft.cl/img/7/78.media.tumblr.com-1751900158740793.jpg",
+		"urlText": "https://shft.cl/img/7/78.media.tumblr.com-1751900158740793.jpg"
 	},
 	"Caption-5": {
 		"id": "Caption-5",

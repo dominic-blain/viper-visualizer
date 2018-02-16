@@ -46,6 +46,20 @@ export function loadFileFont(file, token) {
 	}
 }
 
+export function getDataFromFile(file, callback) {
+	// Get file data
+	if (file != null) {
+		var reader = new FileReader();
+		// When file is read
+		reader.onload = event => {
+			callback(reader.result);
+		};
+		// Start reading file
+		reader.readAsDataURL(file);
+	}
+
+}
+
 export function getParam(paramName) {
 	const queryString = new URLSearchParams(document.location.search);
 	return queryString.get(paramName) || null;
