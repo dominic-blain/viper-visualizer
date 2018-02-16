@@ -3,22 +3,22 @@ import ToolbarOption from './components/ToolbarOption';
 import update from 'immutability-helper';
 import URLSearchParams from 'url-search-params';
 
-export function loadGoogleFont(optionName, font) {
-	var link = document.getElementById(font.value) || document.createElement('link');
+export function loadGoogleFont(name, token) {
+	var link = document.getElementById(token.value) || document.createElement('link');
 	var head = document.getElementsByTagName('head')[0];
 	// Reset link if it exists
 	if (head.contains(link)) {
 		head.removeChild(link);
 	}
-	link.id = font.value;
+	link.id = token.value;
 	link.rel = 'stylesheet';
 	link.type = 'text/css';
-	link.href = 'https://fonts.googleapis.com/css?family=' + font.value.replace(/ /g, '+');
+	link.href = 'https://fonts.googleapis.com/css?family=' + token.value.replace(/ /g, '+');
 	link.media = 'all';
 	head.appendChild(link);
 }
 
-export function loadFileFont(file, font) {
+export function loadFileFont(file, token) {
 	if (file != null) {
 		var reader = new FileReader();
 		reader.onload = event => {
@@ -28,11 +28,11 @@ export function loadFileFont(file, font) {
 	}
 	var head = document.getElementsByTagName('head')[0];
 	var style = document.createElement('style');
-	var style = document.getElementById(font.value) || document.createElement('link')
+	var style = document.getElementById(token.value) || document.createElement('link')
 
 	style.type = "text/css";
 	style.id = "local-font";
-	style.textContent = "@font-face { font-family: \""+ font.value +"\"; src: url('"+font.data+"'); }";
+	style.textContent = "@font-face { font-family: \""+ token.value +"\"; src: url('"+token.data+"'); }";
 	head.appendChild(style);
 }
 

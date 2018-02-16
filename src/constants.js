@@ -1,5 +1,6 @@
 export const UPDATE_OPTION = 'update option';
 export const UPDATE_CONTENT = 'update content';
+export const UPDATE_TOKEN = 'update token';
 
 export const UPDATE_MODULE_OPTION = 'update module option';
 export const UPDATE_MODULE_CONTENT = 'update module content';

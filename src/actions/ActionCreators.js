@@ -21,18 +21,18 @@ const ActionCreators = {
 			value: value
 		}
 	},
-	updateFontOption(font, optionName, file) {
-		return dispatch => {
-			dispatch(ActionCreators.loadFont(font, optionName, file));
-			dispatch(ActionCreators.updateOption(font, optionName));
+	updateToken(name, value, data) {
+		return {
+			type: type.UPDATE_TOKEN,
+			name: name,
+			value: value,
+			data: data
 		}
 	},
-	updateModuleOption(value, optionName, moduleId) {
-		return {
-			type: type.UPDATE_MODULE_OPTION,
-			optionName: optionName,
-			optionValue: value,
-			moduleId: moduleId
+	updateFontToken(name, token, file) {
+		return dispatch => {
+			dispatch(ActionCreators.loadFont(name, token, file));
+			dispatch(ActionCreators.updateToken(name, token.value, token));
 		}
 	},
 	setOptions(value) {
@@ -115,14 +115,14 @@ const ActionCreators = {
 			itemName: itemName
 		}
 	},
-	loadFont(font, optionName, file) {
+	loadFont(name, token, file) {
 		return () => {
-			switch(font.source) {
+			switch(token.source) {
 				case 'google-font':
-					util.loadGoogleFont(optionName, font);
+					util.loadGoogleFont(name, token);
 					break;
 				case 'upload':
-					util.loadFileFont(file, font);
+					util.loadFileFont(file, token);
 					break;
 			}
 		}

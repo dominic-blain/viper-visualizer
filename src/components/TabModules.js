@@ -149,8 +149,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
 	activeTabItem: state.activeTabItem,
-	tokensGroups: state.tokensGroups,
-	tokens: state.tokens,
 	modulesSchema: state.modulesSchema,
 	modules: state.modules,
 	itemsSchema: state.itemsSchema,

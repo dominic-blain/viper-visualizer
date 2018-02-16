@@ -44,7 +44,7 @@ class ToolbarInputFont extends React.Component {
 			data: nextData
 		}
 
-		this.props.onChange(font, this.props.name, file);
+		this.props.onChange(event.target.name, font, file);
 	}
 
 	render() {

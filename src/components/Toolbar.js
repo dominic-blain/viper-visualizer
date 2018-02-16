@@ -8,6 +8,7 @@ import ToolbarListButton from './ToolbarListButton';
 import ToolbarGroup from './ToolbarGroup';
 import ToolbarInput from './ToolbarInput';
 import ToolbarModule from './ToolbarModule';
+import TabTokens from './TabTokens';
 import TabModules from './TabModules';
 import ButtonSave from './ButtonSave';
 
@@ -20,39 +21,6 @@ class Toolbar extends React.Component {
 		};
 		const activeTabItem = this.props.activeTabItem;
 
-		// TAB: Variables
-		// const optionGroups = this.props.optionGroups;
-		// const options = this.props.options;
-		// var groupsComponents = [];
-
-		// // For each group...
-		// for (var groupName in optionGroups) {
-		// 	const group = optionGroups[groupName];
-		// 	var optionsComponents = [];
-
-		// 	// Generate options component list
-		// 	group.options.map(optionName => {
-		// 		const optionObject = options[optionName];
-		// 		optionsComponents.push(
-		// 			<ToolbarInput
-		// 				key={optionName}
-		// 				data={optionObject}
-		// 				fontList={this.props.fonts}
-		// 				name={optionName}
-		// 				onOptionChange={this.props.onOptionChange}
-		// 				onFontOptionChange={this.props.onFontOptionChange}
-		// 			/>
-		// 		);
-		// 	});
-		// 	// Add this group to groups component list
-		// 	groupsComponents.push(
-		// 		<ToolbarGroup
-		// 			key={groupName}
-		// 			label={group.label}>
-		// 			{optionsComponents}
-		// 		</ToolbarGroup>
-		// 	);
-		// }
 
 		// TAB: Text recipes
 		// const typography = this.props.typography;
@@ -103,12 +71,12 @@ class Toolbar extends React.Component {
 					<nav className="toolbar-tabs">
 						<div className="toolbar-scroll">
 							<div className="toolbar-tabs-wrapper">
-								{/*<ToolbarTabButton
-									name="variables"
-									label="Variables"
-									activeClass={tabActiveClass.variables}
+								<ToolbarTabButton
+									name="tokens"
+									label="Tokens"
+									activeClass={activeTab.tokens}
 									onClick={this.props.onTabButtonClick}
-								/>*/}
+								/>
 								{/*<ToolbarTabButton
 									name="typography"
 									label="Typography"
@@ -135,6 +103,7 @@ class Toolbar extends React.Component {
 							activeClass={tabActiveClass.typography}>
 							{recipesComponents}
 						</ToolbarTabContent>*/}
+						<TabTokens isActive={activeTab.tokens}/>
 						<TabModules isActive={activeTab.modules}/>
 					</main>
 					<footer className="toolbar-buttons">
@@ -150,8 +119,6 @@ class Toolbar extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	onOptionChange: (value, optionName) => dispatch(ActionCreators.updateOption(value, optionName)),
-	onFontOptionChange: (font, optionName, file) => dispatch(ActionCreators.updateFontOption(font, optionName, file)),
 	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
 	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
 	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
