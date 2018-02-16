@@ -43,34 +43,34 @@ class ToolbarInputFont extends React.Component {
 			googleFontText: nextGoogleFontText,
 			data: nextData
 		}
-
+		console.log(event.target);
 		this.props.onChange(event.target.name, font, file);
 	}
 
 	render() {
-		var items = [];
-		this.props.fontList.map(font => {
-			items.push(
+		const data = this.props.data;
+		const googleFontActiveClass = (data.source == 'google-font') ? 'is-active':'';
+		const uploadFontActiveClass = (data.source == 'upload') ? 'is-active':'';
+		var choicesComponents = [];
+
+		data.fonts.map(font => {
+			choicesComponents.push(
 				<option value={font.value} key={font.name}>
 					{font.name}
 				</option>
 			);
 		});
 
-		var source = this.props.source;
-		var googleFontActiveClass = (source == 'google-font') ? 'is-active':'';
-		var uploadFontActiveClass = (source == 'upload') ? 'is-active':'';
-
 		return (
 			<div className="toolbar-input-font">
 				<label>
 					<div className="toolbar-option-label">
-						{this.props.label}
+						{data.label}
 					</div>
 					<div className={'toolbar-option-select-ctn ' + googleFontActiveClass}>
-						<select name={this.props.name} data-source="google-font" value={this.props.googleFontText} onChange={this.handleChange}>
+						<select name={data.name} data-source="google-font" value={data.googleFontText} onChange={this.handleChange}>
 							<option value="default"> Choose Google font</option>
-							{items}
+							{choicesComponents}
 						</select>
 					</div>
 				</label>
@@ -80,9 +80,9 @@ class ToolbarInputFont extends React.Component {
 						upload font (zip)
 					</span>
 					<span className="input-font-file-filename">
-						{this.props.uploadText}
+						{data.uploadText}
 					</span>
-					<input type="file" data-source="upload" onChange={this.handleChange} />
+					<input name={data.name} type="file" data-source="upload" onChange={this.handleChange} />
 				</label>
 			</div>
 		);

@@ -5,10 +5,10 @@ class GuidesGutter extends React.Component {
 		const tokens = this.props.tokens;
 		var guides = [];
 
-		tokens.map(tokenName => {
+		tokens.map((tokenName, index) => {
 			var computedClass = 'guide '+ tokenName;
 			guides.push(
-				<div className={computedClass}>
+				<div key={index} className={computedClass}>
 					<div className="gutter gutter-left" />
 					<div className="gutter gutter-right" />
 				</div>

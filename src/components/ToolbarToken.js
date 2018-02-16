@@ -2,6 +2,15 @@ import React from 'react';
 import ToolbarInput from './ToolbarInput';
 
 class ToolbarToken extends React.Component {
+	shouldComponentUpdate(nextProps) {
+		return (
+			nextProps.value !== this.props.value ||
+			nextProps.data !== this.props.data || (
+				nextProps.data.type === 'font' && 
+				nextProps.fonts !== this.props.fonts
+			)
+		);
+	}
 	render() {
 		const tokenChange = this.props.onTokenChange;
 		const fontTokenChange = this.props.onFontTokenChange;
@@ -21,7 +30,6 @@ class ToolbarToken extends React.Component {
 			value: value
 		}
 		const onTokenChange = data.type == 'font' ? fontTokenChange : tokenChange;
-
 		return (
 			<div>
 				<ToolbarInput

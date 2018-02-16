@@ -9,6 +9,7 @@ import ToolbarGroup from './ToolbarGroup';
 import ToolbarInput from './ToolbarInput';
 import ToolbarModule from './ToolbarModule';
 import TabTokens from './TabTokens';
+import TabTypography from './TabTypography';
 import TabModules from './TabModules';
 import ButtonSave from './ButtonSave';
 
@@ -20,50 +21,7 @@ class Toolbar extends React.Component {
 			modules: this.props.activeTab == "modules"
 		};
 		const activeTabItem = this.props.activeTabItem;
-
-
-		// TAB: Text recipes
-		// const typography = this.props.typography;
-		// var recipesComponents = [];
-
-		// // For each recipe...
-		// typography.map(recipe => {
-		// 	const optionFontFamily = options[recipe.font];
-		// 	const optionFontSize = options[recipe.size];
-		// 	var optionsComponents = [];
-
-		// 	// Add font family option
-		// 	optionsComponents.push(
-		// 		<ToolbarInput
-		// 			key={recipe.font}
-		// 			data={optionFontFamily}
-		// 			fontList={this.props.fonts}
-		// 			name={recipe.font}
-		// 			onOptionChange={this.props.onOptionChange}
-		// 			onFontOptionChange={this.props.onFontOptionChange}
-		// 		/>
-		// 	);
-		// 	// Add font size option
-		// 	optionsComponents.push(
-		// 		<ToolbarInput
-		// 			key={recipe.size}
-		// 			data={optionFontSize}
-		// 			fontList={this.props.fonts}
-		// 			name={recipe.size}
-		// 			onOptionChange={this.props.onOptionChange}
-		// 			onFontOptionChange={this.props.onFontOptionChange}
-		// 		/>
-		// 	);
-
-		// 	// Add this recipe to recipes list
-		// 	recipesComponents.push(
-		// 		<ToolbarGroup
-		// 			key={recipe.name}
-		// 			label={recipe.label}>
-		// 			{optionsComponents}
-		// 		</ToolbarGroup>
-		// 	);
-		// });
+		const onTabButtonClick = this.props.onTabButtonClick;
 
 		return (
 			<aside className="toolbar-zone">
@@ -74,36 +32,27 @@ class Toolbar extends React.Component {
 								<ToolbarTabButton
 									name="tokens"
 									label="Tokens"
-									activeClass={activeTab.tokens}
-									onClick={this.props.onTabButtonClick}
+									isActive={activeTab.tokens}
+									onClick={onTabButtonClick}
 								/>
-								{/*<ToolbarTabButton
+								<ToolbarTabButton
 									name="typography"
 									label="Typography"
-									activeClass={tabActiveClass.typography}
-									onClick={this.props.onTabButtonClick}
-								/>*/}
+									isActive={activeTab.typography}
+									onClick={onTabButtonClick}
+								/>
 								<ToolbarTabButton
 									name="modules"
 									label="Modules"
 									isActive={activeTab.modules}
-									onClick={this.props.onTabButtonClick}
+									onClick={onTabButtonClick}
 								/>
 							</div>
 						</div>
 					</nav>
 					<main className="toolbar-content">
-						{/*<ToolbarTabContent
-							name="variables"
-							activeClass={tabActiveClass.variables}>
-							{groupsComponents}
-						</ToolbarTabContent>
-						<ToolbarTabContent
-							name="typography"
-							activeClass={tabActiveClass.typography}>
-							{recipesComponents}
-						</ToolbarTabContent>*/}
 						<TabTokens isActive={activeTab.tokens}/>
+						<TabTypography isActive={activeTab.typography}/>
 						<TabModules isActive={activeTab.modules}/>
 					</main>
 					<footer className="toolbar-buttons">

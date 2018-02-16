@@ -1,5 +1,6 @@
 const TOKENS = {
 	"width-fullscreen": {
+		"name": "width-fullscreen",
 		"label": "Fullscreen",
 		"type": "range",
 		"value": 1920,
@@ -10,6 +11,7 @@ const TOKENS = {
 		}
 	},
 	"width-site": {
+		"name": "width-site",
 		"label": "Site",
 		"type": "range",
 		"value": 1440,
@@ -20,6 +22,7 @@ const TOKENS = {
 		}
 	},
 	"width-extra-wide": {
+		"name": "width-extra-wide",
 		"label": "Extra wide",
 		"type": "range",
 		"value": 1200,
@@ -30,6 +33,7 @@ const TOKENS = {
 		}
 	},
 	"width-wide": {
+		"name": "width-wide",
 		"label": "Wide",
 		"type": "range",
 		"value": 900,
@@ -40,6 +44,7 @@ const TOKENS = {
 		}
 	},
 	"width-current": {
+		"name": "width-current",
 		"label": "Current",
 		"type": "range",
 		"value": 600,
@@ -50,6 +55,7 @@ const TOKENS = {
 		}
 	},
 	"width-narrow": {
+		"name": "width-narrow",
 		"label": "Narrow",
 		"type": "range",
 		"value": 400,
@@ -60,6 +66,7 @@ const TOKENS = {
 		}
 	},
 	"width-extra-narrow": {
+		"name": "width-extra-narrow",
 		"label": "Extra Narrow",
 		"type": "range",
 		"value": 200,
@@ -70,6 +77,7 @@ const TOKENS = {
 		}
 	},
 	"gutter-big": {
+		"name": "gutter-big",
 		"label": "Big",
 		"type": "range",
 		"value": 80,
@@ -80,6 +88,7 @@ const TOKENS = {
 		}
 	},
 	"gutter-normal": {
+		"name": "gutter-normal",
 		"label": "Normal",
 		"type": "range",
 		"value": 50,
@@ -90,6 +99,7 @@ const TOKENS = {
 		}
 	},
 	"gutter-small": {
+		"name": "gutter-small",
 		"label": "Small",
 		"type": "range",
 		"value": 20,
@@ -100,6 +110,7 @@ const TOKENS = {
 		}
 	},
 	"vertical-spacing-big": {
+		"name": "vertical-spacing-big",
 		"label": "Big",
 		"type": "range",
 		"value": 100,
@@ -110,6 +121,7 @@ const TOKENS = {
 		}
 	},
 	"vertical-spacing-normal": {
+		"name": "vertical-spacing-normal",
 		"label": "Normal",
 		"type": "range",
 		"value": 60,
@@ -120,6 +132,7 @@ const TOKENS = {
 		}
 	},
 	"vertical-spacing-small": {
+		"name": "vertical-spacing-small",
 		"label": "Small",
 		"type": "range",
 		"value": 20,
@@ -130,6 +143,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-title-extra-big": {
+		"name": "font-size-title-extra-big",
 		"label": "Size",
 		"type": "range",
 		"value": 60,
@@ -140,6 +154,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-title-big": {
+		"name": "font-size-title-big",
 		"label": "Size",
 		"type": "range",
 		"value": 48,
@@ -150,6 +165,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-title-normal": {
+		"name": "font-size-title-normal",
 		"label": "Size",
 		"type": "range",
 		"value": 36,
@@ -160,6 +176,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-title-small": {
+		"name": "font-size-title-small",
 		"label": "Size",
 		"type": "range",
 		"value": 24,
@@ -170,6 +187,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-title-extra-small": {
+		"name": "font-size-title-extra-small",
 		"label": "Size",
 		"type": "range",
 		"value": 16,
@@ -180,6 +198,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-text-big": {
+		"name": "font-size-text-big",
 		"label": "Size",
 		"type": "range",
 		"value": 24,
@@ -190,6 +209,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-text-normal": {
+		"name": "font-size-text-normal",
 		"label": "Size",
 		"type": "range",
 		"value": 18,
@@ -200,6 +220,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-text-small": {
+		"name": "font-size-text-small",
 		"label": "Size",
 		"type": "range",
 		"value": 14,
@@ -210,6 +231,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-label-big": {
+		"name": "font-size-label-big",
 		"label": "Size",
 		"type": "range",
 		"value": 16,
@@ -220,6 +242,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-label-normal": {
+		"name": "font-size-label-normal",
 		"label": "Size",
 		"type": "range",
 		"value": 14,
@@ -230,6 +253,7 @@ const TOKENS = {
 		}
 	},
 	"font-size-label-small": {
+		"name": "font-size-label-small",
 		"label": "Size",
 		"type": "range",
 		"value": 12,
@@ -240,56 +264,67 @@ const TOKENS = {
 		}
 	},
 	"font-family-title-extra-big": {
+		"name": "font-family-title-extra-big",
 		"label": "Font",
 		"type": "font",
 		"value": "Georgia"
 	},
 	"font-family-title-big": {
+		"name": "font-family-title-big",
 		"label": "Font",
 		"type": "font",
 		"value": "Georgia"
 	},
 	"font-family-title-normal": {
+		"name": "font-family-title-normal",
 		"label": "Font",
 		"type": "font",
 		"value": "Georgia"
 	},
 	"font-family-title-small": {
+		"name": "font-family-title-small",
 		"label": "Font",
 		"type": "font",
 		"value": "Georgia"
 	},
 	"font-family-title-extra-small": {
+		"name": "font-family-title-extra-small",
 		"label": "Font",
 		"type": "font",
 		"value": "Georgia"
 	},
 	"font-family-text-big": {
+		"name": "font-family-text-big",
 		"label": "Font",
 		"type": "font",
 		"value": "Helvetica, Arial"
 	},
 	"font-family-text-normal": {
+		"name": "font-family-text-normal",
 		"label": "Font",
 		"type": "font",
 		"value": "Helvetica, Arial"
 	},
 	"font-family-text-small": {
+		"name": "font-family-text-small",
 		"label": "Font",
 		"type": "font",
 		"value": "Helvetica, Arial"
 	},
 	"font-family-label-big": {
+		"name": "font-family-label-big",
 		"label": "Font",
 		"type": "font",
 		"value": "Helvetica, Arial"
 	},
 	"font-family-label-normal": {
+		"name": "font-family-label-normal",
 		"label": "Font",
 		"type": "font",
 		"value": "Helvetica, Arial"
 	},
 	"font-family-label-small": {
+		"name": "font-family-label-small",
 		"label": "Font",
 		"type": "font",
 		"value": "Helvetica, Arial"

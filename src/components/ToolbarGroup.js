@@ -1,6 +1,9 @@
 import React from 'react';
 
 class ToolbarGroup extends React.Component {
+	shouldComponentUpdate(nextProps) {
+		return (nextProps.children !== this.props.children);
+	}
 	render() {
 		return (
 			<section className="toolbar-group">

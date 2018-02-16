@@ -62,6 +62,7 @@ class Article extends React.Component {
 			// Add corresponding component to list
 			renderModules.push(
 				<ModuleComponent
+					key={moduleId}
 					schema={schema}
 					module={module}
 					items={itemsComponents}

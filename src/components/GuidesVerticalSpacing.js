@@ -8,7 +8,7 @@ class GuidesVerticalSpacing extends React.Component {
 		tokens.map((tokenName, index) => {
 			const computedClass = 'guide '+ tokenName;
 			guides.push(
-				<div className={computedClass}>
+				<div key={index} className={computedClass}>
 					<div className="vertical-spacing vertical-spacing-top" />
 					<div className="vertical-spacing vertical-spacing-bottom" />
 				</div>

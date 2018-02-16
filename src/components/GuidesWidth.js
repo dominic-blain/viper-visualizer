@@ -10,7 +10,7 @@ class GuidesWidth extends React.Component {
 			const computedStyle = { transitionDelay: (index -1) * 45+'ms' };
 			const computedLabelStyle = { top: (index -1) * 18+'px' };
 			guides.push(
-				<div className={computedClass} style={computedStyle}>
+				<div key={index} className={computedClass} style={computedStyle}>
 					<label style={computedLabelStyle}>{tokenName}</label>
 				</div>
 			);

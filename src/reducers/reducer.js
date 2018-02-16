@@ -68,24 +68,31 @@ const reducer = (state=initialState, action) => {
 			});
 			break;
 		case type.UPDATE_TOKEN:
-			var newState = '';
-			if (action.data) {
-				newState = update(state, {tokens:
-					{[action.name]:
-						{$merge: action.data}
+			// var newState = '';
+			// if (action.data) {
+			// 	newState = update(state, {tokens:
+			// 		{[action.name]:
+			// 			{$merge: action.data}
+			// 		}
+			// 	});
+			// }
+			// else {
+			// 	newState = update(state, {tokens: 
+			// 		{[action.name]:
+			// 			{value: 
+			// 				{$set: action.value}
+			// 			}
+			// 		}
+			// 	});
+			// }
+			// return newState;
+			return update(state, {tokens: 
+				{[action.name]:
+					{value: 
+						{$set: action.value}
 					}
-				});
-			}
-			else {
-				newState = update(state, {tokens: 
-					{[action.name]:
-						{value: 
-							{$set: action.value}
-						}
-					}
-				});
-			}
-			return newState;
+				}
+			});
 			break;
 		case type.SET_OPTIONS:
 			return update(state, {options: {$set: action.options}});
