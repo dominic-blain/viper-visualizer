@@ -3,21 +3,23 @@ import React from 'react';
 class ToolbarInputLine extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleOptionChange = this.handleOptionChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleOptionChange(event) {
-		this.props.onOptionChange(event.target.value, this.props.name, this.props.moduleId);
+	handleChange(event) {
+		const onChangeData = this.props.onChangeData;
+		this.props.onOptionChange(event.target.name, event.target.value, onChangeData);
 	}
 
 	render() {
+		const data = this.props.data;
 		return (
 			<label className="toolbar-input-line">
 				<div className="toolbar-option-label">
-					{this.props.label}
+					{data.label}
 				</div>
 				<div className="toolbar-input-line-wrapper">
-					<input type="text" value={this.props.value} onChange={this.handleOptionChange} />
+					<input type="text" value={data.value} onChange={this.handleChange} />
 				</div>
 			</label>
 		);

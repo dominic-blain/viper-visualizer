@@ -1,4 +1,6 @@
 export const UPDATE_OPTION = 'update option';
+export const UPDATE_CONTENT = 'update content';
+
 export const UPDATE_MODULE_OPTION = 'update module option';
 export const UPDATE_MODULE_CONTENT = 'update module content';
 export const SET_OPTIONS = 'set options';

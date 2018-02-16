@@ -32,6 +32,7 @@ class Article extends React.Component {
 			ItemText: ItemText,
 			ItemImage: ItemImage,
 		};
+		const contents = this.props.contents;
 		var renderModules = [];
 		var CSSVariables = {};
 
@@ -53,6 +54,7 @@ class Article extends React.Component {
 						key={itemId}
 						schema={itemSchema}
 						item={item}
+						contents={contents}
 					/>
 				);
 			});
@@ -100,6 +102,7 @@ const mapStateToProps = (state) => ({
 	modules: state.modules,
 	itemsSchema: state.itemsSchema,
 	items: state.items,
+	contents: state.contents,
 	options: state.options,
 	showGuides: state.ui.showGuides,
 	shortcuts: state.shortcuts

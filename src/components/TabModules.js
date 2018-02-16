@@ -1,13 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import ActionCreators from '../actions/ActionCreators';
 import ToolbarTabContent from './ToolbarTabContent';
 import ToolbarTabList from './ToolbarTabList';
 import ToolbarListButton from './ToolbarListButton';
 import ToolbarModule from './ToolbarModule';
 import ToolbarGroup from './ToolbarGroup';
-import ToolbarOption from './ToolbarOption';
 import ToolbarItem from './ToolbarItem';
 import ToolbarContent from './ToolbarContent';
+import ToolbarOption from './ToolbarOption';
 import { renderOptionsFrom } from '../utils.js';
 
 
@@ -18,6 +19,7 @@ class TabModules extends React.Component {
 		const modules = this.props.modules;
 		const itemsSchema = this.props.itemsSchema;
 		const items = this.props.items;
+		const contents = this.props.contents;
 		const options = this.props.options;
 		const activeTabItem = this.props.activeTabItem;
 
@@ -38,7 +40,9 @@ class TabModules extends React.Component {
 				schema,
 				module, 
 				options,
-				onOptionChange
+				onOptionChange,
+				module.id,
+				'module'
 			);
 
 			// For each item...
@@ -52,34 +56,38 @@ class TabModules extends React.Component {
 					schema.items, 
 					item, 
 					options,
-					onOptionChange
+					onOptionChange,
+					item.id,
+					'item'
 				);
 
 				// For each content in item
-				for (var contentName in item.content ) {
-					const content = item.content[contentName];
-					const contentSchema = itemSchema.content[contentName];
+				item.content.map(contentId => {
+					const content = contents[contentId];
+					const contentSchema = itemSchema.content[content.name];
 
 					// Get content options to render
 					var contentOptionsComponents = renderOptionsFrom(
 						contentSchema, 
 						content, 
 						options,
-						onContentChange
+						onOptionChange,
+						item.id,
+						'content'
 					);
 
 					// Add this content to components list
 					contentsComponents.push(
 						<ToolbarContent
-							key={contentName}
+							key={contentId}
+							id={contentId}
 							data={contentSchema}
 							value={content.value}
-							belongsTo={itemId}
-							options={contentOptionsComponents}
-							onContentChange={onContentChange}
-						/>
+							onContentChange={onContentChange}>
+							{contentOptionsComponents}
+						</ToolbarContent>
 					);
-				}
+				});
 
 				// Add this item to components list
 				itemsComponents.push(
@@ -124,7 +132,7 @@ class TabModules extends React.Component {
 		return (
 			<ToolbarTabContent
 				name="modules"
-				activeClass={tabActiveClass.modules}>
+				activeClass={tabActiveClass}>
 				<ToolbarTabList items={modulesComponents}>
 					{modulesButtonsComponents}
 				</ToolbarTabList>
@@ -134,8 +142,8 @@ class TabModules extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
-	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
+	onOptionChange: (name, value, data) => dispatch(ActionCreators.updateOption(name, value, data)),
+	onContentChange: (id, value) => dispatch(ActionCreators.updateContent(id, value)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });
 
@@ -147,6 +155,7 @@ const mapStateToProps = (state) => ({
 	modules: state.modules,
 	itemsSchema: state.itemsSchema,
 	items: state.items,
+	contents: state.contents,
 	options: state.options
 });
 

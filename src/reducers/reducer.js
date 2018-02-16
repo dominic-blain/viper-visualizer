@@ -5,6 +5,7 @@ import MODULES_SCHEMA from '../data/modulesSchema';
 import MODULES from '../data/modules';
 import ITEMS_SCHEMA from '../data/itemsSchema';
 import ITEMS from '../data/items';
+import CONTENTS from '../data/contents';
 import OPTIONS from '../data/options';
 import * as type from '../constants';
 import update from 'immutability-helper';
@@ -20,6 +21,7 @@ const initialState = {
 	modules: MODULES,
 	itemsSchema: ITEMS_SCHEMA,
 	items: ITEMS,
+	contents: CONTENTS,
 	options: OPTIONS,
 	project: {
 		id: '',
@@ -44,26 +46,23 @@ const initialState = {
 const reducer = (state=initialState, action) => {
 	switch (action.type) {
 		case type.UPDATE_OPTION:
-			return update(state, {options: {[action.optionName]: {$merge: action.option}}});
-			break;
-		case type.UPDATE_MODULE_OPTION:
-			return update(state, {moduleList: 
-				{[action.moduleId]:
-					{options: 
-						{[action.optionName]:
-							{$set: action.optionValue}
+			return update(state, {
+				[action.data.type]: {
+					[action.data.id]: {
+						options: {
+							[action.name]: {
+								$set: action.value
+							}
 						}
 					}
 				}
 			});
 			break;
-		case type.UPDATE_MODULE_CONTENT:
-			return update(state, {moduleList: 
-				{[action.moduleId]:
-					{content: 
-						{[action.contentName]:
-							{$set: action.contentValue}
-						}
+		case type.UPDATE_CONTENT:
+			return update(state, {contents: 
+				{[action.id]:
+					{value: 
+						{$set: action.value}
 					}
 				}
 			});

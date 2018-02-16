@@ -6,11 +6,19 @@ import Axios from 'axios';
 
 
 const ActionCreators = {
-	updateOption(value, optionName) {
+	updateOption(name, value, data) {
 		return {
 			type: type.UPDATE_OPTION,
-			optionName: optionName,
-			option: value,
+			name: name,
+			value: value,
+			data: data
+		}
+	},
+	updateContent(id, value) {
+		return {
+			type: type.UPDATE_CONTENT,
+			id: id,
+			value: value
 		}
 	},
 	updateFontOption(font, optionName, file) {
@@ -24,14 +32,6 @@ const ActionCreators = {
 			type: type.UPDATE_MODULE_OPTION,
 			optionName: optionName,
 			optionValue: value,
-			moduleId: moduleId
-		}
-	},
-	updateModuleContent(value, contentName, moduleId) {
-		return {
-			type: type.UPDATE_MODULE_CONTENT,
-			contentName: contentName,
-			contentValue: value,
 			moduleId: moduleId
 		}
 	},

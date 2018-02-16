@@ -3,7 +3,7 @@ const ITEMS_SCHEMA = {
 		"content": {
 			"text": {
 				"label": "Text",
-				"type": "text",
+				"type": "textarea",
 				"options": [
 					"text-style",
 					"text-alignment"
@@ -31,7 +31,7 @@ const ITEMS_SCHEMA = {
 			},
 			"caption": {
 				"label": "Caption",
-				"type": "text",
+				"type": "line",
 				"options": [
 					"text-alignment"
 				]

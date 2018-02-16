@@ -3,10 +3,10 @@ import React from 'react';
 class ToolbarInputFont extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleOptionChange = this.handleOptionChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleOptionChange(event) {
+	handleChange(event) {
 		const nextSource = event.target.dataset.source;
 		// var data = this.props.data;
 		var file = '';
@@ -44,7 +44,7 @@ class ToolbarInputFont extends React.Component {
 			data: nextData
 		}
 
-		this.props.onOptionChange(font, this.props.name, file);
+		this.props.onChange(font, this.props.name, file);
 	}
 
 	render() {
@@ -68,7 +68,7 @@ class ToolbarInputFont extends React.Component {
 						{this.props.label}
 					</div>
 					<div className={'toolbar-option-select-ctn ' + googleFontActiveClass}>
-						<select name={this.props.name} data-source="google-font" value={this.props.googleFontText} onChange={this.handleOptionChange}>
+						<select name={this.props.name} data-source="google-font" value={this.props.googleFontText} onChange={this.handleChange}>
 							<option value="default"> Choose Google font</option>
 							{items}
 						</select>
@@ -82,7 +82,7 @@ class ToolbarInputFont extends React.Component {
 					<span className="input-font-file-filename">
 						{this.props.uploadText}
 					</span>
-					<input type="file" data-source="upload" onChange={this.handleOptionChange} />
+					<input type="file" data-source="upload" onChange={this.handleChange} />
 				</label>
 			</div>
 		);

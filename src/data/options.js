@@ -1,8 +1,9 @@
 const OPTIONS = {
 	"width": {
+		"name": "width",
 		"label": "Width",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{
 				"value": "fullscreen",
 				"label": "Fullscreen"
@@ -34,9 +35,10 @@ const OPTIONS = {
 		]
 	},
 	"security-padding": {
+		"name": "security-padding",
 		"label": "Security padding",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{ 
 				"value": "big",
 				"label": "Big"
@@ -52,9 +54,10 @@ const OPTIONS = {
 		]
 	},
 	"space-before": {
+		"name": "space-before",
 		"label": "Space before",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{ 
 				"value": "big",
 				"label": "Big"
@@ -70,9 +73,10 @@ const OPTIONS = {
 		]
 	},
 	"space-after": {
+		"name": "space-after",
 		"label": "Space after",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{ 
 				"value": "big",
 				"label": "Big"
@@ -88,9 +92,10 @@ const OPTIONS = {
 		]
 	},
 	"alignment": {
+		"name": "alignment",
 		"label": "Alignment",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{
 				"value": "left",
 				"label": "Left"
@@ -106,9 +111,10 @@ const OPTIONS = {
 		]
 	},
 	"title-style": {
+		"name": "title-style",
 		"label": "Title style",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{ 
 				"value": "extra-big",
 				"label": "Extra Big"
@@ -132,9 +138,10 @@ const OPTIONS = {
 		]
 	},
 	"text-style": {
+		"name": "text-style",
 		"label": "Text style",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{ 
 				"value": "big",
 				"label": "Big"
@@ -150,9 +157,10 @@ const OPTIONS = {
 		]
 	},
 	"text-alignment": {
+		"name": "text-alignment",
 		"label": "Text alignment",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{
 				"value": "left",
 				"label": "Left"
@@ -168,9 +176,10 @@ const OPTIONS = {
 		]
 	},
 	"column-count": {
+		"name": "column-count",
 		"label": "Column count",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{ 
 				"value": "2",
 				"label": "2"
@@ -194,6 +203,7 @@ const OPTIONS = {
 		]
 	},
 	"column-span": {
+		"name": "column-span",
 		"label": "Column span",
 		"type": "range",
 		"value": 1,
@@ -204,9 +214,10 @@ const OPTIONS = {
 		}
 	},
 	"vertical-gutter": {
+		"name": "vertical-gutter",
 		"label": "Vertical Gutter",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{ 
 				"value": "big",
 				"label": "Big"
@@ -222,9 +233,10 @@ const OPTIONS = {
 		]
 	},
 	"horizontal-gutter": {
+		"name": "horizontal-gutter",
 		"label": "Horizontal Gutter",
 		"type": "dropdown",
-		"options": [
+		"choices": [
 			{ 
 				"value": "big",
 				"label": "Big"

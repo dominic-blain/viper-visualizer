@@ -3,33 +3,47 @@ import React from 'react';
 class ToolbarInputRange extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleOptionChange = this.handleOptionChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleOptionChange(event) {
-		var option = {
-			value: parseInt(event.target.value)
-		};
-		this.props.onOptionChange(option, this.props.name);
+	handleChange(event) {
+		const onChangeData = this.props.onChangeData;
+		this.props.onChange(event.target.name, event.target.value, onChangeData);
 	}
 
 	render() {
+		const data = this.props.data;
 		var unit;
-		if (!!this.props.unit) {
+		if (!!data.unit) {
 			unit = (<div className="toolbar-input-range-unit">
-				{this.props.unit}
+				{data.unit}
 			</div>);
 		}
 
 		return (
 			<label className="toolbar-input-range">
 				<div className="toolbar-option-label">
-					{this.props.label}
+					{data.label}
 				</div>
 				<div className="toolbar-input-range-wrapper">
-					<input type="range" min={this.props.range.min} max={this.props.range.max} value={this.props.value} onChange={this.handleOptionChange} tabIndex="-1" />
-					<input type="number" min={this.props.range.min} max={this.props.range.max} value={this.props.value} onChange={this.handleOptionChange} />
-						{unit}
+					<input 
+						name={data.name}
+						type="range"
+						min={data.range.min}
+						max={data.range.max}
+						value={data.value}
+						onChange={this.handleChange}
+						tabIndex="-1"
+					/>
+					<input
+						name={data.name}
+						type="number"
+						min={data.range.min}
+						max={data.range.max}
+						value={data.value}
+						onChange={this.handleChange}
+					/>
+					{unit}
 				</div>
 			</label>
 		);

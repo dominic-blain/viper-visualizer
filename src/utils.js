@@ -70,7 +70,7 @@ export function renderOptionsFrom(schema, object, options, onOptionChange) {
 			render.push(
 				<ToolbarOption
 					key={optionName}
-					data={option}
+					option={option}
 					value={optionValue}
 					belongsTo={object.id}
 					onOptionChange={onOptionChange}
@@ -79,4 +79,16 @@ export function renderOptionsFrom(schema, object, options, onOptionChange) {
 		});
 	}
 	return render;
+}
+
+export function findTypeFrom(id) {
+	if (id.startsWith('Module')) {
+		return 'modules';
+	}
+	else if (id.startsWith('Item')) {
+		return 'items';
+	}
+	else {
+		return 'contents';
+	}
 }

@@ -6,11 +6,12 @@ class ItemImage extends React.Component {
 	render() {
 		const schema = this.props.schema;
 		const item = this.props.item;
+		const contents = this.props.contents;
 
-		const imageSchema = schema.content.image;
-		const image = item.content.image;
-		const captionSchema = schema.content.caption;
-		const caption = item.content.caption;
+		const image = contents[item.content[0]];
+		const imageSchema = schema.content[image.name];
+		const caption = contents[item.content[1]];
+		const captionSchema = schema.content[caption.name];
 
 		const computedClass = computeOptionsClass('item item-image', schema, item);
 		const computedImageClass = computeOptionsClass('image', imageSchema, image);
