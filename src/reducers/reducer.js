@@ -98,11 +98,17 @@ const reducer = (state=initialState, action) => {
 			}
 			return newState;
 			break;
-		case type.SET_OPTIONS:
-			return update(state, {options: {$set: action.options}});
+		case type.SET_TOKENS:
+			return update(state, {tokens: {$set: action.tokens}});
 			break;
-		case type.SET_MODULE_LIST:
-			return update(state, {moduleList: {$set: action.moduleList}});
+		case type.SET_MODULES:
+			return update(state, {modules: {$set: action.modules}});
+			break;
+		case type.SET_ITEMS:
+			return update(state, {items: {$set: action.items}});
+			break;
+		case type.SET_CONTENTS:
+			return update(state, {contents: {$set: action.contents}});
 			break;
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
@@ -113,13 +119,13 @@ const reducer = (state=initialState, action) => {
 		case type.SET_ACTIVE_TAB_ITEM:
 			return update(state, {activeTabItem: {$set:action.itemName}});
 			break;
-		case type.SAVE_OPTIONS:
+		case type.SAVE_PROJECT:
 			return state;
 			break;
-		case type.SAVE_OPTIONS_START:
+		case type.SAVE_PROJECT_START:
 			return update(state, {ui: {buttonSaveState: {$set:action.buttonSaveState}}});
 			break;
-		case type.SAVE_OPTIONS_SUCCESS:
+		case type.SAVE_PROJECT_SUCCESS:
 			return update(state, {
 				project: { $merge:action.project },
 				ui: {
@@ -127,7 +133,7 @@ const reducer = (state=initialState, action) => {
 				}
 			});
 			break;
-		case type.SAVE_OPTIONS_ERROR:
+		case type.SAVE_PROJECT_ERROR:
 			return update(state, {ui: {buttonSaveState: {$set:action.buttonSaveState}}});
 			break;
 		case type.TOGGLE_GUIDES:

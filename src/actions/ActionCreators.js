@@ -36,10 +36,22 @@ const ActionCreators = {
 			dispatch(ActionCreators.updateToken(name, token.value, token));
 		}
 	},
-	setOptions(value) {
+	setTokens(value) {
 		return {
-			type: type.SET_OPTIONS,
-			options: value
+			type: type.SET_TOKENS,
+			tokens: value
+		}
+	},
+	setItems(value) {
+		return {
+			type: type.SET_ITEMS,
+			items: value
+		}
+	},
+	setContents(value) {
+		return {
+			type: type.SET_CONTENTS,
+			contents: value
 		}
 	},
 	setHotkey(shortcutName, hot) {
@@ -49,10 +61,10 @@ const ActionCreators = {
 			hot: hot,
 		}
 	},
-	setModuleList(value) {
+	setModules(value) {
 		return {
-			type: type.SET_MODULE_LIST,
-			moduleList: value
+			type: type.SET_MODULES,
+			modules: value
 		}
 	},
 	updateFontList(fonts) {
@@ -131,39 +143,67 @@ const ActionCreators = {
 	loadProject() {
 		return dispatch => {
 			const projectID = util.getParam('project');
-			const projectOptionsRef = database.ref('/projects/' + projectID + '/options/');
-			const projectModuleListRef = database.ref('/projects/' + projectID + '/moduleList/');
-			var options = null;
-			var moduleList = null;
+			const projectTokensRef = database.ref('/projects/' + projectID + '/tokens/');
+			const projectModulesRef = database.ref('/projects/' + projectID + '/modules/');
+			const projectItemsRef = database.ref('/projects/' + projectID + '/items/');
+			const projectContentsRef = database.ref('/projects/' + projectID + '/contents/');
+			var tokens = {};
+			var modules = {};
+			var items = {};
+			var contents = {};
+			var responseCounter = 0;
 
-			projectOptionsRef.once('value', data => {
-				const value = data.val();
+			const fireSetProject = () => {
+				responseCounter += 1;
+				if (responseCounter == 4) {
+					dispatch(ActionCreators.setProject(tokens, modules, items, contents));
+				}
+			};
+
+			projectTokensRef.once('value', snapshot => {
+				const value = snapshot.val();
 				if (value) {
-					options = value;
+					tokens = value;
+					fireSetProject();
 				}
 			});
-			projectModuleListRef.orderByChild('order').once('value', data => {
-				const value = data.val();
+			projectItemsRef.once('value', snapshot => {
+				const value = snapshot.val();
 				if (value) {
-					moduleList = value;
+					items = value;
+					fireSetProject();
 				}
 			});
-			if (options || moduleList) {
-				dispatch(ActionCreators.setProject(options, moduleList));
-			}
+			projectContentsRef.once('value', snapshot => {
+				const value = snapshot.val();
+				if (value) {
+					contents = value;
+					fireSetProject();
+				}
+			});
+			projectModulesRef.orderByChild('order').once('value', snapshot => {
+				snapshot.forEach(child => {
+					console.log(child.val());
+					modules[child.val().id] = child.val();
+				});
+				if (modules) {
+					fireSetProject();
+				}
+			});
 		}
 	},
-	setProject(options, moduleList) {
+	setProject(tokens, modules, items, contents) {
 		return dispatch => {
-
-			for (var optionKey in options) {
-				const option = options[optionKey];
-				if (option.type == 'font') {
-					dispatch(ActionCreators.loadFont(options[optionKey], optionKey, null));
+			for (var tokenKey in tokens) {
+				const token = tokens[tokenKey];
+				if (token.type == 'font') {
+					dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey, null));
 				}
 			}
-			dispatch(ActionCreators.setOptions(options));
-			dispatch(ActionCreators.setModuleList(moduleList));
+			dispatch(ActionCreators.setTokens(tokens));
+			dispatch(ActionCreators.setModules(modules));
+			dispatch(ActionCreators.setItems(items));
+			dispatch(ActionCreators.setContents(contents));
 		}
 	},
 	saveProject() {
@@ -172,8 +212,10 @@ const ActionCreators = {
 			const projectsRef = database.ref('/projects');
 			const projectID = util.getParam('project');
 			const projectState = {
-				options: currentState.options,
-				moduleList: currentState.moduleList
+				tokens: currentState.tokens,
+				modules: currentState.modules,
+				items: currentState.items,
+				contents: currentState.contents
 			}
 
 			dispatch(ActionCreators.saveProjectStart());
@@ -210,19 +252,19 @@ const ActionCreators = {
 	},
 	saveProjectStart() {
 		return {
-			type: type.SAVE_OPTIONS_START,
+			type: type.SAVE_PROJECT_START,
 			buttonSaveState: 'start'
 		}
 	},
 	saveProjectError() {
 		return {
-			type: type.SAVE_OPTIONS_ERROR,
+			type: type.SAVE_PROJECT_ERROR,
 			buttonSaveState: 'error'
 		}
 	},
 	saveProjectSuccess(id) {
 		return {
-			type: type.SAVE_OPTIONS_SUCCESS,
+			type: type.SAVE_PROJECT_SUCCESS,
 			buttonSaveState: 'success',
 			project: {
 				status: 'saved',

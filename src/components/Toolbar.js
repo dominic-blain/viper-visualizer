@@ -22,6 +22,8 @@ class Toolbar extends React.Component {
 		};
 		const activeTabItem = this.props.activeTabItem;
 		const onTabButtonClick = this.props.onTabButtonClick;
+		const buttonSaveState = this.props.buttonSaveState;
+		const onButtonSaveClick = this.props.onButtonSaveClick;
 
 		return (
 			<aside className="toolbar-zone">
@@ -57,8 +59,8 @@ class Toolbar extends React.Component {
 					</main>
 					<footer className="toolbar-buttons">
 						<ButtonSave
-							saveState={this.props.buttonSaveState}
-							onClick={this.props.onButtonSaveClick} 
+							saveState={buttonSaveState}
+							onClick={onButtonSaveClick} 
 						/>
 					</footer>
 				</div>
@@ -68,9 +70,6 @@ class Toolbar extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	onFontListChange: (items, optionName) => dispatch(ActionCreators.updateFontList(items, optionName)),
-	onModuleOptionChange: (value, optionName, moduleId) => dispatch(ActionCreators.updateModuleOption(value, optionName, moduleId)),
-	onModuleContentChange: (value, contentName, moduleId) => dispatch(ActionCreators.updateModuleContent(value, contentName, moduleId)),
 	onTabButtonClick: (tabName) => dispatch(ActionCreators.changeTab(tabName)),
 	onButtonSaveClick: () => dispatch(ActionCreators.saveProject())
 });
