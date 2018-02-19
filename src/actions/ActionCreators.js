@@ -67,19 +67,10 @@ const ActionCreators = {
 			modules: value
 		}
 	},
-	reorderModules(itemsNewIndex) {
-		return dispatch => {
-			for(var moduleId in itemsNewIndex) {
-				const order = itemsNewIndex[moduleId];
-				dispatch(ActionCreators.setModuleOrder(moduleId, order));
-			}
-		}
-	},
-	setModuleOrder(id, order) {
+	reorderModules(newOrder) {
 		return {
 			type: type.SET_MODULE_ORDER,
-			id: id,
-			order: order
+			order: newOrder
 		}
 	},
 	updateFontList(fonts) {

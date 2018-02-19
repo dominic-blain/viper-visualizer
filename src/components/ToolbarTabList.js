@@ -26,11 +26,12 @@ class ToolbarTabList extends React.Component {
 
 	handleReorder({oldIndex, newIndex}) {
 		const newArray = arrayMove(this.props.items, oldIndex, newIndex);
-		var itemsNewIndex = {};
-		newArray.map((value, index) => {
-			itemsNewIndex[value.id] = index;
+		var newOrder = [];
+		newArray.map(item => {
+			newOrder.push(item.id);
 		});
-		this.props.onReorder(itemsNewIndex);
+		console.log(newOrder);
+		this.props.onReorder(newOrder);
 	}
 
 	render() {

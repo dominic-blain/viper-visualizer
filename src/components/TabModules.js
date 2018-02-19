@@ -15,6 +15,7 @@ import { renderOptionsFrom } from '../utils.js';
 class TabModules extends React.Component {
 	render() {
 		const tabActiveClass = this.props.isActive ? 'is-active' : '';
+		const modulesOrder = this.props.modulesOrder;
 		const modulesSchema = this.props.modulesSchema;
 		const modules = this.props.modules;
 		const itemsSchema = this.props.itemsSchema;
@@ -32,7 +33,7 @@ class TabModules extends React.Component {
 		var modulesButtonsComponents = [];
 
 		// For each module...
-		for (var moduleId in modules) {
+		modulesOrder.map(moduleId => {
 			const module = modules[moduleId];
 			const schema = modulesSchema[module.type];
 			var itemsComponents = [];
@@ -120,21 +121,11 @@ class TabModules extends React.Component {
 			);
 
 			// Add a button corresponding to this module in components list
-			modulesButtonsComponents.splice(module.order, 0, {
+			modulesButtonsComponents.push({
 				title: module.title,
 				id: moduleId
 			});
-			// modulesButtonsComponents.push(
-			// 	<ToolbarListButton
-			// 		key={moduleId}
-			// 		id={moduleId}
-			// 		title={module.title}
-			// 		onClick={onTabListButtonClick}
-			// 	/>
-			// );
-		};
-
-		console.log(modulesComponents);
+		});
 
 		return (
 			<ToolbarTabContent
@@ -154,12 +145,13 @@ class TabModules extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (name, value, data) => dispatch(ActionCreators.updateOption(name, value, data)),
 	onContentChange: (id, value, data) => dispatch(ActionCreators.updateContent(id, value, data)),
-	onModulesReorder: (itemsNewIndex) => dispatch(ActionCreators.reorderModules(itemsNewIndex)),
+	onModulesReorder: (newOrder) => dispatch(ActionCreators.reorderModules(newOrder)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });
 
 const mapStateToProps = (state) => ({
 	activeTabItem: state.activeTabItem,
+	modulesOrder: state.modulesOrder,
 	modulesSchema: state.modulesSchema,
 	modules: state.modules,
 	itemsSchema: state.itemsSchema,

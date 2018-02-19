@@ -18,6 +18,7 @@ class Article extends React.Component {
 		const shortcuts = this.props.shortcuts;
 		const tokens = this.props.tokens;
 		const tokensGroups = this.props.tokensGroups;
+		const modulesOrder = this.props.modulesOrder;
 		const modulesSchema = this.props.modulesSchema;
 		const modules = this.props.modules;
 		const modulesTypes = {
@@ -37,7 +38,7 @@ class Article extends React.Component {
 		var CSSVariables = {};
 
 		// For each module...
-		for (var moduleId in modules) {
+		modulesOrder.map(moduleId => {
 			const module = modules[moduleId];
 			const schema = modulesSchema[module.type];
 			const ModuleComponent = modulesTypes[module.type];
@@ -60,7 +61,7 @@ class Article extends React.Component {
 			});
 
 			// Add corresponding component to list
-			renderModules.splice(module.order, 0, 
+			renderModules.push( 
 				<ModuleComponent
 					key={moduleId}
 					schema={schema}
@@ -68,7 +69,7 @@ class Article extends React.Component {
 					items={itemsComponents}
 				/>
 			);
-		};
+		});
 
 		// For each tokens...
 		for (var tokenName in tokens) {
@@ -99,6 +100,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
 	tokensGroups: state.tokensGroups,
 	tokens: state.tokens,
+	modulesOrder: state.modulesOrder,
 	modulesSchema: state.modulesSchema,
 	modules: state.modules,
 	itemsSchema: state.itemsSchema,

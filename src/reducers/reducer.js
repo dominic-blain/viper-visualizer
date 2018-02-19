@@ -1,6 +1,7 @@
 import TOKENS_GROUPS from '../data/tokensGroups';
 import TOKENS from '../data/tokens';
 import FONTS_RECIPES from '../data/fontsRecipes';
+import MODULES_ORDER from '../data/modulesOrder';
 import MODULES_SCHEMA from '../data/modulesSchema';
 import MODULES from '../data/modules';
 import ITEMS_SCHEMA from '../data/itemsSchema';
@@ -17,6 +18,7 @@ const initialState = {
 	tokens: TOKENS,
 	fontsRecipes: FONTS_RECIPES,
 	fonts: [],
+	modulesOrder: MODULES_ORDER,
 	modulesSchema: MODULES_SCHEMA,
 	modules: MODULES,
 	itemsSchema: ITEMS_SCHEMA,
@@ -108,9 +110,9 @@ const reducer = (state=initialState, action) => {
 			return update(state, {contents: {$set: action.contents}});
 			break;
 		case type.SET_MODULE_ORDER:
-			return update(state, {modules: {
-				[action.id]: {order: {$set: action.order}}
-			}});
+			return update(state, {modulesOrder: 
+				{$set: action.order}
+			});
 			break;
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
