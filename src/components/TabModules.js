@@ -145,7 +145,7 @@ class TabModules extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (name, value, data) => dispatch(ActionCreators.updateOption(name, value, data)),
 	onContentChange: (id, value, data) => dispatch(ActionCreators.updateContent(id, value, data)),
-	onModulesReorder: (newOrder) => dispatch(ActionCreators.reorderModules(newOrder)),
+	onModulesReorder: (newOrder) => dispatch(ActionCreators.setModulesOrder(newOrder)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });
 

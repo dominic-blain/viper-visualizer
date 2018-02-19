@@ -67,10 +67,10 @@ const ActionCreators = {
 			modules: value
 		}
 	},
-	reorderModules(newOrder) {
+	setModulesOrder(value) {
 		return {
-			type: type.SET_MODULE_ORDER,
-			order: newOrder
+			type: type.SET_MODULES_ORDER,
+			modulesOrder: value
 		}
 	},
 	updateFontList(fonts) {
@@ -149,56 +149,63 @@ const ActionCreators = {
 	loadProject() {
 		return dispatch => {
 			const projectID = util.getParam('project');
+			const projectRef = database.ref('/projects/' + projectID);
 			const projectTokensRef = database.ref('/projects/' + projectID + '/tokens/');
 			const projectModulesRef = database.ref('/projects/' + projectID + '/modules/');
+			const projectModulesOrderRef = database.ref('/projects/' + projectID + '/modulesOrder/');
 			const projectItemsRef = database.ref('/projects/' + projectID + '/items/');
 			const projectContentsRef = database.ref('/projects/' + projectID + '/contents/');
 			var tokens = {};
+			var modulesOrder = [];
 			var modules = {};
 			var items = {};
 			var contents = {};
 			var responseCounter = 0;
 
-			const fireSetProject = () => {
-				responseCounter += 1;
-				if (responseCounter == 4) {
-					dispatch(ActionCreators.setProject(tokens, modules, items, contents));
-				}
-			};
+			projectRef.once('value', snapshot => {
+				dispatch(ActionCreators.setProject(snapshot.val()));
+			});
 
-			projectTokensRef.once('value', snapshot => {
-				const value = snapshot.val();
-				if (value) {
-					tokens = value;
-					fireSetProject();
-				}
-			});
-			projectItemsRef.once('value', snapshot => {
-				const value = snapshot.val();
-				if (value) {
-					items = value;
-					fireSetProject();
-				}
-			});
-			projectContentsRef.once('value', snapshot => {
-				const value = snapshot.val();
-				if (value) {
-					contents = value;
-					fireSetProject();
-				}
-			});
-			projectModulesRef.orderByChild('order').once('value', snapshot => {
-				snapshot.forEach(child => {
-					console.log(child.val());
-					modules[child.val().id] = child.val();
-				});
-				if (modules) {
-					fireSetProject();
-				}
-			});
+			// const fireSetProject = () => {
+			// 	responseCounter += 1;
+			// 	if (responseCounter == 5) {
+			// 		dispatch(ActionCreators.setProject(snapshot));
+			// 	}
+			// };
+
+			// projectTokensRef.once('value', snapshot => {
+			// 	const value = snapshot.val();
+			// 	if (value) {
+			// 		tokens = value;
+			// 		fireSetProject();
+			// 	}
+			// });
+			// projectItemsRef.once('value', snapshot => {
+			// 	const value = snapshot.val();
+			// 	if (value) {
+			// 		items = value;
+			// 		fireSetProject();
+			// 	}
+			// });
+			// projectContentsRef.once('value', snapshot => {
+			// 	const value = snapshot.val();
+			// 	if (value) {
+			// 		contents = value;
+			// 		fireSetProject();
+			// 	}
+			// });
+			// projectModulesRef.orderByChild('order').once('value', snapshot => {
+			// 	snapshot.forEach(child => {
+			// 		console.log(child.val());
+			// 		modules[child.val().id] = child.val();
+			// 	});
+			// 	if (modules) {
+			// 		fireSetProject();
+			// 	}
+			// });
 		}
 	},
-	setProject(tokens, modules, items, contents) {
+	setProject({tokens, modulesOrder, modules, items, contents}) {
 		return dispatch => {
 			for (var tokenKey in tokens) {
 				const token = tokens[tokenKey];
@@ -207,6 +214,7 @@ const ActionCreators = {
 				}
 			}
 			dispatch(ActionCreators.setTokens(tokens));
+			dispatch(ActionCreators.setModulesOrder(modulesOrder));
 			dispatch(ActionCreators.setModules(modules));
 			dispatch(ActionCreators.setItems(items));
 			dispatch(ActionCreators.setContents(contents));
@@ -219,6 +227,7 @@ const ActionCreators = {
 			const projectID = util.getParam('project');
 			const projectState = {
 				tokens: currentState.tokens,
+				modulesOrder: currentState.modulesOrder,
 				modules: currentState.modules,
 				items: currentState.items,
 				contents: currentState.contents

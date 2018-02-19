@@ -109,10 +109,8 @@ const reducer = (state=initialState, action) => {
 		case type.SET_CONTENTS:
 			return update(state, {contents: {$set: action.contents}});
 			break;
-		case type.SET_MODULE_ORDER:
-			return update(state, {modulesOrder: 
-				{$set: action.order}
-			});
+		case type.SET_MODULES_ORDER:
+			return update(state, {modulesOrder: {$set: action.modulesOrder}});
 			break;
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
