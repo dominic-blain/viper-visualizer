@@ -25,6 +25,8 @@ class TabModules extends React.Component {
 
 		const onOptionChange = this.props.onOptionChange;
 		const onContentChange = this.props.onContentChange;
+		const onModulesReorder = this.props.onModulesReorder;
+		const onTabListButtonClick = this.props.onTabListButtonClick;
 
 		var modulesComponents = [];
 		var modulesButtonsComponents = [];
@@ -41,7 +43,7 @@ class TabModules extends React.Component {
 				module, 
 				options,
 				onOptionChange,
-				module.id,
+				moduleId,
 				'module'
 			);
 
@@ -101,7 +103,7 @@ class TabModules extends React.Component {
 			var tabItemActiveClass = (activeTabItem == moduleId) ? 'is-active' : '';
 
 			// Add this module to components list
-			modulesComponents.push(
+			modulesComponents.push( 
 				<ToolbarModule
 					key={moduleId}
 					title={module.title}
@@ -118,22 +120,31 @@ class TabModules extends React.Component {
 			);
 
 			// Add a button corresponding to this module in components list
-			modulesButtonsComponents.push(
-				<ToolbarListButton
-					key={moduleId}
-					id={moduleId}
-					title={module.title}
-					onClick={this.props.onTabListButtonClick}>
-				</ToolbarListButton>
-			);
+			modulesButtonsComponents.splice(module.order, 0, {
+				title: module.title,
+				id: moduleId
+			});
+			// modulesButtonsComponents.push(
+			// 	<ToolbarListButton
+			// 		key={moduleId}
+			// 		id={moduleId}
+			// 		title={module.title}
+			// 		onClick={onTabListButtonClick}
+			// 	/>
+			// );
 		};
+
+		console.log(modulesComponents);
 
 		return (
 			<ToolbarTabContent
 				name="modules"
 				activeClass={tabActiveClass}>
-				<ToolbarTabList items={modulesComponents}>
-					{modulesButtonsComponents}
+				<ToolbarTabList 
+					listId="TabModulesList"
+					onReorder={onModulesReorder}
+					items={modulesButtonsComponents}>
+					{modulesComponents}
 				</ToolbarTabList>
 			</ToolbarTabContent>
 		);
@@ -143,6 +154,7 @@ class TabModules extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (name, value, data) => dispatch(ActionCreators.updateOption(name, value, data)),
 	onContentChange: (id, value, data) => dispatch(ActionCreators.updateContent(id, value, data)),
+	onModulesReorder: (itemsNewIndex) => dispatch(ActionCreators.reorderModules(itemsNewIndex)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });
 

@@ -12,7 +12,7 @@ import update from 'immutability-helper';
 
 const initialState = {
 	activeTab: 'modules',
-	activeTabItem: 'ModuleImage-1',
+	activeTabItem: '',
 	tokensGroups: TOKENS_GROUPS,
 	tokens: TOKENS,
 	fontsRecipes: FONTS_RECIPES,
@@ -59,16 +59,15 @@ const reducer = (state=initialState, action) => {
 			});
 			break;
 		case type.UPDATE_CONTENT:
-			var newState = '';
 			if (action.data) {
-				newState = update(state, {contents:
+				return update(state, {contents:
 					{[action.id]:
 						{$merge: action.data}
 					}
 				});
 			}
 			else {
-				newState = update(state, {contents: 
+				return update(state, {contents: 
 					{[action.id]:
 						{value: 
 							{$set: action.value}
@@ -76,19 +75,17 @@ const reducer = (state=initialState, action) => {
 					}
 				});
 			}
-			return newState;
 			break;
 		case type.UPDATE_TOKEN:
-			var newState = '';
 			if (action.data) {
-				newState = update(state, {tokens:
+				return update(state, {tokens:
 					{[action.name]:
 						{$merge: action.data}
 					}
 				});
 			}
 			else {
-				newState = update(state, {tokens: 
+				return update(state, {tokens: 
 					{[action.name]:
 						{value: 
 							{$set: action.value}
@@ -109,6 +106,11 @@ const reducer = (state=initialState, action) => {
 			break;
 		case type.SET_CONTENTS:
 			return update(state, {contents: {$set: action.contents}});
+			break;
+		case type.SET_MODULE_ORDER:
+			return update(state, {modules: {
+				[action.id]: {order: {$set: action.order}}
+			}});
 			break;
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});

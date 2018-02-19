@@ -60,7 +60,7 @@ class Article extends React.Component {
 			});
 
 			// Add corresponding component to list
-			renderModules.push(
+			renderModules.splice(module.order, 0, 
 				<ModuleComponent
 					key={moduleId}
 					schema={schema}

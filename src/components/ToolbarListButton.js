@@ -12,9 +12,9 @@ class ToolbarListButton extends React.Component {
 
 	render() {
 		return (
-			<button className="toolbar-list-button" onClick={this.handleClick}>
+			<div className="toolbar-list-button">
 				<span>{this.props.title}</span>
-			</button>
+			</div>
 		);
 	}
 }

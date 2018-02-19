@@ -1,7 +1,7 @@
 const MODULES = {
 	"ModuleMarkdown-1": {
 		"id": "ModuleMarkdown-1",
-		"order": 1,
+		"order": 0,
 		"type": "ModuleMarkdown",
 		"title": "Title",
 		"items": ["ItemMarkdown-1"],
@@ -15,7 +15,7 @@ const MODULES = {
 	},
 	"ModuleMarkdown-2": {
 		"id": "ModuleMarkdown-2",
-		"order": 2,
+		"order": 1,
 		"type": "ModuleMarkdown",
 		"title": "Introduction",
 		"items": ["ItemMarkdown-2"],
@@ -29,7 +29,7 @@ const MODULES = {
 	},
 	"ModuleImage-1": {
 		"id": "ModuleImage-1",
-		"order": 3,
+		"order": 2,
 		"type": "ModuleImage",
 		"title": "Image",
 		"items": ["ItemImage-1"],
@@ -43,7 +43,7 @@ const MODULES = {
 	},
 	"ModuleMarkdown-3": {
 		"id": "ModuleMarkdown-3",
-		"order": 4,
+		"order": 3,
 		"type": "ModuleMarkdown",
 		"title": "Text centered",
 		"items": ["ItemMarkdown-3"],
@@ -57,7 +57,7 @@ const MODULES = {
 	},
 	"ModuleImage-2": {
 		"id": "ModuleImage-2",
-		"order": 5,
+		"order": 4,
 		"type": "ModuleImage",
 		"title": "Image 2",
 		"items": ["ItemImage-2"],
@@ -71,7 +71,7 @@ const MODULES = {
 	},
 	"ModuleMarkdown-4": {
 		"id": "ModuleMarkdown-4",
-		"order": 6,
+		"order": 5,
 		"type": "ModuleMarkdown",
 		"title": "Text left",
 		"items": ["ItemMarkdown-4"],
@@ -85,7 +85,7 @@ const MODULES = {
 	},
 	"ModuleGrid-1": {
 		"id": "ModuleGrid-1",
-		"order": 7,
+		"order": 6,
 		"type": "ModuleGrid",
 		"title": "Image Grid",
 		"items": [
@@ -105,7 +105,7 @@ const MODULES = {
 	},
 	"ModuleImage-3": {
 		"id": "ModuleImage-3",
-		"order": 8,
+		"order": 7,
 		"type": "ModuleImage",
 		"title": "Big Image",
 		"items": ["ItemImage-5"],
@@ -119,7 +119,7 @@ const MODULES = {
 	},
 	"ModuleMarkdown-5": {
 		"id": "ModuleMarkdown-5",
-		"order": 9,
+		"order": 8,
 		"type": "ModuleMarkdown",
 		"title": "List",
 		"items": ["ItemMarkdown-5"],

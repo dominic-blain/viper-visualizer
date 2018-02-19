@@ -138,17 +138,8 @@
 	.toolbar-tab-list {
 		min-height: 100%;
 		.buttons-ctn {
-			button {
-				.font--title;
-				color: @black;
-				background-color: white;
-				display: block;
-				width: 100%;
-				text-align: left;
-				padding: 20px 30px;
-				border-bottom: 1px solid @border;
-				cursor: pointer;
-			}
+			padding:0;
+			margin:0;
 		}
 		.items-ctn {
 			min-height: 100%;
@@ -246,5 +237,23 @@
 			.message-success:before { background-color: @success; }
 			.message-error:before { background-color: @error; }
 		}
+	}
+}
+
+.toolbar-list-button-ctn {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	.toolbar-list-button {
+		.font--title;
+		color: @black;
+		background-color: white;
+		display: block;
+		width: 100%;
+		text-align: left;
+		padding: 20px 30px;
+		box-sizing: border-box;
+		border-bottom: 1px solid @border;
+		cursor: pointer;
 	}
 }

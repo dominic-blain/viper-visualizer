@@ -5,6 +5,7 @@ export const SET_TOKENS = 'set tokens';
 export const SET_MODULES = 'set modules';
 export const SET_ITEMS = 'set items';
 export const SET_CONTENTS = 'set contents';
+export const SET_MODULE_ORDER = 'set module order';
 export const UPDATE_FONT_LIST = 'update font list';
 export const GET_FONT_LIST = 'get font list';
 export const SET_ACTIVE_TAB = 'set active tab';
