@@ -9,6 +9,7 @@ import ToolbarGroup from './ToolbarGroup';
 import ToolbarItem from './ToolbarItem';
 import ToolbarContent from './ToolbarContent';
 import ToolbarOption from './ToolbarOption';
+import ButtonAddModule from './ButtonAddModule';
 import { renderOptionsFrom } from '../utils.js';
 
 
@@ -27,6 +28,7 @@ class TabModules extends React.Component {
 		const onOptionChange = this.props.onOptionChange;
 		const onContentChange = this.props.onContentChange;
 		const onModulesReorder = this.props.onModulesReorder;
+		const onModuleAdd = 'TODO';
 		const onItemsReorder = this.props.onItemsReorder;
 		const onTabListButtonClick = this.props.onTabListButtonClick;
 
@@ -164,6 +166,10 @@ class TabModules extends React.Component {
 					items={modulesList}>
 					{modulesComponents}
 				</ToolbarTabList>
+				<ButtonAddModule 
+					schema={modulesSchema}
+					onChange={onModuleAdd}
+				/>
 			</ToolbarTabContent>
 		);
 	}

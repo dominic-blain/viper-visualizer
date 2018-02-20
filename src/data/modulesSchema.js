@@ -1,5 +1,6 @@
 const MODULES_SCHEMA = {
 	"ModuleMarkdown": {
+		"label": "Module Markdown",
 		"options": [
 			"width",
 			"security-padding",
@@ -14,6 +15,7 @@ const MODULES_SCHEMA = {
 		}
 	},
 	"ModuleImage": {
+		"label": "Module Image",
 		"options": [
 			"width",
 			"security-padding",
@@ -28,6 +30,7 @@ const MODULES_SCHEMA = {
 		}
 	},
 	"ModuleGrid": {
+		"label": "Module Grid",
 		"options": [
 			"width",
 			"security-padding",

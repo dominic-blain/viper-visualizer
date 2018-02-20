@@ -13,7 +13,7 @@ import update from 'immutability-helper';
 
 const initialState = {
 	activeTab: 'modules',
-	activeTabItem: 'ModuleGrid-1',
+	activeTabItem: '',
 	tokensGroups: TOKENS_GROUPS,
 	tokens: TOKENS,
 	fontsRecipes: FONTS_RECIPES,
