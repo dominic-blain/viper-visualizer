@@ -4,6 +4,10 @@ const ITEMS_SCHEMA = {
 			"Text": {
 				"label": "Text",
 				"input": "textarea",
+				"optionsDefaults": [
+					"normal",
+					"center"
+				],
 				"options": [
 					"text-style",
 					"text-alignment"
@@ -16,6 +20,10 @@ const ITEMS_SCHEMA = {
 			"Text": {
 				"label": "Markdown",
 				"input": "textarea",
+				"optionsDefaults": [
+					"normal",
+					"center"
+				],
 				"options": [
 					"text-style",
 					"text-alignment"
@@ -32,6 +40,9 @@ const ITEMS_SCHEMA = {
 			"Caption": {
 				"label": "Caption",
 				"input": "line",
+				"optionsDefaults": [
+					"center"
+				],
 				"options": [
 					"text-alignment"
 				]

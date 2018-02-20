@@ -2,6 +2,13 @@ const MODULES_SCHEMA = {
 	"ModuleMarkdown": {
 		"name": "ModuleMarkdown",
 		"label": "Module Markdown",
+		"optionsDefaults": [
+			"normal",
+			"normal",
+			"normal",
+			"normal",
+			"center"
+		],
 		"options": [
 			"width",
 			"security-padding",
@@ -18,6 +25,13 @@ const MODULES_SCHEMA = {
 	"ModuleImage": {
 		"name": "ModuleImage",
 		"label": "Module Image",
+		"optionsDefaults": [
+			"normal",
+			"normal",
+			"normal",
+			"normal",
+			"center"
+		],
 		"options": [
 			"width",
 			"security-padding",
@@ -34,6 +48,16 @@ const MODULES_SCHEMA = {
 	"ModuleGrid": {
 		"name": "ModuleGrid",
 		"label": "Module Grid",
+		"optionsDefaults": [
+			"normal",
+			"normal",
+			"normal",
+			"normal",
+			"center",
+			"3",
+			"normal",
+			"normal"
+		],
 		"options": [
 			"width",
 			"security-padding",

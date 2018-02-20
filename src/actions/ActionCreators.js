@@ -88,9 +88,8 @@ const ActionCreators = {
 			}
 			// Generate options
 			var optionsObject = {};
-			schema.options.map(optionName => {
-				// TODO: support defaults
-				optionsObject[optionName] = '';
+			schema.options.map((optionName, index) => {
+				optionsObject[optionName] = schema.optionsDefaults[index];
 			});
 			const newModule = {
 				id: id,
@@ -126,9 +125,9 @@ const ActionCreators = {
 				// Options
 				var contentOptionsObject = {};
 				if (contentSchema.options) {
-					contentSchema.options.map(optionName => {
+					contentSchema.options.map((optionName, index) => {
 						// TODO: support defaults
-						contentOptionsObject[optionName] = '';
+						contentOptionsObject[optionName] = contentSchema.optionsDefaults[index];
 					});
 				}
 
