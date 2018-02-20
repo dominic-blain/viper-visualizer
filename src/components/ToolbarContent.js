@@ -8,7 +8,7 @@ class ToolbarContent extends React.Component {
 		const schema = this.props.schema;
 		const inputData = {
 			name: content.id,
-			type: schema.type,
+			type: schema.input,
 			label: schema.label,
 			range: schema.range || '',
 			unit: schema.unit || '',

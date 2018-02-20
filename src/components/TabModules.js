@@ -28,7 +28,7 @@ class TabModules extends React.Component {
 		const onOptionChange = this.props.onOptionChange;
 		const onContentChange = this.props.onContentChange;
 		const onModulesReorder = this.props.onModulesReorder;
-		const onModuleAdd = 'TODO';
+		const onModuleAdd = this.props.onModuleAdd;
 		const onItemsReorder = this.props.onItemsReorder;
 		const onTabListButtonClick = this.props.onTabListButtonClick;
 
@@ -77,7 +77,7 @@ class TabModules extends React.Component {
 				// For each content in item
 				item.content.map(contentId => {
 					const content = contents[contentId];
-					const contentSchema = itemSchema.content[content.name];
+					const contentSchema = itemSchema.content[content.type];
 
 					// Get content options to render
 					var contentOptionsComponents = renderOptionsFrom(
@@ -179,6 +179,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (name, value, data) => dispatch(ActionCreators.updateOption(name, value, data)),
 	onContentChange: (id, value, data) => dispatch(ActionCreators.updateContent(id, value, data)),
 	onModulesReorder: (newOrder) => dispatch(ActionCreators.setModulesOrder(newOrder)),
+	onModuleAdd: (type) => dispatch(ActionCreators.createModule(type)),
 	onItemsReorder: (moduleId, newOrder) => dispatch(ActionCreators.setItemsOrder(moduleId, newOrder)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });

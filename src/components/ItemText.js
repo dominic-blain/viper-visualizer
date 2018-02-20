@@ -8,7 +8,7 @@ class ItemText extends React.Component {
 		const item = this.props.item;
 		const contents = this.props.contents;
 
-		const textSchema = schema.content[item.content[0].name];
+		const textSchema = schema.content[item.content[0].type];
 		const text = contents[item.content[0]];
 
 		const computedClass = computeOptionsClass('item item-text', schema, item);

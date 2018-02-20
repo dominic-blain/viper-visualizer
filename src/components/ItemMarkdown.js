@@ -9,7 +9,7 @@ class ItemMarkdown extends React.Component {
 		const contents = this.props.contents;
 
 		const markdown = contents[item.content[0]];
-		const markdownSchema = schema.content[markdown.name];
+		const markdownSchema = schema.content[markdown.type];
 
 		var computedClass = computeOptionsClass('item item-markdown', schema, item);
 		var computedMarkdownClass = computeOptionsClass('markdown', markdownSchema, markdown);

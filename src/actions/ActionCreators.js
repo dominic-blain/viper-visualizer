@@ -67,6 +67,111 @@ const ActionCreators = {
 			modules: value
 		}
 	},
+	createModule(type) {
+		return (dispatch, getState) => {
+			const currentState = getState();
+			const modules = currentState.modules;
+			const modulesSchema = currentState.modulesSchema;
+			const schema = modulesSchema[type];
+			// Generate ID
+			const typeCounter = util.countItemsBy(type, modules) + 1;
+			const id = type + '-' + typeCounter;
+			// Generate Item only if NOT repeatable
+			var itemsId = [];
+			if (schema.items.repeatable === false) {
+				schema.items.acceptedTypes.map(itemType => {
+					// TODO: return item id or compute it here also
+					itemsId.push(
+						dispatch(ActionCreators.createItem(itemType))
+					);
+				});
+			}
+			// Generate options
+			var optionsObject = {};
+			schema.options.map(optionName => {
+				// TODO: support defaults
+				optionsObject[optionName] = '';
+			});
+			const newModule = {
+				id: id,
+				type: type,
+				title: id,
+				items: itemsId,
+				options: optionsObject
+			}
+			dispatch(ActionCreators.addModule(id, newModule));
+		}
+	},
+	createItem(type) {
+		return (dispatch, getState) => {
+			const currentState = getState();
+			const contents = currentState.contents;
+			const items = currentState.items;
+			const itemsSchema = currentState.itemsSchema;
+			const schema = itemsSchema[type];
+			// Generate ID
+			const typeCounter = util.countItemsBy(type, items) + 1;
+			const id = type + '-' + typeCounter;
+			// Generate content...
+			var contentsId = [];
+			for (var contentType in schema.content) {
+
+				const contentSchema = schema.content[contentType];
+				// ID
+				const contentTypeCounter = util.countItemsBy(contentType, contents) + 1;
+				const contentId = contentType + '-' + contentTypeCounter;
+				contentsId.push(contentId);
+				// Input
+				const contentInput = contentSchema.input;
+				// Options
+				var contentOptionsObject = {};
+				if (contentSchema.options) {
+					contentSchema.options.map(optionName => {
+						// TODO: support defaults
+						contentOptionsObject[optionName] = '';
+					});
+				}
+
+				const newContent = {
+					id: contentId,
+					type: contentType,
+					input: contentInput,
+					value: "",
+					options: contentOptionsObject
+				}
+				dispatch(ActionCreators.addContent(contentId, newContent));
+			}
+			const newItem = {
+				id: id,
+				type: type,
+				title: id,
+				content: contentsId,
+			}
+			dispatch(ActionCreators.addItem(id, newItem));
+			return id;
+		}
+	},
+	addModule(id, object) {
+		return {
+			type: type.ADD_MODULE,
+			id: id,
+			object: object
+		}
+	},
+	addItem(id, object) {
+		return {
+			type: type.ADD_ITEM,
+			id: id,
+			object: object
+		}
+	},
+	addContent(id, object) {
+		return {
+			type: type.ADD_CONTENT,
+			id: id,
+			object: object
+		}
+	},
 	setModulesOrder(newOrder) {
 		return {
 			type: type.SET_MODULES_ORDER,

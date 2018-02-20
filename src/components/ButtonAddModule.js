@@ -7,16 +7,20 @@ class ButtonAddModule extends React.Component {
 	}
 
 	handleChange(event) {
-		this.props.onChange(this.props.id);
+		const type = event.target.value;
+		// const schema = this.props.schema[type];
+		// const typeCounter = countModulesBy(type);
+		// const id = type + '-' + typeCounter;
+		this.props.onChange(type);
 	}
 
 	render() {
-		const schema = this.props.schema;
+		const modulesSchema = this.props.schema;
 		var choicesComponents = [];
 
 		// For each module schema
-		for (var moduleType in schema) {
-			const module = schema[moduleType];
+		for (var moduleType in modulesSchema) {
+			const module = modulesSchema[moduleType];
 			// Add choice to component list
 			choicesComponents.push(
 				<option value={moduleType} key={moduleType}>

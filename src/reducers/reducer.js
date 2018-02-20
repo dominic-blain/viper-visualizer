@@ -117,6 +117,15 @@ const reducer = (state=initialState, action) => {
 				{$set: action.itemsOrder}
 			}}});
 			break;
+		case type.ADD_MODULE:
+			return update(state, {
+				modules: {$merge: {[action.id]: action.object}},
+				modulesOrder: {$push: [action.id]}
+			});
+		case type.ADD_ITEM:
+			return update(state, {items: {$merge: {[action.id]: action.object}}});
+		case type.ADD_CONTENT:
+			return update(state, {contents: {$merge: {[action.id]: action.object}}});
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
 			break;

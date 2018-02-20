@@ -1,5 +1,6 @@
 const MODULES_SCHEMA = {
 	"ModuleMarkdown": {
+		"name": "ModuleMarkdown",
 		"label": "Module Markdown",
 		"options": [
 			"width",
@@ -15,6 +16,7 @@ const MODULES_SCHEMA = {
 		}
 	},
 	"ModuleImage": {
+		"name": "ModuleImage",
 		"label": "Module Image",
 		"options": [
 			"width",
@@ -30,6 +32,7 @@ const MODULES_SCHEMA = {
 		}
 	},
 	"ModuleGrid": {
+		"name": "ModuleGrid",
 		"label": "Module Grid",
 		"options": [
 			"width",

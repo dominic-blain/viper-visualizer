@@ -1,9 +1,9 @@
 const ITEMS_SCHEMA = {
 	"ItemText": {
 		"content": {
-			"text": {
+			"Text": {
 				"label": "Text",
-				"type": "textarea",
+				"input": "textarea",
 				"options": [
 					"text-style",
 					"text-alignment"
@@ -13,9 +13,9 @@ const ITEMS_SCHEMA = {
 	},
 	"ItemMarkdown": {
 		"content": {
-			"text": {
+			"Text": {
 				"label": "Markdown",
-				"type": "textarea",
+				"input": "textarea",
 				"options": [
 					"text-style",
 					"text-alignment"
@@ -25,13 +25,13 @@ const ITEMS_SCHEMA = {
 	},
 	"ItemImage": {
 		"content": {
-			"image": {
+			"Image": {
 				"label": "Image",
-				"type": "image"
+				"input": "image"
 			},
-			"caption": {
+			"Caption": {
 				"label": "Caption",
-				"type": "line",
+				"input": "line",
 				"options": [
 					"text-alignment"
 				]

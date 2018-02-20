@@ -9,9 +9,9 @@ class ItemImage extends React.Component {
 		const contents = this.props.contents;
 
 		const image = contents[item.content[0]];
-		const imageSchema = schema.content[image.name];
+		const imageSchema = schema.content[image.type];
 		const caption = contents[item.content[1]];
-		const captionSchema = schema.content[caption.name];
+		const captionSchema = schema.content[caption.type];
 
 		const computedClass = computeOptionsClass('item item-image', schema, item);
 		const computedImageClass = computeOptionsClass('image', imageSchema, image);
