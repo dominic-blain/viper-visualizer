@@ -1,21 +1,29 @@
 import React from 'react';
-import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import {SortableContainer, SortableElement, SortableHandle, arrayMove} from 'react-sortable-hoc';
 import ToolbarListButton from './ToolbarListButton';
 
-const SortableItem = SortableElement(({value}) => (
+const DragHandle = SortableHandle(() => <span className="drag-handle">:::</span>);
+
+const SortableItem = SortableElement(({value, onClick}) => (
 	<li className="toolbar-list-button-ctn">
-		<ToolbarListButton title={value.title} />
+		<DragHandle />
+		<ToolbarListButton title={value.title} id={value.id} onClick={onClick} />
 	</li>
 ));
 
-const SortableList = SortableContainer(({items}) => {
-  return (
-    <ul className="buttons-ctn">
-      {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
-      ))}
-    </ul>
-  );
+const SortableList = SortableContainer(({items, onButtonClick}) => {
+	return (
+		<ul className="buttons-ctn">
+			{items.map((value, index) => (
+				<SortableItem 
+					key={`item-${index}`} 
+					index={index} 
+					value={value} 
+					onClick={onButtonClick}
+				/>
+			))}
+		</ul>
+	);
 });
 
 class ToolbarTabList extends React.Component {
@@ -37,6 +45,7 @@ class ToolbarTabList extends React.Component {
 	render() {
 		const listId = this.props.listId;
 		const items = this.props.items;
+		const onButtonClick = this.props.onButtonClick;
 
 		return(
 			<div className="toolbar-tab-list" data-name={this.props.name}>
@@ -44,6 +53,8 @@ class ToolbarTabList extends React.Component {
 					items={items}
 					lockAxis="y"
 					onSortEnd={this.handleReorder}
+					onButtonClick={onButtonClick}
+					useDragHandle={true}
 				/>
 				<div className="items-ctn">
 					{this.props.children}

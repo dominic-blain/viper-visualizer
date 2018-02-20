@@ -134,6 +134,7 @@ class TabModules extends React.Component {
 				<ToolbarTabList 
 					listId="TabModulesList"
 					onReorder={onModulesReorder}
+					onButtonClick={onTabListButtonClick}
 					items={modulesButtonsComponents}>
 					{modulesComponents}
 				</ToolbarTabList>
