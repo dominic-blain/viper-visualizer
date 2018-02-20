@@ -67,10 +67,17 @@ const ActionCreators = {
 			modules: value
 		}
 	},
-	setModulesOrder(value) {
+	setModulesOrder(newOrder) {
 		return {
 			type: type.SET_MODULES_ORDER,
-			modulesOrder: value
+			modulesOrder: newOrder
+		}
+	},
+	setItemsOrder(moduleId, newOrder) {
+		return {
+			type: type.SET_ITEMS_ORDER,
+			moduleId: moduleId,
+			itemsOrder: newOrder
 		}
 	},
 	updateFontList(fonts) {
@@ -163,7 +170,9 @@ const ActionCreators = {
 			var responseCounter = 0;
 
 			projectRef.once('value', snapshot => {
-				dispatch(ActionCreators.setProject(snapshot.val()));
+				if (snapshot.val()) {
+					dispatch(ActionCreators.setProject(snapshot.val()));
+				}
 			});
 
 			// const fireSetProject = () => {

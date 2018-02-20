@@ -13,7 +13,7 @@ import update from 'immutability-helper';
 
 const initialState = {
 	activeTab: 'modules',
-	activeTabItem: '',
+	activeTabItem: 'ModuleGrid-1',
 	tokensGroups: TOKENS_GROUPS,
 	tokens: TOKENS,
 	fontsRecipes: FONTS_RECIPES,
@@ -111,6 +111,11 @@ const reducer = (state=initialState, action) => {
 			break;
 		case type.SET_MODULES_ORDER:
 			return update(state, {modulesOrder: {$set: action.modulesOrder}});
+			break;
+		case type.SET_ITEMS_ORDER:
+			return update(state, {modules: {[action.moduleId]: {items: 
+				{$set: action.itemsOrder}
+			}}});
 			break;
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});

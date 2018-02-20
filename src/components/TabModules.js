@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ActionCreators from '../actions/ActionCreators';
 import ToolbarTabContent from './ToolbarTabContent';
 import ToolbarTabList from './ToolbarTabList';
-import ToolbarListButton from './ToolbarListButton';
+import ToolbarAccordion from './ToolbarAccordion';
 import ToolbarModule from './ToolbarModule';
 import ToolbarGroup from './ToolbarGroup';
 import ToolbarItem from './ToolbarItem';
@@ -27,16 +27,18 @@ class TabModules extends React.Component {
 		const onOptionChange = this.props.onOptionChange;
 		const onContentChange = this.props.onContentChange;
 		const onModulesReorder = this.props.onModulesReorder;
+		const onItemsReorder = this.props.onItemsReorder;
 		const onTabListButtonClick = this.props.onTabListButtonClick;
 
 		var modulesComponents = [];
-		var modulesButtonsComponents = [];
+		var modulesList = [];
 
 		// For each module...
 		modulesOrder.map(moduleId => {
 			const module = modules[moduleId];
 			const schema = modulesSchema[module.type];
 			var itemsComponents = [];
+			var itemsAccordion = [];
 
 			// Get options to render
 			var optionsComponents = renderOptionsFrom(
@@ -53,6 +55,12 @@ class TabModules extends React.Component {
 				const item = items[itemId];
 				const itemSchema = itemsSchema[item.type];
 				var contentsComponents = [];
+
+				// Add item to accordion
+				itemsAccordion.push({
+					title: item.title,
+					id: itemId
+				});
 
 				// Get item options to render
 				var itemOptionsComponents = renderOptionsFrom(
@@ -102,6 +110,24 @@ class TabModules extends React.Component {
 			});
 
 			var tabItemActiveClass = (activeTabItem == moduleId) ? 'is-active' : '';
+			var itemsList = [];
+
+			// If we have more than 1 items
+			if (itemsComponents.length > 1) {
+				// Create an accordion with items
+				itemsList.push(
+					<ToolbarAccordion
+						key={moduleId}
+						id={moduleId}
+						items={itemsAccordion}
+						components={itemsComponents}
+						onReorder={onItemsReorder}
+					/>
+				)
+			}
+			else {
+				itemsList = itemsComponents;
+			}
 
 			// Add this module to components list
 			modulesComponents.push( 
@@ -111,7 +137,7 @@ class TabModules extends React.Component {
 					activeClass={tabItemActiveClass}>
 					<ToolbarGroup
 						label="Content">
-						{itemsComponents}
+						{itemsList}
 					</ToolbarGroup>
 					<ToolbarGroup
 						label="Options">
@@ -121,7 +147,7 @@ class TabModules extends React.Component {
 			);
 
 			// Add a button corresponding to this module in components list
-			modulesButtonsComponents.push({
+			modulesList.push({
 				title: module.title,
 				id: moduleId
 			});
@@ -135,7 +161,7 @@ class TabModules extends React.Component {
 					listId="TabModulesList"
 					onReorder={onModulesReorder}
 					onButtonClick={onTabListButtonClick}
-					items={modulesButtonsComponents}>
+					items={modulesList}>
 					{modulesComponents}
 				</ToolbarTabList>
 			</ToolbarTabContent>
@@ -147,6 +173,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onOptionChange: (name, value, data) => dispatch(ActionCreators.updateOption(name, value, data)),
 	onContentChange: (id, value, data) => dispatch(ActionCreators.updateContent(id, value, data)),
 	onModulesReorder: (newOrder) => dispatch(ActionCreators.setModulesOrder(newOrder)),
+	onItemsReorder: (moduleId, newOrder) => dispatch(ActionCreators.setItemsOrder(moduleId, newOrder)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });
 
