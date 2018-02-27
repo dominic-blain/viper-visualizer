@@ -8,7 +8,7 @@ class ToolbarInputLine extends React.Component {
 
 	handleChange(event) {
 		const onChangeData = this.props.onChangeData;
-		this.props.onOptionChange(event.target.name, event.target.value, onChangeData);
+		this.props.onChange(event.target.name, event.target.value, onChangeData);
 	}
 
 	render() {
@@ -19,7 +19,7 @@ class ToolbarInputLine extends React.Component {
 					{data.label}
 				</div>
 				<div className="toolbar-input-line-wrapper">
-					<input type="text" value={data.value} onChange={this.handleChange} />
+					<input type="text" name={data.name} value={data.value} onChange={this.handleChange} />
 				</div>
 			</label>
 		);

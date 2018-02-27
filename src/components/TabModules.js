@@ -10,6 +10,7 @@ import ToolbarItem from './ToolbarItem';
 import ToolbarContent from './ToolbarContent';
 import ToolbarOption from './ToolbarOption';
 import ButtonAddModule from './ButtonAddModule';
+import ButtonAddItem from './ButtonAddItem';
 import { renderOptionsFrom } from '../utils.js';
 
 
@@ -29,11 +30,13 @@ class TabModules extends React.Component {
 		const onContentChange = this.props.onContentChange;
 		const onModulesReorder = this.props.onModulesReorder;
 		const onModuleAdd = this.props.onModuleAdd;
+		const onItemAdd = this.props.onItemAdd;
 		const onItemsReorder = this.props.onItemsReorder;
 		const onTabListButtonClick = this.props.onTabListButtonClick;
 
 		var modulesComponents = [];
 		var modulesList = [];
+		var extraOptions;
 
 		// For each module...
 		modulesOrder.map(moduleId => {
@@ -43,9 +46,9 @@ class TabModules extends React.Component {
 			var itemsAccordion = [];
 
 			// Get options to render
-			var optionsComponents = renderOptionsFrom(
+			const optionsComponents = renderOptionsFrom(
 				schema,
-				module, 
+				module,
 				options,
 				onOptionChange,
 				moduleId,
@@ -65,7 +68,7 @@ class TabModules extends React.Component {
 				});
 
 				// Get item options to render
-				var itemOptionsComponents = renderOptionsFrom(
+				const itemOptionsComponents = renderOptionsFrom(
 					schema.items, 
 					item, 
 					options,
@@ -74,13 +77,20 @@ class TabModules extends React.Component {
 					'item'
 				);
 
+				if (schema.items.options) {
+					extraOptions = {
+						options: schema.items.options,
+						defaults: schema.items.optionsDefaults
+					}
+				}
+
 				// For each content in item
 				item.content.map(contentId => {
 					const content = contents[contentId];
 					const contentSchema = itemSchema.content[content.type];
 
 					// Get content options to render
-					var contentOptionsComponents = renderOptionsFrom(
+					const contentOptionsComponents = renderOptionsFrom(
 						contentSchema, 
 						content, 
 						options,
@@ -114,17 +124,25 @@ class TabModules extends React.Component {
 			var tabItemActiveClass = (activeTabItem == moduleId) ? 'is-active' : '';
 			var itemsList = [];
 
-			// If we have more than 1 items
-			if (itemsComponents.length > 1) {
+			// If our module have repeatable items
+			if (schema.items.repeatable) {
 				// Create an accordion with items
 				itemsList.push(
-					<ToolbarAccordion
-						key={moduleId}
-						id={moduleId}
-						items={itemsAccordion}
-						components={itemsComponents}
-						onReorder={onItemsReorder}
-					/>
+					<div className="item-list">
+						<ToolbarAccordion
+							key={moduleId}
+							id={moduleId}
+							items={itemsAccordion}
+							components={itemsComponents}
+							onReorder={onItemsReorder}
+						/>
+						<ButtonAddItem 
+							moduleId={moduleId}
+							extraOptions={extraOptions}
+							schema={itemsSchema}
+							onChange={onItemAdd}
+						/>
+					</div>
 				)
 			}
 			else {
@@ -180,6 +198,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onContentChange: (id, value, data) => dispatch(ActionCreators.updateContent(id, value, data)),
 	onModulesReorder: (newOrder) => dispatch(ActionCreators.setModulesOrder(newOrder)),
 	onModuleAdd: (type) => dispatch(ActionCreators.createModule(type)),
+	onItemAdd: (type, moduleId, extraOptions) => dispatch(ActionCreators.createItem(type, moduleId, extraOptions)),
 	onItemsReorder: (moduleId, newOrder) => dispatch(ActionCreators.setItemsOrder(moduleId, newOrder)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });

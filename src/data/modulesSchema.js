@@ -75,6 +75,9 @@ const MODULES_SCHEMA = {
 				"ItemImage",
 				"ItemMarkdown"
 			],
+			"optionsDefaults": [
+				1
+			],
 			"options": [
 				"column-span"
 			]

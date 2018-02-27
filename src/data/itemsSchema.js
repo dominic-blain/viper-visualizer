@@ -1,5 +1,6 @@
 const ITEMS_SCHEMA = {
 	"ItemText": {
+		"label": "Text",
 		"content": {
 			"Text": {
 				"label": "Text",
@@ -16,6 +17,7 @@ const ITEMS_SCHEMA = {
 		}
 	},
 	"ItemMarkdown": {
+		"label": "Markdown",
 		"content": {
 			"Text": {
 				"label": "Markdown",
@@ -32,6 +34,7 @@ const ITEMS_SCHEMA = {
 		}
 	},
 	"ItemImage": {
+		"label": "Image",
 		"content": {
 			"Image": {
 				"label": "Image",

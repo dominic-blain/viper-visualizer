@@ -222,8 +222,11 @@
 	}
 }
 
-.toolbar-accordion {
+.item-list {
 	margin-bottom: 20px;
+}
+
+.toolbar-accordion {
 	// ~> IS INIT
 	&.is-inited {
 		.toolbar-accordion-item:not(.is-active) {
@@ -312,10 +315,10 @@
 	}
 }
 
-.button-add-module {
+.button-add-module,
+.button-add-item {
 	width: 100%;
 	display: block;
-	height: 60px;
 	position: relative;
 	cursor: pointer;
 	select {
@@ -331,14 +334,10 @@
 		position: absolute;
 		top:0; bottom:0; left:0; right:0;
 		border: 1px dashed @accent;
-		margin: 8px;
 		border-radius: 4px;
 		transition: background-color 200ms ease-out;
 	}
 	&:after {
-		content: 'Add Module';
-		.font--button;
-		// font-size: 38px;
 		color: @accent;
 		position: absolute;
 		top:0.2em; bottom:0; left:0; right:0;
@@ -356,5 +355,25 @@
 		&:after {
 			color: white;
 		}
+	}
+}
+
+.button-add-module {
+	height: 60px;
+	&:before {
+		margin: 8px;
+	}
+	&:after {
+		content: 'Add Module';
+		.font--button;
+	}
+}
+
+.button-add-item {
+	margin-top: 8px;
+	height: 30px;
+	&:after {
+		content: 'Add Item';
+		.font--intertitle;
 	}
 }

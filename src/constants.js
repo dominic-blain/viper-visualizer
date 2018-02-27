@@ -9,6 +9,7 @@ export const SET_MODULES_ORDER = 'set modules order';
 export const SET_ITEMS_ORDER = 'set items order';
 export const ADD_MODULE = 'add module';
 export const ADD_ITEM = 'add item';
+export const ADD_ITEM_TO_MODULE = 'add item to module';
 export const ADD_CONTENT = 'add content';
 export const UPDATE_FONT_LIST = 'update font list';
 export const GET_FONT_LIST = 'get font list';

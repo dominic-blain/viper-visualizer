@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ButtonAddModule extends React.Component {
+class ButtonAddItem extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
@@ -8,20 +8,22 @@ class ButtonAddModule extends React.Component {
 
 	handleChange(event) {
 		const type = event.target.value;
-		this.props.onChange(type);
+		const moduleId = this.props.moduleId;
+		const extraOptions = this.props.extraOptions;
+		this.props.onChange(type, moduleId, extraOptions);
 	}
 
 	render() {
-		const modulesSchema = this.props.schema;
+		const itemsSchema = this.props.schema;
 		var choicesComponents = [];
 
-		// For each module schema
-		for (var moduleType in modulesSchema) {
-			const module = modulesSchema[moduleType];
+		// For each item schema
+		for (var itemType in itemsSchema) {
+			const item = itemsSchema[itemType];
 			// Add choice to component list
 			choicesComponents.push(
-				<option value={moduleType} key={moduleType}>
-					{module.label}
+				<option value={itemType} key={itemType}>
+					{item.label}
 				</option>
 			);
 		}
@@ -31,7 +33,7 @@ class ButtonAddModule extends React.Component {
 		);
 
 		return (
-			<div className="button-add-module">
+			<div className="button-add-item">
 				<select value="" onChange={this.handleChange}>
 					{choicesComponents}
 				</select>
@@ -39,4 +41,4 @@ class ButtonAddModule extends React.Component {
 		);
 	}
 }
-export default ButtonAddModule;
+export default ButtonAddItem;

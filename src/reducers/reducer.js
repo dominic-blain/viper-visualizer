@@ -124,6 +124,12 @@ const reducer = (state=initialState, action) => {
 			});
 		case type.ADD_ITEM:
 			return update(state, {items: {$merge: {[action.id]: action.object}}});
+		case type.ADD_ITEM_TO_MODULE:
+			return update(state, {modules: {[action.moduleId]: 
+				{items: 
+					{$push: [action.itemId]}
+				}
+			}});
 		case type.ADD_CONTENT:
 			return update(state, {contents: {$merge: {[action.id]: action.object}}});
 		case type.UPDATE_FONT_LIST:

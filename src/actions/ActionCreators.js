@@ -67,6 +67,13 @@ const ActionCreators = {
 			modules: value
 		}
 	},
+	addItemToModule(itemId, moduleId) {
+		return {
+			type: type.ADD_ITEM_TO_MODULE,
+			itemId: itemId,
+			moduleId: moduleId
+		}
+	},
 	createModule(type) {
 		return (dispatch, getState) => {
 			const currentState = getState();
@@ -79,10 +86,14 @@ const ActionCreators = {
 			// Generate Item only if NOT repeatable
 			var itemsId = [];
 			if (schema.items.repeatable === false) {
+				// const itemsOptions = {
+				// 	options: schema.items.options,
+				// 	defaults: schema.items.optionsDefaults
+				// };
 				schema.items.acceptedTypes.map(itemType => {
 					// TODO: return item id or compute it here also
 					itemsId.push(
-						dispatch(ActionCreators.createItem(itemType))
+						dispatch(ActionCreators.createItem(itemType, null, null))
 					);
 				});
 			}
@@ -101,7 +112,7 @@ const ActionCreators = {
 			dispatch(ActionCreators.addModule(id, newModule));
 		}
 	},
-	createItem(type) {
+	createItem(type, moduleId = null, extraOptions = null) {
 		return (dispatch, getState) => {
 			const currentState = getState();
 			const contents = currentState.contents;
@@ -111,6 +122,21 @@ const ActionCreators = {
 			// Generate ID
 			const typeCounter = util.countItemsBy(type, items) + 1;
 			const id = type + '-' + typeCounter;
+			// Generate Options
+			var optionsObject = {};
+			if (schema.options) {
+				schema.options.map((optionName, index) => {
+					// TODO: support defaults
+					optionsObject[optionName] = schema.optionsDefaults[index];
+				});
+			}
+			// Extra options
+			if (extraOptions) {
+				extraOptions.options.map((optionName, index) => {
+					// TODO: support defaults
+					optionsObject[optionName] = extraOptions.defaults[index];
+				});
+			}
 			// Generate content...
 			var contentsId = [];
 			for (var contentType in schema.content) {
@@ -145,6 +171,10 @@ const ActionCreators = {
 				type: type,
 				title: id,
 				content: contentsId,
+				options: optionsObject
+			}
+			if (moduleId) {
+				dispatch(ActionCreators.addItemToModule(id, moduleId));
 			}
 			dispatch(ActionCreators.addItem(id, newItem));
 			return id;
