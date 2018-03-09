@@ -214,6 +214,16 @@ const ActionCreators = {
 			itemsOrder: newOrder
 		}
 	},
+	setProject({tokens, modulesOrder, modules, items, contents}) {
+		return {
+			type: type.SET_PROJECT,
+			tokens: tokens,
+			modulesOrder: modulesOrder,
+			modules: modules,
+			items: items,
+			contents: contents
+		}
+	},
 	updateFontList(fonts) {
 		return {
 			type: type.UPDATE_FONT_LIST,
@@ -305,24 +315,15 @@ const ActionCreators = {
 
 			projectRef.once('value', snapshot => {
 				if (snapshot.val()) {
+					for (var tokenKey in tokens) {
+						const token = tokens[tokenKey];
+						if (token.type == 'font') {
+							dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey, null));
+						}
+					}
 					dispatch(ActionCreators.setProject(snapshot.val()));
 				}
 			});
-		}
-	},
-	setProject({tokens, modulesOrder, modules, items, contents}) {
-		return dispatch => {
-			for (var tokenKey in tokens) {
-				const token = tokens[tokenKey];
-				if (token.type == 'font') {
-					dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey, null));
-				}
-			}
-			dispatch(ActionCreators.setTokens(tokens));
-			dispatch(ActionCreators.setModulesOrder(modulesOrder));
-			dispatch(ActionCreators.setModules(modules));
-			dispatch(ActionCreators.setItems(items));
-			dispatch(ActionCreators.setContents(contents));
 		}
 	},
 	saveProject() {

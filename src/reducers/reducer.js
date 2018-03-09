@@ -117,6 +117,14 @@ const reducer = (state=initialState, action) => {
 				{$set: action.itemsOrder}
 			}}});
 			break;
+		case type.SET_PROJECT:
+			return update(state, {
+				tokens: {$set: action.tokens},
+				modulesOrder: {$set: action.modulesOrder},
+				modules: {$set: action.modules},
+				items: {$set: action.items},
+				contents: {$set: action.contents}
+			});
 		case type.ADD_MODULE:
 			return update(state, {
 				modules: {$merge: {[action.id]: action.object}},
