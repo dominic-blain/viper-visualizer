@@ -7,6 +7,7 @@ class ToolbarAccordionButton extends React.Component {
 	}
 
 	handleClick(event) {
+		console.log(this.props.id);
 		this.props.onClick(this.props.id);
 	}
 

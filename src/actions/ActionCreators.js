@@ -308,44 +308,6 @@ const ActionCreators = {
 					dispatch(ActionCreators.setProject(snapshot.val()));
 				}
 			});
-
-			// const fireSetProject = () => {
-			// 	responseCounter += 1;
-			// 	if (responseCounter == 5) {
-			// 		dispatch(ActionCreators.setProject(snapshot));
-			// 	}
-			// };
-
-			// projectTokensRef.once('value', snapshot => {
-			// 	const value = snapshot.val();
-			// 	if (value) {
-			// 		tokens = value;
-			// 		fireSetProject();
-			// 	}
-			// });
-			// projectItemsRef.once('value', snapshot => {
-			// 	const value = snapshot.val();
-			// 	if (value) {
-			// 		items = value;
-			// 		fireSetProject();
-			// 	}
-			// });
-			// projectContentsRef.once('value', snapshot => {
-			// 	const value = snapshot.val();
-			// 	if (value) {
-			// 		contents = value;
-			// 		fireSetProject();
-			// 	}
-			// });
-			// projectModulesRef.orderByChild('order').once('value', snapshot => {
-			// 	snapshot.forEach(child => {
-			// 		console.log(child.val());
-			// 		modules[child.val().id] = child.val();
-			// 	});
-			// 	if (modules) {
-			// 		fireSetProject();
-			// 	}
-			// });
 		}
 	},
 	setProject({tokens, modulesOrder, modules, items, contents}) {

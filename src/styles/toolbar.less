@@ -226,17 +226,6 @@
 	margin-bottom: 20px;
 }
 
-.toolbar-accordion {
-	// ~> IS INIT
-	&.is-inited {
-		.toolbar-accordion-item:not(.is-active) {
-			.toolbar-accordion-content {
-				height: 0!important;
-			}
-		}
-	}
-}
-
 .toolbar-accordion-item {
 	.font--text;
 	border: 1px solid @border;
@@ -276,6 +265,15 @@
 			background-color: @background;
 			border-top: 1px solid @border;
 			padding: 10px;
+		}
+	}
+	// ~> IS NOT ACTIVE
+	&:not(.is-active) {
+		.toolbar-accordion-content {
+			// ~> IS INITED
+			&.is-inited {
+				height: 0!important;
+			}
 		}
 	}
 	// ~> IS ACTIVE

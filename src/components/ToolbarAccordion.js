@@ -43,13 +43,8 @@ class ToolbarAccordion extends React.Component {
 		this.handleReorder = this.handleReorder.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 		this.state = {
-			activeItem: '',
-			inited: false
+			activeItem: ''
 		}
-	}
-
-	componentDidMount() {
-		this.setState({inited: true});
 	}
 
 	handleReorder({oldIndex, newIndex}) {
@@ -74,7 +69,7 @@ class ToolbarAccordion extends React.Component {
 		const components = this.props.components;
 		const onButtonClick = this.props.onButtonClick;
 
-		const computedClass = 'toolbar-accordion' + (this.state.inited ? ' is-inited' : '');
+		const computedClass = 'toolbar-accordion';
 
 		return(
 			<div className={computedClass} data-name={this.props.name} ref={div => this.div = div}>
