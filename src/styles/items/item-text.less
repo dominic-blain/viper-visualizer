@@ -8,4 +8,29 @@
 		&.option--text-alignment-center > * { .recipe--text-alignment-center; }
 		&.option--text-alignment-right > * { .recipe--text-alignment-right; }
 	}
+	.text.no-text {
+		height: 135px;
+		border-top: 15px solid @border;
+		border-bottom: 15px solid @border;
+		position: relative;
+
+		&:before,
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			left:0; 
+			height: 45px;
+			border-top: 15px solid @border;
+			border-bottom: 15px solid @border;
+		}
+		&:before {
+			top:15px;
+			width: 90%;
+		}
+		&:after {
+			top:45px;
+			width: 80%;
+		}
+	}
 }
