@@ -73,12 +73,12 @@ export function setParam(paramName, paramValue) {
 
 export function computeOptionsClass(elementClass, schema, object) {
 	var optionClass = '';
-	if (!!schema.options) {
+	if (!!object.options) {
 		// For each options..
-		schema.options.map(optionName => {
+		for (var optionName in object.options) {
 			// Add option class
 			optionClass += ' option--'+ optionName +'-' + object.options[optionName];
-		});
+		}
 	}
 	return (elementClass + optionClass);
 }

@@ -1,62 +1,122 @@
 .recipe--column-count-2 {
 	.grid > * {
-		width: 100%;
-		#mq-min-width(@screen-xs, {
-			width: 50%;
-		});
+		&.option--column-span-1 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 50%; });
+		}
+		&.option--column-span-2,
+		&.option--column-span-3,
+		&.option--column-span-4,
+		&.option--column-span-5,
+		&.option--column-span-6 { width: 100%; }
 	}
 }
 
 .recipe--column-count-3 {
 	.grid > * {
-		width: 100%;
-		#mq-min-width(@screen-xs, {
-			width: 50%;
-		});
-		#mq-min-width(@screen-sm, {
-			width: 100% / 3;
-		});
+		&.option--column-span-1 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 50%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3; });
+		}
+		&.option--column-span-2 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 100%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3 * 2; });
+		}
+		&.option--column-span-3,
+		&.option--column-span-4,
+		&.option--column-span-5,
+		&.option--column-span-6 { width: 100%; }
 	}
 }
 
 .recipe--column-count-4 {
 	.grid > * {
-		width: 100%;
-		#mq-min-width(@screen-xs, {
-			width: 50%;
-		});
-		#mq-min-width(@screen-sm, {
-			width: 25%;
-		});
+		&.option--column-span-1 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 50%; });
+			#mq-min-width(@screen-sm, { width: 25%; });
+		}
+		&.option--column-span-2 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 100%; });
+			#mq-min-width(@screen-sm, { width: 50%; });
+		}
+		&.option--column-span-3 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 100%; });
+			#mq-min-width(@screen-sm, { width: 75%; });
+		}
+		&.option--column-span-4,
+		&.option--column-span-5,
+		&.option--column-span-6 { width: 100%; }
 	}
 }
 
 .recipe--column-count-5 {
 	.grid > * {
-		width: 100%;
-		#mq-min-width(@screen-xs, {
-			width: 50%;
-		});
-		#mq-min-width(@screen-sm, {
-			width: 100% / 3;
-		});
-		#mq-min-width(@screen-md, {
-			width: 20%;
-		});
+		&.option--column-span-1 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 50%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3; });
+			#mq-min-width(@screen-md, { width: 20%; });
+		}
+		&.option--column-span-2 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 50%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3; });
+			#mq-min-width(@screen-md, { width: 40%; });
+		}
+		&.option--column-span-3 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 100%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3 * 2; });
+			#mq-min-width(@screen-md, { width: 60%; });
+		}
+		&.option--column-span-4 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 100%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3 * 2; });
+			#mq-min-width(@screen-md, { width: 80%; });
+		}
+		&.option--column-span-5,
+		&.option--column-span-6 { width: 100%; }
 	}
 }
 
 .recipe--column-count-6 {
 	.grid > * {
-		width: 100%;
-		#mq-min-width(@screen-xs, {
-			width: 50%;
-		});
-		#mq-min-width(@screen-sm, {
-			width: 100% / 3;
-		});
-		#mq-min-width(@screen-md, {
-			width: 100% / 6;
-		});
+		&.option--column-span-1 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 50%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3; });
+			#mq-min-width(@screen-md, { width: 100% / 6; });
+		}
+		&.option--column-span-2 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 50%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3; });
+			#mq-min-width(@screen-md, { width: 100% / 6; });
+		}
+		&.option--column-span-3 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 100%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3 * 2; });
+			#mq-min-width(@screen-md, { width: 50%; });
+		}
+		&.option--column-span-4 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 50%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3 * 2; });
+			#mq-min-width(@screen-md, { width: 100% / 6 * 4; });
+		}
+		&.option--column-span-5 {
+			width: 100%;
+			#mq-min-width(@screen-xs, { width: 100%; });
+			#mq-min-width(@screen-sm, { width: 100% / 3 * 2; });
+			#mq-min-width(@screen-md, { width: 100% / 6 * 5; });
+		}
+		&.option--column-span-6 { width: 100%; }
 	}
 }

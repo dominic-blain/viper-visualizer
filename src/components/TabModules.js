@@ -115,7 +115,8 @@ class TabModules extends React.Component {
 				itemsComponents.push(
 					<ToolbarItem
 						key={itemId}
-						data={item}>
+						data={item}
+						options={itemOptionsComponents}>
 						{contentsComponents}
 					</ToolbarItem>
 				);

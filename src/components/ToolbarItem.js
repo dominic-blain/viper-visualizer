@@ -10,7 +10,12 @@ class ToolbarItem extends React.Component {
 	render() {
 		return (
 			<div className="toolbar-item">
-				{this.props.children}
+				<div className="toolbar-item-content">
+					{this.props.children}
+				</div>
+				<div className="toolbar-item-options">
+					{this.props.options}
+				</div>
 			</div>
 		);
 	}
