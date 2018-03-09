@@ -14,7 +14,7 @@ class ItemImage extends React.Component {
 		const captionSchema = schema.content[caption.type];
 
 		const computedClass = computeOptionsClass('item item-image', schema, item);
-		const computedImageClass = computeOptionsClass('image', imageSchema, image);
+		const computedImageClass = computeOptionsClass('image', imageSchema, image) + (image.value == '' ? ' no-src' : '');
 		const computedCaptionClass = computeOptionsClass('caption', captionSchema, caption);
 
 		return (

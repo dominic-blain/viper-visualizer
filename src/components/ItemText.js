@@ -12,7 +12,7 @@ class ItemText extends React.Component {
 		const text = contents[item.content[0]];
 
 		const computedClass = computeOptionsClass('item item-text', schema, item);
-		const computedTextClass = computeOptionsClass('text', textSchema, text);
+		const computedTextClass = computeOptionsClass('text', textSchema, text) + (text.value == '' ? ' no-text' : '');;
 		return (
 			<div className={computedClass}>
 				<p className={computedTextClass}>
