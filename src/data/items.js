@@ -29,6 +29,78 @@ const ITEMS = {
 		"title": "Markdown 5",
 		"content": ["Text-5"]
 	},
+	"ItemMarkdown-6" : {
+      "content" : [ "Text-6" ],
+      "id" : "ItemMarkdown-6",
+      "options" : {
+        "column-span" : "4"
+      },
+      "title" : "ItemMarkdown-6",
+      "type" : "ItemMarkdown"
+    },
+    "ItemMarkdown-7" : {
+      "content" : [ "Text-7" ],
+      "id" : "ItemMarkdown-7",
+      "options" : {
+        "column-span" : "3"
+      },
+      "title" : "ItemMarkdown-7",
+      "type" : "ItemMarkdown"
+    },
+    "ItemMarkdown-8" : {
+      "content" : [ "Text-8" ],
+      "id" : "ItemMarkdown-8",
+      "options" : {
+        "column-span" : "2"
+      },
+      "title" : "ItemMarkdown-8",
+      "type" : "ItemMarkdown"
+    },
+    "ItemMarkdown-9" : {
+      "content" : [ "Text-9" ],
+      "id" : "ItemMarkdown-9",
+      "options" : {
+        "column-span" : "2"
+      },
+      "title" : "ItemMarkdown-9",
+      "type" : "ItemMarkdown"
+    },
+	"ItemMarkdown-10" : {
+      "content" : [ "Text-10" ],
+      "id" : "ItemMarkdown-10",
+      "options" : {
+        "column-span" : 1
+      },
+      "title" : "ItemMarkdown-10",
+      "type" : "ItemMarkdown"
+    },
+    "ItemMarkdown-12" : {
+      "content" : [ "Text-12" ],
+      "id" : "ItemMarkdown-12",
+      "options" : {
+        "column-span" : "2"
+      },
+      "title" : "ItemMarkdown-12",
+      "type" : "ItemMarkdown"
+    },
+    "ItemMarkdown-13" : {
+      "content" : [ "Text-13" ],
+      "id" : "ItemMarkdown-13",
+      "options" : {
+        "column-span" : 1
+      },
+      "title" : "ItemMarkdown-13",
+      "type" : "ItemMarkdown"
+    },
+    "ItemMarkdown-14" : {
+      "content" : [ "Text-14" ],
+      "id" : "ItemMarkdown-14",
+      "options" : {
+        "column-span" : 1
+      },
+      "title" : "ItemMarkdown-14",
+      "type" : "ItemMarkdown"
+    },
 	"ItemImage-1": {
 		"id": "ItemImage-1",
 		"type": "ItemImage",

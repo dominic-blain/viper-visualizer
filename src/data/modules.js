@@ -121,7 +121,39 @@ const MODULES = {
 			"space-after": "normal",
 			"alignment": "center"
 		}
-	}
+	},
+	"ModuleGrid-2" : {
+      "id" : "ModuleGrid-2",
+      "items" : [ "ItemMarkdown-6", "ItemMarkdown-7", "ItemMarkdown-8", "ItemMarkdown-9", "ItemMarkdown-10" ],
+      "options" : {
+        "alignment" : "center",
+        "column-count" : "5",
+        "horizontal-gutter" : "big",
+        "security-padding" : "normal",
+        "space-after" : "normal",
+        "space-before" : "normal",
+        "vertical-gutter" : "small",
+        "width" : "site"
+      },
+      "title" : "Recipes: Title",
+      "type" : "ModuleGrid"
+    },
+    "ModuleGrid-3" : {
+      "id" : "ModuleGrid-3",
+      "items" : [ "ItemMarkdown-12", "ItemMarkdown-13", "ItemMarkdown-14" ],
+      "options" : {
+        "alignment" : "center",
+        "column-count" : "4",
+        "horizontal-gutter" : "normal",
+        "security-padding" : "normal",
+        "space-after" : "normal",
+        "space-before" : "normal",
+        "vertical-gutter" : "normal",
+        "width" : "site"
+      },
+      "title" : "Recipes: Text",
+      "type" : "ModuleGrid"
+    }
 };
 
 export default MODULES;

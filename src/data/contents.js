@@ -49,6 +49,96 @@ const CONTENTS = {
 			"text-alignment": "left"
 		}
 	},
+	"Text-6" : {
+      "id" : "Text-6",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "left",
+        "text-style" : "big"
+      },
+      "type" : "Text",
+      "value" : "**Title** — Extra Big\n# Torfou is a former commune in the Maine-et-Loire department in western France."
+    },
+    "Text-7" : {
+      "id" : "Text-7",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "left",
+        "text-style" : "normal"
+      },
+      "type" : "Text",
+      "value" : "**Title** — Big\n# Torfou is a former commune in the Maine-et-Loire department in western France."
+    },
+    "Text-8" : {
+      "id" : "Text-8",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "left",
+        "text-style" : "normal"
+      },
+      "type" : "Text",
+      "value" : "**Title** — Normal\n## It was written by Lambert, with Natalie Hemby and Luke Laird."
+    },
+    "Text-9" : {
+      "id" : "Text-9",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "left",
+        "text-style" : "normal"
+      },
+      "type" : "Text",
+      "value" : "**Title** — Small\n### It was written by Lambert, with Natalie Hemby and Luke Laird."
+    },
+	"Text-10" : {
+      "id" : "Text-10",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "left",
+        "text-style" : "normal"
+      },
+      "type" : "Text",
+      "value" : "**Title** — Extra Small\n#### It was written by Lambert, with Natalie Hemby and Luke Laird."
+    },
+    "Text-11" : {
+      "id" : "Text-11",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "center",
+        "text-style" : "normal"
+      },
+      "type" : "Text",
+      "value" : ""
+    },
+    "Text-12" : {
+      "id" : "Text-12",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "left",
+        "text-style" : "big"
+      },
+      "type" : "Text",
+      "value" : "**Text** — Big\n\nNintendo World Report and Siliconera lauded the game for its track editor and Survival mode. Nintendo World Report praised the game's extensive Survival and Zero Test challenges, but complained about the Grand Prix's short duration and unbalanced difficulty. While Nintendo World Report and Official Nintendo Magazine thought it was a graphical improvement over preceding 2D F-Zero games, both the former critic and Siliconera lamented over its reused graphics and musical assets."
+    },
+    "Text-13" : {
+      "id" : "Text-13",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "left",
+        "text-style" : "normal"
+      },
+      "type" : "Text",
+      "value" : "**Text** — Normal\n\nTerapon puta, the spiny-checked grunter, three-lined grunter, small-scaled banded grunter, small-scaled terapon, squeaking perch or two-lined grunter, is a species of fish from the Indo-Pacific region, it is a member of the grunter family, Terapontidae. It has also spread into the eastern Mediterranean Sea from the Red Sea through the Suez Canal, a process known as Lessepsian migration."
+    },
+    "Text-14" : {
+      "id" : "Text-14",
+      "input" : "textarea",
+      "options" : {
+        "text-alignment" : "left",
+        "text-style" : "small"
+      },
+      "type" : "Text",
+      "value" : "**Text** — Small\n\nTerapon puta, the spiny-checked grunter, three-lined grunter, small-scaled banded grunter, small-scaled terapon, squeaking perch or two-lined grunter, is a species of fish from the Indo-Pacific region, it is a member of the grunter family, Terapontidae. It has also spread into the eastern Mediterranean Sea from the Red Sea through the Suez Canal, a process known as Lessepsian migration."
+    },
 	"Image-1": {
 		"id": "Image-1",
 		"type": "Image",
