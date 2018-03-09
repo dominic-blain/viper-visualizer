@@ -300,30 +300,36 @@ const ActionCreators = {
 	loadProject() {
 		return dispatch => {
 			const projectID = util.getParam('project');
-			const projectRef = database.ref('/projects/' + projectID);
-			const projectTokensRef = database.ref('/projects/' + projectID + '/tokens/');
-			const projectModulesRef = database.ref('/projects/' + projectID + '/modules/');
-			const projectModulesOrderRef = database.ref('/projects/' + projectID + '/modulesOrder/');
-			const projectItemsRef = database.ref('/projects/' + projectID + '/items/');
-			const projectContentsRef = database.ref('/projects/' + projectID + '/contents/');
-			var tokens = {};
-			var modulesOrder = [];
-			var modules = {};
-			var items = {};
-			var contents = {};
-			var responseCounter = 0;
+			if (projectID) {
+				const projectRef = database.ref('/projects/' + projectID);
+				const projectTokensRef = database.ref('/projects/' + projectID + '/tokens/');
+				const projectModulesRef = database.ref('/projects/' + projectID + '/modules/');
+				const projectModulesOrderRef = database.ref('/projects/' + projectID + '/modulesOrder/');
+				const projectItemsRef = database.ref('/projects/' + projectID + '/items/');
+				const projectContentsRef = database.ref('/projects/' + projectID + '/contents/');
+				var tokens = {};
+				var modulesOrder = [];
+				var modules = {};
+				var items = {};
+				var contents = {};
+				var responseCounter = 0;
 
-			projectRef.once('value', snapshot => {
-				if (snapshot.val()) {
-					for (var tokenKey in tokens) {
-						const token = tokens[tokenKey];
-						if (token.type == 'font') {
-							dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey, null));
+				projectRef.once('value', snapshot => {
+					if (snapshot.val()) {
+						for (var tokenKey in tokens) {
+							const token = tokens[tokenKey];
+							if (token.type == 'font') {
+								dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey, null));
+							}
 						}
+						dispatch(ActionCreators.setProject(snapshot.val()));
 					}
-					dispatch(ActionCreators.setProject(snapshot.val()));
-				}
-			});
+				});
+			}
+			else {
+				return null;
+			}
+
 		}
 	},
 	saveProject() {
