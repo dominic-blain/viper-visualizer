@@ -46,6 +46,7 @@ const initialState = {
 };
 
 const reducer = (state=initialState, action) => {
+	let index;
 	switch (action.type) {
 		case type.UPDATE_OPTION:
 			return update(state, {
@@ -125,26 +126,42 @@ const reducer = (state=initialState, action) => {
 				items: {$set: action.items},
 				contents: {$set: action.contents}
 			});
-		case type.DELETE_MODULE:
-			const index = state.modulesOrder.indexOf(action.id);
-			return update(state, {modulesOrder: 
-				{$splice: [[index, 1]]}
-			});
+			break;
 		case type.ADD_MODULE:
 			return update(state, {
 				modules: {$merge: {[action.id]: action.object}},
 				modulesOrder: {$push: [action.id]}
 			});
+			break;
+		case type.DELETE_MODULE: {
+			const index = state.modulesOrder.indexOf(action.id);
+			return update(state, {modulesOrder: 
+				{$splice: [[index, 1]]}
+			});
+			break;
+		}
 		case type.ADD_ITEM:
 			return update(state, {items: {$merge: {[action.id]: action.object}}});
+			break;
+		case type.DELETE_ITEM: {
+			const index = state.modules[action.moduleId].items.indexOf(action.id);
+			return update(state, {modules: {[action.moduleId]:
+				{items:
+					{$splice: [[index, 1]]}
+				}
+			}});
+			break;
+		}
 		case type.ADD_ITEM_TO_MODULE:
 			return update(state, {modules: {[action.moduleId]: 
 				{items: 
 					{$push: [action.itemId]}
 				}
 			}});
+			break;
 		case type.ADD_CONTENT:
 			return update(state, {contents: {$merge: {[action.id]: action.object}}});
+			break;
 		case type.UPDATE_FONT_LIST:
 			return update(state, {fonts: {$set: action.fonts}});
 			break;

@@ -2,16 +2,18 @@ import React from 'react';
 import {SortableContainer, SortableElement, SortableHandle, arrayMove} from 'react-sortable-hoc';
 import ToolbarAccordionButton from './ToolbarAccordionButton';
 import ToolbarAccordionContent from './ToolbarAccordionContent';
+import ButtonDeleteItem from './ButtonDeleteItem';
 
 const DragHandle = SortableHandle(() => <span className="drag-handle">:::</span>);
 
-const SortableItem = SortableElement(({item, onClick, component, activeItem}) => {
+const SortableItem = SortableElement(({item, onClick, onDelete, component, activeItem, listId}) => {
 	const computedClass = 'toolbar-accordion-item' + ((activeItem == item.id) ? ' is-active' : '');
 	return (
 		<li className={computedClass}>
 			<div className="toolbar-accordion-header">
 				<DragHandle />
 				<ToolbarAccordionButton title={item.title} id={item.id} onClick={onClick} />
+				<ButtonDeleteItem onDelete={onDelete} id={item.id} moduleId={listId} />
 			</div>
 			<ToolbarAccordionContent>
 				{component}
@@ -20,7 +22,7 @@ const SortableItem = SortableElement(({item, onClick, component, activeItem}) =>
 	);
 });
 
-const SortableList = SortableContainer(({items, onButtonClick, components, activeItem}) => {
+const SortableList = SortableContainer(({items, onButtonClick, onDelete, components, activeItem, listId}) => {
 	return (
 		<ul className="buttons-ctn">
 			{items.map((item, index) => (
@@ -31,6 +33,8 @@ const SortableList = SortableContainer(({items, onButtonClick, components, activ
 					item={item}
 					component={components[index]}
 					onClick={onButtonClick}
+					onDelete={onDelete}
+					listId={listId}
 				/>
 			))}
 		</ul>
@@ -67,7 +71,7 @@ class ToolbarAccordion extends React.Component {
 		const listId = this.props.listId;
 		const items = this.props.items;
 		const components = this.props.components;
-		const onButtonClick = this.props.onButtonClick;
+		const onDelete = this.props.onDelete;
 
 		const computedClass = 'toolbar-accordion';
 
@@ -79,8 +83,10 @@ class ToolbarAccordion extends React.Component {
 					lockAxis="y"
 					onSortEnd={this.handleReorder}
 					onButtonClick={this.handleClick}
+					onDelete={onDelete}
 					activeItem={activeItem}
 					useDragHandle={true}
+					listId={listId}
 				/>
 			</div>
 		);

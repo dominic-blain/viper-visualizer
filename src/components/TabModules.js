@@ -32,6 +32,7 @@ class TabModules extends React.Component {
 		const onModuleAdd = this.props.onModuleAdd;
 		const onModuleDelete = this.props.onModuleDelete;
 		const onItemAdd = this.props.onItemAdd;
+		const onItemDelete = this.props.onItemDelete;
 		const onItemsReorder = this.props.onItemsReorder;
 		const onTabListButtonClick = this.props.onTabListButtonClick;
 
@@ -133,10 +134,11 @@ class TabModules extends React.Component {
 					<div className="item-list">
 						<ToolbarAccordion
 							key={moduleId}
-							id={moduleId}
+							listId={moduleId}
 							items={itemsAccordion}
 							components={itemsComponents}
 							onReorder={onItemsReorder}
+							onDelete={onItemDelete}
 						/>
 						<ButtonAddItem 
 							moduleId={moduleId}
@@ -203,6 +205,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onModuleAdd: (type) => dispatch(ActionCreators.createModule(type)),
 	onModuleDelete: (id) => dispatch(ActionCreators.deleteModule(id)),
 	onItemAdd: (type, moduleId, extraOptions) => dispatch(ActionCreators.createItem(type, moduleId, extraOptions)),
+	onItemDelete: (id, moduleId) => dispatch(ActionCreators.deleteItem(id, moduleId)),
 	onItemsReorder: (moduleId, newOrder) => dispatch(ActionCreators.setItemsOrder(moduleId, newOrder)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
 });
