@@ -72,7 +72,7 @@ class ToolbarAccordion extends React.Component {
 		const computedClass = 'toolbar-accordion';
 
 		return(
-			<div className={computedClass} data-name={this.props.name} ref={div => this.div = div}>
+			<div className={computedClass} data-name={this.props.name}>
 				<SortableList
 					items={items}
 					components={components}

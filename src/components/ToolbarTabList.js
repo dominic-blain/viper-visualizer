@@ -1,6 +1,7 @@
 import React from 'react';
 import {SortableContainer, SortableElement, SortableHandle, arrayMove} from 'react-sortable-hoc';
 import ToolbarListButton from './ToolbarListButton';
+import ButtonDeleteModule from './ButtonDeleteModule';
 
 const DragHandle = SortableHandle(() => <span className="drag-handle">:::</span>);
 
@@ -8,6 +9,7 @@ const SortableItem = SortableElement(({value, onClick}) => (
 	<li className="toolbar-list-button-ctn">
 		<DragHandle />
 		<ToolbarListButton title={value.title} id={value.id} onClick={onClick} />
+		<ButtonDeleteModule />
 	</li>
 ));
 
@@ -38,7 +40,6 @@ class ToolbarTabList extends React.Component {
 		newArray.map(item => {
 			newOrder.push(item.id);
 		});
-		console.log(newOrder);
 		this.props.onReorder(newOrder);
 	}
 
