@@ -125,6 +125,11 @@ const reducer = (state=initialState, action) => {
 				items: {$set: action.items},
 				contents: {$set: action.contents}
 			});
+		case type.DELETE_MODULE:
+			const index = state.modulesOrder.indexOf(action.id);
+			return update(state, {modulesOrder: 
+				{$splice: [[index, 1]]}
+			});
 		case type.ADD_MODULE:
 			return update(state, {
 				modules: {$merge: {[action.id]: action.object}},

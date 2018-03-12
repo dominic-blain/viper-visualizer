@@ -5,15 +5,15 @@ import ButtonDeleteModule from './ButtonDeleteModule';
 
 const DragHandle = SortableHandle(() => <span className="drag-handle">:::</span>);
 
-const SortableItem = SortableElement(({value, onClick}) => (
+const SortableItem = SortableElement(({value, onClick, onDelete}) => (
 	<li className="toolbar-list-button-ctn">
 		<DragHandle />
 		<ToolbarListButton title={value.title} id={value.id} onClick={onClick} />
-		<ButtonDeleteModule />
+		<ButtonDeleteModule onDelete={onDelete} id={value.id} />
 	</li>
 ));
 
-const SortableList = SortableContainer(({items, onButtonClick}) => {
+const SortableList = SortableContainer(({items, onButtonClick, onDelete}) => {
 	return (
 		<ul className="buttons-ctn">
 			{items.map((value, index) => (
@@ -22,6 +22,7 @@ const SortableList = SortableContainer(({items, onButtonClick}) => {
 					index={index} 
 					value={value} 
 					onClick={onButtonClick}
+					onDelete={onDelete}
 				/>
 			))}
 		</ul>
@@ -47,6 +48,7 @@ class ToolbarTabList extends React.Component {
 		const listId = this.props.listId;
 		const items = this.props.items;
 		const onButtonClick = this.props.onButtonClick;
+		const onDelete = this.props.onDelete;
 
 		return(
 			<div className="toolbar-tab-list" data-name={this.props.name}>
@@ -55,6 +57,7 @@ class ToolbarTabList extends React.Component {
 					lockAxis="y"
 					onSortEnd={this.handleReorder}
 					onButtonClick={onButtonClick}
+					onDelete={onDelete}
 					useDragHandle={true}
 				/>
 				<div className="items-ctn">

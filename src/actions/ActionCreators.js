@@ -74,6 +74,12 @@ const ActionCreators = {
 			moduleId: moduleId
 		}
 	},
+	deleteModule(id) {
+		return {
+			type: type.DELETE_MODULE,
+			id: id
+		}
+	},
 	createModule(type) {
 		return (dispatch, getState) => {
 			const currentState = getState();

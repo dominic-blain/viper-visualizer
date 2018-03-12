@@ -30,6 +30,7 @@ class TabModules extends React.Component {
 		const onContentChange = this.props.onContentChange;
 		const onModulesReorder = this.props.onModulesReorder;
 		const onModuleAdd = this.props.onModuleAdd;
+		const onModuleDelete = this.props.onModuleDelete;
 		const onItemAdd = this.props.onItemAdd;
 		const onItemsReorder = this.props.onItemsReorder;
 		const onTabListButtonClick = this.props.onTabListButtonClick;
@@ -181,6 +182,7 @@ class TabModules extends React.Component {
 				<ToolbarTabList 
 					listId="TabModulesList"
 					onReorder={onModulesReorder}
+					onDelete={onModuleDelete}
 					onButtonClick={onTabListButtonClick}
 					items={modulesList}>
 					{modulesComponents}
@@ -199,6 +201,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onContentChange: (id, value, data) => dispatch(ActionCreators.updateContent(id, value, data)),
 	onModulesReorder: (newOrder) => dispatch(ActionCreators.setModulesOrder(newOrder)),
 	onModuleAdd: (type) => dispatch(ActionCreators.createModule(type)),
+	onModuleDelete: (id) => dispatch(ActionCreators.deleteModule(id)),
 	onItemAdd: (type, moduleId, extraOptions) => dispatch(ActionCreators.createItem(type, moduleId, extraOptions)),
 	onItemsReorder: (moduleId, newOrder) => dispatch(ActionCreators.setItemsOrder(moduleId, newOrder)),
 	onTabListButtonClick: (itemName) => dispatch(ActionCreators.changeTabItem(itemName))
