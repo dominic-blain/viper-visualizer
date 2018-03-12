@@ -3,7 +3,7 @@ import ToolbarOption from './components/ToolbarOption';
 import update from 'immutability-helper';
 import URLSearchParams from 'url-search-params';
 
-export function loadGoogleFont(name, token) {
+export function loadGoogleFont(token) {
 	// Get head element
 	const head = document.querySelector('head');
 	// Make sure there is no upload font for the same token
@@ -20,6 +20,7 @@ export function loadGoogleFont(name, token) {
 }
 
 export function loadFileFont(token) {
+	console.log('load upload');
 	// Get head element
 	const head = document.querySelector('head');
 	// Make sure there is no google font for the same token

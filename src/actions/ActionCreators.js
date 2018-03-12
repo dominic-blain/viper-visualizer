@@ -298,13 +298,15 @@ const ActionCreators = {
 			itemName: itemName
 		}
 	},
-	loadFont(name, token) {
+	loadFont(token) {
 		return () => {
+			console.log(token.name, 'source is..', token.source);
 			switch(token.source) {
 				case 'google-font':
-					util.loadGoogleFont(name, token);
+					util.loadGoogleFont(token);
 					break;
 				case 'upload':
+					console.log('source: upload');
 					util.loadFileFont(token);
 					break;
 			}
@@ -315,27 +317,19 @@ const ActionCreators = {
 			const projectID = util.getParam('project');
 			if (projectID) {
 				const projectRef = database.ref('/projects/' + projectID);
-				const projectTokensRef = database.ref('/projects/' + projectID + '/tokens/');
-				const projectModulesRef = database.ref('/projects/' + projectID + '/modules/');
-				const projectModulesOrderRef = database.ref('/projects/' + projectID + '/modulesOrder/');
-				const projectItemsRef = database.ref('/projects/' + projectID + '/items/');
-				const projectContentsRef = database.ref('/projects/' + projectID + '/contents/');
-				var tokens = {};
-				var modulesOrder = [];
-				var modules = {};
-				var items = {};
-				var contents = {};
-				var responseCounter = 0;
 
 				projectRef.once('value', snapshot => {
-					if (snapshot.val()) {
+					const value = snapshot.val();
+					if (value) {
+						const tokens = value.tokens;
 						for (var tokenKey in tokens) {
 							const token = tokens[tokenKey];
 							if (token.type == 'font') {
+								console.log('token is font');
 								dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey));
 							}
 						}
-						dispatch(ActionCreators.setProject(snapshot.val()));
+						dispatch(ActionCreators.setProject(value));
 					}
 				});
 			}
