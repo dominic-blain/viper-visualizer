@@ -30,9 +30,9 @@ const ActionCreators = {
 			data: data
 		}
 	},
-	updateFontToken(name, token, file) {
+	updateFontToken(name, token) {
 		return dispatch => {
-			dispatch(ActionCreators.loadFont(name, token, file));
+			dispatch(ActionCreators.loadFont(name, token));
 			dispatch(ActionCreators.updateToken(name, token.value, token));
 		}
 	},
@@ -298,14 +298,14 @@ const ActionCreators = {
 			itemName: itemName
 		}
 	},
-	loadFont(name, token, file) {
+	loadFont(name, token) {
 		return () => {
 			switch(token.source) {
 				case 'google-font':
 					util.loadGoogleFont(name, token);
 					break;
 				case 'upload':
-					util.loadFileFont(file, token);
+					util.loadFileFont(token);
 					break;
 			}
 		}
@@ -332,7 +332,7 @@ const ActionCreators = {
 						for (var tokenKey in tokens) {
 							const token = tokens[tokenKey];
 							if (token.type == 'font') {
-								dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey, null));
+								dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey));
 							}
 						}
 						dispatch(ActionCreators.setProject(snapshot.val()));

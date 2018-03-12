@@ -1,10 +1,10 @@
 .recipe--markdown-big {
 	& > * {
-		margin-top: calc(~'var(--vertical-spacing-small) * 0.6');
-		margin-bottom: calc(~'var(--vertical-spacing-small) * 0.6');
+		margin-top: calc(~'var(--gutter-normal) * 0.6');
+		margin-bottom: calc(~'var(--gutter-normal) * 0.6');
 		#mq-min-width(@screen-xs, {
-			margin-top: calc(~'var(--vertical-spacing-small) * 0.8');
-			margin-bottom: calc(~'var(--vertical-spacing-small) * 0.8');
+			margin-top: calc(~'var(--gutter-normal) * 0.8');
+			margin-bottom: calc(~'var(--gutter-normal) * 0.8');
 		});
 		#mq-min-width(@screen-md, {
 			margin-top: var(--vertical-spacing-small);
@@ -111,16 +111,16 @@
 }
 
 .recipe--markdown-normal {
-	.markdown > * {
-		margin-top: calc(~'var(--gutter-normal) * 0.6');
-		margin-bottom: calc(~'var(--gutter-normal) * 0.6');
+	& > * {
+		margin-top: calc(~'var(--gutter-small) * 0.6');
+		margin-bottom: calc(~'var(--gutter-small) * 0.6');
 		#mq-min-width(@screen-xs, {
-			margin-top: calc(~'var(--gutter-normal) * 0.8');
-			margin-bottom: calc(~'var(--gutter-normal) * 0.8');
+			margin-top: calc(~'var(--gutter-small) * 0.8');
+			margin-bottom: calc(~'var(--gutter-small) * 0.8');
 		});
 		#mq-min-width(@screen-md, {
-			margin-top: var(--gutter-normal);
-			margin-bottom: var(--gutter-normal);
+			margin-top: var(--gutter-small);
+			margin-bottom: var(--gutter-small);
 		});
 	}
 

@@ -19,7 +19,7 @@ export function loadGoogleFont(name, token) {
 	head.appendChild(link);
 }
 
-export function loadFileFont(file, token) {
+export function loadFileFont(token) {
 	// Get head element
 	const head = document.querySelector('head');
 	// Make sure there is no google font for the same token
@@ -30,20 +30,8 @@ export function loadFileFont(file, token) {
 	style.type = "text/css";
 	style.id = token.name;
 
-	// Get file data
-	var dataURL = '';
-	if (file != null) {
-		var reader = new FileReader();
-		// When file is read
-		reader.onload = event => {
-			// Set dataURL and apply changes to DOM
-			dataURL = reader.result;
-			style.textContent = "@font-face { font-family: \""+ token.value +"\"; src: url('"+dataURL+"'); }";
-			head.appendChild(style);
-		}
-		// Start reading file
-		reader.readAsDataURL(file);
-	}
+	style.textContent = "@font-face { font-family: \""+ token.value +"\"; src: url('"+token.fileData+"'); }";
+	head.appendChild(style);
 }
 
 export function getDataFromFile(file, callback) {

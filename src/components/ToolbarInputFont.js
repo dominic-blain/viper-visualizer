@@ -1,4 +1,5 @@
 import React from 'react';
+import { getDataFromFile } from '../utils';
 
 class ToolbarInputFont extends React.Component {
 	constructor(props) {
@@ -7,42 +8,59 @@ class ToolbarInputFont extends React.Component {
 	}
 
 	handleChange(event) {
+		const name = this.props.data.name;
 		const nextSource = event.target.dataset.source;
-		// var data = this.props.data;
 		var file = '';
-		var defaultUploadText = 'No file chosen';
-		var defaultGoogleFontText = 'default';
-		var defaultFontName = 'Arial';
+		const defaultUploadText = 'No file chosen';
+		const defaultGoogleFontText = 'default';
+		const defaultFontName = 'Arial';
+		const defaultFile = '';
 		var nextUploadText;
 		var nextGoogleFontText;
 		var nextFontName;
-		var nextData;
+		var nextFileData;
 
-		switch(nextSource) {
-			case 'google-font':
-				nextUploadText = defaultUploadText;
-				nextGoogleFontText = event.target.value;
-				nextFontName = event.target.value;
-				break;
-			case 'upload':
-				file = event.target.files[0];
-				nextUploadText = file.name.replace('-', ' ');
-				nextFontName = file.name.split('.')[0];
-				break;
-			default:
-				nextUploadText = defaultUploadText;
-				nextGoogleFontText = defaultGoogleFontText;
-				nextFontName = defaultFontName;
-		}
+		const fireChange = (fontName, uploadText, googleFontText, fileData) => {
+			const font = {
+				name: name,
+				value: fontName,
+				source: nextSource,
+				uploadText: uploadText,
+				googleFontText: googleFontText,
+				fileData: fileData
+			}
+			this.props.onChange(name, font);
+		};
 
-		const font = {
-			name: this.props.data.name,
-			value: nextFontName,
-			source: nextSource,
-			uploadText: nextUploadText,
-			googleFontText: nextGoogleFontText
-		}
-		this.props.onChange(event.target.name, font, file);
+		return new Promise((resolve, reject) => {
+			switch(nextSource) {
+				case 'google-font':
+					nextUploadText = defaultUploadText;
+					nextGoogleFontText = event.target.value;
+					nextFontName = event.target.value;
+					nextFileData = defaultFile;
+					resolve({nextFontName, nextUploadText, nextGoogleFontText, nextFileData});
+					break;
+				case 'upload':
+					file = event.target.files[0];
+					nextUploadText = file.name.replace('-', ' ');
+					nextGoogleFontText = defaultGoogleFontText;
+					nextFontName = file.name.split('.')[0];
+					getDataFromFile(file, (nextFileData) => {
+						resolve({nextFontName, nextUploadText, nextGoogleFontText, nextFileData});
+					});
+					break;
+				default:
+					nextUploadText = defaultUploadText;
+					nextGoogleFontText = defaultGoogleFontText;
+					nextFontName = defaultFontName;
+					nextFileData = defaultFile;
+					resolve({nextFontName, nextUploadText, nextGoogleFontText, nextFileData});
+			}
+		}).then(result => {
+			const {nextFontName, nextUploadText, nextGoogleFontText, nextFileData} = result;
+			fireChange(nextFontName, nextUploadText, nextGoogleFontText, nextFileData);
+		});
 	}
 
 	render() {

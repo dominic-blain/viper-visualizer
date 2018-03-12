@@ -51,7 +51,7 @@ class ToolbarInputImage extends React.Component {
 					nextValue = defaultValue;
 					resolve({nextValue, nextSource, nextUploadText, nextUrlText});
 			}
-		}).then((result) => {
+		}).then(result => {
 			const {nextValue, nextSource, nextUploadText, nextUrlText} = result;
 			fireChange(nextValue, nextSource, nextUploadText, nextUrlText);
 		});
