@@ -150,7 +150,7 @@ const TOKENS = {
 		"unit": "px",
 		"range": {
 			"min": 5,
-			"max": 200
+			"max": 400
 		}
 	},
 	"font-size-title-big": {
@@ -161,7 +161,7 @@ const TOKENS = {
 		"unit": "px",
 		"range": {
 			"min": 5,
-			"max": 200
+			"max": 300
 		}
 	},
 	"font-size-title-normal": {

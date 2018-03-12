@@ -1,14 +1,14 @@
 .recipe--markdown-big {
-	.item-arkdown > * {
-		margin-top: calc(~'var(--gutter-big) * 0.6');
-		margin-bottom: calc(~'var(--gutter-big) * 0.6');
+	& > * {
+		margin-top: calc(~'var(--vertical-spacing-small) * 0.6');
+		margin-bottom: calc(~'var(--vertical-spacing-small) * 0.6');
 		#mq-min-width(@screen-xs, {
-			margin-top: calc(~'var(--gutter-big) * 0.8');
-			margin-bottom: calc(~'var(--gutter-big) * 0.8');
+			margin-top: calc(~'var(--vertical-spacing-small) * 0.8');
+			margin-bottom: calc(~'var(--vertical-spacing-small) * 0.8');
 		});
 		#mq-min-width(@screen-md, {
-			margin-top: var(--gutter-big);
-			margin-bottom: var(--gutter-big);
+			margin-top: var(--vertical-spacing-small);
+			margin-bottom: var(--vertical-spacing-small);
 		});
 	}
 
