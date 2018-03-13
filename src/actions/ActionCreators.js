@@ -300,13 +300,11 @@ const ActionCreators = {
 	},
 	loadFont(token) {
 		return () => {
-			console.log(token.name, 'source is..', token.source);
 			switch(token.source) {
 				case 'google-font':
 					util.loadGoogleFont(token);
 					break;
 				case 'upload':
-					console.log('source: upload');
 					util.loadFileFont(token);
 					break;
 			}
@@ -325,7 +323,6 @@ const ActionCreators = {
 						for (var tokenKey in tokens) {
 							const token = tokens[tokenKey];
 							if (token.type == 'font') {
-								console.log('token is font');
 								dispatch(ActionCreators.loadFont(tokens[tokenKey], tokenKey));
 							}
 						}
