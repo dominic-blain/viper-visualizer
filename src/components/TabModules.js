@@ -31,6 +31,7 @@ class TabModules extends React.Component {
 		const onModulesReorder = this.props.onModulesReorder;
 		const onModuleAdd = this.props.onModuleAdd;
 		const onModuleDelete = this.props.onModuleDelete;
+		const onModuleTitleChange = this.props.onModuleTitleChange;
 		const onItemAdd = this.props.onItemAdd;
 		const onItemDelete = this.props.onItemDelete;
 		const onItemsReorder = this.props.onItemsReorder;
@@ -157,7 +158,9 @@ class TabModules extends React.Component {
 			modulesComponents.push( 
 				<ToolbarModule
 					key={moduleId}
+					id={moduleId}
 					title={module.title}
+					onChange={onModuleTitleChange}
 					activeClass={tabItemActiveClass}>
 					<ToolbarGroup
 						label="Content">
@@ -204,6 +207,7 @@ const mapDispatchToProps = (dispatch) => ({
 	onModulesReorder: (newOrder) => dispatch(ActionCreators.setModulesOrder(newOrder)),
 	onModuleAdd: (type) => dispatch(ActionCreators.createModule(type)),
 	onModuleDelete: (id) => dispatch(ActionCreators.deleteModule(id)),
+	onModuleTitleChange: (id, title) => dispatch(ActionCreators.updateModuleTitle(id, title)),
 	onItemAdd: (type, moduleId, extraOptions) => dispatch(ActionCreators.createItem(type, moduleId, extraOptions)),
 	onItemDelete: (id, moduleId) => dispatch(ActionCreators.deleteItem(id, moduleId)),
 	onItemsReorder: (moduleId, newOrder) => dispatch(ActionCreators.setItemsOrder(moduleId, newOrder)),

@@ -1,14 +1,27 @@
 import React from 'react';
 
 class ToolbarModule extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(event) {
+		const id = this.props.id;
+		const title = event.target.value;
+		this.props.onChange(id, title);
+	}
+
 	render() {
 		var compClass = this.props.activeClass + ' toolbar-module';
 
 		return (
 			<section className={compClass}>
-				<h2 className="toolbar-module-title">
-					{this.props.title}
-				</h2>
+				<input 
+					className="toolbar-module-title"
+					value={this.props.title}
+					onChange={this.handleChange}
+				/>
 				{this.props.children}
 			</section>
 		);

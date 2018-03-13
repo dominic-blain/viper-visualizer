@@ -98,6 +98,11 @@ const reducer = (state=initialState, action) => {
 			}
 			return newState;
 			break;
+		case type.UPDATE_MODULE_TITLE:
+			return update(state, {modules: {[action.id]: 
+				{title: {$set: action.title}}
+			}});
+			break;
 		case type.SET_TOKENS:
 			return update(state, {tokens: {$set: action.tokens}});
 			break;

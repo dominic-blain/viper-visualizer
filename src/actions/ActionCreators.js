@@ -36,6 +36,13 @@ const ActionCreators = {
 			dispatch(ActionCreators.updateToken(name, token.value, token));
 		}
 	},
+	updateModuleTitle(id, title) {
+		return {
+			type: type.UPDATE_MODULE_TITLE,
+			id: id,
+			title: title
+		}
+	},
 	setTokens(value) {
 		return {
 			type: type.SET_TOKENS,

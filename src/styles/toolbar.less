@@ -172,13 +172,19 @@
 		.font--title-big;
 		margin-bottom: 0;
 		color: @accent;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		display: block;
 		padding: 30px;
 		min-height: 60px;
+		width: 100%;
+		box-sizing: border-box;
+		border: 0;
+
 		text-align: center;
 		background-color: @background;
+
+		&:focus {
+			outline: none;
+		}
 	}
 }
 

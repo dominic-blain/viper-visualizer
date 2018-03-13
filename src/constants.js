@@ -1,6 +1,7 @@
 export const UPDATE_OPTION = 'update option';
 export const UPDATE_CONTENT = 'update content';
 export const UPDATE_TOKEN = 'update token';
+export const UPDATE_MODULE_TITLE = 'update module title';
 export const SET_TOKENS = 'set tokens';
 export const SET_MODULES = 'set modules';
 export const SET_ITEMS = 'set items';
