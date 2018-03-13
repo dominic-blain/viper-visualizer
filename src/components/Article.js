@@ -18,7 +18,8 @@ class Article extends React.Component {
 		const shortcuts = this.props.shortcuts;
 		const tokens = this.props.tokens;
 		const tokensGroups = this.props.tokensGroups;
-		const modulesOrder = this.props.modulesOrder;
+		const activeLayout = this.props.activeLayout;
+		const layouts = this.props.layouts;
 		const modulesSchema = this.props.modulesSchema;
 		const modules = this.props.modules;
 		const modulesTypes = {
@@ -38,7 +39,7 @@ class Article extends React.Component {
 		var CSSVariables = {};
 
 		// For each module...
-		modulesOrder.map(moduleId => {
+		layouts[activeLayout].modules.map(moduleId => {
 			const module = modules[moduleId];
 			const schema = modulesSchema[module.type];
 			const ModuleComponent = modulesTypes[module.type];
@@ -100,7 +101,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
 	tokensGroups: state.tokensGroups,
 	tokens: state.tokens,
-	modulesOrder: state.modulesOrder,
+	activeLayout: state.activeLayout,
+	layouts: state.layouts,
 	modulesSchema: state.modulesSchema,
 	modules: state.modules,
 	itemsSchema: state.itemsSchema,

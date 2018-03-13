@@ -1,7 +1,7 @@
 import TOKENS_GROUPS from '../data/tokensGroups';
 import TOKENS from '../data/tokens';
 import FONTS_RECIPES from '../data/fontsRecipes';
-import MODULES_ORDER from '../data/modulesOrder';
+import LAYOUTS from '../data/layouts';
 import MODULES_SCHEMA from '../data/modulesSchema';
 import MODULES from '../data/modules';
 import ITEMS_SCHEMA from '../data/itemsSchema';
@@ -12,13 +12,14 @@ import * as type from '../constants';
 import update from 'immutability-helper';
 
 const initialState = {
+	activeLayout: 0,
 	activeTab: 'modules',
 	activeTabItem: '',
 	tokensGroups: TOKENS_GROUPS,
 	tokens: TOKENS,
 	fontsRecipes: FONTS_RECIPES,
 	fonts: [],
-	modulesOrder: MODULES_ORDER,
+	layouts: LAYOUTS,
 	modulesSchema: MODULES_SCHEMA,
 	modules: MODULES,
 	itemsSchema: ITEMS_SCHEMA,
@@ -116,7 +117,9 @@ const reducer = (state=initialState, action) => {
 			return update(state, {contents: {$set: action.contents}});
 			break;
 		case type.SET_MODULES_ORDER:
-			return update(state, {modulesOrder: {$set: action.modulesOrder}});
+			return update(state, {layouts: {[state.activeLayout]: 
+				{modules: {$set: action.modulesOrder}}
+			}});
 			break;
 		case type.SET_ITEMS_ORDER:
 			return update(state, {modules: {[action.moduleId]: {items: 
@@ -126,7 +129,7 @@ const reducer = (state=initialState, action) => {
 		case type.SET_PROJECT:
 			return update(state, {
 				tokens: {$set: action.tokens},
-				modulesOrder: {$set: action.modulesOrder},
+				layouts: {$set: action.layouts},
 				modules: {$set: action.modules},
 				items: {$set: action.items},
 				contents: {$set: action.contents}
@@ -135,14 +138,17 @@ const reducer = (state=initialState, action) => {
 		case type.ADD_MODULE:
 			return update(state, {
 				modules: {$merge: {[action.id]: action.object}},
-				modulesOrder: {$push: [action.id]}
+				layouts: {[state.activeLayout]: {modules: 
+					{$push: [action.id]}
+				}}
 			});
 			break;
 		case type.DELETE_MODULE: {
-			const index = state.modulesOrder.indexOf(action.id);
-			return update(state, {modulesOrder: 
+			const activeLayout = state.activeLayout;
+			const index = state.layouts[activeLayout].indexOf(action.id);
+			return update(state, {layouts: {[activeLayout]: {modules:
 				{$splice: [[index, 1]]}
-			});
+			}}});
 			break;
 		}
 		case type.ADD_ITEM:

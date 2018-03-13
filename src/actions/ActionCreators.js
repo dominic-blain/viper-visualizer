@@ -234,11 +234,11 @@ const ActionCreators = {
 			itemsOrder: newOrder
 		}
 	},
-	setProject({tokens, modulesOrder, modules, items, contents}) {
+	setProject({tokens, layouts, modules, items, contents}) {
 		return {
 			type: type.SET_PROJECT,
 			tokens: tokens,
-			modulesOrder: modulesOrder,
+			layouts: layouts,
 			modules: modules,
 			items: items,
 			contents: contents
@@ -350,7 +350,7 @@ const ActionCreators = {
 			const projectID = util.getParam('project');
 			const projectState = {
 				tokens: currentState.tokens,
-				modulesOrder: currentState.modulesOrder,
+				layouts: currentState.layouts,
 				modules: currentState.modules,
 				items: currentState.items,
 				contents: currentState.contents

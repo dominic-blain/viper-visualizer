@@ -17,7 +17,8 @@ import { renderOptionsFrom } from '../utils.js';
 class TabModules extends React.Component {
 	render() {
 		const tabActiveClass = this.props.isActive ? 'is-active' : '';
-		const modulesOrder = this.props.modulesOrder;
+		const activeLayout = this.props.activeLayout;
+		const layouts = this.props.layouts;
 		const modulesSchema = this.props.modulesSchema;
 		const modules = this.props.modules;
 		const itemsSchema = this.props.itemsSchema;
@@ -42,7 +43,7 @@ class TabModules extends React.Component {
 		var extraOptions;
 
 		// For each module...
-		modulesOrder.map(moduleId => {
+		layouts[activeLayout].modules.map(moduleId => {
 			const module = modules[moduleId];
 			const schema = modulesSchema[module.type];
 			var itemsComponents = [];
@@ -216,7 +217,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
 	activeTabItem: state.activeTabItem,
-	modulesOrder: state.modulesOrder,
+	layouts: state.layouts,
+	activeLayout: state.activeLayout,
 	modulesSchema: state.modulesSchema,
 	modules: state.modules,
 	itemsSchema: state.itemsSchema,
