@@ -32,7 +32,7 @@ const initialState = {
 	},
 	ui: {
 		buttonSaveState: '',
-		showGuides: true,
+		showGuides: false,
 		guidesSetByUser: false
 	},
 	shortcuts: {
