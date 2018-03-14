@@ -1,5 +1,5 @@
 # Viper Visualizer
-Tool to allow visualisation of a layout based on a set of options.
+Tool to allow visualisation of layouts based on a set of tokens (graphic language).
 
 ## What's coming up?
 ### 0.2
@@ -7,18 +7,29 @@ Tool to allow visualisation of a layout based on a set of options.
 - [x] Integrate solution for google font and local font upload
 
 ### 0.3
-- [X] Add save feature to toolbar settings
+- [x] Add save feature to toolbar settings
 - [x] Create production build process
 
 ### 0.4
-- [ ] Add color input component
-- [ ] Add all basic modules to article and corresponding CSS
+- [x] Add modules, items and contents
+- [x] Allow add/delete of modules and items
+- [x] Add multiple layouts
 
 ### 0.5
-- [ ] Redesign and refactor input font
+- [ ] Establish a solid set of rules for tokens, recipes and options
+- [ ] Add color input component
+- [ ] Rework font input
+- [ ] Rework tokens and typography tabs
 
 ### 0.6
-- [ ] Add app loading screen
-- [ ] Fine-tune before launch
+- [ ] Create Views concept (one for each tab)
+	- Tokens = Graphic language
+	- Typography = Font recipes
+	- Modules = Layouts
+
+### 0.7
+- [ ] Add project information
+- [ ] Allow forking of project (save as new)
+- [ ] Add loading and favicon
 
 ### Launch
