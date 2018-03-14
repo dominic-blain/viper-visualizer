@@ -1,0 +1,35 @@
+.layout-switch {
+	position: fixed;
+	top: 0;
+	padding: 20px;
+	h2 {
+		display: block;
+		.font--intertitle;
+		color: @accent;
+		margin: 0;
+	}
+	h3 {
+		.font--title;
+		color: @accent;
+		margin: 0;
+		display: none;
+		&.is-active {
+			display: block;
+		}
+	}
+
+	.title-ctn {
+		margin: 12px 0;
+	}
+	.switch-button {
+		.font--text;
+		color: @accent;
+		padding: 0 20px;
+		cursor: pointer;
+	}
+	.pagination {
+		.font--text;
+		color: @accent;
+		margin-left: -20px;
+	}
+}

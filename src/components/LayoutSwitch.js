@@ -6,6 +6,7 @@ class LayoutSwitch extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
+
 	handleClick(direction) {
 		const length = this.props.layouts.length;
 		var index = this.props.activeLayout + direction;
@@ -21,26 +22,37 @@ class LayoutSwitch extends React.Component {
 	render() {
 		const layouts = this.props.layouts;
 		const activeLayout = this.props.activeLayout;
-		const layoutName = layouts[activeLayout].title;
+
+		var titlesComponents = [];
+
+		layouts.map((layout, index) => {
+			const computedClass = 'layout-title ' + (index == activeLayout ? 'is-active' : '');
+			const refName = 'title' + index;
+			titlesComponents.push(
+				<h3 key={index} className={computedClass}>
+					{layout.title}
+				</h3>
+			);
+		});
 
 		return (
 			<div className="layout-switch">
 				<h2>Layout</h2>
-				<div className="switch-ctn">
+				<div className="title-ctn">
+					{titlesComponents}
+				</div>
+				<div className="pagination">
 					<button 
 						className="switch-button switch-prev" 
 						onClick={() => this.handleClick(-1)}>
 						←
 					</button>
-					<h3>{layoutName}</h3>
+					{activeLayout + 1} / {layouts.length}
 					<button 
 						className="switch-button switch-next"
 						onClick={() => this.handleClick(1)}>
 						→
 					</button>
-				</div>
-				<div className="pagination">
-					{activeLayout + 1} / {layouts.length}
 				</div>
 			</div>
 		);
