@@ -10,6 +10,7 @@ import ModuleGrid from './ModuleGrid';
 import ItemMarkdown from './ItemMarkdown';
 import ItemText from './ItemText';
 import ItemImage from './ItemImage';
+import LayoutSwitch from './LayoutSwitch';
 
 
 class Article extends React.Component {
@@ -85,6 +86,7 @@ class Article extends React.Component {
 		return (
 			<CustomProperties properties={CSSVariables}>
 				<article id="page">
+					<LayoutSwitch activeLayout={activeLayout} layouts={layouts} onClick={this.props.onLayoutSwitch} />
 					<GuidesSwitch showGuides={showGuides} shortcuts={shortcuts} onClick={this.props.onShowGuidesClick} />
 					<Guides tokens={tokens} tokensGroups={tokensGroups} shortcuts={shortcuts} showGuides={showGuides} />
 					{renderModules}
@@ -95,7 +97,8 @@ class Article extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	onShowGuidesClick: userAction => dispatch(ActionCreators.toggleGuides(userAction))
+	onShowGuidesClick: userAction => dispatch(ActionCreators.toggleGuides(userAction)),
+	onLayoutSwitch: index => dispatch(ActionCreators.switchLayout(index))
 });
 
 const mapStateToProps = (state) => ({

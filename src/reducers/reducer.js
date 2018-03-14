@@ -207,6 +207,11 @@ const reducer = (state=initialState, action) => {
 				}
 			});
 			break;
+		case type.SWITCH_LAYOUT:
+			return update(state, {activeLayout:
+				{$set: action.index}
+			});
+			break;
 		case type.SET_HOTKEY:
 			return update(state, {shortcuts: {[action.shortcutName]: {hot: {$set: action.hot}}}});
 			break;

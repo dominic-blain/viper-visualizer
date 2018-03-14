@@ -415,6 +415,12 @@ const ActionCreators = {
 			type: type.TOGGLE_GUIDES,
 			userAction: userAction
 		}
+	},
+	switchLayout(index) {
+		return {
+			type: type.SWITCH_LAYOUT,
+			index: index
+		}
 	}
 };
 

@@ -23,4 +23,5 @@ export const SAVE_PROJECT_START = 'save project start';
 export const SAVE_PROJECT_SUCCESS = 'save project success';
 export const SAVE_PROJECT_ERROR = 'save project error';
 export const TOGGLE_GUIDES = 'toggle guides';
+export const SWITCH_LAYOUT = 'switch layout';
 export const SET_HOTKEY = 'set hotkey';
