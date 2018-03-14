@@ -1,16 +1,16 @@
 .layout-switch {
 	position: fixed;
 	top: 0;
-	padding: 20px;
+	padding: 14px;
 	h2 {
 		display: block;
 		.font--intertitle;
-		color: @accent;
+		color: @black;
 		margin: 0;
 	}
 	h3 {
 		.font--title;
-		color: @accent;
+		color: @black;
 		margin: 0;
 		display: none;
 		&.is-active {
@@ -19,17 +19,29 @@
 	}
 
 	.title-ctn {
-		margin: 12px 0;
+		margin: 3px 0 12px 0;
 	}
 	.switch-button {
 		.font--text;
-		color: @accent;
+		color: @black;
 		padding: 0 20px;
 		cursor: pointer;
 	}
 	.pagination {
 		.font--text;
-		color: @accent;
+		color: @black;
 		margin-left: -20px;
+		opacity: 0;
+		transform: translateY(-50%);
+		transition: 160ms ease-out;
+		transition-property: transform, opacity;
+	}
+
+	// ~> HOVER
+	&:hover {
+		.pagination {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 }
