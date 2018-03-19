@@ -25,3 +25,4 @@ export const SAVE_PROJECT_ERROR = 'save project error';
 export const TOGGLE_GUIDES = 'toggle guides';
 export const SWITCH_LAYOUT = 'switch layout';
 export const SET_HOTKEY = 'set hotkey';
+export const INCREMENT_ID_COUNT = 'increment id count';

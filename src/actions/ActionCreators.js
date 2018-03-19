@@ -101,7 +101,8 @@ const ActionCreators = {
 			const modulesSchema = currentState.modulesSchema;
 			const schema = modulesSchema[type];
 			// Generate ID
-			const typeCounter = util.countItemsBy(type, modules) + 1;
+			const typeCounter = dispatch(ActionCreators.useIdCount());
+
 			const id = type + '-' + typeCounter;
 			// Generate Item only if NOT repeatable
 			var itemsId = [];
@@ -140,7 +141,7 @@ const ActionCreators = {
 			const itemsSchema = currentState.itemsSchema;
 			const schema = itemsSchema[type];
 			// Generate ID
-			const typeCounter = util.countItemsBy(type, items) + 1;
+			const typeCounter = dispatch(ActionCreators.useIdCount());
 			const id = type + '-' + typeCounter;
 			// Generate Options
 			var optionsObject = {};
@@ -163,7 +164,7 @@ const ActionCreators = {
 
 				const contentSchema = schema.content[contentType];
 				// ID
-				const contentTypeCounter = util.countItemsBy(contentType, contents) + 1;
+				const contentTypeCounter = dispatch(ActionCreators.useIdCount());
 				const contentId = contentType + '-' + contentTypeCounter;
 				contentsId.push(contentId);
 				// Input
@@ -420,6 +421,18 @@ const ActionCreators = {
 		return {
 			type: type.SWITCH_LAYOUT,
 			index: index
+		}
+	},
+	useIdCount() {
+		return (dispatch, getState) => {
+			const currentState = getState();
+			dispatch(ActionCreators.incrementIdCount());
+			return currentState.idCount;
+		}
+	},
+	incrementIdCount() {
+		return {
+			type: type.INCREMENT_ID_COUNT
 		}
 	}
 };

@@ -105,14 +105,3 @@ export function findTypeFrom(id) {
 		return 'contents';
 	}
 }
-
-export function countItemsBy(type, items) {
-	var counter = 0;
-	for (var itemId in items) {
-		const item = items[itemId];
-		if (item.type == type) {
-			counter += 1;
-		}
-	}
-	return counter;
-}

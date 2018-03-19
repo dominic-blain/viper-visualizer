@@ -12,6 +12,7 @@ import * as type from '../constants';
 import update from 'immutability-helper';
 
 const initialState = {
+	idCount: 200, 
 	activeLayout: 0,
 	activeTab: 'modules',
 	activeTabItem: '',
@@ -215,6 +216,8 @@ const reducer = (state=initialState, action) => {
 		case type.SET_HOTKEY:
 			return update(state, {shortcuts: {[action.shortcutName]: {hot: {$set: action.hot}}}});
 			break;
+		case type.INCREMENT_ID_COUNT:
+			return update(state, {idCount: {$apply: (id) => {return id+1;}}})
 		default:
 			return state;
 			break;
