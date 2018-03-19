@@ -146,7 +146,7 @@ const reducer = (state=initialState, action) => {
 			break;
 		case type.DELETE_MODULE: {
 			const activeLayout = state.activeLayout;
-			const index = state.layouts[activeLayout].indexOf(action.id);
+			const index = state.layouts[activeLayout].modules.indexOf(action.id);
 			return update(state, {layouts: {[activeLayout]: {modules:
 				{$splice: [[index, 1]]}
 			}}});
